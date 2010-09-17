@@ -1,0 +1,863 @@
+TRunQuest
+v7
+r0
+t306153514.795791
+cCheck dependencies
+cProcessInfoPlistFile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/Info.plist RunQuest-Info.plist
+cCompileXIB /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+cCompileXIB /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+cCompileXIB /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+cProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fmrhxhvfpdddoagcbimocuubvosg/RunQuest_Prefix.pch.pth RunQuest_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cDataModelVersionCompile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk
+c000000004C494D410000000000000132
+t1279872321
+s306
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004BFDFEB400000000001CFA90
+t1274937012
+s1899152
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004BFDFEA8000000000000046B
+t1274937000
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BFDFE39000000000027C7D0
+t1274936889
+s2607056
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004BFF44C00000000000068F90
+t1275020480
+s429968
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004BFF44B600000000000001D0
+t1275020470
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BFDFE7C000000000029D5D0
+t1274936956
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004BFDFE6E0000000000001466
+t1274936942
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004C04725B0000000000160350
+t1275359835
+s1442640
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C0470BB00000000000009CD
+t1275359419
+s2509
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C0471620000000001D47210
+t1275359586
+s30700048
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk
+c000000004C6C30170000000000000110
+t1282158615
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004C5A4E0B00000000001D2EC0
+t1280986635
+s1912512
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004C5A4DED000000000000046B
+t1280986605
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004C5A4DB60000000000295900
+t1280986550
+s2709760
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004C6C2FF1000000000006B7E0
+t1282158577
+s440288
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004C6C2FEA00000000000001D0
+t1282158570
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004C5A4DB0000000000029D580
+t1280986544
+s2741632
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004C5A4DA10000000000001466
+t1280986529
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004C6C301100000000000002FE
+t1282158609
+s766
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004C6C303B000000000016DD50
+t1282158651
+s1498448
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004C5A505200000000000000C4
+t1280987218
+s196
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004C5A50EF0000000000154E50
+t1280987375
+s1396304
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C6241ED00000000000009CD
+t1281507821
+s2509
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C6242840000000001E228C0
+t1281507972
+s31598784
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/usr/include/pthread.h
+c000000004C57909200000000000038F0
+t1280807058
+s14576
+
+N/Users/Joe/Source/RunQuest/CrumbPath.h
+c000000004C7470B60000000000000E94
+t1282699446
+s3732
+i<MapKit/MapKit.h>
+i<pthread.h>
+
+N/Users/Joe/Source/RunQuest/CrumbPath.m
+c000000004C7470B60000000000001557
+t1282699446
+s5463
+i"CrumbPath.h"
+
+N/Users/Joe/Source/RunQuest/CrumbPathView.h
+c000000004C7470B60000000000000AA9
+t1282699446
+s2729
+i<MapKit/MapKit.h>
+
+N/Users/Joe/Source/RunQuest/CrumbPathView.m
+c000000004C7470B60000000000001C1E
+t1282699446
+s7198
+i"CrumbPathView.h"
+i"CrumbPath.h"
+
+N/Users/Joe/Source/RunQuest/Enemy.h
+c000000004C8EC3CF0000000000000124
+t1284424655
+s292
+i<Foundation/Foundation.h>
+i"SonarObjects.h"
+
+N/Users/Joe/Source/RunQuest/Enemy.m
+c000000004C8EC40C00000000000000EA
+t1284424716
+s234
+i"Enemy.h"
+
+N/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch
+c000000004C8C01AC00000000000000B9
+t1284243884
+s185
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.h
+c000000004C8C01AC0000000000000350
+t1284243884
+s848
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m
+c000000004C8C01AC00000000000016E3
+t1284243884
+s5859
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+c000000004C8C01AC0000000000000088
+t1284243884
+s136
+
+N/Users/Joe/Source/RunQuest/Shared/main.m
+c000000004C8C01AC0000000000000167
+t1284243884
+s359
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/Sonar.h
+c000000004C8EE86E0000000000000326
+t1284434030
+s806
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+i<pthread.h>
+
+N/Users/Joe/Source/RunQuest/Sonar.m
+c000000004C8EE8A500000000000007C9
+t1284434085
+s1993
+i"Sonar.h"
+
+N/Users/Joe/Source/RunQuest/SonarLayer.h
+c000000004C8EC6E50000000000000113
+t1284425445
+s275
+i<Foundation/Foundation.h>
+i<QuartzCore/QuartzCore.h>
+i<MapKit/MapKit.h>
+
+N/Users/Joe/Source/RunQuest/SonarLayer.m
+c000000004C8EC4D700000000000000C4
+t1284424919
+s196
+i"SonarLayer.h"
+
+N/Users/Joe/Source/RunQuest/SonarView.h
+c000000004C8EE28A00000000000000F3
+t1284432522
+s243
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+
+N/Users/Joe/Source/RunQuest/SonarView.m
+c000000004C8EE944000000000000043F
+t1284434244
+s1087
+i"SonarView.h"
+i"Sonar.h"
+i<QuartzCore/QuartzCore.h>
+i"SonarLayer.h"
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app.dSYM
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/Info.plist
+t1284460713
+s909
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MainWindow_iPad.nib
+t1284460714
+s982
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MainWindow_iPhone.nib
+t1284460714
+s984
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MapViewController.nib
+t1284460714
+s1853
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/PkgInfo
+t1284460713
+s8
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RQMapViewController.nib
+t1284244534
+s1153
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd
+t1284460714
+s136
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_Shared.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPad.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPhone.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/CrumbPath.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/CrumbPathView.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Enemy.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/HeroPath.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/HeroPathView.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/MapViewController.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQLocationTracker.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQMapViewController.o
+t1284244535
+s35072
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQTracker.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RunQuest.LinkFileList
+c000000004C8F50A9000000000000067F
+t1284460713
+s1663
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Sonar.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/SonarLayer.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/SonarView.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Tracker.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.h
+c000000004C8C01AC0000000000000103
+t1284243884
+s259
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m
+c000000004C8C01AC000000000000070F
+t1284243884
+s1807
+i"AppDelegate_iPad.h"
+
+N/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+c000000004C8C01AC000000000000389E
+t1284243884
+s14494
+
+N/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.h
+c000000004C8C02C90000000000000109
+t1284244169
+s265
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m
+c000000004C8CC9040000000000000ACA
+t1284294916
+s2762
+i"AppDelegate_iPhone.h"
+i"MapViewController.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/HeroPath.h
+c000000004C8D12E300000000000000F9
+t1284313827
+s249
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/HeroPath.m
+c000000004C8D48D000000000000000E5
+t1284327632
+s229
+i"HeroPath.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/HeroPathView.h
+c000000004C8D14DB00000000000000F1
+t1284314331
+s241
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/HeroPathView.m
+c000000004C8D139D0000000000000243
+t1284314013
+s579
+i"HeroPathView.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+c000000004C8CC66800000000000045B1
+t1284294248
+s17841
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.h
+c000000004C8EECC90000000000000318
+t1284435145
+s792
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+i<MapKit/MapKit.h>
+i<QuartzCore/QuartzCore.h>
+i"Sonar.h"
+i"SonarView.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.m
+c000000004C8EEDD0000000000000141E
+t1284435408
+s5150
+i"MapViewController.h"
+i"HeroPath.h"
+i"SonarView.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+c000000004C8D3B3B0000000000005C40
+t1284324155
+s23616
+
+N/Users/Joe/Source/RunQuest/iPhone/RQLocationTracker.h
+c000000004C8CC6D300000000000000E6
+t1284294355
+s230
+i<Foundation/Foundation.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/RQLocationTracker.m
+c000000004C8CC6D300000000000000D7
+t1284294355
+s215
+i"RQLocationTracker.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.h
+c000000004C8CC8F0000000000000010A
+t1284294896
+s266
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m
+c000000004C8C048800000000000005A0
+t1284244616
+s1440
+i"RQMapViewController.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.xib
+c000000004C8CC8F10000000000003FFF
+t1284294897
+s16383
+
+N/Users/Joe/Source/RunQuest/iPhone/RQTracker.h
+c000000004C8CC71A000000000000013D
+t1284294426
+s317
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/RQTracker.m
+c000000004C8CC8160000000000000136
+t1284294678
+s310
+i"RQTracker.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/Tracker.h
+c000000004C8CC8E1000000000000013B
+t1284294881
+s315
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/Tracker.m
+c000000004C8CE26600000000000001E7
+t1284301414
+s487
+i"Tracker.h"
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fdneoasbkordpzfdfhrarjwascsn/RunQuest_Prefix.pch.gch
+t1284244171
+s15232016
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fmrhxhvfpdddoagcbimocuubvosg/RunQuest_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch.gch
+t1284304894
+s15232016
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fsuuylmiradfakcjtuwjfoeqjxql/RunQuest_Prefix.pch.gch
+t2
+s0
+
+NRunQuest-Info.plist
+c000000004C8C01AC0000000000000569
+t1284243884
+s1385
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies306153513#306153513#0(0"0(0#1#0"8671120384#0"0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.727041
+e305997694.835146
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_Shared.o
+x/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m305997694#305997694#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m8614702208#1837"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_Shared.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.448557
+e305997694.727935
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPad.o
+x/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@58"Compile /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m305997694#305997694#0(0"0(0#0#50"/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m8614577856#1831"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPad.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.727998
+e305997694.864971
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPhone.o
+x/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m305997694#305997694#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m8609169888#1837"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPhone.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/CrumbPath.o /Users/Joe/Source/RunQuest/CrumbPath.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/CrumbPathView.o /Users/Joe/Source/RunQuest/CrumbPathView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Enemy.o /Users/Joe/Source/RunQuest/Enemy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/HeroPath.o /Users/Joe/Source/RunQuest/iPhone/HeroPath.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/HeroPathView.o /Users/Joe/Source/RunQuest/iPhone/HeroPathView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.835249
+e305997694.936831
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/MapViewController.o
+x/Users/Joe/Source/RunQuest/iPhone/MapViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/Joe/Source/RunQuest/iPhone/MapViewController.m305997694#305997694#0(0"0(0#0#53"/Users/Joe/Source/RunQuest/iPhone/MapViewController.m8614000320#1835"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/MapViewController.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/MapViewController.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQLocationTracker.o /Users/Joe/Source/RunQuest/iPhone/RQLocationTracker.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQMapViewController.o /Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305937335.031794
+e305937335.148161
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQMapViewController.o
+x/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@63"Compile /Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m305937335#305937335#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m8618874528#1826"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fdneoasbkordpzfdfhrarjwascsn/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/RQMapViewController.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQMapViewController.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RQTracker.o /Users/Joe/Source/RunQuest/iPhone/RQTracker.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Sonar.o /Users/Joe/Source/RunQuest/Sonar.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/SonarLayer.o /Users/Joe/Source/RunQuest/SonarLayer.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/SonarView.o /Users/Joe/Source/RunQuest/SonarView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.865058
+e305997694.919997
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Tracker.o
+x/Users/Joe/Source/RunQuest/iPhone/Tracker.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@51"Compile /Users/Joe/Source/RunQuest/iPhone/Tracker.m305997694#305997694#0(0"0(0#0#43"/Users/Joe/Source/RunQuest/iPhone/Tracker.m8614188320#1815"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/Tracker.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Tracker.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997694.447727
+e305997694.726930
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/main.o
+x/Users/Joe/Source/RunQuest/Shared/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@48"Compile /Users/Joe/Source/RunQuest/Shared/main.m305997694#305997694#0(0"0(0#0#40"/Users/Joe/Source/RunQuest/Shared/main.m8614944352#1809"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/main.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/main.o0#
+
+CCompileC build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+s306153513.701284
+e306153514.059674
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+lSLF07#2@35"CompileXIB iPad/MainWindow_iPad.xib306153513#306153514#0(0"0(0#0#51"/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib8684413856#550"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.0    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MainWindow_iPad.nib /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+s306153513.701973
+e306153514.032819
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+lSLF07#2@39"CompileXIB iPhone/MainWindow_iPhone.xib306153513#306153514#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib8681252032#556"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.0    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MainWindow_iPhone.nib /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+s306153514.032901
+e306153514.545889
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+lSLF07#2@39"CompileXIB iPhone/MapViewController.xib306153514#306153514#0(504"Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)0(0#0#55"/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib8665886752#556"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.0    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/MapViewController.nib /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPhone/RQMapViewController.xib
+s305937334.626375
+e305937334.979651
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.xib
+lSLF07#2@41"CompileXIB iPhone/RQMapViewController.xib305937334#305937334#0(0"0(0#0#57"/Users/Joe/Source/RunQuest/iPhone/RQMapViewController.xib8619858560#560"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RQMapViewController.nib /Users/Joe/Source/RunQuest/iPhone/RQMapViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk0#
+
+CDataModelVersionCompile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+s306153514.707091
+e306153514.795677
+r1
+xDataModelVersionCompile
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd
+x/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+lSLF07#2@107"DataModelVersionCompile build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd Shared/RunQuest.xcdatamodeld306153514#306153514#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld8645373216#360"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest.momd0#
+
+CGenerateDSYMFile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app.dSYM /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest
+s305997695.384046
+e305997695.457197
+r1
+xGenerateDSYMFile
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app.dSYM
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest
+lSLF07#2@112"GenerateDSYMFile build/Debug-iphonesimulator/RunQuest.app.dSYM build/Debug-iphonesimulator/RunQuest.app/RunQuest305997695#305997695#0(0"0(0#0#76"/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest8614964096#350"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest -o /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app.dSYM0#
+
+CLd /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest normal i386
+s305997694.936919
+e305997695.383941
+r1
+xLd
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest
+xnormal
+xi386
+lSLF07#2@81"Link /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest305997694#305997695#0(0"0(0#0#0"8610088192#907"    cd /Users/Joe/Source/RunQuest    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -L/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -filelist /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/Objects-normal/i386/RunQuest.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -framework MapKit -framework CoreLocation -o /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/RunQuest0#
+
+CProcessInfoPlistFile /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/Info.plist RunQuest-Info.plist
+s306153513.652978
+e306153513.701192
+r1
+xProcessInfoPlistFile
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/Info.plist
+xRunQuest-Info.plist
+lSLF07#2@27"Process RunQuest-Info.plist306153513#306153513#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest-Info.plist8664044512#446"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility RunQuest-Info.plist -genpkginfo /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app/Info.plist0#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fdneoasbkordpzfdfhrarjwascsn/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s305936971.016681
+e305936971.936314
+r1
+xProcessPCH
+x/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fdneoasbkordpzfdfhrarjwascsn/RunQuest_Prefix.pch.gch
+xRunQuest_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile RunQuest_Prefix.pch305936971#305936971#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch8616792320#1692"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -c /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch -o /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fdneoasbkordpzfdfhrarjwascsn/RunQuest_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fmrhxhvfpdddoagcbimocuubvosg/RunQuest_Prefix.pch.pth RunQuest_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s306153514.546050
+e306153514.707008
+r0
+xProcessPCH
+x/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fmrhxhvfpdddoagcbimocuubvosg/RunQuest_Prefix.pch.pth
+xRunQuest_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:26:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h:60:23: error: expected function body after function declarator
+o   CFDataRef metadata) CG_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_4_0);
+o                       ^
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:8:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h:21:32: note: instantiated from:
+o # define CG_AVAILABLE_STARTING __OSX_AVAILABLE_STARTING
+o                                ^
+o<scratch space>:82:1: note: instantiated from:
+o __AVAILABILITY_INTERNAL__MAC_10_7
+o ^
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:250:91: error: expected a type
+o + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
+o                                                                                           ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:256:86: error: expected a type
+o + (void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
+o                                                                                      ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:258:114: error: expected a type
+o + (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); // toView added to fromView.superview, fromView removed from its superview
+o                                                                                                                  ^
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:13:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:187:31: error: unknown type name 'UIApplicationState'
+o @property(nonatomic,readonly) UIApplicationState applicationState __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
+o                               ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:190:4: error: expected a type
+o - (UIBackgroundTaskIdentifier)beginBackgroundTaskWithExpirationHandler:(void(^)(void))handler  __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
+o    ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:191:28: error: expected a type
+o - (void)endBackgroundTask:(UIBackgroundTaskIdentifier)identifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
+o                            ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:202:45: error: expected a type
+o - (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
+o                                             ^
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:206:4: error: expected a type
+o - (UIRemoteNotificationType)enabledRemoteNotificationTypes __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
+o    ^
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:73:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h:82:22: error: unknown type name 'UIDataDetectorTypes'
+o @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);
+o                      ^
+oIn file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:79:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h:54:22: error: unknown type name 'UIDataDetectorTypes'
+o @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);
+o                      ^
+o11 errors generated.
+lSLF07#2@30"Precompile RunQuest_Prefix.pch306153514#306153514#0(8045"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:26:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h:60:23: error: expected function body after function declarator   CFDataRef metadata) CG_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_4_0);                       ^In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:8:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h:21:32: note: instantiated from: # define CG_AVAILABLE_STARTING __OSX_AVAILABLE_STARTING                                ^<scratch space>:82:1: note: instantiated from: __AVAILABILITY_INTERNAL__MAC_10_7 ^In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:250:91: error: expected a type + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                                                                                           ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:256:86: error: expected a type + (void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                                                                                      ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:258:114: error: expected a type + (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); // toView added to fromView.superview, fromView removed from its superview                                                                                                                  ^In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:13:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:187:31: error: unknown type name 'UIApplicationState' @property(nonatomic,readonly) UIApplicationState applicationState __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                               ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:190:4: error: expected a type - (UIBackgroundTaskIdentifier)beginBackgroundTaskWithExpirationHandler:(void(^)(void))handler  __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);    ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:191:28: error: expected a type - (void)endBackgroundTask:(UIBackgroundTaskIdentifier)identifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                            ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:202:45: error: expected a type - (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);                                             ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:206:4: error: expected a type - (UIRemoteNotificationType)enabledRemoteNotificationTypes __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);    ^In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:73:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h:82:22: error: unknown type name 'UIDataDetectorTypes' @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);                      ^In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:79:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h:54:22: error: unknown type name 'UIDataDetectorTypes' @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);                      ^11 errors generated.11(4@48"Expected function body after function declarator306153514#1118#219#10(7@181"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:26:306153514#936#182#0(6@155"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h302679128#26#0#26#0#0"0(7@168"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:306153514#767#169#0(6@143"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h303200623#9#0#9#0#0"0(7@173"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:306153514#593#174#0(6@147"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h303200621#10#0#10#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:306153514#425#168#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#9#0#9#0#0"0(7@184"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:306153514#240#185#0(6@159"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h303200624#8#0#8#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:306153514#72#168#0(6@141"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h303200621#11#0#11#0#0"0(7@71"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:306153514#0#72#0(6@46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch305936684#7#0#7#0#0"0(13@207"Expected function body after function declarator in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h306153514#18446744073709551615#0#0(6@155"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h302679128#60#23#0#0#0"0(13@168"Instantiated from: /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h306153514#2551#182#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h302679127#21#32#0#0#18"instantiated from:0(13@34"Instantiated from: <scratch space>306153514#2824#47#0(6@15"<scratch space>306153514#82#1#0#0#18"instantiated from:0(6@155"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h302679128#60#23#0#0#48"expected function body after function declarator0(4@15"Expected a type306153514#3334#174#4(7@184"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:306153514#18446744073709551615#0#0(6@159"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h303200624#8#0#8#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:306153514#18446744073709551615#0#0(6@141"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h303200621#11#0#11#0#0"0(7@71"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:306153514#18446744073709551615#0#0(6@46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch305936684#7#0#7#0#0"0(13@161"Expected a type in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h306153514#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#250#91#0#0#0"0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#250#91#0#0#15"expected a type0(4@15"Expected a type306153514#3857#174#4(7@184"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:306153514#18446744073709551615#0#0(6@159"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h303200624#8#0#8#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:306153514#18446744073709551615#0#0(6@141"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h303200621#11#0#11#0#0"0(7@71"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:306153514#18446744073709551615#0#0(6@46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch305936684#7#0#7#0#0"0(13@161"Expected a type in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h306153514#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#256#86#0#0#0"0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#256#86#0#0#15"expected a type0(4@15"Expected a type306153514#4370#175#4(7@184"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:306153514#18446744073709551615#0#0(6@159"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h303200624#8#0#8#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:306153514#18446744073709551615#0#0(6@141"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h303200621#11#0#11#0#0"0(7@71"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:306153514#18446744073709551615#0#0(6@46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch305936684#7#0#7#0#0"0(13@161"Expected a type in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h306153514#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#258#114#0#0#0"0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#258#114#0#0#15"expected a type0(4@38"Unknown type name 'UIApplicationState'306153514#5217#204#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#187#31#0#0#19"unknown type name *0(4@15"Expected a type306153514#5570#180#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#190#4#0#0#15"expected a type0(4@15"Expected a type306153514#5901#181#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#191#28#0#0#15"expected a type0(4@15"Expected a type306153514#6227#181#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#202#45#0#0#15"expected a type0(4@15"Expected a type306153514#6580#180#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#206#4#0#0#15"expected a type0(4@39"Unknown type name 'UIDataDetectorTypes'306153514#7115#201#3(7@167"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:73:306153514#18446744073709551615#0#0(6@141"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h303200621#73#0#73#0#0"0(7@71"In file included from /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch:7:306153514#18446744073709551615#0#0(6@46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch305936684#7#0#7#0#0"0(13@189"Unknown type name 'UIDataDetectorTypes' in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h306153514#18446744073709551615#0#0(6@146"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h303200622#82#22#0#0#0"0(6@146"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h303200622#82#22#0#0#19"unknown type name *0(4@39"Unknown type name 'UIDataDetectorTypes'306153514#7690#200#0(6@145"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h303200623#54#22#0#0#19"unknown type name *0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch8663901472#1687"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -c /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch -o /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fmrhxhvfpdddoagcbimocuubvosg/RunQuest_Prefix.pch.pth1#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s305997693.403370
+e305997694.447556
+r1
+xProcessPCH
+x/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch.gch
+xRunQuest_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile RunQuest_Prefix.pch305997693#305997694#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch8615067616#1705"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator -I/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources/i386 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphonesimulator/RunQuest.build/DerivedSources -c /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch -o /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fpkbglpdjixqamdigquqamdaldua/RunQuest_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-fsuuylmiradfakcjtuwjfoeqjxql/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CTouch /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app
+s305997695.457271
+e305997695.499377
+r1
+xTouch
+x/Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app
+lSLF07#2@73"Touch /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app305997695#305997695#0(0"0(0#0#0"8611527936#255"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Joe/Source/RunQuest/build/Debug-iphonesimulator/RunQuest.app0#
+

@@ -1,0 +1,640 @@
+TRunQuest
+v7
+r0
+t305987963.159178
+cCheck dependencies
+cCpResource build/Debug-iphoneos/RunQuest.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist
+cProcessInfoPlistFile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/Info.plist RunQuest-Info.plist
+cCompileXIB /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+cCompileXIB /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+cCompileXIB /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+cProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+cDataModelVersionCompile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest.momd /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest normal armv6
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest normal armv7
+cCreateUniversalBinary /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest normal "armv6 armv7"
+cGenerateDSYMFile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app.dSYM /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest
+cProcessProductPackaging "/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision" /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision
+cTouch /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent
+cCodeSign /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk
+c000000004C05C1B10000000000000110
+t1275445681
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist
+c000000004BF4B7F900000000000001A7
+t1274329081
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist
+c000000004BF4B7F900000000000001E5
+t1274329081
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004BFE083F00000000002F6980
+t1274939455
+s3107200
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004BFE082E000000000000046B
+t1274939438
+s1131
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BFE06FA000000000034A850
+t1274939130
+s3450960
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004C04706200000000000C1E70
+t1275359330
+s794224
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004C04705A00000000000001D0
+t1275359322
+s464
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BFE07D200000000003E1EB0
+t1274939346
+s4071088
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004BFE07B10000000000001466
+t1274939313
+s5222
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004C0480330000000000267F90
+t1275363379
+s2523024
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C04711400000000000009CD
+t1275359508
+s2509
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C0471FC0000000002D563E0
+t1275359740
+s47539168
+
+N/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision
+c000000004C62FB8D0000000000001C8E
+t1281555341
+s7310
+
+N/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch
+c000000004C8C01AC00000000000000B9
+t1284243884
+s185
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.h
+c000000004C8C01AC0000000000000350
+t1284243884
+s848
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m
+c000000004C8C01AC00000000000016E3
+t1284243884
+s5859
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+c000000004C8C01AC0000000000000088
+t1284243884
+s136
+
+N/Users/Joe/Source/RunQuest/Shared/main.m
+c000000004C8C01AC0000000000000167
+t1284243884
+s359
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+t1284295163
+s442
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app.dSYM
+t1284295161
+s102
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/Info.plist
+t1284295157
+s1044
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MainWindow_iPad.nib
+t1284295158
+s982
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MainWindow_iPhone.nib
+t1284295158
+s984
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MapViewController.nib
+t1284295158
+s1153
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/PkgInfo
+t1284295157
+s8
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/ResourceRules.plist
+t1284295157
+s485
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest
+t1284295161
+s58424
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest.momd
+t1284295160
+s136
+
+N/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision
+t1284295161
+s7310
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_Shared.o
+t1284295160
+s54400
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPad.o
+t1284295160
+s44012
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPhone.o
+t1284295160
+s46400
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/MapViewController.o
+t1284295160
+s36744
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest
+t1284295161
+s25656
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest.LinkFileList
+c000000004C8CC9F500000000000002B4
+t1284295157
+s692
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/Tracker.o
+t1284295160
+s10664
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/main.o
+t1284295160
+s6428
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_Shared.o
+t1284295161
+s54256
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPad.o
+t1284295160
+s43952
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPhone.o
+t1284295161
+s46324
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/MapViewController.o
+t1284295161
+s36684
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest
+t1284295161
+s25656
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest.LinkFileList
+c000000004C8CC9F500000000000002B4
+t1284295157
+s692
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/Tracker.o
+t1284295161
+s10632
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/main.o
+t1284295160
+s6412
+
+N/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent
+t1284295161
+s422
+
+N/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.h
+c000000004C8C01AC0000000000000103
+t1284243884
+s259
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m
+c000000004C8C01AC000000000000070F
+t1284243884
+s1807
+i"AppDelegate_iPad.h"
+
+N/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+c000000004C8C01AC000000000000389E
+t1284243884
+s14494
+
+N/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.h
+c000000004C8C02C90000000000000109
+t1284244169
+s265
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m
+c000000004C8CC9040000000000000ACA
+t1284294916
+s2762
+i"AppDelegate_iPhone.h"
+i"MapViewController.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+c000000004C8CC66800000000000045B1
+t1284294248
+s17841
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.h
+c000000004C8CC8FA0000000000000108
+t1284294906
+s264
+i<UIKit/UIKit.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.m
+c000000004C8CC92200000000000005CF
+t1284294946
+s1487
+i"MapViewController.h"
+i"Tracker.h"
+
+N/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+c000000004C8CC8F10000000000003FFF
+t1284294897
+s16383
+
+N/Users/Joe/Source/RunQuest/iPhone/Tracker.h
+c000000004C8CC8E1000000000000013B
+t1284294881
+s315
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/Joe/Source/RunQuest/iPhone/Tracker.m
+c000000004C8CC9D40000000000000216
+t1284295124
+s534
+i"Tracker.h"
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch.gch
+t1284295160
+s9848368
+
+N/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch.gch
+t1284295160
+s10311216
+
+NRunQuest-Info.plist
+c000000004C8C01AC0000000000000569
+t1284243884
+s1385
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies305987957#305987957#0(0"0(0#1#0"8617046208#0"0#
+
+CCodeSign /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+s305987961.891866
+e305987963.159132
+r1
+xCodeSign
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+lSLF07#2@42"CodeSign build/Debug-iphoneos/RunQuest.app305987961#305987963#0(0"0(0#0#60"/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app8644535296#605"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv _CODESIGN_ALLOCATE_ /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    /usr/bin/codesign -f -s "iPhone Developer: Joseph Walsh (SM3NS9G85L)" --resource-rules=/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/ResourceRules.plist --entitlements /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.475316
+e305987960.709969
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_Shared.o
+x/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m305987960#305987960#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m8646039232#1647"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_Shared.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.469274
+e305987960.694584
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPad.o
+x/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@58"Compile /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m305987960#305987960#0(0"0(0#0#50"/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m8671969856#1641"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPad.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.694681
+e305987960.806043
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPhone.o
+x/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m305987960#305987960#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m8601971840#1647"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/AppDelegate_iPhone.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.710064
+e305987960.795063
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/MapViewController.o
+x/Users/Joe/Source/RunQuest/iPhone/MapViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/Joe/Source/RunQuest/iPhone/MapViewController.m305987960#305987960#0(0"0(0#0#53"/Users/Joe/Source/RunQuest/iPhone/MapViewController.m8643376640#1645"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/MapViewController.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/MapViewController.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.795162
+e305987960.863503
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/Tracker.o
+x/Users/Joe/Source/RunQuest/iPhone/Tracker.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@51"Compile /Users/Joe/Source/RunQuest/iPhone/Tracker.m305987960#305987960#0(0"0(0#0#43"/Users/Joe/Source/RunQuest/iPhone/Tracker.m8674519232#1625"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/Tracker.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/Tracker.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987960.350363
+e305987960.469180
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/main.o
+x/Users/Joe/Source/RunQuest/Shared/main.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@48"Compile /Users/Joe/Source/RunQuest/Shared/main.m305987960#305987960#0(0"0(0#0#40"/Users/Joe/Source/RunQuest/Shared/main.m8674304224#1619"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/main.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/main.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_Shared.o /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987960.918920
+e305987961.040954
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_Shared.o
+x/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m305987960#305987961#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m8666784352#1647"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/AppDelegate_Shared.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_Shared.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987960.856731
+e305987960.918823
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPad.o
+x/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@58"Compile /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m305987960#305987960#0(0"0(0#0#50"/Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m8668275392#1641"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPad/AppDelegate_iPad.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPad.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987961.041052
+e305987961.134126
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPhone.o
+x/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m305987961#305987961#0(0"0(0#0#54"/Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m8674226976#1647"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/AppDelegate_iPhone.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/AppDelegate_iPhone.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/MapViewController.o /Users/Joe/Source/RunQuest/iPhone/MapViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987961.134212
+e305987961.206292
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/MapViewController.o
+x/Users/Joe/Source/RunQuest/iPhone/MapViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/Joe/Source/RunQuest/iPhone/MapViewController.m305987961#305987961#0(0"0(0#0#53"/Users/Joe/Source/RunQuest/iPhone/MapViewController.m8671993536#1645"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/MapViewController.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/MapViewController.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/Tracker.o /Users/Joe/Source/RunQuest/iPhone/Tracker.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987961.206387
+e305987961.254001
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/Tracker.o
+x/Users/Joe/Source/RunQuest/iPhone/Tracker.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@51"Compile /Users/Joe/Source/RunQuest/iPhone/Tracker.m305987961#305987961#0(0"0(0#0#43"/Users/Joe/Source/RunQuest/iPhone/Tracker.m8667757376#1625"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/iPhone/Tracker.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/Tracker.o0#
+
+CCompileC build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/main.o /Users/Joe/Source/RunQuest/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987960.806138
+e305987960.856631
+r1
+xCompileC
+xbuild/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/main.o
+x/Users/Joe/Source/RunQuest/Shared/main.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@48"Compile /Users/Joe/Source/RunQuest/Shared/main.m305987960#305987960#0(0"0(0#0#40"/Users/Joe/Source/RunQuest/Shared/main.m8673750784#1619"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -include /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch -c /Users/Joe/Source/RunQuest/Shared/main.m -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/main.o0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+s305987957.889194
+e305987958.315381
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib
+lSLF07#2@35"CompileXIB iPad/MainWindow_iPad.xib305987957#305987958#0(0"0(0#0#51"/Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib8674388352#522"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MainWindow_iPad.nib /Users/Joe/Source/RunQuest/iPad/MainWindow_iPad.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+s305987957.889837
+e305987958.279246
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib
+lSLF07#2@39"CompileXIB iPhone/MainWindow_iPhone.xib305987957#305987958#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib8674029440#528"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MainWindow_iPhone.nib /Users/Joe/Source/RunQuest/iPhone/MainWindow_iPhone.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk0#
+
+CCompileXIB /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+s305987958.279331
+e305987958.631903
+r1
+xCompileXIB
+x/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib
+lSLF07#2@39"CompileXIB iPhone/MapViewController.xib305987958#305987958#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/iPhone/MapViewController.xib8616682848#528"    cd /Users/Joe/Source/RunQuest    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/MapViewController.nib /Users/Joe/Source/RunQuest/iPhone/MapViewController.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk0#
+
+CCpResource build/Debug-iphoneos/RunQuest.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist
+s305987957.847952
+e305987957.889110
+r1
+xCpResource
+xbuild/Debug-iphoneos/RunQuest.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist305987957#305987957#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist8667764928#457"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/ResourceRules.plist /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app0#
+
+CCreateUniversalBinary /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest normal "armv6 armv7"
+s305987961.694211
+e305987961.807790
+r1
+xCreateUniversalBinary
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest
+xnormal
+xarmv6 armv7
+lSLF07#2@85"CreateUniversalBinary build/Debug-iphoneos/RunQuest.app/RunQuest normal "armv6 armv7"305987961#305987961#0(0"0(0#0#38"/Users/Joe/Source/RunQuest/armv6 armv78674854272#478"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/lipo -create /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest -output /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest0#
+
+CDataModelVersionCompile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest.momd /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+s305987960.349680
+e305987960.475222
+r1
+xDataModelVersionCompile
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest.momd
+x/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld
+lSLF07#2@100"DataModelVersionCompile build/Debug-iphoneos/RunQuest.app/RunQuest.momd Shared/RunQuest.xcdatamodeld305987960#305987960#0(0"0(0#0#55"/Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld8638876256#317"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc /Users/Joe/Source/RunQuest/Shared/RunQuest.xcdatamodeld /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest.momd0#
+
+CGenerateDSYMFile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app.dSYM /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest
+s305987961.808044
+e305987961.860142
+r1
+xGenerateDSYMFile
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app.dSYM
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest
+lSLF07#2@98"GenerateDSYMFile build/Debug-iphoneos/RunQuest.app.dSYM build/Debug-iphoneos/RunQuest.app/RunQuest305987961#305987961#0(0"0(0#0#69"/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest8642728288#329"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/RunQuest -o /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app.dSYM0#
+
+CLd /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest normal armv6
+s305987960.863591
+e305987961.694129
+r1
+xLd
+x/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest
+xnormal
+xarmv6
+lSLF07#2@112"Link /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest305987960#305987961#0(0"0(0#0#0"8667659616#867"    cd /Users/Joe/Source/RunQuest    setenv IPHONEOS_DEPLOYMENT_TARGET 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -L/Users/Joe/Source/RunQuest/build/Debug-iphoneos -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -filelist /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest.LinkFileList -dead_strip -miphoneos-version-min=3.2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -framework MapKit -framework CoreLocation -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv6/RunQuest0#
+
+CLd /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest normal armv7
+s305987961.254100
+e305987961.688154
+r1
+xLd
+x/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest
+xnormal
+xarmv7
+lSLF07#2@112"Link /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest305987961#305987961#0(0"0(0#0#0"8665244640#867"    cd /Users/Joe/Source/RunQuest    setenv IPHONEOS_DEPLOYMENT_TARGET 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -L/Users/Joe/Source/RunQuest/build/Debug-iphoneos -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -filelist /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest.LinkFileList -dead_strip -miphoneos-version-min=3.2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -framework MapKit -framework CoreLocation -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/Objects-normal/armv7/RunQuest0#
+
+CProcessInfoPlistFile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/Info.plist RunQuest-Info.plist
+s305987957.848679
+e305987957.874976
+r1
+xProcessInfoPlistFile
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/Info.plist
+xRunQuest-Info.plist
+lSLF07#2@27"Process RunQuest-Info.plist305987957#305987957#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest-Info.plist8666994144#518"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility RunQuest-Info.plist -genpkginfo /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/ResourceRules.plist -o /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/Info.plist0#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+s305987958.632054
+e305987960.270010
+r1
+xProcessPCH
+x/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch.gch
+xRunQuest_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile RunQuest_Prefix.pch305987958#305987960#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch8607746976#1521"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv6 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -c /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch -o /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-cbtftnpzkuexovengiebzbrnsjox/RunQuest_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch.gch RunQuest_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305987958.632860
+e305987960.349584
+r1
+xProcessPCH
+x/var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch.gch
+xRunQuest_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile RunQuest_Prefix.pch305987958#305987960#0(0"0(0#0#46"/Users/Joe/Source/RunQuest/RunQuest_Prefix.pch8671837344#1521"    cd /Users/Joe/Source/RunQuest    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-generated-files.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-own-target-headers.hmap -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-all-target-headers.hmap -iquote /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest-project-headers.hmap -F/Users/Joe/Source/RunQuest/build/Debug-iphoneos -I/Users/Joe/Source/RunQuest/build/Debug-iphoneos/include -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources/armv7 -I/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/DerivedSources -c /Users/Joe/Source/RunQuest/RunQuest_Prefix.pch -o /var/folders/-P/-PrCqgTQGkCh2OIpznGgA++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/RunQuest_Prefix-hizabjbxnqrsekfqqbqgizwoovgy/RunQuest_Prefix.pch.gch0#
+
+CProcessProductPackaging "/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision" /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision
+s305987961.860238
+e305987961.874776
+r1
+xProcessProductPackaging
+x/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision
+lSLF07#2@191"ProcessProductPackaging "/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision" build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision305987961#305987961#0(0"0(0#0#85"/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision8672010592#398"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/Joe/Library/MobileDevice/Provisioning Profiles/4E7D1106-A956-40F5-821C-BC0A772FFA02.mobileprovision" -o /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app/embedded.mobileprovision0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent
+s305987961.877459
+e305987961.891755
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist
+x/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent
+lSLF07#2@178"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent305987961#305987961#0(0"0(0#0#92"/Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent8665171264#411"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/Entitlements.plist -entitlements -format xml -o /Users/Joe/Source/RunQuest/build/RunQuest.build/Debug-iphoneos/RunQuest.build/RunQuest.xcent0#
+
+CTouch /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+s305987961.874846
+e305987961.877289
+r1
+xTouch
+x/Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app
+lSLF07#2@66"Touch /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app305987961#305987961#0(0"0(0#0#0"8671111808#241"    cd /Users/Joe/Source/RunQuest    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Joe/Source/RunQuest/build/Debug-iphoneos/RunQuest.app0#
+
