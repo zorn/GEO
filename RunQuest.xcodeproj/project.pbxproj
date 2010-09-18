@@ -16,28 +16,25 @@
 		28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow_iPad.xib */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
-		D8901A07123DA5B0004C5D27 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901A06123DA5B0004C5D27 /* Enemy.m */; };
-		D8901A34123EE4F3004C5D27 /* CrumbPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901A31123EE4F3004C5D27 /* CrumbPath.m */; };
-		D8901A35123EE4F3004C5D27 /* CrumbPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901A33123EE4F3004C5D27 /* CrumbPathView.m */; };
-		D8901A3A123EE609004C5D27 /* SonarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901A39123EE609004C5D27 /* SonarView.m */; };
-		D8901A3F123EE630004C5D27 /* Sonar.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901A3E123EE630004C5D27 /* Sonar.m */; };
 		D8901A4B123EF33C004C5D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901A4A123EF33C004C5D27 /* QuartzCore.framework */; };
-		D8901AD8123EFBDE004C5D27 /* SonarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901AD7123EFBDE004C5D27 /* SonarLayer.m */; };
 		D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901D00123F89BA004C5D27 /* CoreGraphics.framework */; };
-		D8901D30124051A5004C5D27 /* SonarAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901D2F124051A5004C5D27 /* SonarAnnotationView.m */; };
-		D8901D3C1240FE5E004C5D27 /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901D3B1240FE5E004C5D27 /* Trek.m */; };
-		D8901DC5124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901DC4124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.m */; };
-		D8901E0912411C93004C5D27 /* EnemyAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901E0812411C93004C5D27 /* EnemyAnnotationView.m */; };
-		D8901E3712411E97004C5D27 /* EnemyAnnotationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8901E3612411E97004C5D27 /* EnemyAnnotationLayer.m */; };
-		D8901E9F124125D6004C5D27 /* sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = D8901E9E124125D6004C5D27 /* sprite.png */; };
-		D8901EA6124127A6004C5D27 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D8901EA4124127A5004C5D27 /* 1.png */; };
-		D8901EA7124127A6004C5D27 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D8901EA5124127A6004C5D27 /* 2.png */; };
-		D8B38F27123C398200B0783E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B38F25123C398200B0783E /* MapViewController.m */; };
-		D8B38F28123C398200B0783E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B38F26123C398200B0783E /* MapViewController.xib */; };
 		D8B38F34123C3A8100B0783E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B38F33123C3A8100B0783E /* MapKit.framework */; };
+		D8C86C701245103C007E44AF /* CrumbPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6B1245103C007E44AF /* CrumbPathView.m */; };
+		D8C86C711245103C007E44AF /* EnemyAnnotationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */; };
+		D8C86C721245103C007E44AF /* EnemyAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */; };
+		D8C86C791245104A007E44AF /* SonarAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C741245104A007E44AF /* SonarAnnotationView.m */; };
+		D8C86C7A1245104A007E44AF /* SonarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C761245104A007E44AF /* SonarLayer.m */; };
+		D8C86C7B1245104A007E44AF /* SonarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C781245104A007E44AF /* SonarView.m */; };
+		D8C86C8212451082007E44AF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8012451082007E44AF /* MapViewController.m */; };
+		D8C86C8312451082007E44AF /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C86C8112451082007E44AF /* MapViewController.xib */; };
+		D8C86C8C12451095007E44AF /* CrumbPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8512451095007E44AF /* CrumbPath.m */; };
+		D8C86C8D12451095007E44AF /* HeroPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8712451095007E44AF /* HeroPath.m */; };
+		D8C86C8E12451095007E44AF /* Sonar.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8912451095007E44AF /* Sonar.m */; };
+		D8C86C8F12451095007E44AF /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8B12451095007E44AF /* Trek.m */; };
+		D8C86C92124510A4007E44AF /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* Enemy.m */; };
+		D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */; };
 		D8CDDC9A123CFDFF005C9784 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */; };
-		D8E60E4F123D4A1100FB2EA2 /* HeroPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E4E123D4A1100FB2EA2 /* HeroPath.m */; };
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
 /* End PBXBuildFile section */
 
@@ -57,43 +54,40 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RunQuest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunQuest_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D8901A05123DA5B0004C5D27 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
-		D8901A06123DA5B0004C5D27 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
-		D8901A30123EE4F3004C5D27 /* CrumbPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrumbPath.h; sourceTree = "<group>"; };
-		D8901A31123EE4F3004C5D27 /* CrumbPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrumbPath.m; sourceTree = "<group>"; };
-		D8901A32123EE4F3004C5D27 /* CrumbPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrumbPathView.h; sourceTree = "<group>"; };
-		D8901A33123EE4F3004C5D27 /* CrumbPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrumbPathView.m; sourceTree = "<group>"; };
-		D8901A38123EE609004C5D27 /* SonarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarView.h; sourceTree = "<group>"; };
-		D8901A39123EE609004C5D27 /* SonarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarView.m; sourceTree = "<group>"; };
-		D8901A3D123EE630004C5D27 /* Sonar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sonar.h; sourceTree = "<group>"; };
-		D8901A3E123EE630004C5D27 /* Sonar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sonar.m; sourceTree = "<group>"; };
 		D8901A4A123EF33C004C5D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D8901AD6123EFBDE004C5D27 /* SonarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarLayer.h; sourceTree = "<group>"; };
-		D8901AD7123EFBDE004C5D27 /* SonarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarLayer.m; sourceTree = "<group>"; };
 		D8901CC0123F892D004C5D27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8901D00123F89BA004C5D27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D8901D2E124051A5004C5D27 /* SonarAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarAnnotationView.h; sourceTree = "<group>"; };
-		D8901D2F124051A5004C5D27 /* SonarAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarAnnotationView.m; sourceTree = "<group>"; };
-		D8901D3A1240FE5E004C5D27 /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
-		D8901D3B1240FE5E004C5D27 /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
-		D8901DC3124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+FetchAdditions.h"; path = "iPhone/NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
-		D8901DC4124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+FetchAdditions.m"; path = "iPhone/NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
-		D8901E0712411C93004C5D27 /* EnemyAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAnnotationView.h; sourceTree = "<group>"; };
-		D8901E0812411C93004C5D27 /* EnemyAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationView.m; sourceTree = "<group>"; };
-		D8901E3512411E97004C5D27 /* EnemyAnnotationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAnnotationLayer.h; sourceTree = "<group>"; };
-		D8901E3612411E97004C5D27 /* EnemyAnnotationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationLayer.m; sourceTree = "<group>"; };
-		D8901E9E124125D6004C5D27 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
-		D8901EA4124127A5004C5D27 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		D8901EA5124127A6004C5D27 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		D8B38F24123C398200B0783E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		D8B38F25123C398200B0783E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		D8B38F26123C398200B0783E /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		D8B38F33123C3A8100B0783E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D8C86C6A1245103C007E44AF /* CrumbPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrumbPathView.h; sourceTree = "<group>"; };
+		D8C86C6B1245103C007E44AF /* CrumbPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrumbPathView.m; sourceTree = "<group>"; };
+		D8C86C6C1245103C007E44AF /* EnemyAnnotationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAnnotationLayer.h; sourceTree = "<group>"; };
+		D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationLayer.m; sourceTree = "<group>"; };
+		D8C86C6E1245103C007E44AF /* EnemyAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAnnotationView.h; sourceTree = "<group>"; };
+		D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationView.m; sourceTree = "<group>"; };
+		D8C86C731245104A007E44AF /* SonarAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarAnnotationView.h; sourceTree = "<group>"; };
+		D8C86C741245104A007E44AF /* SonarAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarAnnotationView.m; sourceTree = "<group>"; };
+		D8C86C751245104A007E44AF /* SonarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarLayer.h; sourceTree = "<group>"; };
+		D8C86C761245104A007E44AF /* SonarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarLayer.m; sourceTree = "<group>"; };
+		D8C86C771245104A007E44AF /* SonarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarView.h; sourceTree = "<group>"; };
+		D8C86C781245104A007E44AF /* SonarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarView.m; sourceTree = "<group>"; };
+		D8C86C7F12451082007E44AF /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D8C86C8012451082007E44AF /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		D8C86C8112451082007E44AF /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		D8C86C8412451095007E44AF /* CrumbPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrumbPath.h; sourceTree = "<group>"; };
+		D8C86C8512451095007E44AF /* CrumbPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrumbPath.m; sourceTree = "<group>"; };
+		D8C86C8612451095007E44AF /* HeroPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroPath.h; sourceTree = "<group>"; };
+		D8C86C8712451095007E44AF /* HeroPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroPath.m; sourceTree = "<group>"; };
+		D8C86C8812451095007E44AF /* Sonar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sonar.h; sourceTree = "<group>"; };
+		D8C86C8912451095007E44AF /* Sonar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sonar.m; sourceTree = "<group>"; };
+		D8C86C8A12451095007E44AF /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
+		D8C86C8B12451095007E44AF /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
+		D8C86C90124510A4007E44AF /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		D8C86C91124510A4007E44AF /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
+		D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		D8E60E4D123D4A1100FB2EA2 /* HeroPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroPath.h; path = iPhone/HeroPath.h; sourceTree = "<group>"; };
-		D8E60E4E123D4A1100FB2EA2 /* HeroPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroPath.m; path = iPhone/HeroPath.m; sourceTree = "<group>"; };
-		D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroPathView.h; path = iPhone/HeroPathView.h; sourceTree = "<group>"; };
-		D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroPathView.m; path = iPhone/HeroPathView.m; sourceTree = "<group>"; };
+		D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroPathView.h; sourceTree = "<group>"; };
+		D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroPathView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,11 +122,6 @@
 				2860E387111B897F00E27156 /* AppDelegate_iPhone.h */,
 				2860E388111B897F00E27156 /* AppDelegate_iPhone.m */,
 				2860E389111B897F00E27156 /* MainWindow_iPhone.xib */,
-				D8B38F24123C398200B0783E /* MapViewController.h */,
-				D8B38F25123C398200B0783E /* MapViewController.m */,
-				D8B38F26123C398200B0783E /* MapViewController.xib */,
-				D8901D3B1240FE5E004C5D27 /* Trek.m */,
-				D8901D3A1240FE5E004C5D27 /* Trek.h */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -151,13 +140,13 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D8C86C5512450E67007E44AF /* App */,
+				D8C86C6112450EDF007E44AF /* Model */,
+				D8C86C5312450DE9007E44AF /* Map */,
+				D8C86C4E12450DAA007E44AF /* Game Engine */,
+				D8C86C4D12450DA3007E44AF /* Animations */,
 				D8901EA1124125DE004C5D27 /* Resources */,
-				D8901E1712411DAE004C5D27 /* Model */,
 				D8901E1612411D53004C5D27 /* Utility */,
-				D8E60E63123D4B2600FB2EA2 /* Map */,
-				2860E386111B897F00E27156 /* iPhone */,
-				29B97317FDCFA39411CA2CEA /* iPad */,
-				28EEBF621118D79A00187D67 /* Shared */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -198,67 +187,109 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D8901A2F123EE4F3004C5D27 /* Overlay */ = {
-			isa = PBXGroup;
-			children = (
-				D8901D2E124051A5004C5D27 /* SonarAnnotationView.h */,
-				D8901D2F124051A5004C5D27 /* SonarAnnotationView.m */,
-				D8901AD6123EFBDE004C5D27 /* SonarLayer.h */,
-				D8901AD7123EFBDE004C5D27 /* SonarLayer.m */,
-				D8901A38123EE609004C5D27 /* SonarView.h */,
-				D8901A39123EE609004C5D27 /* SonarView.m */,
-				D8901A3D123EE630004C5D27 /* Sonar.h */,
-				D8901A3E123EE630004C5D27 /* Sonar.m */,
-				D8901A30123EE4F3004C5D27 /* CrumbPath.h */,
-				D8901A31123EE4F3004C5D27 /* CrumbPath.m */,
-				D8901A32123EE4F3004C5D27 /* CrumbPathView.h */,
-				D8901A33123EE4F3004C5D27 /* CrumbPathView.m */,
-			);
-			name = Overlay;
-			sourceTree = "<group>";
-		};
 		D8901E1612411D53004C5D27 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D8901DC3124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.h */,
-				D8901DC4124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.m */,
+				D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */,
+				D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */,
 			);
-			name = Utility;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		D8901E1712411DAE004C5D27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8901A05123DA5B0004C5D27 /* Enemy.h */,
-				D8901A06123DA5B0004C5D27 /* Enemy.m */,
+				D8C86C8412451095007E44AF /* CrumbPath.h */,
+				D8C86C8512451095007E44AF /* CrumbPath.m */,
+				D8C86C8612451095007E44AF /* HeroPath.h */,
+				D8C86C8712451095007E44AF /* HeroPath.m */,
+				D8C86C8812451095007E44AF /* Sonar.h */,
+				D8C86C8912451095007E44AF /* Sonar.m */,
+				D8C86C8A12451095007E44AF /* Trek.h */,
+				D8C86C8B12451095007E44AF /* Trek.m */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D8901EA4124127A5004C5D27 /* 1.png */,
-				D8901EA5124127A6004C5D27 /* 2.png */,
-				D8901E9E124125D6004C5D27 /* sprite.png */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		D8E60E63123D4B2600FB2EA2 /* Map */ = {
+		D8C86C4D12450DA3007E44AF /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				D8901A2F123EE4F3004C5D27 /* Overlay */,
-				D8901E0712411C93004C5D27 /* EnemyAnnotationView.h */,
-				D8901E0812411C93004C5D27 /* EnemyAnnotationView.m */,
-				D8901E3512411E97004C5D27 /* EnemyAnnotationLayer.h */,
-				D8901E3612411E97004C5D27 /* EnemyAnnotationLayer.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		D8C86C4E12450DAA007E44AF /* Game Engine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Game Engine";
+			sourceTree = "<group>";
+		};
+		D8C86C5312450DE9007E44AF /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D8C86C7C12451067007E44AF /* Controller */,
+				D8C86C6312450F44007E44AF /* View */,
+				D8901E1712411DAE004C5D27 /* Model */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D8C86C5512450E67007E44AF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2860E386111B897F00E27156 /* iPhone */,
+				29B97317FDCFA39411CA2CEA /* iPad */,
+				28EEBF621118D79A00187D67 /* Shared */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		D8C86C6112450EDF007E44AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8C86C90124510A4007E44AF /* Enemy.h */,
+				D8C86C91124510A4007E44AF /* Enemy.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8C86C6312450F44007E44AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8C86C731245104A007E44AF /* SonarAnnotationView.h */,
+				D8C86C741245104A007E44AF /* SonarAnnotationView.m */,
+				D8C86C751245104A007E44AF /* SonarLayer.h */,
+				D8C86C761245104A007E44AF /* SonarLayer.m */,
+				D8C86C771245104A007E44AF /* SonarView.h */,
+				D8C86C781245104A007E44AF /* SonarView.m */,
+				D8C86C6A1245103C007E44AF /* CrumbPathView.h */,
+				D8C86C6B1245103C007E44AF /* CrumbPathView.m */,
+				D8C86C6C1245103C007E44AF /* EnemyAnnotationLayer.h */,
+				D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */,
+				D8C86C6E1245103C007E44AF /* EnemyAnnotationView.h */,
+				D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */,
 				D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */,
 				D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */,
-				D8E60E4D123D4A1100FB2EA2 /* HeroPath.h */,
-				D8E60E4E123D4A1100FB2EA2 /* HeroPath.m */,
 			);
-			name = Map;
+			path = View;
+			sourceTree = "<group>";
+		};
+		D8C86C7C12451067007E44AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8C86C7F12451082007E44AF /* MapViewController.h */,
+				D8C86C8012451082007E44AF /* MapViewController.m */,
+				D8C86C8112451082007E44AF /* MapViewController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,10 +343,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */,
 				2860E38B111B897F00E27156 /* MainWindow_iPhone.xib in Resources */,
-				D8B38F28123C398200B0783E /* MapViewController.xib in Resources */,
-				D8901E9F124125D6004C5D27 /* sprite.png in Resources */,
-				D8901EA6124127A6004C5D27 /* 1.png in Resources */,
-				D8901EA7124127A6004C5D27 /* 2.png in Resources */,
+				D8C86C8312451082007E44AF /* MapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,20 +359,20 @@
 				28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */,
 				2819307D112F81BE00ECF9B4 /* RunQuest.xcdatamodeld in Sources */,
 				2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */,
-				D8B38F27123C398200B0783E /* MapViewController.m in Sources */,
-				D8E60E4F123D4A1100FB2EA2 /* HeroPath.m in Sources */,
 				D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */,
-				D8901A07123DA5B0004C5D27 /* Enemy.m in Sources */,
-				D8901A34123EE4F3004C5D27 /* CrumbPath.m in Sources */,
-				D8901A35123EE4F3004C5D27 /* CrumbPathView.m in Sources */,
-				D8901A3A123EE609004C5D27 /* SonarView.m in Sources */,
-				D8901A3F123EE630004C5D27 /* Sonar.m in Sources */,
-				D8901AD8123EFBDE004C5D27 /* SonarLayer.m in Sources */,
-				D8901D30124051A5004C5D27 /* SonarAnnotationView.m in Sources */,
-				D8901D3C1240FE5E004C5D27 /* Trek.m in Sources */,
-				D8901DC5124114B1004C5D27 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
-				D8901E0912411C93004C5D27 /* EnemyAnnotationView.m in Sources */,
-				D8901E3712411E97004C5D27 /* EnemyAnnotationLayer.m in Sources */,
+				D8C86C701245103C007E44AF /* CrumbPathView.m in Sources */,
+				D8C86C711245103C007E44AF /* EnemyAnnotationLayer.m in Sources */,
+				D8C86C721245103C007E44AF /* EnemyAnnotationView.m in Sources */,
+				D8C86C791245104A007E44AF /* SonarAnnotationView.m in Sources */,
+				D8C86C7A1245104A007E44AF /* SonarLayer.m in Sources */,
+				D8C86C7B1245104A007E44AF /* SonarView.m in Sources */,
+				D8C86C8212451082007E44AF /* MapViewController.m in Sources */,
+				D8C86C8C12451095007E44AF /* CrumbPath.m in Sources */,
+				D8C86C8D12451095007E44AF /* HeroPath.m in Sources */,
+				D8C86C8E12451095007E44AF /* Sonar.m in Sources */,
+				D8C86C8F12451095007E44AF /* Trek.m in Sources */,
+				D8C86C92124510A4007E44AF /* Enemy.m in Sources */,
+				D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
