@@ -38,7 +38,7 @@
 			[maskView release];
 		}
 		[self.view.layer addSublayer:highlightLayer];
-    }
+	}
     return self;
 }
 
@@ -77,10 +77,19 @@
 	[textLabel.layer addAnimation:group forKey:nil];
 	
 	CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
-	flash.fromValue = [NSNumber numberWithFloat:0.5f];
+	flash.fromValue = [NSNumber numberWithFloat:0.7f];
 	flash.toValue = [NSNumber numberWithFloat:0.0f];
 	flash.duration = 0.5;
 	[self.highlightLayer addAnimation:flash forKey:@"opacity"];
+	
+	
+	CABasicAnimation *moveUpAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+	moveUpAnimation.duration = 0.05;
+	moveUpAnimation.autoreverses = YES;
+	moveUpAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(0.0f, -25.0f, 0.0f)];
+	moveUpAnimation.fromValue = [NSValue valueWithCATransform3D:self.view.layer.transform];
+	[self.view.layer addAnimation:moveUpAnimation forKey:@"transform"];
 }
+
 
 @end
