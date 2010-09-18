@@ -29,7 +29,6 @@
 	magicPebble.position = CGPointMake(160.0, 420.0);
 	magicPebble.velocity = CGPointZero;
 	
-	
 	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"boobs.png"]];
     monsterView.frame = CGRectMake(1.350, 8.5, 106.0, 80.0);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
@@ -77,19 +76,14 @@
 	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:magicPebble.view.frame];
 	
 	if (monsterHit) {
-		
 		lastCollisionTime = currentTime;
 		srand(time(0));
 		int num = rand() % 255;
 		[evilBoobsMonster hitWithText:[NSString stringWithFormat:@"%d", num]];
-//		hitLabel.hidden = NO;
 	}
 	
 	if (currentTime > lastCollisionTime + 1.0) {
 		
-//		if (!hitLabel.hidden)
-//			hitLabel.hidden = YES;
-
 	}
 	
 	
