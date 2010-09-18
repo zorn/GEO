@@ -36,4 +36,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
 
 @property (nonatomic, retain) CADisplayLink *displayLink;
+
+@property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
+
+- (IBAction)launchBattlePressed:(id)sender;
 @end

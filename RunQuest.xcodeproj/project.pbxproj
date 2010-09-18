@@ -16,6 +16,10 @@
 		28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow_iPad.xib */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
+		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
+		C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */; };
+		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
+		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
 		D8901A4B123EF33C004C5D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901A4A123EF33C004C5D27 /* QuartzCore.framework */; };
 		D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901D00123F89BA004C5D27 /* CoreGraphics.framework */; };
@@ -54,6 +58,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RunQuest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunQuest_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C90F10EC12455B81000E456A /* RQEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemySprite.h; sourceTree = "<group>"; };
+		C90F10ED12455B81000E456A /* RQEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemySprite.m; sourceTree = "<group>"; };
+		C9DCF7711245505500BCABB1 /* RQBattleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleTestViewController.h; sourceTree = "<group>"; };
+		C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleTestViewController.m; sourceTree = "<group>"; };
+		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
+		C9DCF7741245505500BCABB1 /* RQSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQSprite.m; sourceTree = "<group>"; };
+		C9DCF783124557F600BCABB1 /* boobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boobs.png; sourceTree = "<group>"; };
 		D8901A4A123EF33C004C5D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8901CC0123F892D004C5D27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8901D00123F89BA004C5D27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,6 +225,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9DCF783124557F600BCABB1 /* boobs.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -221,6 +233,12 @@
 		D8C86C4D12450DA3007E44AF /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				C9DCF7711245505500BCABB1 /* RQBattleTestViewController.h */,
+				C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */,
+				C9DCF7731245505500BCABB1 /* RQSprite.h */,
+				C9DCF7741245505500BCABB1 /* RQSprite.m */,
+				C90F10EC12455B81000E456A /* RQEnemySprite.h */,
+				C90F10ED12455B81000E456A /* RQEnemySprite.m */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -344,6 +362,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */,
 				2860E38B111B897F00E27156 /* MainWindow_iPhone.xib in Resources */,
 				D8C86C8312451082007E44AF /* MapViewController.xib in Resources */,
+				C9DCF784124557F600BCABB1 /* boobs.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +392,9 @@
 				D8C86C8F12451095007E44AF /* Trek.m in Sources */,
 				D8C86C92124510A4007E44AF /* Enemy.m in Sources */,
 				D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */,
+				C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */,
+				C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */,
+				C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

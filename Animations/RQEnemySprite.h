@@ -6,11 +6,15 @@
 //  Copyright (c) 2010 Code/Caffeine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "RQSprite.h"
 
 
-@interface RQEnemySprite : NSObject {
+@interface RQEnemySprite : RQSprite {
 
 }
+
+- (void)hitWithText:(NSString *)hitText;
 
 @end

@@ -14,6 +14,8 @@
 #import "NSManagedObjectContext+FetchAdditions.h"
 #import "Enemy.h"
 #import "EnemyAnnotationView.h"
+#import "RQBattleTestViewController.h"
+
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
@@ -21,17 +23,17 @@
 #define ENEMY_STEP_SIZE .0001
 #define ENEMIES_TO_GENERATE 10
 
-@interface MapViewController (Private)
-
+@interface MapViewController ()
+@property (nonatomic, retain) RQBattleTestViewController *battleViewController;
 - (void)updatePath;
-
 - (void)showHUD;
 - (void)hideHUD;
-
 @end
 
 @implementation MapViewController
 @synthesize hudView, overlayLabel, mapView, displayLink;
+@synthesize launchBattleButton;
+@synthesize battleViewController;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -57,6 +59,7 @@
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
+    [launchBattleButton release];
 	[super dealloc];
 }
 
@@ -116,6 +119,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.launchBattleButton = nil;
 }
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
@@ -233,6 +237,15 @@
 	}
 	
 	return overlayView;
+}
+
+
+#pragma mark -
+#pragma mark Action
+- (IBAction)launchBattlePressed:(id)sender {
+    self.battleViewController = [[[RQBattleTestViewController alloc] init] autorelease];
+    [self.view.window addSubview:self.battleViewController.view];
+    self.mapView.hidden = YES;
 }
 
 @end
