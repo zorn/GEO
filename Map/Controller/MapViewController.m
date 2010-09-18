@@ -17,9 +17,9 @@
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
-
-#define ENEMY_STEP_SIZE .0001
-#define ENEMIES_TO_GENERATE 10
+#define ENEMY_SPEED_VARIANCE 0.0f
+#define SLOWEST_ENEMY_SPEED 20.0f
+#define ENEMIES_TO_GENERATE 3
 
 @interface MapViewController (Private)
 
@@ -45,6 +45,7 @@
 		_locationManager.delegate = self;
 		[_locationManager startUpdatingLocation];
 		
+		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		
 		[[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
@@ -53,10 +54,12 @@
 }
 
 - (void)dealloc {
+	[_lastEnemyUpdate release];
 	[_locationManager release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
+	[_enemyViews release];
 	[super dealloc];
 }
 
@@ -69,41 +72,52 @@
 }
 
 - (void)cycleRadius:(CADisplayLink *)sender{ 
-	[_sonar lockForReading];
-	CGFloat oldRadius = _sonar.radius;
-	CGFloat range = _sonar.range;
-	CLLocationCoordinate2D coordinate = _sonar.coordinate;
-	[_sonar unlockForReading];
+	NSTimeInterval timeSinceLastUpdate = 0;
+	if ( _lastEnemyUpdate )
+		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
 	
-	
-	double newRadius = 10;
-	if ( oldRadius < range )
-		newRadius = oldRadius + 10;
-
-	[_sonar setRadius:newRadius];
-	MKMapPoint needsDisplayCorner = MKMapPointForCoordinate(coordinate);
-	MKMapRect needsDisplay = (MKMapRect) {MKMapPointMake(needsDisplayCorner.x - newRadius/2.0f, needsDisplayCorner.y - newRadius/2.0f), MKMapSizeMake(newRadius, newRadius) };
-	
-	needsDisplay = MKMapRectInset(needsDisplay, -5, -5);
-	[_sonarView setNeedsDisplayInMapRect:needsDisplay];
-	
-//	for ( Enemy* enemy in _enemies ) {
-//		CLLocationCoordinate2D currentCoordinate = enemy.coordinate;
-//		double heading = 2.0f*M_PI*rand()/RAND_MAX;
-//		double deltaX = cos(heading)*ENEMY_STEP_SIZE;
-//		double deltaY = sin(heading)*ENEMY_STEP_SIZE;
-//		CLLocationCoordinate2D newCoordinate = CLLocationCoordinate2DMake(currentCoordinate.latitude + deltaY, currentCoordinate.longitude + deltaX);
-//		enemy.coordinate = newCoordinate;
-//	}
+	if ( !_lastEnemyUpdate || timeSinceLastUpdate > 2.0f ) {
+		
+	for ( EnemyAnnotationView* enemyView in _enemyViews ) {
+		Enemy *enemy = enemyView.annotation;
+		if ( enemy.speed ) {
+			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
+			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
+			double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
+			double enemyStepSize =  enemy.speed*timeSinceLastUpdate*mapPointsPerMeter;
+			if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
+				double deltaX = enemyPoint.x - heroPoint.x;
+				double deltaY = enemyPoint.y - heroPoint.y;
+				
+				double theta = atan(deltaY/deltaX);
+				
+				
+				
+				double moveX = enemyStepSize*cos(theta);
+				double moveY = enemyStepSize*sin(theta);
+				
+				
+				if ( deltaX > 0) {
+					moveX = -1.0f*moveX;
+					moveY = -1.0f*moveY;
+				}
+				
+				MKMapPoint newPoint = MKMapPointMake(enemyPoint.x + moveX, enemyPoint.y + moveY);
+				
+				CLLocationCoordinate2D newCoordinate = MKCoordinateForMapPoint(newPoint);
+				enemy.coordinate = newCoordinate;
+			}
+			else {
+				enemy.coordinate = _sonar.coordinate;
+				enemy.speed = 0;
+			}
+		}
+		[enemyView pulse];
+	}
+		[_lastEnemyUpdate release];
+		_lastEnemyUpdate = [[NSDate date] retain];
+	}
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -123,8 +137,9 @@
 	for ( NSUInteger i = 1; i <= 10; i++ ) {
 		double randX = ENEMY_GENERATION_BOUNDS_X*rand()/RAND_MAX;
 		double randY = ENEMY_GENERATION_BOUNDS_Y*rand()/RAND_MAX;
-		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f)];
-		enemy.spriteURL = [NSURL URLWithString:@"http://www.fanboyreview.net/wp-content/uploads/2009/11/mm9-mega-man-sprite1.gif"];
+		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
+		enemy.speed = SLOWEST_ENEMY_SPEED + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
+		enemy.heading = 0;
 		[self.mapView addAnnotation:enemy];
 		[_enemies addObject:enemy];
 		[enemy release];
@@ -144,7 +159,7 @@
 		
 		if ( !_sonar ) { 
 			_sonar = [[Sonar alloc] initWithCoordinate:newLocation.coordinate range:1000];
-			[self.mapView addOverlay:_sonar];
+			//[self.mapView addOverlay:_sonar];
 		}
 		else
 			_sonar.coordinate = newLocation.coordinate;
@@ -213,8 +228,11 @@
 #pragma mark MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-	if ( [annotation isKindOfClass:[Enemy class]] )
-		return [[[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"] autorelease];
+	if ( [annotation isKindOfClass:[Enemy class]] ) {
+		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
+		[_enemyViews addObject:view];
+		return [view autorelease];
+	}
 	else
 		return nil;
 }

@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
+#import <pthread.h>
 
-@interface Enemy : NSObject <MKAnnotation> {
+@interface Enemy : NSManagedObject <MKAnnotation> {
 	CLLocationCoordinate2D _coordinate;
 }
 
-@property (nonatomic, retain) NSURL *spriteURL;
+@property (nonatomic) double speed;
+@property (nonatomic) double heading;
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)initialCoordinate inManagedObjectContext:(NSManagedObjectContext *)moc;
 
 @end
