@@ -350,6 +350,22 @@
 			D8C86D831245433B007E44AF /* PBXTextBookmark */ = D8C86D831245433B007E44AF /* PBXTextBookmark */;
 			D8C86D841245433B007E44AF /* PBXTextBookmark */ = D8C86D841245433B007E44AF /* PBXTextBookmark */;
 			D8C86D851245433B007E44AF /* PBXTextBookmark */ = D8C86D851245433B007E44AF /* PBXTextBookmark */;
+			D8C86DAC12454FF1007E44AF /* PBXTextBookmark */ = D8C86DAC12454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DAD12454FF1007E44AF /* PBXTextBookmark */ = D8C86DAD12454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DAE12454FF1007E44AF /* PBXTextBookmark */ = D8C86DAE12454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DAF12454FF1007E44AF /* PBXTextBookmark */ = D8C86DAF12454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB012454FF1007E44AF /* PBXTextBookmark */ = D8C86DB012454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB112454FF1007E44AF /* PBXTextBookmark */ = D8C86DB112454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB212454FF1007E44AF /* PBXTextBookmark */ = D8C86DB212454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB312454FF1007E44AF /* PBXTextBookmark */ = D8C86DB312454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB412454FF1007E44AF /* PBXTextBookmark */ = D8C86DB412454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB512454FF1007E44AF /* PBXTextBookmark */ = D8C86DB512454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB612454FF1007E44AF /* PBXTextBookmark */ = D8C86DB612454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB712454FF1007E44AF /* PBXTextBookmark */ = D8C86DB712454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DB812454FF1007E44AF /* PBXTextBookmark */ = D8C86DB812454FF1007E44AF /* PBXTextBookmark */;
+			D8C86DBA124550A8007E44AF /* PBXTextBookmark */ = D8C86DBA124550A8007E44AF /* PBXTextBookmark */;
+			D8C86DBB124550C5007E44AF /* PBXTextBookmark */ = D8C86DBB124550C5007E44AF /* PBXTextBookmark */;
+			D8C86DC012455100007E44AF /* PBXTextBookmark */ = D8C86DC012455100007E44AF /* PBXTextBookmark */;
 			D8CDDCC9123D0190005C9784 = D8CDDCC9123D0190005C9784 /* PBXTextBookmark */;
 			D8CDDD04123D1AA6005C9784 = D8CDDD04123D1AA6005C9784 /* PBXTextBookmark */;
 			D8CDDD07123D1AA6005C9784 = D8CDDD07123D1AA6005C9784 /* PBXTextBookmark */;
@@ -1250,9 +1266,9 @@
 	};
 	D8C86C8012451082007E44AF /* MapViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 3328}}";
-			sepNavSelRange = "{3118, 0}";
-			sepNavVisRange = "{2335, 1659}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 3302}}";
+			sepNavSelRange = "{1414, 36}";
+			sepNavVisRange = "{334, 1999}";
 		};
 	};
 	D8C86C8412451095007E44AF /* CrumbPath.h */ = {
@@ -1377,7 +1393,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 141;
+		rLoc = 140;
 		rType = 1;
 	};
 	D8C86CF11245348A007E44AF /* PBXTextBookmark */ = {
@@ -1385,7 +1401,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 144";
 		rLen = 0;
-		rLoc = 4742;
+		rLoc = 4724;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 4452;
@@ -1694,7 +1710,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 151";
 		rLen = 0;
-		rLoc = 4967;
+		rLoc = 4949;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 1814;
@@ -1704,7 +1720,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 143";
 		rLen = 0;
-		rLoc = 4741;
+		rLoc = 4723;
 		rType = 0;
 		vrLen = 2165;
 		vrLoc = 3414;
@@ -1734,7 +1750,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 118";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 2100;
 		vrLoc = 2532;
@@ -1744,7 +1760,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 94";
 		rLen = 0;
-		rLoc = 2408;
+		rLoc = 2394;
 		rType = 0;
 		vrLen = 2003;
 		vrLoc = 2292;
@@ -1754,7 +1770,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 160";
 		rLen = 0;
-		rLoc = 4839;
+		rLoc = 4821;
 		rType = 0;
 		vrLen = 2058;
 		vrLoc = 4380;
@@ -1777,7 +1793,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 108";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 2630;
@@ -1787,7 +1803,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 108";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 2630;
@@ -1817,7 +1833,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 92";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 1849;
 		vrLoc = 2335;
@@ -1827,7 +1843,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 84";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 1871;
 		vrLoc = 1673;
@@ -1837,7 +1853,7 @@
 		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
 		name = "MapViewController.m: 90";
 		rLen = 0;
-		rLoc = 2676;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 1968;
@@ -2052,6 +2068,163 @@
 		vrLen = 1456;
 		vrLoc = 131;
 	};
+	D8C86DAC12454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8512451095007E44AF /* CrumbPath.m */;
+		name = "CrumbPath.m: 146";
+		rLen = 31;
+		rLoc = 5394;
+		rType = 0;
+		vrLen = 1575;
+		vrLoc = 3856;
+	};
+	D8C86DAD12454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8E60E04123D2CCB00FB2EA2 /* CLLocation.h */;
+		name = "CLLocation.h: 63";
+		rLen = 26;
+		rLoc = 1399;
+		rType = 0;
+		vrLen = 1268;
+		vrLoc = 0;
+	};
+	D8C86DAE12454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8412451095007E44AF /* CrumbPath.h */;
+		name = "CrumbPath.h: 59";
+		rLen = 24;
+		rLoc = 2727;
+		rType = 0;
+		vrLen = 2071;
+		vrLoc = 1655;
+	};
+	D8C86DAF12454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C6E1245103C007E44AF /* EnemyAnnotationView.h */;
+		name = "EnemyAnnotationView.h: 19";
+		rLen = 0;
+		rLoc = 346;
+		rType = 0;
+		vrLen = 352;
+		vrLoc = 0;
+	};
+	D8C86DB012454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */;
+		name = "EnemyAnnotationView.m: 84";
+		rLen = 0;
+		rLoc = 2696;
+		rType = 0;
+		vrLen = 1659;
+		vrLoc = 1215;
+	};
+	D8C86DB112454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */;
+		name = "EnemyAnnotationLayer.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 396;
+		vrLoc = 0;
+	};
+	D8C86DB212454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C7F12451082007E44AF /* MapViewController.h */;
+		name = "MapViewController.h: 34";
+		rLen = 0;
+		rLoc = 692;
+		rType = 0;
+		vrLen = 937;
+		vrLoc = 0;
+	};
+	D8C86DB312454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8E60E06123D2CCB00FB2EA2 /* MKGeometry.h */;
+		name = "MKGeometry.h: 52";
+		rLen = 14;
+		rLoc = 1455;
+		rType = 0;
+		vrLen = 2172;
+		vrLoc = 894;
+	};
+	D8C86DB412454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C90124510A4007E44AF /* Enemy.h */;
+		name = "Enemy.h: 15";
+		rLen = 0;
+		rLoc = 330;
+		rType = 0;
+		vrLen = 536;
+		vrLoc = 0;
+	};
+	D8C86DB512454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C91124510A4007E44AF /* Enemy.m */;
+		name = "Enemy.m: 31";
+		rLen = 0;
+		rLoc = 918;
+		rType = 0;
+		vrLen = 1483;
+		vrLoc = 236;
+	};
+	D8C86DB612454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86D5C12453BDF007E44AF /* MapViewController.m */;
+		rLen = 0;
+		rLoc = 83;
+		rType = 1;
+	};
+	D8C86DB712454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
+		name = "MapViewController.m: 100";
+		rLen = 76;
+		rLoc = 3364;
+		rType = 0;
+		vrLen = 1704;
+		vrLoc = 2362;
+	};
+	D8C86DB812454FF1007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
+		name = "MapViewController.m: 20";
+		rLen = 0;
+		rLoc = 476;
+		rType = 0;
+		vrLen = 1847;
+		vrLoc = 0;
+	};
+	D8C86DBA124550A8007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
+		name = "MapViewController.m: 20";
+		rLen = 0;
+		rLoc = 476;
+		rType = 0;
+		vrLen = 1847;
+		vrLoc = 0;
+	};
+	D8C86DBB124550C5007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
+		name = "MapViewController.m: 21";
+		rLen = 0;
+		rLoc = 511;
+		rType = 0;
+		vrLen = 1847;
+		vrLoc = 0;
+	};
+	D8C86DC012455100007E44AF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C86C8012451082007E44AF /* MapViewController.m */;
+		name = "MapViewController.m: 22";
+		rLen = 0;
+		rLoc = 542;
+		rType = 0;
+		vrLen = 1676;
+		vrLoc = 2358;
+	};
 	D8CDDCC9123D0190005C9784 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D8CDDCCA123D0190005C9784 /* CLLocationManager.h */;
@@ -2175,9 +2348,9 @@
 		path = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocation.h;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1097, 3224}}";
-			sepNavSelRange = "{1399, 26}";
-			sepNavVisRange = "{0, 1268}";
+			sepNavIntBoundsRect = "{{0, 0}, {1053, 3198}}";
+			sepNavSelRange = "{2277, 118}";
+			sepNavVisRange = "{1426, 1823}";
 		};
 	};
 	D8E60E06123D2CCB00FB2EA2 /* MKGeometry.h */ = {

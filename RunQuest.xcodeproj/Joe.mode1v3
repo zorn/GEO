@@ -281,8 +281,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>12</integer>
-									<integer>10</integer>
+									<integer>16</integer>
+									<integer>14</integer>
+									<integer>13</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -306,7 +307,7 @@
 							<real>256</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>48 55 1392 823 0 0 1440 878 </string>
+						<string>49 55 1392 823 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -324,7 +325,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Enemy.m</string>
+								<string>MapViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +333,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Enemy.m</string>
+										<string>MapViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D8C86D851245433B007E44AF</string>
+										<string>D8C86DC012455100007E44AF</string>
 										<key>history</key>
 										<array>
 											<string>D8B38F3D123C3C0F00B0783E</string>
@@ -400,12 +401,7 @@
 											<string>D8C86D1312453581007E44AF</string>
 											<string>D8C86D1512453581007E44AF</string>
 											<string>D8C86D1612453581007E44AF</string>
-											<string>D8C86D25124538C9007E44AF</string>
-											<string>D8C86D26124538C9007E44AF</string>
-											<string>D8C86D5B12453BDF007E44AF</string>
-											<string>D8C86D6012453D5B007E44AF</string>
 											<string>D8C86D6112453D5B007E44AF</string>
-											<string>D8C86D701245433B007E44AF</string>
 											<string>D8C86D711245433B007E44AF</string>
 											<string>D8C86D721245433B007E44AF</string>
 											<string>D8C86D731245433B007E44AF</string>
@@ -413,19 +409,24 @@
 											<string>D8C86D751245433B007E44AF</string>
 											<string>D8C86D761245433B007E44AF</string>
 											<string>D8C86D771245433B007E44AF</string>
-											<string>D8C86D781245433B007E44AF</string>
-											<string>D8C86D791245433B007E44AF</string>
 											<string>D8C86D7A1245433B007E44AF</string>
-											<string>D8C86D7B1245433B007E44AF</string>
 											<string>D8C86D7C1245433B007E44AF</string>
 											<string>D8C86D7D1245433B007E44AF</string>
 											<string>D8C86D7E1245433B007E44AF</string>
 											<string>D8C86D7F1245433B007E44AF</string>
 											<string>D8C86D801245433B007E44AF</string>
-											<string>D8C86D811245433B007E44AF</string>
-											<string>D8C86D821245433B007E44AF</string>
-											<string>D8C86D831245433B007E44AF</string>
-											<string>D8C86D841245433B007E44AF</string>
+											<string>D8C86DAC12454FF1007E44AF</string>
+											<string>D8C86DAD12454FF1007E44AF</string>
+											<string>D8C86DAE12454FF1007E44AF</string>
+											<string>D8C86DAF12454FF1007E44AF</string>
+											<string>D8C86DB012454FF1007E44AF</string>
+											<string>D8C86DB112454FF1007E44AF</string>
+											<string>D8C86DB212454FF1007E44AF</string>
+											<string>D8C86DB312454FF1007E44AF</string>
+											<string>D8C86DB412454FF1007E44AF</string>
+											<string>D8C86DB512454FF1007E44AF</string>
+											<string>D8C86DB612454FF1007E44AF</string>
+											<string>D8C86DB712454FF1007E44AF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -439,7 +440,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1114, 777}}</string>
 								<key>RubberWindowFrame</key>
-								<string>48 55 1392 823 0 0 1440 878 </string>
+								<string>49 55 1392 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -459,7 +460,7 @@
 								<key>Frame</key>
 								<string>{{0, 782}, {1114, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>48 55 1392 823 0 0 1440 878 </string>
+								<string>49 55 1392 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -623,6 +624,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>D8C86DC112455100007E44AF</string>
 		<string>D8C86D1F12453581007E44AF</string>
 		<string>D8C86D2012453581007E44AF</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -631,7 +633,7 @@
 		<string>/Users/Joe/Source/RunQuest/RunQuest.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>48 55 1392 823 0 0 1440 878 </string>
+	<string>49 55 1392 823 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

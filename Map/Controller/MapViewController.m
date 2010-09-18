@@ -17,9 +17,9 @@
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
-#define ENEMY_SPEED_VARIANCE 0.0f
-#define SLOWEST_ENEMY_SPEED 20.0f
-#define ENEMIES_TO_GENERATE 3
+#define ENEMY_SPEED_VARIANCE 1.0f
+#define SLOWEST_ENEMY_SPEED 1.5f
+#define ENEMIES_TO_GENERATE 5
 
 @interface MapViewController (Private)
 
@@ -40,7 +40,7 @@
 		appDelegate = [[UIApplication sharedApplication] delegate];
 		_locationManager = [[CLLocationManager alloc] init];
 		_locationManager.purpose = NSLocalizedString(@"To track your progress around the RunQuest world.", @"Explain what we're using core location for");
-		_locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+		_locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		_locationManager.distanceFilter = kCLDistanceFilterNone;
 		_locationManager.delegate = self;
 		[_locationManager startUpdatingLocation];
@@ -109,7 +109,6 @@
 			}
 			else {
 				enemy.coordinate = _sonar.coordinate;
-				enemy.speed = 0;
 			}
 		}
 		[enemyView pulse];
@@ -134,7 +133,7 @@
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
-	for ( NSUInteger i = 1; i <= 10; i++ ) {
+	for ( NSUInteger i = 1; i <= ENEMIES_TO_GENERATE; i++ ) {
 		double randX = ENEMY_GENERATION_BOUNDS_X*rand()/RAND_MAX;
 		double randY = ENEMY_GENERATION_BOUNDS_Y*rand()/RAND_MAX;
 		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
@@ -177,9 +176,7 @@
 				[trek addLocation:newLocation];
 		}
 	
-		NSLog(@"%f", [trek duration]);
-		
-		
+		//NSLog(@"%f", [trek duration]);
 		//MKCoordinateSpan span = MKCoordinateSpanMake(.25, .25);
 		//MKCoordinateRegion region = MKCoordinateRegionMake(newLocation.coordinate, span);
 		//[self.mapView setRegion:region animated:YES];
