@@ -29,6 +29,9 @@
 	AppDelegate_Shared *appDelegate;
 	
 	NSMutableSet *_enemies;
+	NSMutableSet *_enemyViews;
+	
+	NSDate *_lastEnemyUpdate;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
