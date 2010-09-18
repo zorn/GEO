@@ -39,7 +39,7 @@
     NSArray *results = [self executeFetchRequest:request error:&error];
     if (error != nil)
     {
-        [NSException raise:NSGenericException format:[error description]];
+        [NSException raise:NSGenericException format:@"%@", [error description]];
     }
     
     if ( [results count] )
@@ -85,7 +85,7 @@
     NSArray *results = [self executeFetchRequest:request error:&error];
     if (error != nil)
     {
-        [NSException raise:NSGenericException format:[error description]];
+        [NSException raise:NSGenericException format:@"%@", [error description]];
     }
     
     return results;
@@ -125,7 +125,7 @@
     NSUInteger count  = [self countForFetchRequest:request error:&error];
     if (error != nil)
     {
-        [NSException raise:NSGenericException format:[error description]];
+        [NSException raise:NSGenericException format:@"%@", [error description]];
     }
     
     return count;
