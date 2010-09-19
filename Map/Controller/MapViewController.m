@@ -47,8 +47,6 @@
 		
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
-		
-		[[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
     }
     return self;
 }
@@ -69,6 +67,15 @@
 	self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(cycleRadius:)];
 	[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [super viewDidLoad];
+}
+
+- (void)viewDidUnload {
+	[self.displayLink invalidate];
+	self.displayLink = nil;
+	self.mapView = nil;
+	self.hudView = nil;
+	self.overlayLabel = nil;
+	[super viewDidUnload];
 }
 
 - (void)cycleRadius:(CADisplayLink *)sender{ 
@@ -123,12 +130,6 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
