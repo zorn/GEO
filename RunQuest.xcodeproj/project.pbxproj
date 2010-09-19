@@ -20,6 +20,7 @@
 		C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */; };
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
+		D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */; };
 		D8901A4B123EF33C004C5D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901A4A123EF33C004C5D27 /* QuartzCore.framework */; };
 		D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901D00123F89BA004C5D27 /* CoreGraphics.framework */; };
@@ -65,6 +66,7 @@
 		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
 		C9DCF7741245505500BCABB1 /* RQSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQSprite.m; sourceTree = "<group>"; };
 		C9DCF783124557F600BCABB1 /* boobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boobs.png; sourceTree = "<group>"; };
+		D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D8901A4A123EF33C004C5D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8901CC0123F892D004C5D27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8901D00123F89BA004C5D27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +115,7 @@
 				D8901A4B123EF33C004C5D27 /* QuartzCore.framework in Frameworks */,
 				D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */,
 				D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */,
+				D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +197,7 @@
 				D8901A4A123EF33C004C5D27 /* QuartzCore.framework */,
 				D8901CC0123F892D004C5D27 /* UIKit.framework */,
 				D8901D00123F89BA004C5D27 /* CoreGraphics.framework */,
+				D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

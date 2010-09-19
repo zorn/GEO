@@ -29,6 +29,8 @@
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Enemy" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:entity insertIntoManagedObjectContext:moc] )) {
 		self.coordinate = initialCoordinate;
+		self.speed = 0;
+		self.heading = 0;
 	}return self;
 }
 

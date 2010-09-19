@@ -11,8 +11,6 @@
 #import <MapKit/MapKit.h>
 
 @interface Trek : NSManagedObject {
-	NSMutableArray *_segments;
-	NSMutableArray *_locations;
 	BOOL stopped;
 }
 
@@ -20,7 +18,7 @@
 @property (nonatomic, readonly) double			distance;
 @property (nonatomic, readonly) NSTimeInterval	duration;
 @property (nonatomic, readonly) BOOL			isStopped;
-@property (nonatomic, retain)	NSArray *		segments;
+@property (nonatomic, retain)	NSMutableArray *locations;
 @property (nonatomic, retain)	NSDate	*		date;
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc;

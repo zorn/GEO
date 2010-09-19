@@ -11,48 +11,41 @@
 #define INITIAL_LOCATION_SPACE 1000
 #define INITIAL_SEGMENT_SPACE  1000
 @implementation Trek
-@dynamic segments, date;
+@dynamic locations, date;
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc {
 	NSEntityDescription *trekEntity = [NSEntityDescription entityForName:@"Trek" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:trekEntity insertIntoManagedObjectContext:moc] )) {
-		_locations = [[NSMutableArray alloc] initWithCapacity:INITIAL_LOCATION_SPACE];
-		[_locations addObject:location];
+		NSMutableArray *initalLocationsArray = [[NSMutableArray alloc] initWithCapacity:INITIAL_LOCATION_SPACE];
+		self.locations = initalLocationsArray;
+		[initalLocationsArray release];
 		
-		_segments = [[NSMutableArray alloc] initWithCapacity:INITIAL_SEGMENT_SPACE];
-		[_segments addObject:_locations];
+		self.date = [NSDate date];
 		
-		self.segments = _segments;
 		stopped = NO;
 		
 	} return self;
 }
 
+- (void)awakeFromFetch {
+	stopped = YES;
+	[super awakeFromFetch];
+}
+
 - (void)dealloc {
-	[_locations release];
-	[_segments release];
 	[super dealloc];
 }
 
-- (void)awakeFromFetch {
-	_segments = [self.segments mutableCopy];
-	stopped = YES;
-}
-
-- (void)willSave {
-	self.segments = _segments;
-}
-
-
 - (NSTimeInterval)duration {
+	NSDate *startTime = [(CLLocation *)[self.locations objectAtIndex:0] timestamp];
+	NSDate *endTime = nil;
 	if ( self.isStopped ) {
-		return 0;
+		endTime = [(CLLocation *)[self.locations lastObject] timestamp];
 	}
 	else {
-		NSDate *startTime = [(CLLocation *)[[_segments objectAtIndex:0] objectAtIndex:0] timestamp]; 
-		return [[NSDate date] timeIntervalSinceDate:startTime];
+		endTime = [NSDate date];
 	}
-
+	return [endTime timeIntervalSinceDate:startTime];
 }
 
 - (void)stop {
@@ -64,16 +57,23 @@
 }
 
 - (void)addLocation:(CLLocation *)location {
-	if ( !stopped )
-		[_segments addObject:location];
+	[self.locations addObject:location];
 }
 
 - (double)averageSpeed {
-	return 0;
+	return [self distance]/[self duration];
 }
 
 - (double)distance {
-	return 0;
+	CLLocationDistance dist = 0;
+	NSUInteger i = 1;
+	for ( CLLocation *location in self.locations) {
+		if ( i < [self.locations count] ) {
+			dist+= [[self.locations objectAtIndex:i] distanceFromLocation:location];
+		}
+		i++;
+	}
+	return (double)dist;
 }
 
 @end

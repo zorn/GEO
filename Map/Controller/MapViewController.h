@@ -19,8 +19,6 @@
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	CLLocationManager *_locationManager;
 	
-	Trek *trek;
-	
 	id <MKOverlay> _pathOverlay;
 	
 	Sonar *_sonar;
@@ -32,15 +30,21 @@
 	NSMutableSet *_enemyViews;
 	
 	NSDate *_lastEnemyUpdate;
+	
+	NSNumberFormatter *_speedFormatter;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIView *hudView;
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
-
+@property (nonatomic, retain) IBOutlet UILabel *speedLabel;
+@property (nonatomic, retain) IBOutlet UILabel *durationLabel;
+@property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 
 @property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
 
 - (IBAction)launchBattlePressed:(id)sender;
+- (IBAction)startStopPressed:(id)sender;
+
 @end

@@ -15,13 +15,15 @@
 #import "Enemy.h"
 #import "EnemyAnnotationView.h"
 #import "RQBattleTestViewController.h"
-
+#import <AudioToolbox/AudioToolbox.h>
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
-#define ENEMY_SPEED_VARIANCE 1.0f
+#define ENEMY_SPEED_VARIANCE 1.5f
 #define SLOWEST_ENEMY_SPEED 1.5f
 #define ENEMIES_TO_GENERATE 5
+
+#define LOCATION_ACCURACY_THRESHOLD 50
 
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleTestViewController *battleViewController;
@@ -31,7 +33,7 @@
 @end
 
 @implementation MapViewController
-@synthesize hudView, overlayLabel, mapView, displayLink;
+@synthesize hudView, overlayLabel, mapView, displayLink, speedLabel, durationLabel, trek;
 @synthesize launchBattleButton;
 @synthesize battleViewController;
 
@@ -49,11 +51,32 @@
 		
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
+		
+		_speedFormatter = [[NSNumberFormatter alloc] init];
+		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[_speedFormatter setMaximumSignificantDigits:2];
+		CLLocation *lastLocation = nil;
+		NSArray	*treks = [[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
+		for ( Trek *trek in treks ) {
+			for (CLLocation *location in trek.locations )
+			{
+				if ( lastLocation ) {
+					NSLog(@"dt:\t%f", location.timestamp - lastLocation.timestamp);
+					NSLog(@"dd:\t%f", [location distanceFromLocation:lastLocation]);
+					NSLog(@"da:\t%f", location.altitude - lastLocation.altitude);
+				}
+				lastLocation = location;
+			}
+			NSLog(@"Distance:\t%f", trek.distance);
+			NSLog(@"Time:\t%f",trek.duration);
+			NSLog(@"Speed:\t%f",trek.averageSpeed);
+		}
     }
     return self;
 }
 
 - (void)dealloc {
+	[_speedFormatter release];
 	[_lastEnemyUpdate release];
 	[_locationManager release];
 	[_sonarView release];
@@ -72,7 +95,14 @@
     [super viewDidLoad];
 }
 
-- (void)cycleRadius:(CADisplayLink *)sender{ 
+- (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
+	Enemy *enemy = enemyView.annotation;
+	[self.mapView removeAnnotation:enemy];
+	[_enemies removeObject:enemy];
+	[_enemyViews removeObject:enemyView];
+}
+
+- (void)cycleRadius:(CADisplayLink *)sender{
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
 		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
@@ -83,7 +113,7 @@
 		Enemy *enemy = enemyView.annotation;
 		if ( enemy.speed ) {
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
-			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
+			MKMapPoint heroPoint = MKMapPointForCoordinate(_locationManager.location.coordinate);
 			double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
 			double enemyStepSize =  enemy.speed*timeSinceLastUpdate*mapPointsPerMeter;
 			if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
@@ -110,6 +140,8 @@
 			}
 			else {
 				enemy.coordinate = _sonar.coordinate;
+				AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+				[self removeEnemyView:enemyView];
 			}
 		}
 		[enemyView pulse];
@@ -152,6 +184,14 @@
 	}
 }
 
+- (void)updateSpeedLabel {
+	self.speedLabel.text = [NSString stringWithFormat:@"%@ m/s", [_speedFormatter stringFromNumber:[NSNumber numberWithDouble:self.trek.averageSpeed]]];
+}
+
+- (void)updateDurationLabel {
+	self.durationLabel.text = [_speedFormatter stringFromNumber:[NSNumber numberWithDouble:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+}
+
 #pragma mark CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -163,61 +203,18 @@
 	
 	if ( newLocation && newLocation.horizontalAccuracy > 0) {
 		
-		if ( !_sonar ) { 
-			_sonar = [[Sonar alloc] initWithCoordinate:newLocation.coordinate range:1000];
-			//[self.mapView addOverlay:_sonar];
-		}
-		else
-			_sonar.coordinate = newLocation.coordinate;
+		MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
+		[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
 		
-		//[_sonarView setNeedsDisplayInMapRect:[_sonar boundingMapRect]];
+		if ( newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD && self.trek )
+				[self.trek addLocation:newLocation];
 		
-		if ( newLocation.horizontalAccuracy < 100 ) {
-			if ( !trek ) {
-				MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
-				[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
-				[self loadEnemiesAroundLocation:newLocation];
-				trek = [[Trek alloc] initWithLocation:newLocation inManagedObjectContext:[appDelegate managedObjectContext]];
-			}
-			else
-				[trek addLocation:newLocation];
-		}
-	
-		//NSLog(@"%f", [trek duration]);
-		//MKCoordinateSpan span = MKCoordinateSpanMake(.25, .25);
-		//MKCoordinateRegion region = MKCoordinateRegionMake(newLocation.coordinate, span);
-		//[self.mapView setRegion:region animated:YES];
-		[self updatePath];
+		[self updateSpeedLabel];
+		[self updateDurationLabel];
 	}
 }
 
-#pragma mark Path Drawing
-
-- (void)updatePath {
-	//NSUInteger count = [_track count];
-//	CLLocationCoordinate2D coordinates[count];
-//	
-//	for ( NSUInteger i = 0; i < count; i++ ) {
-//		CLLocation *location = [_track objectAtIndex:i];
-//		CLLocationCoordinate2D coordinate = location.coordinate;
-//		coordinates[i] = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-//	}
-//	
-//	MKPolyline *newPolyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
-//	
-//	[self.mapView addOverlay:newPolyline];
-//	
-//	if ( _pathOverlay ) {
-//		[self.mapView removeOverlay:_pathOverlay];
-//		[_pathOverlay release];
-//		_pathOverlay = nil;
-//	}
-//	
-//	
-//	_pathOverlay = [newPolyline retain];
-}
-
-#pragma mark Overlay View
+#pragma mark Loading Overlay
 
 - (void)showHUD { 
 	if ( self.hudView.isHidden )
@@ -257,9 +254,40 @@
 	return overlayView;
 }
 
+- (void)removeAllEnemies {
+	NSSet *safeToIterateCopy = [_enemyViews	copy];
+	for ( EnemyAnnotationView *enemyView in safeToIterateCopy ) {
+		[self removeEnemyView:enemyView];
+	}
+}
 
 #pragma mark -
 #pragma mark Action
+
+- (IBAction)startStopPressed:(id)sender { 
+	UIButton *button = nil;
+	if ( [sender isKindOfClass:[UIButton class]] )
+		button = sender;
+	
+	if ( !self.trek ) {
+		[button setTitle:@"Stop" forState:UIControlStateNormal];
+		Trek *newTrek = [[Trek alloc] initWithLocation:_locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
+		newTrek.date = [NSDate date];
+		self.trek = newTrek;
+		[newTrek release];
+		[self loadEnemiesAroundLocation:_locationManager.location];
+	}
+	else {
+		[button setTitle:@"Start" forState:UIControlStateNormal];
+		[self removeAllEnemies];
+		NSError *error = nil;
+		[[appDelegate managedObjectContext] save:&error];
+		if ( error )
+			NSLog(@"%@", error);
+		self.trek = nil;
+	}
+}
+		
 - (IBAction)launchBattlePressed:(id)sender {
     self.battleViewController = [[[RQBattleTestViewController alloc] init] autorelease];
     [self.view.window addSubview:self.battleViewController.view];
