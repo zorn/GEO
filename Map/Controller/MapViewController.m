@@ -72,15 +72,6 @@
     [super viewDidLoad];
 }
 
-- (void)viewDidUnload {
-	[self.displayLink invalidate];
-	self.displayLink = nil;
-	self.mapView = nil;
-	self.hudView = nil;
-	self.overlayLabel = nil;
-	[super viewDidUnload];
-}
-
 - (void)cycleRadius:(CADisplayLink *)sender{ 
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
@@ -135,16 +126,18 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-<<<<<<< HEAD
-=======
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+	[self.displayLink invalidate];
+	self.displayLink = nil;
+	self.mapView = nil;
+	self.hudView = nil;
+	self.overlayLabel = nil;
     self.launchBattleButton = nil;
 }
 
->>>>>>> d7a0dc93ee2c22f3f5ee125950402ec8d3ca80ef
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	for ( NSUInteger i = 1; i <= ENEMIES_TO_GENERATE; i++ ) {
