@@ -24,6 +24,7 @@
 #define ENEMIES_TO_GENERATE 5
 
 #define LOCATION_ACCURACY_THRESHOLD 50
+#define PRINT_TREKS 0
 
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleTestViewController *battleViewController;
@@ -56,6 +57,7 @@
 		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[_speedFormatter setMaximumSignificantDigits:2];
 		CLLocation *lastLocation = nil;
+#if PRINT_TREKS
 		NSArray	*treks = [[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
 		for ( Trek *trek in treks ) {
 			for (CLLocation *location in trek.locations )
@@ -71,6 +73,7 @@
 			NSLog(@"Time:\t%f",trek.duration);
 			NSLog(@"Speed:\t%f",trek.averageSpeed);
 		}
+#endif
     }
     return self;
 }
