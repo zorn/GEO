@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
+		1A2B236C1246AD46000F9449 /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
+		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -44,6 +47,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattle.h; sourceTree = "<group>"; };
+		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattle.m; sourceTree = "<group>"; };
+		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMob.h; sourceTree = "<group>"; };
+		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMob.m; sourceTree = "<group>"; };
+		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
@@ -116,6 +124,7 @@
 				D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */,
 				D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */,
 				D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */,
+				1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +207,7 @@
 				D8901CC0123F892D004C5D27 /* UIKit.framework */,
 				D8901D00123F89BA004C5D27 /* CoreGraphics.framework */,
 				D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */,
+				1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,6 +260,10 @@
 		D8C86C4E12450DAA007E44AF /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
+				1A2B23671246AD46000F9449 /* RQBattle.h */,
+				1A2B23681246AD46000F9449 /* RQBattle.m */,
+				1A2B23691246AD46000F9449 /* RQMob.h */,
+				1A2B236A1246AD46000F9449 /* RQMob.m */,
 			);
 			path = "Game Engine";
 			sourceTree = "<group>";
@@ -399,6 +413,8 @@
 				C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */,
 				C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */,
 				C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */,
+				1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */,
+				1A2B236C1246AD46000F9449 /* RQMob.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

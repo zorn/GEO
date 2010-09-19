@@ -10,9 +10,12 @@
 
 @class RQSprite;
 @class RQEnemySprite;
+@class MapViewController;
 
-@interface RQBattleTestViewController : UIViewController {
-
+@interface RQBattleTestViewController : UIViewController 
+{
+	MapViewController *mapViewController;
+	
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
 	
@@ -33,6 +36,8 @@
     NSTimer *animationTimer;
 	
 }
+
+@property (readwrite, retain) MapViewController *mapViewController;
 
 - (void)tick;
 - (void)setupGameLoop;

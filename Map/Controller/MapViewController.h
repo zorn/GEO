@@ -45,6 +45,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
 
 - (IBAction)launchBattlePressed:(id)sender;
+- (void)removeBattleView;
+
 - (IBAction)startStopPressed:(id)sender;
 
 @end
