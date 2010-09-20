@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
-		1A2B236C1246AD46000F9449 /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -414,7 +414,7 @@
 				C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */,
 				C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */,
 				1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */,
-				1A2B236C1246AD46000F9449 /* RQMob.m in Sources */,
+				1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

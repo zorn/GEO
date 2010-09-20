@@ -38,6 +38,11 @@
 			[maskView release];
 		}
 		[self.view.layer addSublayer:highlightLayer];
+		
+		enemyHealthMeter = [[UIProgressView	alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+		enemyHealthMeter.frame = CGRectMake(0.0, theView.frame.size.height+9.0, theView.frame.size.width, 9);
+		[enemyHealthMeter setProgress:100.0];
+		[theView addSubview:enemyHealthMeter];
 	}
     return self;
 }
@@ -45,12 +50,16 @@
 
 - (void) dealloc
 {
+	[enemyHealthMeter release];
 	[textLabel release];
 	[highlightLayer release];
 	[super dealloc];
 }
 
-
+- (UIProgressView *)enemyHealthMeter
+{
+	return enemyHealthMeter;
+}
 
 - (void)hitWithText:(NSString *)hitText {
 	textLabel.text = hitText;

@@ -16,6 +16,7 @@
 		[newMob setMaxHP:30];
 		[newMob setCurrentHP:30];
 		[newMob setLevel:5];
+		[newMob setStamina:100];
 		[self setHero:newMob];
 		[newMob release]; newMob = nil;
 		
@@ -24,12 +25,13 @@
 		[newMob setMaxHP:25];
 		[newMob setCurrentHP:25];
 		[newMob setLevel:3];
+		[newMob setStamina:100];
 		[self setEnemy:newMob];
 		[newMob release]; newMob = nil;
 		
-		NSString *pathToHitSoundEffectPlayer = [[NSBundle mainBundle] pathForResource:@"Critical_Hit" ofType:@"m4a"];
-		hitSoundEffectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:pathToHitSoundEffectPlayer] error:NULL];
-		[hitSoundEffectPlayer prepareToPlay];
+//		NSString *pathToHitSoundEffectPlayer = [[NSBundle mainBundle] pathForResource:@"Critical_Hit" ofType:@"m4a"];
+//		hitSoundEffectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:pathToHitSoundEffectPlayer] error:NULL];
+//		[hitSoundEffectPlayer prepareToPlay];
 		//[hitSoundEffectPlayer setDelegate:self];
 		
 		[self setBattleLog:[NSString stringWithFormat:@"Battle started at: %@\n", [NSDate date]]];
@@ -49,45 +51,39 @@
 
 @synthesize battleLog;
 
-- (void)issueAttackCommandFrom:(RQMob *)mob
+- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob
 {
+	// issues an attack and returns a dictionary with results of the attack
 	NSInteger attackValue;
 	srandom(time(NULL));
 	if (mob == hero) {
 		attackValue = [self.hero randomAttackValueAgainstMob:self.enemy];
-		if (self.hero.stamina < 100) {
-			// if the stamina wasn't full the attack value is decreased
-			if (rand() % 100 > 40.0) {
-				attackValue = floor(attackValue / (2 + (rand() % 10)))+1;
-			} else {
-				self.hero.stamina = 0;
-				[self appendToBattleLog:[NSString stringWithFormat:@"%@'s attack missed!", self.hero.name]];
-				return;
-			}
-		}
+//		if (self.hero.stamina < 100) {
+//			// if the stamina wasn't full the attack value is decreased
+//			if (rand() % 100 > 40.0) {
+//				attackValue = floor(attackValue / (2 + (rand() % 10)))+1;
+//			} else {
+//				self.hero.stamina = 0;
+//				[self appendToBattleLog:[NSString stringWithFormat:@"%@'s attack missed!", self.hero.name]];
+//				return [NSDictionary dictionaryWithObjectsAndKeys:@"miss", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
+//			}
+//		}
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
 		[hitSoundEffectPlayer play];
 		self.hero.stamina = 0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];
+		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
 	} else if (mob == enemy) {
 		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero];
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
 		self.enemy.stamina = 0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.enemy.name, self.hero.name, attackValue]];
-	} else {
-		NSLog(@"ERROR: issueAttackCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
+		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
 	}
-}
-
-- (void)issueStrongAttackCommandFrom:(RQMob *)mob
-{
-	if (mob == hero) {
-		self.hero.stamina = 0; 
-	} else if (mob == enemy) {
-		
-	} else {
-		NSLog(@"ERROR: issueStrongAttackCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
-	}
+	
+	// failure
+	NSLog(@"ERROR: issueAttackCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
+	return [NSDictionary dictionaryWithObjectsAndKeys:@"error", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
 }
 
 - (void)issuePhysicalShieldCommandFrom:(RQMob *)mob
@@ -132,5 +128,21 @@
 	[self setBattleLog:[self.battleLog stringByAppendingFormat:@"%@\n",logAddition]]; 
 }
 
+- (BOOL)isBattleDone
+{
+	if (self.enemy.currentHP == 0 || self.hero.currentHP == 0) {
+		return YES;
+	} else {
+		return NO;
+	}
+}
+
+- (void)issueBattleResults
+{
+	// if the winner was the hero issue him experience points
+	
+	// if the hero lost, take experience points away
+	
+}
 
 @end

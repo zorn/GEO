@@ -11,11 +11,36 @@
 #import "RQSprite.h"
 #import "RQEnemySprite.h"
 #import "MapViewController.h"
+#import "RQBattle.h"
+#import "RQMob.h"
 
 @implementation RQBattleTestViewController
 
+- (id)init
+{
+	if (self = [super init]) {
+		
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+	[self stopAnimation];
+	[mapViewController release]; mapViewController = nil;
+	[battle release]; battle = nil;
+	[magicPebble release];
+	[evilBoobsMonster release];
+    [super dealloc];
+}
+
+@synthesize mapViewController;
+@synthesize battle;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	battle = [[RQBattle alloc] init];
 	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
@@ -54,8 +79,6 @@
 	
 }
 
-@synthesize mapViewController;
-
 - (void)tick {
 	
 	NSTimeInterval currentTime = CACurrentMediaTime();
@@ -84,9 +107,13 @@
 	
 	if (monsterHit) {
 		lastCollisionTime = currentTime;
-		srand(time(0));
-		int num = rand() % 255;
-		[evilBoobsMonster hitWithText:[NSString stringWithFormat:@"%d", num]];
+		NSDictionary *result = [self.battle issueAttackCommandFrom:self.battle.hero];
+		if ([[result objectForKey:@"status"] isEqualToString:@"hit"]) {
+			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
+			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
+			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
+			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
+		}
 	}
 	
 	if (currentTime > lastCollisionTime + 1.0) {
@@ -156,15 +183,6 @@
 	isTouching = NO;
 	
 }
-
-
-- (void)dealloc {
-	[self stopAnimation];
-	[magicPebble release];
-	[evilBoobsMonster release];
-    [super dealloc];
-}
-
 
 /************************************************************
  * Code below stolen from the built-in OpenGL project template to run the game loop

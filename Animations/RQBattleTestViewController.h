@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class RQBattle;
 @class RQSprite;
 @class RQEnemySprite;
 @class MapViewController;
@@ -15,6 +16,7 @@
 @interface RQBattleTestViewController : UIViewController 
 {
 	MapViewController *mapViewController;
+	RQBattle *battle;
 	
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
@@ -38,6 +40,7 @@
 }
 
 @property (readwrite, retain) MapViewController *mapViewController;
+@property (readwrite, retain) RQBattle *battle;
 
 - (void)tick;
 - (void)setupGameLoop;

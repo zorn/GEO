@@ -21,8 +21,7 @@
 
 @property (readwrite, copy) NSString *battleLog;
 
-- (void)issueAttackCommandFrom:(RQMob *)mob;
-- (void)issueStrongAttackCommandFrom:(RQMob *)mob;
+- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob;
 - (void)issuePhysicalShieldCommandFrom:(RQMob *)mob;
 - (void)issueMagicalShieldCommandFrom:(RQMob *)mob;
 

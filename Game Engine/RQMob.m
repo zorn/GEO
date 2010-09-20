@@ -36,6 +36,7 @@
 
 @synthesize maxHP;
 @synthesize level;
+@synthesize experiencePoints;
 
 - (NSInteger)stamina {
     return stamina;
@@ -67,6 +68,11 @@
 	// generate a random value to represnt an attack form self against mob
 	// TODO: More interesting math
 	return [self randomAttackValueAgainstMob:mob]*2;
+}
+
++ (NSInteger)experinceNeedToLevelFromLevel:(NSInteger)level
+{
+	return level^3;
 }
 
 @end
