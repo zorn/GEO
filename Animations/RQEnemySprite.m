@@ -64,7 +64,7 @@
 - (void)hitWithText:(NSString *)hitText {
 	textLabel.text = hitText;
 	CGSize textSize = [textLabel.text sizeWithFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:50.0]];
-	CGRect textFrame = CGRectMake((self.view.frame.size.width / 3.0), 
+	CGRect textFrame = CGRectMake((self.view.frame.size.width / 2.0), 
 								  (0.0 - (self.view.frame.size.height / 3.0)), 
 								  textSize.width + 5.0, 
 								  textSize.height);
@@ -84,7 +84,7 @@
 	group.animations = [NSArray arrayWithObjects:fadeInOut, grow, nil];
 	
 	[textLabel.layer addAnimation:group forKey:nil];
-	
+	 
 	CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
 	flash.fromValue = [NSNumber numberWithFloat:0.7f];
 	flash.toValue = [NSNumber numberWithFloat:0.0f];

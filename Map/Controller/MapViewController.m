@@ -14,7 +14,7 @@
 #import "NSManagedObjectContext+FetchAdditions.h"
 #import "Enemy.h"
 #import "EnemyAnnotationView.h"
-#import "RQBattleTestViewController.h"
+#import "RQBattleViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
@@ -27,7 +27,7 @@
 #define PRINT_TREKS 0
 
 @interface MapViewController ()
-@property (nonatomic, retain) RQBattleTestViewController *battleViewController;
+@property (nonatomic, retain) RQBattleViewController *battleViewController;
 - (void)updatePath;
 - (void)showHUD;
 - (void)hideHUD;
@@ -268,7 +268,7 @@
 #pragma mark Action
 
 - (IBAction)launchBattlePressed:(id)sender {
-    self.battleViewController = [[[RQBattleTestViewController alloc] init] autorelease];
+    self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
     [self.battleViewController setMapViewController:self];
 	[self.view.window addSubview:self.battleViewController.view];
     self.mapView.hidden = YES;

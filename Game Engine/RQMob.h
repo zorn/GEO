@@ -30,4 +30,6 @@
 
 + (NSInteger)experinceNeedToLevelFromLevel:(NSInteger)level;
 
+- (NSArray *)weapons;
+
 @end

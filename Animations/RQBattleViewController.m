@@ -6,20 +6,21 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "RQBattleTestViewController.h"
+#import "RQBattleViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RQSprite.h"
 #import "RQEnemySprite.h"
 #import "MapViewController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
+#import "RQWeaponSprite.h"
 
-@implementation RQBattleTestViewController
+@implementation RQBattleViewController
 
 - (id)init
 {
 	if (self = [super init]) {
-		
+		weaponSprites = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -27,15 +28,16 @@
 - (void)dealloc
 {
 	[self stopAnimation];
+	[weaponSprites release]; weaponSprites = nil;
 	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
-	[magicPebble release];
 	[evilBoobsMonster release];
     [super dealloc];
 }
 
 @synthesize mapViewController;
 @synthesize battle;
+@synthesize activeWeapon;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,18 +50,28 @@
 	[runButton setTitle:@"Run" forState:UIControlStateNormal];
 	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:runButton];
-	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, self.view.frame.size.height-44.0, 44.0, 44.0)];
+	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
 	
-	UIView *pebbleView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
-	pebbleView.backgroundColor = [UIColor redColor];
-	magicPebble = [[RQSprite alloc] initWithView:pebbleView];
-	[pebbleView release];
-	
-	[self.view addSubview:magicPebble.view];
+	// setup weaponSprite Array
+	RQWeaponSprite *weaponSprite;
+	NSString *weaponImageName;
+	UIImageView *weaponImageView;
+	int xloc = 40;
+	for (NSDictionary *weapon in self.battle.hero.weapons) {
+		weaponImageName = [NSString stringWithFormat:@"%@_button", [weapon objectForKey:@"type"]]; 
+		weaponImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:weaponImageName]];
+		weaponSprite = [[RQWeaponSprite alloc] initWithView:weaponImageView];
+		[weaponImageView release];
+		[weaponSprite setWeaponDetails:weapon];
+		[weaponSprites addObject:weaponSprite];
+		[self.view addSubview:weaponSprite.view];
+		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
+		weaponSprite.orininalPosition = weaponSprite.position;
+		xloc = xloc + 80;
+		weaponSprite.velocity = CGPointZero;
+		[weaponSprite release]; weaponSprite = nil;
+	}
 
-	magicPebble.position = CGPointMake(160.0, 420.0);
-	magicPebble.velocity = CGPointZero;
-	
 	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"boobs.png"]];
     monsterView.frame = CGRectMake(1.350, 8.5, 106.0, 80.0);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
@@ -96,14 +108,14 @@
 	
 	
 	
-	if (!isTouching) {
+	if (!self.activeWeapon.touch) {
 		
-		magicPebble.position = CGPointMake(magicPebble.position.x + (magicPebble.velocity.x * deltaTime),
-										   magicPebble.position.y + (magicPebble.velocity.y * deltaTime));
+		activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.velocity.x * deltaTime),
+										    activeWeapon.position.y + (activeWeapon.velocity.y * deltaTime));
 		
 	}
 	
-	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:magicPebble.view.frame];
+	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
 	
 	if (monsterHit) {
 		lastCollisionTime = currentTime;
@@ -121,67 +133,65 @@
 	}
 	
 	
-	if ((!CGRectContainsPoint(self.view.frame, magicPebble.position)) || monsterHit) {
+	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit) {
 		
-		magicPebble.position = CGPointMake(160.0, 420.0);
-		magicPebble.velocity = CGPointZero;
+		activeWeapon.position = activeWeapon.orininalPosition;
+		activeWeapon.velocity = CGPointZero;
+		[self setActiveWeapon:nil];
 		
 	}
 	
 }
 
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	
-	UITouch *touch = [touches anyObject];
-	CGPoint touchLocation = [touch locationInView:self.view];
-	
-	if (CGRectContainsPoint(magicPebble.view.frame, touchLocation)) {
-		isTouching = YES;
-		previousTouchTimestamp = touch.timestamp;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	// When a touch begins we need to assign an active weapon (as long as there isn't a current active weapon)
+	if (!activeWeapon) {
+		UITouch *touch = [touches anyObject];
+		CGPoint touchLocation = [touch locationInView:self.view];
+		
+		// find out which weapon they are touching
+		for (RQWeaponSprite *weapon in weaponSprites) {
+			if (CGRectContainsPoint(weapon.view.frame, touchLocation)) {
+				weapon.touch = touch;
+				[self setActiveWeapon:weapon];
+				previousTouchTimestamp = touch.timestamp;
+			}
+		}
 	}
-	
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-
-	UITouch *touch = [touches anyObject];
-	CGPoint touchLocation = [touch locationInView:self.view];
-	CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
-	
-	if (isTouching) {
-
-		magicPebble.position = touchLocation;
-		
-		NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
-
-		CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
-		CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
-		
-		deltaX /= deltaTime;
-		deltaY /= deltaTime;
-		
-		CGPoint newVelocity = CGPointMake(deltaX, deltaY);
-		
-		
-		magicPebble.velocity = CGPointMake(magicPebble.velocity.x * 0.9 + newVelocity.x * 0.1,
-										   magicPebble.velocity.y * 0.9 + newVelocity.y * 0.1);
-		
-		previousTouchTimestamp = touch.timestamp;
-
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	// if this touch relivent to our activeWeapon?
+	for (UITouch *touch in touches) {
+		if ([touch isEqual:self.activeWeapon.touch]) {
+			// if so, update the sprite
+			CGPoint touchLocation = [touch locationInView:self.view];
+			CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
+			self.activeWeapon.position = touchLocation;
+			NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
+			CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
+			CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
+			deltaX /= deltaTime;
+			deltaY /= deltaTime;
+			CGPoint newVelocity = CGPointMake(deltaX, deltaY);
+			self.activeWeapon.velocity = CGPointMake(self.activeWeapon.velocity.x * 0.9 + newVelocity.x * 0.1,
+													 self.activeWeapon.velocity.y * 0.9 + newVelocity.y * 0.1);
+			previousTouchTimestamp = touch.timestamp;
+		}
 	}
-	
 }
 
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	
-//	UITouch *touch = [touches anyObject];
-//	CGPoint touchLocation = [touch locationInView:self.view];
-	
-	isTouching = NO;
-	
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	// if this touch relivent to our activeWeapon?
+	for (UITouch *touch in touches) {
+		if ([touch isEqual:self.activeWeapon.touch]) {
+			self.activeWeapon.touch = nil;
+		}
+	}
 }
 
 /************************************************************
