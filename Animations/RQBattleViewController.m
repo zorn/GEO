@@ -15,6 +15,7 @@
 #import "RQMob.h"
 #import "RQWeaponSprite.h"
 #import "RQBattleVictoryViewController.h"
+#import "RQAudioPlayer.h"
 
 @implementation RQBattleViewController
 
@@ -22,6 +23,7 @@
 {
 	if (self = [super init]) {
 		weaponSprites = [[NSMutableArray alloc] init];
+		audioPlayer = [[RQAudioPlayer alloc] init];
 	}
 	return self;
 }
@@ -35,6 +37,7 @@
 	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
+	[audioPlayer release];
     [super dealloc];
 }
 
@@ -106,7 +109,10 @@
 	[self setupGameLoop];
 	[self startAnimation];
 	
+	[audioPlayer playSoundNamed:@"RQ_Battle_Song.m4a"];
 }
+
+
 
 - (void)tick {
 	
@@ -142,6 +148,7 @@
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
+			[audioPlayer playSoundNamed:@"Hit_001.caf"];
 		}
 	}
 	
@@ -216,6 +223,7 @@
 			self.activeWeapon.touch = nil;
 		}
 	}
+	[audioPlayer playSoundNamed:@"Punch_001.caf"];
 }
 
 /************************************************************
@@ -295,6 +303,7 @@
 
 - (void)returnToMapView
 {
+	[audioPlayer stopSoundNamed:@"RQ_Battle_Song.m4a"];
 	[self.mapViewController removeBattleView];
 }
 

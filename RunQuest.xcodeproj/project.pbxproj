@@ -31,6 +31,36 @@
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
 		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
+		C99A9177124A7C16005BAECF /* MyOpenALSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = C99A9173124A7C16005BAECF /* MyOpenALSupport.c */; };
+		C99A9178124A7C16005BAECF /* RQAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C99A9176124A7C16005BAECF /* RQAudioPlayer.m */; };
+		C99A91D0124A7F47005BAECF /* chimp_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B4124A7F47005BAECF /* chimp_001.caf */; };
+		C99A91D1124A7F47005BAECF /* Computer_Data_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */; };
+		C99A91D2124A7F47005BAECF /* Critical_Hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B6124A7F47005BAECF /* Critical_Hit.caf */; };
+		C99A91D3124A7F47005BAECF /* disappear.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B7124A7F47005BAECF /* disappear.caf */; };
+		C99A91D4124A7F47005BAECF /* fs_gunshot_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B8124A7F47005BAECF /* fs_gunshot_001.caf */; };
+		C99A91D5124A7F47005BAECF /* fs_small_thud.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B9124A7F47005BAECF /* fs_small_thud.caf */; };
+		C99A91D6124A7F47005BAECF /* fs_sword_slice.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BA124A7F47005BAECF /* fs_sword_slice.caf */; };
+		C99A91D7124A7F47005BAECF /* GunShot_002.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BB124A7F47005BAECF /* GunShot_002.caf */; };
+		C99A91D8124A7F47005BAECF /* Hit_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BC124A7F47005BAECF /* Hit_001.caf */; };
+		C99A91D9124A7F47005BAECF /* Hit_002.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BD124A7F47005BAECF /* Hit_002.caf */; };
+		C99A91DA124A7F47005BAECF /* Hit_004.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BE124A7F47005BAECF /* Hit_004.caf */; };
+		C99A91DB124A7F47005BAECF /* Laser.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91BF124A7F47005BAECF /* Laser.caf */; };
+		C99A91DC124A7F47005BAECF /* Miss_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C0124A7F47005BAECF /* Miss_001.caf */; };
+		C99A91DD124A7F47005BAECF /* missing_002.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C1124A7F47005BAECF /* missing_002.caf */; };
+		C99A91DE124A7F47005BAECF /* Punch_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C2124A7F47005BAECF /* Punch_001.caf */; };
+		C99A91DF124A7F47005BAECF /* Servo_Movement_01.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C3124A7F47005BAECF /* Servo_Movement_01.caf */; };
+		C99A91E0124A7F47005BAECF /* Shields_up.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C4124A7F47005BAECF /* Shields_up.caf */; };
+		C99A91E1124A7F47005BAECF /* Wack_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C5124A7F47005BAECF /* Wack_001.caf */; };
+		C99A91E2124A7F47005BAECF /* menu battle song 002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */; };
+		C99A91E3124A7F47005BAECF /* RQ_Battle_Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */; };
+		C99A91E4124A7F47005BAECF /* RQ_MenuSong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */; };
+		C99A91E5124A7F47005BAECF /* Victory song_nintendo_style.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */; };
+		C99A91E6124A7F47005BAECF /* victory_003.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CB124A7F47005BAECF /* victory_003.m4a */; };
+		C99A91E7124A7F47005BAECF /* victory_lite.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CC124A7F47005BAECF /* victory_lite.m4a */; };
+		C99A91E8124A7F47005BAECF /* victory_long.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CD124A7F47005BAECF /* victory_long.m4a */; };
+		C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CE124A7F47005BAECF /* victory_song_002.m4a */; };
+		C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */; };
+		C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99A91F8124A7F9C005BAECF /* OpenAL.framework */; };
 		C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleViewController.m */; };
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
@@ -93,6 +123,38 @@
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C90F10EC12455B81000E456A /* RQEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemySprite.h; sourceTree = "<group>"; };
 		C90F10ED12455B81000E456A /* RQEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemySprite.m; sourceTree = "<group>"; };
+		C99A9173124A7C16005BAECF /* MyOpenALSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MyOpenALSupport.c; sourceTree = "<group>"; };
+		C99A9174124A7C16005BAECF /* MyOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenALSupport.h; sourceTree = "<group>"; };
+		C99A9175124A7C16005BAECF /* RQAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQAudioPlayer.h; sourceTree = "<group>"; };
+		C99A9176124A7C16005BAECF /* RQAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQAudioPlayer.m; sourceTree = "<group>"; };
+		C99A91B4124A7F47005BAECF /* chimp_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chimp_001.caf; sourceTree = "<group>"; };
+		C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Computer_Data_001.caf; sourceTree = "<group>"; };
+		C99A91B6124A7F47005BAECF /* Critical_Hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Critical_Hit.caf; sourceTree = "<group>"; };
+		C99A91B7124A7F47005BAECF /* disappear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = disappear.caf; sourceTree = "<group>"; };
+		C99A91B8124A7F47005BAECF /* fs_gunshot_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fs_gunshot_001.caf; sourceTree = "<group>"; };
+		C99A91B9124A7F47005BAECF /* fs_small_thud.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fs_small_thud.caf; sourceTree = "<group>"; };
+		C99A91BA124A7F47005BAECF /* fs_sword_slice.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fs_sword_slice.caf; sourceTree = "<group>"; };
+		C99A91BB124A7F47005BAECF /* GunShot_002.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GunShot_002.caf; sourceTree = "<group>"; };
+		C99A91BC124A7F47005BAECF /* Hit_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hit_001.caf; sourceTree = "<group>"; };
+		C99A91BD124A7F47005BAECF /* Hit_002.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hit_002.caf; sourceTree = "<group>"; };
+		C99A91BE124A7F47005BAECF /* Hit_004.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hit_004.caf; sourceTree = "<group>"; };
+		C99A91BF124A7F47005BAECF /* Laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Laser.caf; sourceTree = "<group>"; };
+		C99A91C0124A7F47005BAECF /* Miss_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Miss_001.caf; sourceTree = "<group>"; };
+		C99A91C1124A7F47005BAECF /* missing_002.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = missing_002.caf; sourceTree = "<group>"; };
+		C99A91C2124A7F47005BAECF /* Punch_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Punch_001.caf; sourceTree = "<group>"; };
+		C99A91C3124A7F47005BAECF /* Servo_Movement_01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Servo_Movement_01.caf; sourceTree = "<group>"; };
+		C99A91C4124A7F47005BAECF /* Shields_up.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shields_up.caf; sourceTree = "<group>"; };
+		C99A91C5124A7F47005BAECF /* Wack_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wack_001.caf; sourceTree = "<group>"; };
+		C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "menu battle song 002.m4a"; sourceTree = "<group>"; };
+		C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RQ_Battle_Song.m4a; sourceTree = "<group>"; };
+		C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RQ_MenuSong.m4a; sourceTree = "<group>"; };
+		C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victory song_nintendo_style.m4a"; sourceTree = "<group>"; };
+		C99A91CB124A7F47005BAECF /* victory_003.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_003.m4a; sourceTree = "<group>"; };
+		C99A91CC124A7F47005BAECF /* victory_lite.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_lite.m4a; sourceTree = "<group>"; };
+		C99A91CD124A7F47005BAECF /* victory_long.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_long.m4a; sourceTree = "<group>"; };
+		C99A91CE124A7F47005BAECF /* victory_song_002.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_song_002.m4a; sourceTree = "<group>"; };
+		C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = VictorySoundPlaceholder.m4a; sourceTree = "<group>"; };
+		C99A91F8124A7F9C005BAECF /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		C9DCF7711245505500BCABB1 /* RQBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleViewController.h; sourceTree = "<group>"; };
 		C9DCF7721245505500BCABB1 /* RQBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleViewController.m; sourceTree = "<group>"; };
 		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
@@ -149,6 +211,7 @@
 				D8901D01123F89BA004C5D27 /* CoreGraphics.framework in Frameworks */,
 				D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */,
 				1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */,
+				C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,11 +255,13 @@
 				D8C86C5312450DE9007E44AF /* Map */,
 				D8C86C4E12450DAA007E44AF /* Game Engine */,
 				D8C86C4D12450DA3007E44AF /* BattleView */,
+				C99A9172124A7C16005BAECF /* Audio */,
 				D8901EA1124125DE004C5D27 /* Resources */,
 				D8901E1612411D53004C5D27 /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				C99A91F8124A7F9C005BAECF /* OpenAL.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -236,6 +301,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C99A9172124A7C16005BAECF /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				C99A9173124A7C16005BAECF /* MyOpenALSupport.c */,
+				C99A9174124A7C16005BAECF /* MyOpenALSupport.h */,
+				C99A9175124A7C16005BAECF /* RQAudioPlayer.h */,
+				C99A9176124A7C16005BAECF /* RQAudioPlayer.m */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		C99A91B2124A7F47005BAECF /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C99A91B3124A7F47005BAECF /* effects */,
+				C99A91C6124A7F47005BAECF /* music */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		C99A91B3124A7F47005BAECF /* effects */ = {
+			isa = PBXGroup;
+			children = (
+				C99A91B4124A7F47005BAECF /* chimp_001.caf */,
+				C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */,
+				C99A91B6124A7F47005BAECF /* Critical_Hit.caf */,
+				C99A91B7124A7F47005BAECF /* disappear.caf */,
+				C99A91B8124A7F47005BAECF /* fs_gunshot_001.caf */,
+				C99A91B9124A7F47005BAECF /* fs_small_thud.caf */,
+				C99A91BA124A7F47005BAECF /* fs_sword_slice.caf */,
+				C99A91BB124A7F47005BAECF /* GunShot_002.caf */,
+				C99A91BC124A7F47005BAECF /* Hit_001.caf */,
+				C99A91BD124A7F47005BAECF /* Hit_002.caf */,
+				C99A91BE124A7F47005BAECF /* Hit_004.caf */,
+				C99A91BF124A7F47005BAECF /* Laser.caf */,
+				C99A91C0124A7F47005BAECF /* Miss_001.caf */,
+				C99A91C1124A7F47005BAECF /* missing_002.caf */,
+				C99A91C2124A7F47005BAECF /* Punch_001.caf */,
+				C99A91C3124A7F47005BAECF /* Servo_Movement_01.caf */,
+				C99A91C4124A7F47005BAECF /* Shields_up.caf */,
+				C99A91C5124A7F47005BAECF /* Wack_001.caf */,
+			);
+			path = effects;
+			sourceTree = "<group>";
+		};
+		C99A91C6124A7F47005BAECF /* music */ = {
+			isa = PBXGroup;
+			children = (
+				C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */,
+				C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */,
+				C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */,
+				C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */,
+				C99A91CB124A7F47005BAECF /* victory_003.m4a */,
+				C99A91CC124A7F47005BAECF /* victory_lite.m4a */,
+				C99A91CD124A7F47005BAECF /* victory_long.m4a */,
+				C99A91CE124A7F47005BAECF /* victory_song_002.m4a */,
+				C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		D8901E1612411D53004C5D27 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +389,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C99A91B2124A7F47005BAECF /* sounds */,
 				1A8EA7A1124987870006A220 /* air_button@2x.png */,
 				1A8EA7A2124987870006A220 /* earth_button@2x.png */,
 				1A8EA7A3124987870006A220 /* fire_button@2x.png */,
@@ -428,6 +555,33 @@
 				1A8EA7A7124987870006A220 /* fire_button@2x.png in Resources */,
 				1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */,
 				1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */,
+				C99A91D0124A7F47005BAECF /* chimp_001.caf in Resources */,
+				C99A91D1124A7F47005BAECF /* Computer_Data_001.caf in Resources */,
+				C99A91D2124A7F47005BAECF /* Critical_Hit.caf in Resources */,
+				C99A91D3124A7F47005BAECF /* disappear.caf in Resources */,
+				C99A91D4124A7F47005BAECF /* fs_gunshot_001.caf in Resources */,
+				C99A91D5124A7F47005BAECF /* fs_small_thud.caf in Resources */,
+				C99A91D6124A7F47005BAECF /* fs_sword_slice.caf in Resources */,
+				C99A91D7124A7F47005BAECF /* GunShot_002.caf in Resources */,
+				C99A91D8124A7F47005BAECF /* Hit_001.caf in Resources */,
+				C99A91D9124A7F47005BAECF /* Hit_002.caf in Resources */,
+				C99A91DA124A7F47005BAECF /* Hit_004.caf in Resources */,
+				C99A91DB124A7F47005BAECF /* Laser.caf in Resources */,
+				C99A91DC124A7F47005BAECF /* Miss_001.caf in Resources */,
+				C99A91DD124A7F47005BAECF /* missing_002.caf in Resources */,
+				C99A91DE124A7F47005BAECF /* Punch_001.caf in Resources */,
+				C99A91DF124A7F47005BAECF /* Servo_Movement_01.caf in Resources */,
+				C99A91E0124A7F47005BAECF /* Shields_up.caf in Resources */,
+				C99A91E1124A7F47005BAECF /* Wack_001.caf in Resources */,
+				C99A91E2124A7F47005BAECF /* menu battle song 002.m4a in Resources */,
+				C99A91E3124A7F47005BAECF /* RQ_Battle_Song.m4a in Resources */,
+				C99A91E4124A7F47005BAECF /* RQ_MenuSong.m4a in Resources */,
+				C99A91E5124A7F47005BAECF /* Victory song_nintendo_style.m4a in Resources */,
+				C99A91E6124A7F47005BAECF /* victory_003.m4a in Resources */,
+				C99A91E7124A7F47005BAECF /* victory_lite.m4a in Resources */,
+				C99A91E8124A7F47005BAECF /* victory_long.m4a in Resources */,
+				C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */,
+				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +618,8 @@
 				1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */,
 				1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */,
 				1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */,
+				C99A9177124A7C16005BAECF /* MyOpenALSupport.c in Sources */,
+				C99A9178124A7C16005BAECF /* RQAudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

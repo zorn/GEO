@@ -14,6 +14,7 @@
 @class RQWeaponSprite;
 @class MapViewController;
 @class RQBattleVictoryViewController;
+@class RQAudioPlayer;
 
 @interface RQBattleViewController : UIViewController 
 {
@@ -43,6 +44,8 @@
     id displayLink;
     NSTimer *animationTimer;
 	
+	// Audio stuff
+	RQAudioPlayer *audioPlayer;
 }
 
 @property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
