@@ -18,6 +18,28 @@
     [super viewDidLoad];
 	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+//    
+//    CALayer *aLayer = [[CALayer alloc] init];
+//    aLayer.frame = CGRectMake(0.0, 350.0, 320.0, 1.0);
+//    aLayer.backgroundColor = [UIColor cyanColor].CGColor;
+//    aLayer.opacity = 0.7;
+//    CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    pulse.fromValue = [NSNumber numberWithFloat:0.4];
+//    pulse.toValue = [NSNumber numberWithFloat:0.8];
+//    pulse.repeatCount = HUGE_VALF;
+//    pulse.autoreverses = YES;
+//    pulse.duration = 0.7;
+//    [aLayer addAnimation:pulse forKey:@"opacity"];
+//        
+//    CAReplicatorLayer *replicatorLayer = [[CAReplicatorLayer alloc] init];
+//    [replicatorLayer addSublayer:aLayer];
+//    [aLayer release];
+//    replicatorLayer.instanceCount = 20;
+//    replicatorLayer.instanceTransform = CATransform3DMakeTranslation(0.0, 2.0, 0.0);
+//	replicatorLayer.instanceDelay = 0.01;
+//	replicatorLayer.instanceAlphaOffset = -0.04;
+//    [self.view.layer addSublayer:replicatorLayer];
+//    [replicatorLayer release];
 	
 	UIView *pebbleView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
 	pebbleView.backgroundColor = [UIColor redColor];
