@@ -14,7 +14,11 @@
 @class RQWeaponSprite;
 @class MapViewController;
 @class RQBattleVictoryViewController;
+<<<<<<< HEAD
 @class AVCaptureSession;
+=======
+@class RQAudioPlayer;
+>>>>>>> 33d0da0189b76dee86e8497495ea6047611d8386
 
 @interface RQBattleViewController : UIViewController 
 {
@@ -43,7 +47,11 @@
     NSInteger animationFrameInterval;
     id displayLink;
     NSTimer *animationTimer;
+
+	// Audio stuff
+	RQAudioPlayer *audioPlayer;
 	
+	//Camera stuff
 #if TARGET_OS_EMBEDDED
 	AVCaptureSession *_captureSession;
 #endif
