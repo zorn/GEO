@@ -7,8 +7,8 @@
 	NSInteger maxHP;
 	NSInteger level;
 	NSInteger experiencePoints;
-	NSInteger stamina;
-	float staminaRegenRate; // how many seconds it should take for the stamina to fill from 0-100
+	float stamina; // 0.0 to 1.0 .. 1.0 is full
+	float staminaRegenRate; // 1.75 is to say it should take to 1.75 seconds to reach full stamina
 	
 	NSInteger secondsLeftOfPhysicalShields;
 	NSInteger secondsLeftOfMagicalShields;
@@ -20,7 +20,7 @@
 @property (readwrite, assign) NSInteger maxHP;
 @property (readwrite, assign) NSInteger level;
 @property (readwrite, assign) NSInteger experiencePoints;
-@property (readwrite, assign) NSInteger stamina;
+@property (readwrite, assign) float stamina;
 @property (readwrite, assign) float staminaRegenRate;
 @property (readwrite, assign) NSInteger secondsLeftOfPhysicalShields;
 @property (readwrite, assign) NSInteger secondsLeftOfMagicalShields;

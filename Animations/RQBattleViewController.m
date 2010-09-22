@@ -114,6 +114,7 @@
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
 	
+	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];
 	
 	
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
@@ -151,6 +152,11 @@
 	
 	// Update the hero health meter
 	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
+	
+	// Update the weapons to help visualize the hero stamina
+	for (RQWeaponSprite *weaponSprite in weaponSprites) {
+		weaponSprite.view.layer.opacity = self.battle.hero.stamina; 
+	}
 	
 	// If the weapon leaves the view frame or we hit the monster reset the position of the weapon
 	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit){
@@ -240,7 +246,8 @@
 }	
 
 - (void)startAnimation {
-    if (!animating) {
+    previousTickTime = CACurrentMediaTime();
+	if (!animating) {
         if (displayLinkSupported) {
             /*
 			 CADisplayLink is API new in iOS 3.1. Compiling against earlier versions will result in a warning, but can be dismissed if the system version runtime check for CADisplayLink exists in -awakeFromNib. The runtime check ensures this code will not be called in system versions earlier than 3.1.

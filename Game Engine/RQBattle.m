@@ -104,14 +104,15 @@
 	}
 }
 
-- (void)updateCombatantStamina
+- (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta
 {
-	float howMuchStaminaTheHeroWouldGainInAFullSecond = 100 / self.hero.staminaRegenRate;
-	NSInteger oneFrameWorthForTheHero = floor(howMuchStaminaTheHeroWouldGainInAFullSecond / RQBattleFrameRate);
+	//NSLog(@"updateCombatantStaminaBasedOnTimeDelta");
+	float howMuchStaminaTheHeroWouldGainInAFullSecond = 1.0 / self.hero.staminaRegenRate;
+	float oneFrameWorthForTheHero = timeDelta * howMuchStaminaTheHeroWouldGainInAFullSecond;
 	[self.hero setStamina:self.hero.stamina + oneFrameWorthForTheHero];
 	
-	float howMuchStaminaTheEnemyWouldGainInAFullSecond = 100 / self.enemy.staminaRegenRate;
-	NSInteger oneFrameWorthForTheEnemy = floor(howMuchStaminaTheEnemyWouldGainInAFullSecond / RQBattleFrameRate);
+	float howMuchStaminaTheEnemyWouldGainInAFullSecond = 1.0 / self.enemy.staminaRegenRate;
+	float oneFrameWorthForTheEnemy = timeDelta * howMuchStaminaTheEnemyWouldGainInAFullSecond;
 	[self.enemy setStamina:self.enemy.stamina + oneFrameWorthForTheEnemy];
 }
 
