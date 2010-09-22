@@ -25,6 +25,7 @@
 	int monsterCounter;
 	
 	RQWeaponSprite *activeWeapon;
+	UILabel *heroHeathLabel;
 	
 	NSMutableArray *weaponSprites;
 	

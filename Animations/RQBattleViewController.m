@@ -29,6 +29,7 @@
 - (void)dealloc
 {
 	[self stopAnimation];
+	[heroHeathLabel release]; heroHeathLabel = nil;
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
 	[mapViewController release]; mapViewController = nil;
@@ -54,6 +55,19 @@
 	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:runButton];
 	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
+	
+	NSString *typicalHPReading = @"9999/9999";
+	UIFont *heroHeathLabelFont = [UIFont boldSystemFontOfSize:22];
+	CGSize heroHeathLabelSize = [typicalHPReading sizeWithFont:heroHeathLabelFont];
+	heroHeathLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height - 110, self.view.frame.size.width/2, heroHeathLabelSize.height)];
+	[self.view addSubview:heroHeathLabel];
+	heroHeathLabel.font = heroHeathLabelFont;
+	heroHeathLabel.textAlignment = UITextAlignmentRight;
+	heroHeathLabel.backgroundColor = [UIColor clearColor];
+	heroHeathLabel.textColor = [UIColor whiteColor];
+	heroHeathLabel.shadowColor= [UIColor blackColor];
+	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
+	heroHeathLabel.text = typicalHPReading;
 	
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
@@ -135,15 +149,15 @@
 		
 	}
 	
+	// Update the hero health meter
+	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
 	
-	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit) {
-		
+	// If the weapon leaves the view frame or we hit the monster reset the position of the weapon
+	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit){
 		activeWeapon.position = activeWeapon.orininalPosition;
 		activeWeapon.velocity = CGPointZero;
 		[self setActiveWeapon:nil];
-		
 	}
-	
 	
 	// check for end of battle conditions and if done, present the victory screen
 	if (self.battle.isBattleDone) {
