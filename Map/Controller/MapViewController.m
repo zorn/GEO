@@ -269,9 +269,12 @@
 
 - (IBAction)launchBattlePressed:(id)sender {
     self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
-    [self.battleViewController setMapViewController:self];
-	[self.view.window addSubview:self.battleViewController.view];
-    self.mapView.hidden = YES;
+	self.battleViewController.delegate = self;
+	[self presentModalViewController:self.battleViewController animated:YES];
+}
+
+- (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)removeBattleView

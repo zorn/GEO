@@ -17,6 +17,8 @@
 @class AVCaptureSession;
 @class RQAudioPlayer;
 
+@protocol RQBattleViewControllerDelegate;
+
 @interface RQBattleViewController : UIViewController 
 {
 	RQBattleVictoryViewController *battleVictoryViewController;
@@ -55,10 +57,9 @@
 }
 
 @property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
-@property (readwrite, retain) MapViewController *mapViewController;
+@property (readwrite, assign) id <RQBattleViewControllerDelegate> delegate;
 @property (readwrite, retain) RQBattle *battle;
 @property (readwrite, retain) RQWeaponSprite *activeWeapon;
-
 
 - (void)tick;
 - (void)setupGameLoop;
@@ -71,4 +72,11 @@
 - (void)returnToMapView;
 
 @end
+
+@protocol RQBattleViewControllerDelegate 
+
+- (void)battleViewControllerDidEnd:(RQBattleViewController *)controller;
+
+@end
+
 

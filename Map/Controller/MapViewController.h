@@ -12,11 +12,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Sonar.h"
 #import "SonarView.h"
+#import "RQBattleViewController.h"
 
 @class Trek;
 @class AppDelegate_Shared;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate> {
 	CLLocationManager *_locationManager;
 	
 	id <MKOverlay> _pathOverlay;

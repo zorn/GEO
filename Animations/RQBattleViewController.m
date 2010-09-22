@@ -42,8 +42,7 @@
 	[audioPlayer release];
     [super dealloc];
 }
-
-@synthesize mapViewController;
+@synthesize delegate;
 @synthesize battleVictoryViewController;
 @synthesize battle;
 @synthesize activeWeapon;
@@ -358,7 +357,7 @@
 - (void)returnToMapView
 {
 	[audioPlayer stopSoundNamed:@"RQ_Battle_Song.m4a"];
-	[self.mapViewController removeBattleView];
+	[delegate battleViewControllerDidEnd:self];
 }
 
 @end
