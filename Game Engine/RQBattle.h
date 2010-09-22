@@ -25,7 +25,7 @@
 - (void)issuePhysicalShieldCommandFrom:(RQMob *)mob;
 - (void)issueMagicalShieldCommandFrom:(RQMob *)mob;
 
-- (void)updateCombatantStamina;
+- (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta;
 - (void)runEnemyAI;
 
 - (void)appendToBattleLog:(NSString *)logAddition;

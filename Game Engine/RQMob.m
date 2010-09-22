@@ -5,7 +5,7 @@
 - (id)init
 {
 	if (self = [super init]) {
-		staminaRegenRate = 1.75;
+		staminaRegenRate = 3.0;
 		secondsLeftOfPhysicalShields = 0;
 		secondsLeftOfMagicalShields = 0;
 	}
@@ -38,17 +38,17 @@
 @synthesize level;
 @synthesize experiencePoints;
 
-- (NSInteger)stamina {
+- (float)stamina {
     return stamina;
 }
 
-- (void)setStamina:(NSInteger)value {
+- (void)setStamina:(float)value {
 	stamina = value;
-	if (stamina > 100) {
-		stamina = 100;
+	if (stamina > 1.0) {
+		stamina = 1.0;
 	}
-	if (stamina < 0) {
-		stamina = 0;
+	if (stamina < 0.0) {
+		stamina = 0.0;
 	}
 }
 

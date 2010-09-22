@@ -16,6 +16,7 @@
 #import "RQWeaponSprite.h"
 #import "RQBattleVictoryViewController.h"
 #import "RQAudioPlayer.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation RQBattleViewController
 
@@ -120,6 +121,7 @@
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
 	
+	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];
 	
 	
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
@@ -159,6 +161,11 @@
 	// Update the hero health meter
 	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
 	
+	// Update the weapons to help visualize the hero stamina
+	for (RQWeaponSprite *weaponSprite in weaponSprites) {
+		weaponSprite.view.layer.opacity = self.battle.hero.stamina; 
+	}
+	
 	// If the weapon leaves the view frame or we hit the monster reset the position of the weapon
 	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit){
 		activeWeapon.position = activeWeapon.orininalPosition;
@@ -176,6 +183,12 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	// If the user tries to active a weapon while the hero stamina is not full, say no
+	if (self.battle.hero.stamina < 1.0) {
+		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+		return;
+	}
+	
 	// When a touch begins we need to assign an active weapon (as long as there isn't a current active weapon)
 	if (!activeWeapon) {
 		UITouch *touch = [touches anyObject];
@@ -217,10 +230,25 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	NSLog(@"touchesEnded");
 	// if this touch relivent to our activeWeapon?
 	for (UITouch *touch in touches) {
 		if ([touch isEqual:self.activeWeapon.touch]) {
+			// when touch is nil the game loop will begin to update it's position based on velocity
 			self.activeWeapon.touch = nil;
+			
+			NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
+
+			// if the velocity was too low do not "fire" the weapon but reset it
+			float min_velocity = 30.0;
+			if (!(self.activeWeapon.velocity.x > min_velocity || self.activeWeapon.velocity.x < (min_velocity * -1) ||
+				self.activeWeapon.velocity.y > min_velocity || self.activeWeapon.velocity.y < (min_velocity * -1))) 
+			{
+				activeWeapon.position = activeWeapon.orininalPosition;
+				activeWeapon.velocity = CGPointZero;
+				[self setActiveWeapon:nil];
+			}
+			
 		}
 	}
 	[audioPlayer playSoundNamed:@"Punch_001.caf"];
@@ -248,7 +276,8 @@
 }	
 
 - (void)startAnimation {
-    if (!animating) {
+    previousTickTime = CACurrentMediaTime();
+	if (!animating) {
         if (displayLinkSupported) {
             /*
 			 CADisplayLink is API new in iOS 3.1. Compiling against earlier versions will result in a warning, but can be dismissed if the system version runtime check for CADisplayLink exists in -awakeFromNib. The runtime check ensures this code will not be called in system versions earlier than 3.1.
