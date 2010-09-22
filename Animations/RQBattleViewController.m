@@ -16,6 +16,7 @@
 #import "RQWeaponSprite.h"
 #import "RQBattleVictoryViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @implementation RQBattleViewController
 
@@ -47,6 +48,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	
+#if TARGET_OS_EMBEDDED
+	_captureSession = [[AVCaptureSession alloc] init];
+	
+	NSError *error = nil;
+	
+	AVCaptureDevice *defaultVideoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	
+	if ( defaultVideoDevice )  {
+		AVCaptureDeviceInput *defaultVideoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:defaultVideoDevice error:&error];
+	
+		if (error)
+		//TODO: CARE
+			NSLog(@"%@", error);
+	
+		[_captureSession addInput: defaultVideoDeviceInput];
+		AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
+		layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+		layer.frame = self.view.layer.bounds;
+		[self.view.layer addSublayer:layer];
+		[_captureSession startRunning];
+	}
+#endif
+
 	battle = [[RQBattle alloc] init];
 	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];

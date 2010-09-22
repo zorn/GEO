@@ -14,6 +14,7 @@
 @class RQWeaponSprite;
 @class MapViewController;
 @class RQBattleVictoryViewController;
+@class AVCaptureSession;
 
 @interface RQBattleViewController : UIViewController 
 {
@@ -43,6 +44,9 @@
     id displayLink;
     NSTimer *animationTimer;
 	
+#if TARGET_OS_EMBEDDED
+	AVCaptureSession *_captureSession;
+#endif
 }
 
 @property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
