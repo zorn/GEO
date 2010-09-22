@@ -14,11 +14,8 @@
 @class RQWeaponSprite;
 @class MapViewController;
 @class RQBattleVictoryViewController;
-<<<<<<< HEAD
 @class AVCaptureSession;
-=======
 @class RQAudioPlayer;
->>>>>>> 33d0da0189b76dee86e8497495ea6047611d8386
 
 @interface RQBattleViewController : UIViewController 
 {
