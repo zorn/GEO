@@ -13,9 +13,11 @@
 @class RQEnemySprite;
 @class RQWeaponSprite;
 @class MapViewController;
+@class RQBattleVictoryViewController;
 
 @interface RQBattleViewController : UIViewController 
 {
+	RQBattleVictoryViewController *battleVictoryViewController;
 	MapViewController *mapViewController;
 	RQBattle *battle;
 	
@@ -42,6 +44,7 @@
 	
 }
 
+@property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
 @property (readwrite, retain) MapViewController *mapViewController;
 @property (readwrite, retain) RQBattle *battle;
 @property (readwrite, retain) RQWeaponSprite *activeWeapon;
@@ -51,6 +54,11 @@
 - (void)setupGameLoop;
 - (void)startAnimation;
 - (void)stopAnimation;
+
+- (IBAction)runButtonPressed:(id)sender;
+- (void)presentVictoryScreen;
+- (void)dismissVictoryScreen;
+- (void)returnToMapView;
 
 @end
 

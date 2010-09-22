@@ -29,5 +29,6 @@
 - (void)runEnemyAI;
 
 - (void)appendToBattleLog:(NSString *)logAddition;
+- (BOOL)isBattleDone;
 
 @end

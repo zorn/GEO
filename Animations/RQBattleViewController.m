@@ -14,6 +14,7 @@
 #import "RQBattle.h"
 #import "RQMob.h"
 #import "RQWeaponSprite.h"
+#import "RQBattleVictoryViewController.h"
 
 @implementation RQBattleViewController
 
@@ -29,6 +30,7 @@
 {
 	[self stopAnimation];
 	[weaponSprites release]; weaponSprites = nil;
+	[battleVictoryViewController release]; battleVictoryViewController = nil;
 	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
@@ -36,6 +38,7 @@
 }
 
 @synthesize mapViewController;
+@synthesize battleVictoryViewController;
 @synthesize battle;
 @synthesize activeWeapon;
 
@@ -107,7 +110,7 @@
 	monsterCounter++;	
 	
 	
-	
+	// If they have let go of the weapon move it based on velocity.
 	if (!self.activeWeapon.touch) {
 		
 		activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.velocity.x * deltaTime),
@@ -139,6 +142,13 @@
 		activeWeapon.velocity = CGPointZero;
 		[self setActiveWeapon:nil];
 		
+	}
+	
+	
+	// check for end of battle conditions and if done, present the victory screen
+	if (self.battle.isBattleDone) {
+		[self stopAnimation];
+		[self presentVictoryScreen];
 	}
 	
 }
@@ -250,8 +260,28 @@
 
 - (IBAction)runButtonPressed:(id)sender
 {
-	[self.mapViewController removeBattleView];
+	// Add logic that penelizes a player from running
+	[self returnToMapView];
+}
+		 
+- (void)presentVictoryScreen
+{
+	self.battleVictoryViewController = [[[RQBattleVictoryViewController alloc] init] autorelease];
+	[self.battleVictoryViewController setBattleViewController:self];
+	[self.view.window addSubview:self.battleVictoryViewController.view];
+    self.battleVictoryViewController.view.frame = self.view.window.bounds;
+	self.view.hidden = YES;
 }
 
+- (void)dismissVictoryScreen
+{
+	[self.battleVictoryViewController.view removeFromSuperview];
+	[self returnToMapView];
+}
+
+- (void)returnToMapView
+{
+	[self.mapViewController removeBattleView];
+}
 
 @end

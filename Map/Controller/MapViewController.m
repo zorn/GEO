@@ -277,6 +277,7 @@
 - (void)removeBattleView
 {
 	[self.battleViewController.view removeFromSuperview];
+	[self setBattleViewController:nil];
 	self.mapView.hidden = NO;
 }
 
