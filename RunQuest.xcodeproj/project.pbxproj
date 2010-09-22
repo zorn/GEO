@@ -186,7 +186,7 @@
 				D8C86C6112450EDF007E44AF /* Model */,
 				D8C86C5312450DE9007E44AF /* Map */,
 				D8C86C4E12450DAA007E44AF /* Game Engine */,
-				D8C86C4D12450DA3007E44AF /* Animations */,
+				D8C86C4D12450DA3007E44AF /* BattleView */,
 				D8901EA1124125DE004C5D27 /* Resources */,
 				D8901E1612411D53004C5D27 /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -271,7 +271,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D8C86C4D12450DA3007E44AF /* Animations */ = {
+		D8C86C4D12450DA3007E44AF /* BattleView */ = {
 			isa = PBXGroup;
 			children = (
 				C9DCF7711245505500BCABB1 /* RQBattleViewController.h */,
@@ -283,6 +283,7 @@
 				1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */,
 				1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */,
 			);
+			name = BattleView;
 			path = Animations;
 			sourceTree = "<group>";
 		};

@@ -28,7 +28,7 @@
 
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleViewController *battleViewController;
-- (void)updatePath;
+//- (void)updatePath;
 - (void)showHUD;
 - (void)hideHUD;
 @end
@@ -56,7 +56,7 @@
 		_speedFormatter = [[NSNumberFormatter alloc] init];
 		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[_speedFormatter setMaximumSignificantDigits:2];
-		CLLocation *lastLocation = nil;
+		//CLLocation *lastLocation = nil;
 #if PRINT_TREKS
 		NSArray	*treks = [[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
 		for ( Trek *trek in treks ) {
