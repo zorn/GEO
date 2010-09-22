@@ -6,6 +6,7 @@
 	NSInteger currentHP;
 	NSInteger maxHP;
 	NSInteger level;
+	NSInteger experiencePoints;
 	NSInteger stamina;
 	float staminaRegenRate; // how many seconds it should take for the stamina to fill from 0-100
 	
@@ -18,6 +19,7 @@
 @property (readwrite, assign) NSInteger currentHP;
 @property (readwrite, assign) NSInteger maxHP;
 @property (readwrite, assign) NSInteger level;
+@property (readwrite, assign) NSInteger experiencePoints;
 @property (readwrite, assign) NSInteger stamina;
 @property (readwrite, assign) float staminaRegenRate;
 @property (readwrite, assign) NSInteger secondsLeftOfPhysicalShields;
@@ -25,5 +27,9 @@
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob;
 - (NSInteger)randomStrongAttackValueAgainstMob:(RQMob *)mob;
+
++ (NSInteger)experinceNeedToLevelFromLevel:(NSInteger)level;
+
+- (NSArray *)weapons;
 
 @end

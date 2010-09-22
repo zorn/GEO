@@ -38,6 +38,11 @@
 			[maskView release];
 		}
 		[self.view.layer addSublayer:highlightLayer];
+		
+		enemyHealthMeter = [[UIProgressView	alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+		enemyHealthMeter.frame = CGRectMake(0.0, theView.frame.size.height+9.0, theView.frame.size.width, 9);
+		[enemyHealthMeter setProgress:100.0];
+		[theView addSubview:enemyHealthMeter];
 	}
     return self;
 }
@@ -45,17 +50,21 @@
 
 - (void) dealloc
 {
+	[enemyHealthMeter release];
 	[textLabel release];
 	[highlightLayer release];
 	[super dealloc];
 }
 
-
+- (UIProgressView *)enemyHealthMeter
+{
+	return enemyHealthMeter;
+}
 
 - (void)hitWithText:(NSString *)hitText {
 	textLabel.text = hitText;
 	CGSize textSize = [textLabel.text sizeWithFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:50.0]];
-	CGRect textFrame = CGRectMake((self.view.frame.size.width / 3.0), 
+	CGRect textFrame = CGRectMake((self.view.frame.size.width / 2.0), 
 								  (0.0 - (self.view.frame.size.height / 3.0)), 
 								  textSize.width + 5.0, 
 								  textSize.height);
@@ -75,7 +84,7 @@
 	group.animations = [NSArray arrayWithObjects:fadeInOut, grow, nil];
 	
 	[textLabel.layer addAnimation:group forKey:nil];
-	
+	 
 	CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
 	flash.fromValue = [NSNumber numberWithFloat:0.7f];
 	flash.toValue = [NSNumber numberWithFloat:0.0f];

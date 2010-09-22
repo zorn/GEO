@@ -16,6 +16,7 @@
 @implementation RQSprite
 @synthesize view, velocity;
 @dynamic position;
+@synthesize orininalPosition;
 
 #pragma mark -
 #pragma mark Setup/Teardown

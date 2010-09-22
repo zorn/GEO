@@ -11,10 +11,12 @@
 #import "RQSprite.h"
 
 
-@interface RQEnemySprite : RQSprite {
-
+@interface RQEnemySprite : RQSprite
+{
+	UIProgressView *enemyHealthMeter;
 }
 
+- (UIProgressView *)enemyHealthMeter;
 - (void)hitWithText:(NSString *)hitText;
 
 @end

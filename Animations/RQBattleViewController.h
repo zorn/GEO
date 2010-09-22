@@ -8,18 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class RQBattle;
 @class RQSprite;
 @class RQEnemySprite;
+@class RQWeaponSprite;
 @class MapViewController;
+@class RQBattleVictoryViewController;
 
-@interface RQBattleTestViewController : UIViewController 
+@interface RQBattleViewController : UIViewController 
 {
+	RQBattleVictoryViewController *battleVictoryViewController;
 	MapViewController *mapViewController;
+	RQBattle *battle;
 	
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
 	
-	RQSprite *magicPebble;
+	RQWeaponSprite *activeWeapon;
+	UILabel *heroHeathLabel;
+	
+	NSMutableArray *weaponSprites;
 	
 	NSTimeInterval previousTickTime;
 	
@@ -37,12 +45,21 @@
 	
 }
 
+@property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
 @property (readwrite, retain) MapViewController *mapViewController;
+@property (readwrite, retain) RQBattle *battle;
+@property (readwrite, retain) RQWeaponSprite *activeWeapon;
+
 
 - (void)tick;
 - (void)setupGameLoop;
 - (void)startAnimation;
 - (void)stopAnimation;
+
+- (IBAction)runButtonPressed:(id)sender;
+- (void)presentVictoryScreen;
+- (void)dismissVictoryScreen;
+- (void)returnToMapView;
 
 @end
 

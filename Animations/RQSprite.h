@@ -13,11 +13,13 @@
 	
 	UIView *view;
 	CGPoint position;
+	CGPoint orininalPosition;
 	CGPoint velocity;
 
 }
 
 @property(nonatomic, assign) CGPoint position;
+@property(nonatomic, assign) CGPoint orininalPosition;
 @property(nonatomic, assign) CGPoint velocity;
 @property(nonatomic, retain, readonly) UIView *view;
 

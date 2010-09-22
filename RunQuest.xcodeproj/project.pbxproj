@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
+		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
-		1A2B236C1246AD46000F9449 /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
+		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
+		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
+		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
+		1A8EA76D1249805A0006A220 /* water_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76B1249805A0006A220 /* water_button.png */; };
+		1A8EA7A5124987870006A220 /* air_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A1124987870006A220 /* air_button@2x.png */; };
+		1A8EA7A6124987870006A220 /* earth_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A2124987870006A220 /* earth_button@2x.png */; };
+		1A8EA7A7124987870006A220 /* fire_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A3124987870006A220 /* fire_button@2x.png */; };
+		1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A4124987870006A220 /* water_button@2x.png */; };
+		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
+		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -20,7 +31,7 @@
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
 		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
-		C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */; };
+		C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleViewController.m */; };
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
 		D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */; };
@@ -47,10 +58,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
+		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
 		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattle.h; sourceTree = "<group>"; };
 		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattle.m; sourceTree = "<group>"; };
 		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMob.h; sourceTree = "<group>"; };
 		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMob.m; sourceTree = "<group>"; };
+		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
+		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
+		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
+		1A8EA76B1249805A0006A220 /* water_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_button.png; path = Assets/Mockups/water_button.png; sourceTree = SOURCE_ROOT; };
+		1A8EA7A1124987870006A220 /* air_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_button@2x.png"; path = "Assets/Mockups/air_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A8EA7A2124987870006A220 /* earth_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_button@2x.png"; path = "Assets/Mockups/earth_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A8EA7A3124987870006A220 /* fire_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_button@2x.png"; path = "Assets/Mockups/fire_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A8EA7A4124987870006A220 /* water_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_button@2x.png"; path = "Assets/Mockups/water_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A8EA8FC124A4E680006A220 /* RQBattleVictoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleVictoryViewController.h; sourceTree = "<group>"; };
+		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
+		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
@@ -69,8 +93,8 @@
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C90F10EC12455B81000E456A /* RQEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemySprite.h; sourceTree = "<group>"; };
 		C90F10ED12455B81000E456A /* RQEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemySprite.m; sourceTree = "<group>"; };
-		C9DCF7711245505500BCABB1 /* RQBattleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleTestViewController.h; sourceTree = "<group>"; };
-		C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleTestViewController.m; sourceTree = "<group>"; };
+		C9DCF7711245505500BCABB1 /* RQBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleViewController.h; sourceTree = "<group>"; };
+		C9DCF7721245505500BCABB1 /* RQBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleViewController.m; sourceTree = "<group>"; };
 		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
 		C9DCF7741245505500BCABB1 /* RQSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQSprite.m; sourceTree = "<group>"; };
 		C9DCF783124557F600BCABB1 /* boobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boobs.png; sourceTree = "<group>"; };
@@ -167,7 +191,7 @@
 				D8C86C6112450EDF007E44AF /* Model */,
 				D8C86C5312450DE9007E44AF /* Map */,
 				D8C86C4E12450DAA007E44AF /* Game Engine */,
-				D8C86C4D12450DA3007E44AF /* Animations */,
+				D8C86C4D12450DA3007E44AF /* BattleView */,
 				D8901EA1124125DE004C5D27 /* Resources */,
 				D8901E1612411D53004C5D27 /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -239,21 +263,35 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A8EA7A1124987870006A220 /* air_button@2x.png */,
+				1A8EA7A2124987870006A220 /* earth_button@2x.png */,
+				1A8EA7A3124987870006A220 /* fire_button@2x.png */,
+				1A8EA7A4124987870006A220 /* water_button@2x.png */,
+				1A8EA76A1249805A0006A220 /* air_button.png */,
+				1A8EA76B1249805A0006A220 /* water_button.png */,
+				1A8EA75812497EC90006A220 /* earth_button.png */,
+				1A8EA75912497EC90006A220 /* fire_button.png */,
 				C9DCF783124557F600BCABB1 /* boobs.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D8C86C4D12450DA3007E44AF /* Animations */ = {
+		D8C86C4D12450DA3007E44AF /* BattleView */ = {
 			isa = PBXGroup;
 			children = (
-				C9DCF7711245505500BCABB1 /* RQBattleTestViewController.h */,
-				C9DCF7721245505500BCABB1 /* RQBattleTestViewController.m */,
+				C9DCF7711245505500BCABB1 /* RQBattleViewController.h */,
+				C9DCF7721245505500BCABB1 /* RQBattleViewController.m */,
 				C9DCF7731245505500BCABB1 /* RQSprite.h */,
 				C9DCF7741245505500BCABB1 /* RQSprite.m */,
 				C90F10EC12455B81000E456A /* RQEnemySprite.h */,
 				C90F10ED12455B81000E456A /* RQEnemySprite.m */,
+				1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */,
+				1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */,
+				1A8EA8FC124A4E680006A220 /* RQBattleVictoryViewController.h */,
+				1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */,
+				1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */,
 			);
+			name = BattleView;
 			path = Animations;
 			sourceTree = "<group>";
 		};
@@ -381,6 +419,15 @@
 				2860E38B111B897F00E27156 /* MainWindow_iPhone.xib in Resources */,
 				D8C86C8312451082007E44AF /* MapViewController.xib in Resources */,
 				C9DCF784124557F600BCABB1 /* boobs.png in Resources */,
+				1A8EA75C12497EC90006A220 /* earth_button.png in Resources */,
+				1A8EA75D12497EC90006A220 /* fire_button.png in Resources */,
+				1A8EA76C1249805A0006A220 /* air_button.png in Resources */,
+				1A8EA76D1249805A0006A220 /* water_button.png in Resources */,
+				1A8EA7A5124987870006A220 /* air_button@2x.png in Resources */,
+				1A8EA7A6124987870006A220 /* earth_button@2x.png in Resources */,
+				1A8EA7A7124987870006A220 /* fire_button@2x.png in Resources */,
+				1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */,
+				1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,11 +457,13 @@
 				D8C86C8F12451095007E44AF /* Trek.m in Sources */,
 				D8C86C92124510A4007E44AF /* Enemy.m in Sources */,
 				D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */,
-				C9DCF7751245505500BCABB1 /* RQBattleTestViewController.m in Sources */,
+				C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */,
 				C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */,
 				C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */,
 				1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */,
-				1A2B236C1246AD46000F9449 /* RQMob.m in Sources */,
+				1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */,
+				1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */,
+				1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
