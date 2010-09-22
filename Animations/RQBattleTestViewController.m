@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RQSprite.h"
 #import "RQEnemySprite.h"
-
+#import "MapViewController.h"
 
 @implementation RQBattleTestViewController
 
@@ -41,6 +41,12 @@
 //    [self.view.layer addSublayer:replicatorLayer];
 //    [replicatorLayer release];
 	
+	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[runButton setTitle:@"Run" forState:UIControlStateNormal];
+	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:runButton];
+	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, self.view.frame.size.height-44.0, 44.0, 44.0)];
+	
 	UIView *pebbleView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
 	pebbleView.backgroundColor = [UIColor redColor];
 	magicPebble = [[RQSprite alloc] initWithView:pebbleView];
@@ -70,6 +76,7 @@
 	
 }
 
+@synthesize mapViewController;
 
 - (void)tick {
 	
@@ -235,7 +242,10 @@
     }
 }
 
-
+- (IBAction)runButtonPressed:(id)sender
+{
+	[self.mapViewController removeBattleView];
+}
 
 
 @end

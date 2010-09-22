@@ -267,6 +267,19 @@
 #pragma mark -
 #pragma mark Action
 
+- (IBAction)launchBattlePressed:(id)sender {
+    self.battleViewController = [[[RQBattleTestViewController alloc] init] autorelease];
+    [self.battleViewController setMapViewController:self];
+	[self.view.window addSubview:self.battleViewController.view];
+    self.mapView.hidden = YES;
+}
+
+- (void)removeBattleView
+{
+	[self.battleViewController.view removeFromSuperview];
+	self.mapView.hidden = NO;
+}
+
 - (IBAction)startStopPressed:(id)sender { 
 	UIButton *button = nil;
 	if ( [sender isKindOfClass:[UIButton class]] )
@@ -289,12 +302,6 @@
 			NSLog(@"%@", error);
 		self.trek = nil;
 	}
-}
-		
-- (IBAction)launchBattlePressed:(id)sender {
-    self.battleViewController = [[[RQBattleTestViewController alloc] init] autorelease];
-    [self.view.window addSubview:self.battleViewController.view];
-    self.mapView.hidden = YES;
 }
 
 @end
