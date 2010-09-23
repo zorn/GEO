@@ -26,6 +26,8 @@
 #define LOCATION_ACCURACY_THRESHOLD 50
 #define PRINT_TREKS 0
 
+#define CORE_LOCATION_DISTANCE_FILTER 3.0f
+
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleViewController *battleViewController;
 //- (void)updatePath;
@@ -34,21 +36,20 @@
 @end
 
 @implementation MapViewController
-@synthesize hudView, overlayLabel, mapView, displayLink, speedLabel, durationLabel, trek;
-@synthesize launchBattleButton;
-@synthesize battleViewController;
+@synthesize hudView, overlayLabel, mapView, displayLink, speedLabel, durationLabel, trek, launchBattleButton, locationManager, battleViewController;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
 		srand([[NSDate date] timeIntervalSince1970]);
 		appDelegate = [[UIApplication sharedApplication] delegate];
-		_locationManager = [[CLLocationManager alloc] init];
-		_locationManager.purpose = NSLocalizedString(@"To track your progress around the RunQuest world.", @"Explain what we're using core location for");
-		_locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-		_locationManager.distanceFilter = kCLDistanceFilterNone;
-		_locationManager.delegate = self;
-		[_locationManager startUpdatingLocation];
+		CLLocationManager *manager = [[CLLocationManager alloc] init];
+		self.locationManager = manager;
+		[manager release];
+		self.locationManager.purpose = NSLocalizedString(@"To track your progress around the RunQuest world.", @"Explain what we're using core location for");
+		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+		self.locationManager.distanceFilter = CORE_LOCATION_DISTANCE_FILTER; //Distance in meters
+		self.locationManager.delegate = self;
 		
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
@@ -56,7 +57,6 @@
 		_speedFormatter = [[NSNumberFormatter alloc] init];
 		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[_speedFormatter setMaximumSignificantDigits:2];
-		//CLLocation *lastLocation = nil;
 #if PRINT_TREKS
 		NSArray	*treks = [[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
 		for ( Trek *trek in treks ) {
@@ -79,9 +79,17 @@
 }
 
 - (void)dealloc {
+	[locationManager release];
+	[trek release];
+	[displayLink release];
+	[mapView release];
+	[hudView release];
+	[overlayLabel release];
+	[speedLabel release];
+	[durationLabel release];
+	[launchBattleButton release];
 	[_speedFormatter release];
 	[_lastEnemyUpdate release];
-	[_locationManager release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
@@ -93,8 +101,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(cycleRadius:)];
-	[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+	[self startUpdatingLocation];
     [super viewDidLoad];
 }
 
@@ -105,7 +112,7 @@
 	[_enemyViews removeObject:enemyView];
 }
 
-- (void)cycleRadius:(CADisplayLink *)sender{
+- (void)cycleRadius:(CADisplayLink *)sender {
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
 		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
@@ -116,7 +123,7 @@
 		Enemy *enemy = enemyView.annotation;
 		if ( enemy.speed ) {
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
-			MKMapPoint heroPoint = MKMapPointForCoordinate(_locationManager.location.coordinate);
+			MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
 			double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
 			double enemyStepSize =  enemy.speed*timeSinceLastUpdate*mapPointsPerMeter;
 			if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
@@ -125,11 +132,8 @@
 				
 				double theta = atan(deltaY/deltaX);
 				
-				
-				
 				double moveX = enemyStepSize*cos(theta);
 				double moveY = enemyStepSize*sin(theta);
-				
 				
 				if ( deltaX > 0) {
 					moveX = -1.0f*moveX;
@@ -157,7 +161,7 @@
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+	
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -171,6 +175,20 @@
 	self.hudView = nil;
 	self.overlayLabel = nil;
     self.launchBattleButton = nil;
+}
+
+- (void)startUpdatingLocation {
+	if ( !self.displayLink ) {
+		self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(cycleRadius:)];
+		[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+	}
+	[self.locationManager startUpdatingLocation];
+}
+
+- (void)stopUpdatingLocation {
+	[self.displayLink invalidate];
+	self.displayLink = nil;
+	[self.locationManager stopUpdatingLocation];
 }
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
@@ -201,14 +219,13 @@
 	if ( !newLocation )
 		[self showHUD];
 	
-	if ( !oldLocation )
+	if ( !oldLocation ) {
 		[self hideHUD];
-	
-	if ( newLocation && newLocation.horizontalAccuracy > 0) {
-		
 		MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
 		[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
-		
+	}
+	
+	if ( newLocation && newLocation.horizontalAccuracy > 0) {
 		if ( newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD && self.trek )
 				[self.trek addLocation:newLocation];
 		
@@ -264,6 +281,11 @@
 	}
 }
 
+- (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+
 #pragma mark -
 #pragma mark Action
 
@@ -273,16 +295,6 @@
 	[self presentModalViewController:self.battleViewController animated:YES];
 }
 
-- (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
-	[self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)removeBattleView
-{
-	[self.battleViewController.view removeFromSuperview];
-	[self setBattleViewController:nil];
-	self.mapView.hidden = NO;
-}
 
 - (IBAction)startStopPressed:(id)sender { 
 	UIButton *button = nil;
@@ -291,11 +303,11 @@
 	
 	if ( !self.trek ) {
 		[button setTitle:@"Stop" forState:UIControlStateNormal];
-		Trek *newTrek = [[Trek alloc] initWithLocation:_locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
+		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
 		newTrek.date = [NSDate date];
 		self.trek = newTrek;
 		[newTrek release];
-		[self loadEnemiesAroundLocation:_locationManager.location];
+		[self loadEnemiesAroundLocation:locationManager.location];
 	}
 	else {
 		[button setTitle:@"Start" forState:UIControlStateNormal];

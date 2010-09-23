@@ -10,7 +10,7 @@
 #import "MapViewController.h"
 
 @implementation AppDelegate_iPhone
-
+@synthesize mapViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -19,11 +19,12 @@
 	
     // Override point for customization after application launch.
 	MapViewController *vc = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+	self.mapViewController = vc;
+	[vc release];
+	self.mapViewController.view.frame = self.window.bounds;
+	[self.window addSubview:vc.view];
 	
-	vc.view.frame = window.bounds;
-	[window addSubview:vc.view];
-	
-    [window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];
 	
 	return YES;
 }
@@ -34,6 +35,7 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+	
 }
 
 
@@ -42,6 +44,8 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
+	if ( !self.mapViewController.trek )
+		[self.mapViewController stopUpdatingLocation];
 }
 
 
@@ -49,6 +53,9 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+	
+	if ( !self.mapViewController.trek )
+		[self.mapViewController startUpdatingLocation];
 }
 
 
@@ -79,7 +86,7 @@
 
 
 - (void)dealloc {
-	
+	[mapViewController release];
 	[super dealloc];
 }
 

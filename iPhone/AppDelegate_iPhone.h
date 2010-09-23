@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate_Shared.h"
 
+@class MapViewController;
+
 @interface AppDelegate_iPhone : AppDelegate_Shared {
 	
 }
 
+@property (nonatomic, retain) MapViewController *mapViewController;
 
 @end
 

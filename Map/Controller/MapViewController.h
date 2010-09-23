@@ -18,8 +18,6 @@
 @class AppDelegate_Shared;
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate> {
-	CLLocationManager *_locationManager;
-	
 	id <MKOverlay> _pathOverlay;
 	
 	Sonar *_sonar;
@@ -35,6 +33,8 @@
 	NSNumberFormatter *_speedFormatter;
 }
 
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIView *hudView;
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
@@ -42,12 +42,12 @@
 @property (nonatomic, retain) IBOutlet UILabel *durationLabel;
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
-
 @property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
 
 - (IBAction)launchBattlePressed:(id)sender;
-- (void)removeBattleView;
-
 - (IBAction)startStopPressed:(id)sender;
+
+- (void)stopUpdatingLocation;
+- (void)startUpdatingLocation;
 
 @end
