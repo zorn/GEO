@@ -97,6 +97,10 @@
 	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
 	heroHeathLabel.text = typicalHPReading;
 	
+	UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
+	[self.view addSubview:flickThresholdLine];
+	flickThresholdLine.backgroundColor = [UIColor yellowColor];
+	
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
 	NSString *weaponImageName;
@@ -234,19 +238,28 @@
 	// if this touch relivent to our activeWeapon?
 	for (UITouch *touch in touches) {
 		if ([touch isEqual:self.activeWeapon.touch]) {
-			// if so, update the sprite
+			
+			// If the touch has moved the weapon past the flick threshold then end the touch so natural movement can start
 			CGPoint touchLocation = [touch locationInView:self.view];
-			CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
-			self.activeWeapon.position = touchLocation;
-			NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
-			CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
-			CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
-			deltaX /= deltaTime;
-			deltaY /= deltaTime;
-			CGPoint newVelocity = CGPointMake(deltaX, deltaY);
-			self.activeWeapon.velocity = CGPointMake(self.activeWeapon.velocity.x * 0.9 + newVelocity.x * 0.1,
-													 self.activeWeapon.velocity.y * 0.9 + newVelocity.y * 0.1);
-			previousTouchTimestamp = touch.timestamp;
+			if (touchLocation.y <= RQBattleViewFlickThreshold) {
+				self.activeWeapon.touch = nil; // when touch is nil the game loop will begin to update it's position based on velocity
+			} else {
+				// If they are still under the threshold update weapon tracking
+				// if so, update the sprite
+				CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
+				self.activeWeapon.position = touchLocation;
+				NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
+				CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
+				CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
+				deltaX /= deltaTime;
+				deltaY /= deltaTime;
+				CGPoint newVelocity = CGPointMake(deltaX, deltaY);
+				self.activeWeapon.velocity = CGPointMake(self.activeWeapon.velocity.x * 0.9 + newVelocity.x * 0.1,
+														 self.activeWeapon.velocity.y * 0.9 + newVelocity.y * 0.1);
+				previousTouchTimestamp = touch.timestamp;
+			}
+			
+			
 		}
 	}
 }
@@ -261,7 +274,7 @@
 			// when touch is nil the game loop will begin to update it's position based on velocity
 			self.activeWeapon.touch = nil;
 			
-			NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
+			//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
 
 			// if the velocity was too low do not "fire" the weapon but reset it
 			float min_velocity = 30.0;

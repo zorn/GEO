@@ -96,9 +96,12 @@
     alcCloseDevice(device);
 }
 
-
 - (void)playSoundNamed:(NSString *)soundName {
-    NSNumber *sound = [self.sounds objectForKey:soundName];
+    if (RQAudioPlayerPlayAudioDuringDevelopment == NO) {
+		NSLog(@"Did not play sound %@ because RQAudioPlayerPlayAudioDuringDevelopment is set to NO.", soundName);
+		return; 
+	}
+	NSNumber *sound = [self.sounds objectForKey:soundName];
     if (sound) {
         NSUInteger soundID = [sound unsignedIntValue];
         alSourcePlay(soundID);

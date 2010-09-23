@@ -17,6 +17,8 @@
 @class AVCaptureSession;
 @class RQAudioPlayer;
 
+#define RQBattleViewFlickThreshold 320.0
+
 @protocol RQBattleViewControllerDelegate;
 
 @interface RQBattleViewController : UIViewController 

@@ -11,6 +11,8 @@
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>
 
+#define RQAudioPlayerPlayAudioDuringDevelopment NO
+
 @interface RQAudioPlayer : NSObject {
 
 }

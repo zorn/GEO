@@ -106,6 +106,7 @@
 		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */,
 				D8C86C5512450E67007E44AF /* App */,
 				D8C86C6112450EDF007E44AF /* Model */,
 				D8C86C5312450DE9007E44AF /* Map */,
