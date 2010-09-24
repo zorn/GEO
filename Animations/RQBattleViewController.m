@@ -180,7 +180,7 @@
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"Hit_001.caf"];
+			[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
 		}
 	} else {
 		
@@ -203,7 +203,7 @@
 		if (self.battle.enemy.stamina >= 1.0) {
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
-				[audioPlayer playSoundNamed:@"Critical_Hit.caf"];
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
 				self.frontFlashView.alpha = 0.0f;
 				[UIView animateWithDuration:0.1f 
 									  delay:0.0f 
@@ -230,7 +230,7 @@
 		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
-			[audioPlayer playSoundNamed:@"chimp_001.caf"];
+			[[SimpleAudioEngine sharedEngine] playEffect:@"chimp_001.caf"];
 		}
 	}
 	
@@ -285,7 +285,7 @@
 			CGPoint touchLocation = [touch locationInView:self.view];
 			if (touchLocation.y <= RQBattleViewFlickThreshold) {
 				self.activeWeapon.touch = nil; // when touch is nil the game loop will begin to update it's position based on velocity
-				[audioPlayer playSoundNamed:@"Laser.caf"];
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
 			} else {
 				// If they are still under the threshold update weapon tracking
 				// if so, update the sprite
@@ -328,11 +328,10 @@
 				[self setActiveWeapon:nil];
 			} else {
 				// Only play the launch sounds when the weapon will be moving
-				[audioPlayer playSoundNamed:@"Laser.caf"];
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
 			}
 		}
 	}
-    [[SimpleAudioEngine sharedEngine] playEffect:@"Punch_001.caf"];
 }
 
 /************************************************************
