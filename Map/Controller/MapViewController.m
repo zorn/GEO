@@ -286,6 +286,7 @@
 
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
 	[self dismissModalViewControllerAnimated:YES];
+	[self setBattleViewController:nil];
 }
 
 

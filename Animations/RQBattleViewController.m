@@ -31,6 +31,7 @@
 
 - (void)dealloc
 {
+	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
 	[frontFlashView release], frontFlashView = nil;
 	[heroHeathLabel release]; heroHeathLabel = nil;
@@ -161,15 +162,16 @@
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
 	
+	// game sim stuff
 	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];
 	
+	// Move the monster around
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
 	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
-	
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
+	monsterCounter++;
 	
-	monsterCounter++;	
-	
+	// Figure out if the monster has been hit
 	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
 	
 	if (monsterHit) {
@@ -178,12 +180,10 @@
 		if ([[result objectForKey:@"status"] isEqualToString:@"hit"]) {
 			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
-			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
 			[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
 		}
 	} else {
-		
 		// If they have let go of the weapon move it based on velocity.
 		if (!self.activeWeapon.touch)
 		{
@@ -194,12 +194,11 @@
 			if (activeWeapon.position.y < RQBattleViewFlickThreshold) {
 				float scaleBasedOnPosition = ((activeWeapon.position.y / RQBattleViewFlickThreshold) * 50 + 50) / 100;
 				CGRect newFrame = CGRectMake(activeWeapon.view.frame.origin.x, activeWeapon.view.frame.origin.y, activeWeapon.fullSize.width * scaleBasedOnPosition, activeWeapon.fullSize.height * scaleBasedOnPosition);
-				//NSLog(@"scaleBasedOnPosition %f width %f height %f", scaleBasedOnPosition, newFrame.size.width, newFrame.size.height);
 				activeWeapon.view.frame = newFrame;
 			}
 		}
 		
-		// Run ememy AI
+		// Run ememy AI if they have not been hit
 		if (self.battle.enemy.stamina >= 1.0) {
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
@@ -215,7 +214,7 @@
 									 self.frontFlashView.alpha = 0.0f;
 								 }];
 			}
-		}
+		} // end ememy AI
 	}
 	
 	if (currentTime > lastCollisionTime + 1.0) {
@@ -229,6 +228,7 @@
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
 		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
+		// if we are at the last step of making the weapons enabled play a sound cue
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
 			[[SimpleAudioEngine sharedEngine] playEffect:@"chimp_001.caf"];
 		}
@@ -310,7 +310,6 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	NSLog(@"touchesEnded");
 	// if this touch relivent to our activeWeapon?
 	for (UITouch *touch in touches) {
 		if ([touch isEqual:self.activeWeapon.touch]) {
@@ -398,7 +397,7 @@
 - (void)presentVictoryScreen
 {
 	self.battleVictoryViewController = [[[RQBattleVictoryViewController alloc] init] autorelease];
-	[self.battleVictoryViewController setBattleViewController:self];
+	[self.battleVictoryViewController setDelegate:self];
 	[self.view.window addSubview:self.battleVictoryViewController.view];
     self.battleVictoryViewController.view.frame = self.view.window.bounds;
 	self.view.hidden = YES;
@@ -412,8 +411,16 @@
 
 - (void)returnToMapView
 {
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [self stopAnimation];
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	[delegate battleViewControllerDidEnd:self];
+}
+
+- (void)battleVictoryControllerDidEnd:(RQBattleVictoryViewController *)controller;
+{
+	[self.battleVictoryViewController.view removeFromSuperview];
+	[self setBattleVictoryViewController:nil];
+	[self returnToMapView];
 }
 
 @end

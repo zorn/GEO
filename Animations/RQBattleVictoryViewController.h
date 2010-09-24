@@ -1,13 +1,18 @@
 #import <UIKit/UIKit.h>
 
-@class RQBattleViewController;
+@protocol RQBattleVictoryViewControllerDelegate;
 
 @interface RQBattleVictoryViewController : UIViewController
 {
-	RQBattleViewController *battleViewController;
+	
 }
 
-@property (readwrite, retain) RQBattleViewController *battleViewController;
+@property (readwrite, assign) id <RQBattleVictoryViewControllerDelegate> delegate;
 
+@end
+
+@protocol RQBattleVictoryViewControllerDelegate 
+
+- (void)battleVictoryControllerDidEnd:(RQBattleVictoryViewController *)controller;
 
 @end

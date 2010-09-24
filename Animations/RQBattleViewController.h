@@ -7,20 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RQBattleVictoryViewController.h"
 
 @class RQBattle;
 @class RQSprite;
 @class RQEnemySprite;
 @class RQWeaponSprite;
 @class MapViewController;
-@class RQBattleVictoryViewController;
 @class AVCaptureSession;
 
 #define RQBattleViewFlickThreshold 320.0
 
 @protocol RQBattleViewControllerDelegate;
+@protocol RQBattleVictoryViewControllerDelegate;
 
-@interface RQBattleViewController : UIViewController 
+@interface RQBattleViewController : UIViewController <RQBattleVictoryViewControllerDelegate>
 {
 	RQBattleVictoryViewController *battleVictoryViewController;
 	MapViewController *mapViewController;

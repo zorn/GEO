@@ -21,11 +21,11 @@
 
 - (void)dealloc 
 {
-	[battleViewController release]; battleViewController = nil;
+	NSLog(@"RQBattleVictoryViewController -dealloc called...");
 	[super dealloc];
 }
 
-@synthesize battleViewController;
+@synthesize delegate;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -43,8 +43,7 @@
 
 - (void)tapRecognized:(UIGestureRecognizer *)recognizer
 {
-	NSLog(@"tapRecognized with recognizer: %@", recognizer);
-	[self.battleViewController dismissVictoryScreen];
+	[delegate battleVictoryControllerDidEnd:self];
 }
 
 @end
