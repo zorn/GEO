@@ -18,5 +18,6 @@
 
 - (UIProgressView *)enemyHealthMeter;
 - (void)hitWithText:(NSString *)hitText;
+- (void)runDeathAnimation;
 
 @end

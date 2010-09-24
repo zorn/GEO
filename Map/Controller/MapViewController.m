@@ -76,7 +76,8 @@
 		}
 #endif
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"Hit_001.caf"];
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"Hit_001.caf"];
     }
     return self;
 }

@@ -100,5 +100,15 @@
 	[self.view.layer addAnimation:moveUpAnimation forKey:@"transform"];
 }
 
+- (void)runDeathAnimation
+{
+	CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform"];
+	move.fromValue = [NSValue valueWithCATransform3D:self.view.layer.transform];
+	move.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 1.0, 0.0, 0.0)];
+	move.autoreverses = YES;
+	move.repeatCount = HUGE_VALF;
+	move.duration = 0.5;
+	[self.view.layer addAnimation:move forKey:@"position.x"];
+}
 
 @end

@@ -146,6 +146,7 @@
 	self.frontFlashView.frame = ffFrame;
 	frontFlashView.alpha = 0.0;
 	frontFlashView.backgroundColor = [UIColor redColor];
+	frontFlashView.userInteractionEnabled = NO;
 	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
@@ -208,7 +209,7 @@
 									  delay:0.0f 
 									options:UIViewAnimationOptionAutoreverse 
 								 animations:^(void) {
-									 self.frontFlashView.alpha = 0.5f;
+									 self.frontFlashView.alpha = 0.8f;
 								 } 
 								 completion:^(BOOL finished) {
 									 self.frontFlashView.alpha = 0.0f;
@@ -246,7 +247,16 @@
 	// check for end of battle conditions and if done, present the victory screen
 	if (self.battle.isBattleDone) {
 		[self stopAnimation];
-		[self presentVictoryScreen];
+		[UIView animateWithDuration:1.0 
+							  delay:0.0 
+							options:UIViewAnimationCurveLinear 
+						 animations:^(void) {
+							 [evilBoobsMonster runDeathAnimation];
+							 evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+						 } 
+						 completion:^(BOOL finished) {
+							 [self presentVictoryScreen];
+						 }];
 	}
 	
 }
@@ -396,6 +406,8 @@
 		 
 - (void)presentVictoryScreen
 {
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
 	self.battleVictoryViewController = [[[RQBattleVictoryViewController alloc] init] autorelease];
 	[self.battleVictoryViewController setDelegate:self];
 	[self.view.window addSubview:self.battleVictoryViewController.view];
