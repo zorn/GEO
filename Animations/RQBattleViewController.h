@@ -32,6 +32,7 @@
 	
 	RQWeaponSprite *activeWeapon;
 	UILabel *heroHeathLabel;
+	UIView *frontFlashView;
 	
 	NSMutableArray *weaponSprites;
 	
@@ -62,6 +63,7 @@
 @property (readwrite, assign) id <RQBattleViewControllerDelegate> delegate;
 @property (readwrite, retain) RQBattle *battle;
 @property (readwrite, retain) RQWeaponSprite *activeWeapon;
+@property (nonatomic, retain) UIView *frontFlashView;
 
 - (void)tick;
 - (void)setupGameLoop;

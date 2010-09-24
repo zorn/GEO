@@ -33,6 +33,7 @@
 - (void)dealloc
 {
 	[self stopAnimation];
+	[frontFlashView release], frontFlashView = nil;
 	[heroHeathLabel release]; heroHeathLabel = nil;
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
@@ -46,6 +47,7 @@
 @synthesize battleVictoryViewController;
 @synthesize battle;
 @synthesize activeWeapon;
+@synthesize frontFlashView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,12 +80,14 @@
 	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
+	// Setup the run button
 	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[runButton setTitle:@"Run" forState:UIControlStateNormal];
 	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:runButton];
 	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
 	
+	// Setup the textual hp meter
 	NSString *typicalHPReading = @"9999/9999";
 	UIFont *heroHeathLabelFont = [UIFont boldSystemFontOfSize:22];
 	CGSize heroHeathLabelSize = [typicalHPReading sizeWithFont:heroHeathLabelFont];
@@ -97,6 +101,7 @@
 	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
 	heroHeathLabel.text = typicalHPReading;
 	
+	// Setup the flick threshold visual
 	UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
 	[self.view addSubview:flickThresholdLine];
 	flickThresholdLine.backgroundColor = [UIColor yellowColor];
@@ -134,6 +139,15 @@
 	monsterCounter = 0;
 	lastCollisionTime = 0.0;
 	
+	// Setup the self hit visual
+	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
+	CGRect ffFrame = self.frontFlashView.frame;
+	ffFrame.origin.x = 0.0;
+	ffFrame.origin.y = 0.0;
+	self.frontFlashView.frame = ffFrame;
+	frontFlashView.alpha = 0.0;
+	frontFlashView.backgroundColor = [UIColor redColor];
+	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
 	[self startAnimation];
@@ -143,14 +157,13 @@
 
 
 
-- (void)tick {
-	
+- (void)tick
+{	
 	NSTimeInterval currentTime = CACurrentMediaTime();
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
 	
 	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];
-	
 	
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
 	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
@@ -169,7 +182,7 @@
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
-			[audioPlayer playSoundNamed:@"Hit_001.caf"];
+			[audioPlayer playSoundNamed:@"Critical_Hit.caf"];
 		}
 	} else {
 		
@@ -186,7 +199,24 @@
 				//NSLog(@"scaleBasedOnPosition %f width %f height %f", scaleBasedOnPosition, newFrame.size.width, newFrame.size.height);
 				activeWeapon.view.frame = newFrame;
 			}
-			
+		}
+		
+		// Run ememy AI
+		if (self.battle.enemy.stamina >= 1.0) {
+			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
+			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
+				[audioPlayer playSoundNamed:@"Critical_Hit.caf"];
+				self.frontFlashView.alpha = 0.0f;
+				[UIView animateWithDuration:0.1f 
+									  delay:0.0f 
+									options:UIViewAnimationOptionAutoreverse 
+								 animations:^(void) {
+									 self.frontFlashView.alpha = 0.5f;
+								 } 
+								 completion:^(BOOL finished) {
+									 self.frontFlashView.alpha = 0.0f;
+								 }];
+			}
 		}
 	}
 	
@@ -199,7 +229,11 @@
 	
 	// Update the weapons to help visualize the hero stamina
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
+		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
+		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
+			[audioPlayer playSoundNamed:@"chimp_001.caf"];
+		}
 	}
 	
 	// If the weapon leaves the view frame or we hit the monster reset the position of the weapon
@@ -253,6 +287,7 @@
 			CGPoint touchLocation = [touch locationInView:self.view];
 			if (touchLocation.y <= RQBattleViewFlickThreshold) {
 				self.activeWeapon.touch = nil; // when touch is nil the game loop will begin to update it's position based on velocity
+				[audioPlayer playSoundNamed:@"Laser.caf"];
 			} else {
 				// If they are still under the threshold update weapon tracking
 				// if so, update the sprite
@@ -283,7 +318,6 @@
 		if ([touch isEqual:self.activeWeapon.touch]) {
 			// when touch is nil the game loop will begin to update it's position based on velocity
 			self.activeWeapon.touch = nil;
-			
 			//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
 
 			// if the velocity was too low do not "fire" the weapon but reset it
@@ -294,11 +328,12 @@
 				activeWeapon.position = activeWeapon.orininalPosition;
 				activeWeapon.velocity = CGPointZero;
 				[self setActiveWeapon:nil];
+			} else {
+				// Only play the launch sounds when the weapon will be moving
+				[audioPlayer playSoundNamed:@"Laser.caf"];
 			}
-			
 		}
 	}
-	[audioPlayer playSoundNamed:@"Punch_001.caf"];
 }
 
 /************************************************************

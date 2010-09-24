@@ -16,7 +16,7 @@
 		[newMob setMaxHP:30];
 		[newMob setCurrentHP:30];
 		[newMob setLevel:5];
-		[newMob setStamina:100];
+		[newMob setStamina:0];
 		[self setHero:newMob];
 		[newMob release]; newMob = nil;
 		
@@ -25,7 +25,8 @@
 		[newMob setMaxHP:25];
 		[newMob setCurrentHP:25];
 		[newMob setLevel:3];
-		[newMob setStamina:50];
+		[newMob setStamina:0];
+		[newMob setStaminaRegenRate:8.0];
 		[self setEnemy:newMob];
 		[newMob release]; newMob = nil;
 		
