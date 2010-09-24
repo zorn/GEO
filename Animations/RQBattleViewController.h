@@ -15,7 +15,6 @@
 @class MapViewController;
 @class RQBattleVictoryViewController;
 @class AVCaptureSession;
-@class RQAudioPlayer;
 
 #define RQBattleViewFlickThreshold 320.0
 
@@ -49,9 +48,6 @@
     NSInteger animationFrameInterval;
     id displayLink;
     NSTimer *animationTimer;
-
-	// Audio stuff
-	RQAudioPlayer *audioPlayer;
 	
 	//Camera stuff
 #if TARGET_OS_EMBEDDED

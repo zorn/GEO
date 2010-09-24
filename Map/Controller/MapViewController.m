@@ -16,6 +16,7 @@
 #import "EnemyAnnotationView.h"
 #import "RQBattleViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "SimpleAudioEngine.h"
 
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
@@ -74,6 +75,8 @@
 			NSLog(@"Speed:\t%f",trek.averageSpeed);
 		}
 #endif
+        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"Hit_001.caf"];
     }
     return self;
 }

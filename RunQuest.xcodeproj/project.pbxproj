@@ -30,9 +30,11 @@
 		28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow_iPad.xib */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
+		31D9AF39124D0BE700C2F8F6 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF31124D0BE700C2F8F6 /* CDAudioManager.m */; };
+		31D9AF3A124D0BE700C2F8F6 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF34124D0BE700C2F8F6 /* CDOpenALSupport.m */; };
+		31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF36124D0BE700C2F8F6 /* CocosDenshion.m */; };
+		31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF38124D0BE700C2F8F6 /* SimpleAudioEngine.m */; };
 		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
-		C99A9177124A7C16005BAECF /* MyOpenALSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = C99A9173124A7C16005BAECF /* MyOpenALSupport.c */; };
-		C99A9178124A7C16005BAECF /* RQAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C99A9176124A7C16005BAECF /* RQAudioPlayer.m */; };
 		C99A91D0124A7F47005BAECF /* chimp_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B4124A7F47005BAECF /* chimp_001.caf */; };
 		C99A91D1124A7F47005BAECF /* Computer_Data_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */; };
 		C99A91D2124A7F47005BAECF /* Critical_Hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B6124A7F47005BAECF /* Critical_Hit.caf */; };
@@ -120,14 +122,19 @@
 		28EEC0491118E28000187D67 /* AppDelegate_Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_Shared.h; path = Shared/AppDelegate_Shared.h; sourceTree = "<group>"; };
 		28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_Shared.m; path = Shared/AppDelegate_Shared.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
+		31D9AF30124D0BE700C2F8F6 /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
+		31D9AF31124D0BE700C2F8F6 /* CDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAudioManager.m; sourceTree = "<group>"; };
+		31D9AF32124D0BE700C2F8F6 /* CDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDConfig.h; sourceTree = "<group>"; };
+		31D9AF33124D0BE700C2F8F6 /* CDOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDOpenALSupport.h; sourceTree = "<group>"; };
+		31D9AF34124D0BE700C2F8F6 /* CDOpenALSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDOpenALSupport.m; sourceTree = "<group>"; };
+		31D9AF35124D0BE700C2F8F6 /* CocosDenshion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDenshion.h; sourceTree = "<group>"; };
+		31D9AF36124D0BE700C2F8F6 /* CocosDenshion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosDenshion.m; sourceTree = "<group>"; };
+		31D9AF37124D0BE700C2F8F6 /* SimpleAudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine.h; sourceTree = "<group>"; };
+		31D9AF38124D0BE700C2F8F6 /* SimpleAudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RunQuest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunQuest_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C90F10EC12455B81000E456A /* RQEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemySprite.h; sourceTree = "<group>"; };
 		C90F10ED12455B81000E456A /* RQEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemySprite.m; sourceTree = "<group>"; };
-		C99A9173124A7C16005BAECF /* MyOpenALSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MyOpenALSupport.c; sourceTree = "<group>"; };
-		C99A9174124A7C16005BAECF /* MyOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenALSupport.h; sourceTree = "<group>"; };
-		C99A9175124A7C16005BAECF /* RQAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQAudioPlayer.h; sourceTree = "<group>"; };
-		C99A9176124A7C16005BAECF /* RQAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQAudioPlayer.m; sourceTree = "<group>"; };
 		C99A91B4124A7F47005BAECF /* chimp_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chimp_001.caf; sourceTree = "<group>"; };
 		C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Computer_Data_001.caf; sourceTree = "<group>"; };
 		C99A91B6124A7F47005BAECF /* Critical_Hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Critical_Hit.caf; sourceTree = "<group>"; };
@@ -255,9 +262,9 @@
 				D8C86C5512450E67007E44AF /* App */,
 				D8C86C6112450EDF007E44AF /* Model */,
 				D8C86C5312450DE9007E44AF /* Map */,
+				31D9AF2F124D0BE700C2F8F6 /* CocosDenshion */,
 				D8C86C4E12450DAA007E44AF /* Game Engine */,
 				D8C86C4D12450DA3007E44AF /* BattleView */,
-				C99A9172124A7C16005BAECF /* Audio */,
 				D8901EA1124125DE004C5D27 /* Resources */,
 				D8901E1612411D53004C5D27 /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -303,15 +310,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C99A9172124A7C16005BAECF /* Audio */ = {
+		31D9AF2F124D0BE700C2F8F6 /* CocosDenshion */ = {
 			isa = PBXGroup;
 			children = (
-				C99A9173124A7C16005BAECF /* MyOpenALSupport.c */,
-				C99A9174124A7C16005BAECF /* MyOpenALSupport.h */,
-				C99A9175124A7C16005BAECF /* RQAudioPlayer.h */,
-				C99A9176124A7C16005BAECF /* RQAudioPlayer.m */,
+				31D9AF30124D0BE700C2F8F6 /* CDAudioManager.h */,
+				31D9AF31124D0BE700C2F8F6 /* CDAudioManager.m */,
+				31D9AF32124D0BE700C2F8F6 /* CDConfig.h */,
+				31D9AF33124D0BE700C2F8F6 /* CDOpenALSupport.h */,
+				31D9AF34124D0BE700C2F8F6 /* CDOpenALSupport.m */,
+				31D9AF35124D0BE700C2F8F6 /* CocosDenshion.h */,
+				31D9AF36124D0BE700C2F8F6 /* CocosDenshion.m */,
+				31D9AF37124D0BE700C2F8F6 /* SimpleAudioEngine.h */,
+				31D9AF38124D0BE700C2F8F6 /* SimpleAudioEngine.m */,
 			);
-			path = Audio;
+			path = CocosDenshion;
 			sourceTree = "<group>";
 		};
 		C99A91B2124A7F47005BAECF /* sounds */ = {
@@ -620,8 +632,10 @@
 				1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */,
 				1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */,
 				1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */,
-				C99A9177124A7C16005BAECF /* MyOpenALSupport.c in Sources */,
-				C99A9178124A7C16005BAECF /* RQAudioPlayer.m in Sources */,
+				31D9AF39124D0BE700C2F8F6 /* CDAudioManager.m in Sources */,
+				31D9AF3A124D0BE700C2F8F6 /* CDOpenALSupport.m in Sources */,
+				31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */,
+				31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

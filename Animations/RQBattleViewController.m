@@ -15,7 +15,7 @@
 #import "RQMob.h"
 #import "RQWeaponSprite.h"
 #import "RQBattleVictoryViewController.h"
-#import "RQAudioPlayer.h"
+#import "SimpleAudioEngine.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -25,7 +25,6 @@
 {
 	if (self = [super init]) {
 		weaponSprites = [[NSMutableArray alloc] init];
-		audioPlayer = [[RQAudioPlayer alloc] init];
 	}
 	return self;
 }
@@ -40,7 +39,6 @@
 	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
-	[audioPlayer release];
     [super dealloc];
 }
 @synthesize delegate;
@@ -152,7 +150,7 @@
 	[self setupGameLoop];
 	[self startAnimation];
 	
-	[audioPlayer playSoundNamed:@"RQ_Battle_Song.m4a"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
 }
 
 
@@ -182,7 +180,7 @@
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			//NSLog(@"hpPercent %d / %d = %f", self.battle.enemy.currentHP, self.battle.enemy.maxHP, hpPercent);
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
-			[audioPlayer playSoundNamed:@"Critical_Hit.caf"];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"Hit_001.caf"];
 		}
 	} else {
 		
@@ -334,6 +332,7 @@
 			}
 		}
 	}
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Punch_001.caf"];
 }
 
 /************************************************************
@@ -414,7 +413,7 @@
 
 - (void)returnToMapView
 {
-	[audioPlayer stopSoundNamed:@"RQ_Battle_Song.m4a"];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	[delegate battleViewControllerDidEnd:self];
 }
 
