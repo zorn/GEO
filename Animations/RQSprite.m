@@ -14,7 +14,7 @@
 @end
 
 @implementation RQSprite
-@synthesize view, velocity;
+@synthesize fullSize, view, velocity;
 @dynamic position;
 @synthesize orininalPosition;
 
@@ -23,6 +23,7 @@
 - (id)initWithView:(UIView *)theView {
     if ((self = [super init])) {
         view = [theView retain];
+		fullSize = theView.frame.size;
     }
     return self;
 }

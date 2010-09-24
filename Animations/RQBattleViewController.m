@@ -159,15 +159,6 @@
 	
 	monsterCounter++;	
 	
-	
-	// If they have let go of the weapon move it based on velocity.
-	if (!self.activeWeapon.touch) {
-		
-		activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.velocity.x * deltaTime),
-										    activeWeapon.position.y + (activeWeapon.velocity.y * deltaTime));
-		
-	}
-	
 	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
 	
 	if (monsterHit) {
@@ -180,6 +171,23 @@
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
 			[audioPlayer playSoundNamed:@"Hit_001.caf"];
 		}
+	} else {
+		
+		// If they have let go of the weapon move it based on velocity.
+		if (!self.activeWeapon.touch)
+		{
+			activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.velocity.x * deltaTime),
+												activeWeapon.position.y + (activeWeapon.velocity.y * deltaTime));
+			// While moving the weapon we want to simulate perspective
+			// If the weapon is past the flick threshold start to scale the weapon sprite
+			if (activeWeapon.position.y < RQBattleViewFlickThreshold) {
+				float scaleBasedOnPosition = ((activeWeapon.position.y / RQBattleViewFlickThreshold) * 50 + 50) / 100;
+				CGRect newFrame = CGRectMake(activeWeapon.view.frame.origin.x, activeWeapon.view.frame.origin.y, activeWeapon.fullSize.width * scaleBasedOnPosition, activeWeapon.fullSize.height * scaleBasedOnPosition);
+				//NSLog(@"scaleBasedOnPosition %f width %f height %f", scaleBasedOnPosition, newFrame.size.width, newFrame.size.height);
+				activeWeapon.view.frame = newFrame;
+			}
+			
+		}
 	}
 	
 	if (currentTime > lastCollisionTime + 1.0) {
@@ -191,11 +199,13 @@
 	
 	// Update the weapons to help visualize the hero stamina
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
-		weaponSprite.view.layer.opacity = self.battle.hero.stamina; 
+		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
 	}
 	
 	// If the weapon leaves the view frame or we hit the monster reset the position of the weapon
 	if ((!CGRectContainsPoint(self.view.frame, activeWeapon.position)) || monsterHit){
+		activeWeapon.view.frame = CGRectMake(activeWeapon.view.frame.origin.x, activeWeapon.view.frame.origin.y, activeWeapon.fullSize.width, activeWeapon.fullSize.height);
+		// Make sure to edit the position after setting the frame (for scale) .. doing it before results in a slight error in position.
 		activeWeapon.position = activeWeapon.orininalPosition;
 		activeWeapon.velocity = CGPointZero;
 		[self setActiveWeapon:nil];

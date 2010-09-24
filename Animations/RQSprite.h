@@ -12,12 +12,14 @@
 @interface RQSprite : NSObject {
 	
 	UIView *view;
+	CGSize fullSize;
 	CGPoint position;
 	CGPoint orininalPosition;
 	CGPoint velocity;
 
 }
 
+@property(nonatomic, assign) CGSize fullSize;
 @property(nonatomic, assign) CGPoint position;
 @property(nonatomic, assign) CGPoint orininalPosition;
 @property(nonatomic, assign) CGPoint velocity;

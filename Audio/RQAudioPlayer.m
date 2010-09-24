@@ -98,7 +98,7 @@
 
 - (void)playSoundNamed:(NSString *)soundName {
     if (RQAudioPlayerPlayAudioDuringDevelopment == NO) {
-		NSLog(@"Did not play sound %@ because RQAudioPlayerPlayAudioDuringDevelopment is set to NO.", soundName);
+		//NSLog(@"Did not play sound %@ because RQAudioPlayerPlayAudioDuringDevelopment is set to NO.", soundName);
 		return; 
 	}
 	NSNumber *sound = [self.sounds objectForKey:soundName];
