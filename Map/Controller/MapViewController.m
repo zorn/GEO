@@ -19,6 +19,7 @@
 #import "SimpleAudioEngine.h"
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
+#import "RQHero.h"
 
 #define ENEMY_GENERATION_BOUNDS_X .001f
 #define ENEMY_GENERATION_BOUNDS_Y .0015f
@@ -347,6 +348,11 @@
 - (IBAction)launchBattlePressed:(id)sender {
     self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
+	
+	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
+	RQHero *hero = [[RQModelController defaultModelController] hero];
+	[hero setCurrentHP:hero.maxHP];
+	
 	[self presentModalViewController:self.battleViewController animated:YES];
 }
 

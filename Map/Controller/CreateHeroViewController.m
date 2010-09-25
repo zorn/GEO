@@ -39,8 +39,11 @@
 {
 	//[self.heroNameTextField resignFirstResponder];
 	NSString *newHeroName = [self.heroNameTextField text];
-	if (!newHeroName) {
-		newHeroName = @"Lazy Tester";
+	if (!newHeroName || newHeroName.length <= 0) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name Required" message:@"Please type in a name." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show]; [alert release];
+		[self.heroNameTextField setText:@"Lazy Tester"];
+		return;
 	}
 	RQHero *hero = [[RQModelController defaultModelController] hero];
 	[hero setName:newHeroName];

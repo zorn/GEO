@@ -71,7 +71,6 @@ static RQModelController *defaultModelController = nil;
 	} else if (heros.count == 0) {
 		// make the hero
 		RQHero *hero = (RQHero *)[simpleCoreData newObjectInEntityWithName:@"Hero" values:nil];
-		[hero setName:@"Demo Hero"];
 		return hero;
 	} else {
 		NSLog(@"There is more than 1 hero in the db. Uh oh.");

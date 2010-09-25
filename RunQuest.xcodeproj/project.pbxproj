@@ -10,6 +10,7 @@
 		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
+		1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
 		1A6E3284124E4E210054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
 		1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3286124E4E830054949B /* M3CoreDataManager.m */; };
 		1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3288124E4E830054949B /* M3SimpleCoreData.m */; };
@@ -44,7 +45,6 @@
 		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
-		1AC92467124D755800E09F6A /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
@@ -802,7 +802,6 @@
 				31D9AF3A124D0BE700C2F8F6 /* CDOpenALSupport.m in Sources */,
 				31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */,
 				31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */,
-				1AC92467124D755800E09F6A /* MainMenuViewController.m in Sources */,
 				1A6E3284124E4E210054949B /* RQModelController.m in Sources */,
 				1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */,
 				1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */,
@@ -810,6 +809,7 @@
 				1A6E333F124E5FAA0054949B /* RQEnemy.m in Sources */,
 				1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */,
 				1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */,
+				1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
 @implementation EnemyMapSpawn
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)initialCoordinate inManagedObjectContext:(NSManagedObjectContext *)moc {
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Enemy" inManagedObjectContext:moc];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"EnemyMapSpawn" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:entity insertIntoManagedObjectContext:moc] )) {
 		self.coordinate = initialCoordinate;
 		self.speed = 0;

@@ -1,3 +1,9 @@
+September 25, 2010
+
+* MDZ: Added and converted the RQMob into the main core data database.
+* MDZ: Added RQModelController which has a singleton defaultModelController. This is a nice class that lets you access objects from the core data soup in a clean way without excessive code.
+* MDZ: The hero state now stays around from session to session. We don't have the code yet to regen the hero health as you walk so before each battle we give you a full heal.
+
 September 24, 2010
 
 * MDZ: Reworked some of the sound effects. Launch weapon sound, hit sound.
