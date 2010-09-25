@@ -17,7 +17,7 @@
 @class AVCaptureSession;
 @class AVCaptureVideoPreviewLayer;
 
-#define RQBattleViewFlickThreshold 320.0
+#define RQBattleViewFlickThreshold 280.0
 
 @protocol RQBattleViewControllerDelegate;
 @protocol RQBattleVictoryViewControllerDelegate;

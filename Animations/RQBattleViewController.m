@@ -108,9 +108,9 @@
 	heroHeathLabel.text = typicalHPReading;
 	
 	// Setup the flick threshold visual
-	UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
-	[self.view addSubview:flickThresholdLine];
-	flickThresholdLine.backgroundColor = [UIColor yellowColor];
+	//UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
+//	[self.view addSubview:flickThresholdLine];
+//	flickThresholdLine.backgroundColor = [UIColor yellowColor];
 	
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
@@ -189,14 +189,20 @@
 			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
-			[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
+			
+			NSInteger attackValue = [[result objectForKey:@"attackValue"] integerValue];
+			if ( (1.0f* attackValue / self.battle.enemy.currentHP) < .10f )
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_004.caf"];
+			else
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
+			
 		}
 	} else {
 		// If they have let go of the weapon move it based on velocity.
 		if (!self.activeWeapon.touch)
 		{
-			activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.velocity.x * deltaTime),
-												activeWeapon.position.y + (activeWeapon.velocity.y * deltaTime));
+			activeWeapon.position = CGPointMake(activeWeapon.position.x + (activeWeapon.averageVelocity.x * deltaTime),
+												activeWeapon.position.y + (activeWeapon.averageVelocity.y * deltaTime));
 			// While moving the weapon we want to simulate perspective
 			// If the weapon is past the flick threshold start to scale the weapon sprite
 			if (activeWeapon.position.y < RQBattleViewFlickThreshold) {
@@ -289,6 +295,33 @@
 	}
 }
 
+- (void)releaseActiveWeapon {
+	// when touch is nil the game loop will begin to update it's position based on velocity
+	self.activeWeapon.touch = nil;
+	//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
+	
+	// if the velocity was too low do not "fire" the weapon but reset it
+	float min_velocity = 1000.0;
+	if ( sqrt(pow(self.activeWeapon.averageVelocity.x, 2) + pow(self.activeWeapon.averageVelocity.y, 2)) < min_velocity )
+	{
+		CGFloat deltaX = -.1f*(activeWeapon.position.x - activeWeapon.orininalPosition.x);
+		CGFloat deltaY = -.1f*(activeWeapon.position.y - activeWeapon.orininalPosition.y);
+		
+		[UIView animateWithDuration:0.25f 
+						 animations:
+		 ^{activeWeapon.position = CGPointMake(activeWeapon.orininalPosition.x + deltaX, activeWeapon.orininalPosition.y + deltaY);} 
+						 completion: 
+		 ^(BOOL finished){[UIView animateWithDuration:0.1 animations:^{activeWeapon.position = activeWeapon.orininalPosition;
+			[self setActiveWeapon:nil];}]; }];
+		activeWeapon.velocity = CGPointZero;
+		
+	} else {
+		// Only play the launch sounds when the weapon will be moving
+		[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
+	}
+}
+
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	// if this touch relivent to our activeWeapon?
@@ -298,25 +331,22 @@
 			// If the touch has moved the weapon past the flick threshold then end the touch so natural movement can start
 			CGPoint touchLocation = [touch locationInView:self.view];
 			if (touchLocation.y <= RQBattleViewFlickThreshold) {
-				self.activeWeapon.touch = nil; // when touch is nil the game loop will begin to update it's position based on velocity
-				[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
+				[self releaseActiveWeapon];
 			} else {
 				// If they are still under the threshold update weapon tracking
 				// if so, update the sprite
-				CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
-				self.activeWeapon.position = touchLocation;
-				NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
-				CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
-				CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
-				deltaX /= deltaTime;
-				deltaY /= deltaTime;
-				CGPoint newVelocity = CGPointMake(deltaX*10, deltaY*10);
-				self.activeWeapon.velocity = CGPointMake(self.activeWeapon.velocity.x * 0.9 + newVelocity.x * 0.1,
-														 self.activeWeapon.velocity.y * 0.9 + newVelocity.y * 0.1);
-				previousTouchTimestamp = touch.timestamp;
+				[self.activeWeapon setPosition:touchLocation atTime:touch.timestamp];
+				//CGPoint previousTouchLocation = [touch previousLocationInView:self.view];
+//				self.activeWeapon.position = touchLocation;
+//				NSTimeInterval deltaTime = touch.timestamp - previousTouchTimestamp;
+//				CGFloat deltaX = touchLocation.x - previousTouchLocation.x;
+//				CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
+//				deltaX /= deltaTime;
+//				deltaY /= deltaTime;
+//				CGPoint newVelocity = CGPointMake(deltaX, deltaY);
+//				self.activeWeapon.velocity = CGPointMake(newVelocity.x, newVelocity.y);
+//				previousTouchTimestamp = touch.timestamp;
 			}
-			
-			
 		}
 	}
 }
@@ -327,29 +357,7 @@
 	// if this touch relivent to our activeWeapon?
 	for (UITouch *touch in touches) {
 		if ([touch isEqual:self.activeWeapon.touch]) {
-			// when touch is nil the game loop will begin to update it's position based on velocity
-			self.activeWeapon.touch = nil;
-			//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
-
-			// if the velocity was too low do not "fire" the weapon but reset it
-			float min_velocity = 100.0;
-			if ( self.battle.hero.stamina < 1.0 || ABS(self.activeWeapon.velocity.x) < min_velocity || ABS(self.activeWeapon.velocity.y) < min_velocity ) 
-			{
-				CGFloat deltaX = -.25f*(activeWeapon.position.x - activeWeapon.orininalPosition.x);
-				CGFloat deltaY = -.25f*(activeWeapon.position.y - activeWeapon.orininalPosition.y);
-				
-				[UIView animateWithDuration:0.2 
-								 animations:
-				 ^{activeWeapon.position = CGPointMake(activeWeapon.orininalPosition.x + deltaX, activeWeapon.orininalPosition.y + deltaY);} 
-								 completion: 
-				 ^(BOOL finished){[UIView animateWithDuration:0.1 animations:^{activeWeapon.position = activeWeapon.orininalPosition;
-								  [self setActiveWeapon:nil];}]; }];
-				activeWeapon.velocity = CGPointZero;
-				
-			} else {
-				// Only play the launch sounds when the weapon will be moving
-				[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
-			}
+			[self releaseActiveWeapon];
 		}
 	}
 }

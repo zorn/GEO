@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <pthread.h>
 
 @interface RQSprite : NSObject {
 	
@@ -15,8 +15,11 @@
 	CGSize fullSize;
 	CGPoint position;
 	CGPoint orininalPosition;
-	CGPoint velocity;
-
+	
+	CGPoint *positions;
+	CFTimeInterval *times;
+	NSUInteger samples;
+	pthread_rwlock_t rwLock;
 }
 
 @property(nonatomic, assign) CGSize fullSize;
@@ -24,8 +27,10 @@
 @property(nonatomic, assign) CGPoint orininalPosition;
 @property(nonatomic, assign) CGPoint velocity;
 @property(nonatomic, retain, readonly) UIView *view;
+@property(readonly) CGPoint	averageVelocity;
 
 - (id)initWithView:(UIView *)theView;
 - (BOOL)isIntersectingRect:(CGRect)otherRect;
+- (void)setPosition:(CGPoint)pos atTime:(CFTimeInterval)time;
 
 @end

@@ -60,7 +60,7 @@
 {
 	// generate a random value to represnt an attack form self against mob
 	// TODO: More interesting math
-	return 5;
+	return 5*pow(self.stamina, 3.0);
 }
 
 - (NSInteger)randomStrongAttackValueAgainstMob:(RQMob *)mob
