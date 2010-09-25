@@ -8,8 +8,10 @@
 
 #import "AppDelegate_iPhone.h"
 #import "MapViewController.h"
+#import "MainMenuViewController.h"
 
 @implementation AppDelegate_iPhone
+@synthesize mainMenuViewController;
 @synthesize mapViewController;
 
 #pragma mark -
@@ -18,11 +20,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
     // Override point for customization after application launch.
-	MapViewController *vc = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
-	self.mapViewController = vc;
-	[vc release];
-	self.mapViewController.view.frame = self.window.bounds;
-	[self.window addSubview:vc.view];
+	self.mainMenuViewController = [[[MainMenuViewController alloc] init] autorelease];
+	[self.window addSubview:self.mainMenuViewController.view];
+	
+//	MapViewController *vc = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+//	self.mapViewController = vc;
+//	[vc release];
+//	self.mapViewController.view.frame = self.window.bounds;
+//	[self.window addSubview:vc.view];
 	
     [self.window makeKeyAndVisible];
 	

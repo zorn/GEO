@@ -4,6 +4,7 @@ September 24, 2010
 * MDZ: Enemy will now hit you.
 * MDZ: Added some code for a death animation, needs work.
 * MDZ: Victory screen now plays music, doesn't fade out as nice as I'd like if you double tap to return to the map before it's finished.
+* MDZ: Adding a basic main menu screen based off Johnny render.
 
 September 23, 2010
 

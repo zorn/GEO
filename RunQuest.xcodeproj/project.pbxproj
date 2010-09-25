@@ -21,6 +21,9 @@
 		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
+		1AC92467124D755800E09F6A /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
+		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
+		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -108,6 +111,10 @@
 		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		1AC92470124D75A000E09F6A /* MainMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
+		1AC92474124D75DA00E09F6A /* menu_bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_bk.png; path = ui/menu_bk.png; sourceTree = "<group>"; };
 		1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
@@ -232,6 +239,14 @@
 				1D6058910D05DD3D006BFB54 /* RunQuest.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1AC92473124D75CF00E09F6A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				1AC92474124D75DA00E09F6A /* menu_bk.png */,
+			);
+			name = ui;
 			sourceTree = "<group>";
 		};
 		2860E386111B897F00E27156 /* iPhone */ = {
@@ -403,6 +418,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1AC92473124D75CF00E09F6A /* ui */,
 				C99A91B2124A7F47005BAECF /* sounds */,
 				1A8EA7A1124987870006A220 /* air_button@2x.png */,
 				1A8EA7A2124987870006A220 /* earth_button@2x.png */,
@@ -503,6 +519,9 @@
 				D8C86C7F12451082007E44AF /* MapViewController.h */,
 				D8C86C8012451082007E44AF /* MapViewController.m */,
 				D8C86C8112451082007E44AF /* MapViewController.xib */,
+				1AC92465124D755800E09F6A /* MainMenuViewController.h */,
+				1AC92466124D755800E09F6A /* MainMenuViewController.m */,
+				1AC92470124D75A000E09F6A /* MainMenuView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -596,6 +615,8 @@
 				C99A91E8124A7F47005BAECF /* victory_long.m4a in Resources */,
 				C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */,
 				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
+				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
+				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +657,7 @@
 				31D9AF3A124D0BE700C2F8F6 /* CDOpenALSupport.m in Sources */,
 				31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */,
 				31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */,
+				1AC92467124D755800E09F6A /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
