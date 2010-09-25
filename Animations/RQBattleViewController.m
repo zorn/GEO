@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RQSprite.h"
 #import "RQEnemySprite.h"
-#import "MapViewController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
 #import "RQWeaponSprite.h"
@@ -33,11 +32,19 @@
 {
 	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
+#if TARGET_OS_EMBEDDED 
+	[_captureLayer removeFromSuperlayer];
+	_captureLayer.session = nil;
+	[_captureLayer release];
+	
+	[_captureSession stopRunning];
+	[_captureSession release];
+	_captureSession = nil;
+#endif
 	[frontFlashView release], frontFlashView = nil;
 	[heroHeathLabel release]; heroHeathLabel = nil;
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
-	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
     [super dealloc];
@@ -67,10 +74,10 @@
 			NSLog(@"%@", error);
 	
 		[_captureSession addInput: defaultVideoDeviceInput];
-		AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
-		layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-		layer.frame = self.view.layer.bounds;
-		[self.view.layer addSublayer:layer];
+		_captureLayer = [[AVCaptureVideoPreviewLayer layerWithSession:_captureSession] retain];
+		_captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+		_captureLayer.frame = self.view.layer.bounds;
+		[self.view.layer addSublayer:_captureLayer];
 		[_captureSession startRunning];
 	}
 #endif

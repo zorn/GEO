@@ -23,9 +23,11 @@
 #define ENEMY_SPEED_VARIANCE 0.5f
 #define SLOWEST_ENEMY_SPEED 1.25f
 #define ENEMIES_TO_GENERATE 5
-#define ENEMY_GENERATION_RADIUS 50
+#define ENEMY_GENERATION_RADIUS 10
 #define LOCATION_ACCURACY_THRESHOLD 50
 #define PRINT_TREKS 0
+#define ENEMY_SPAWN_EVERY 20 //seconds
+#define ENEMY_PULSE_EVERY 1 //second
 
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
 
@@ -35,6 +37,9 @@
 - (void)showHUD;
 - (void)hideHUD;
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
+- (void)encounterEnemy:(Enemy *)enemy;
+- (void)startGeneratingEnemies;
+- (void)stopGeneratingEnemies;
 @end
 
 @implementation MapViewController
@@ -59,7 +64,7 @@
 		_speedFormatter = [[NSNumberFormatter alloc] init];
 		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[_speedFormatter setMaximumSignificantDigits:2];
-		_timers = [[NSMutableSet alloc] initWithCapacity:2];
+		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"Hit_001.caf"];
@@ -120,46 +125,57 @@
 	
 }
 
-- (void)pulseAllEnemies {
+- (void)encounterEnemy:(Enemy *)enemy {
+	[self stopGeneratingEnemies];
+	[self launchBattlePressed:self];
+}
+
+- (void)pulseEnemies {
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
 		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
-		
-	for ( EnemyAnnotationView* enemyView in _enemyViews ) {
-		Enemy *enemy = enemyView.annotation;
-		if ( enemy.speed ) {
-			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
-			MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
-			double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
-			double enemyStepSize =  enemy.speed*timeSinceLastUpdate;
-			if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
-				double deltaX = enemyPoint.x - heroPoint.x;
-				double deltaY = enemyPoint.y - heroPoint.y;
-				
-				double theta = atan(deltaY/deltaX);
-				
-				double moveX = enemyStepSize*cos(theta)*mapPointsPerMeter;
-				double moveY = enemyStepSize*sin(theta)*mapPointsPerMeter;
-				
-				if ( deltaX > 0) {
-					moveX = -1.0f*moveX;
-					moveY = -1.0f*moveY;
+	
+	
+	@synchronized (_enemyViews ) {
+		NSSet *safeIterableCopy = [_enemyViews copy];
+		for ( EnemyAnnotationView* enemyView in safeIterableCopy ) {
+			Enemy *enemy = enemyView.annotation;
+			if ( enemy.speed ) {
+				MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
+				MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
+				double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
+				double enemyStepSize =  enemy.speed*timeSinceLastUpdate;
+				if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
+					double deltaX = enemyPoint.x - heroPoint.x;
+					double deltaY = enemyPoint.y - heroPoint.y;
+					
+					double theta = atan(deltaY/deltaX);
+					
+					double moveX = enemyStepSize*cos(theta)*mapPointsPerMeter;
+					double moveY = enemyStepSize*sin(theta)*mapPointsPerMeter;
+					
+					if ( deltaX > 0) {
+						moveX = -1.0f*moveX;
+						moveY = -1.0f*moveY;
+					}
+					
+					MKMapPoint newPoint = MKMapPointMake(enemyPoint.x + moveX, enemyPoint.y + moveY);
+					
+					CLLocationCoordinate2D newCoordinate = MKCoordinateForMapPoint(newPoint);
+					enemy.coordinate = newCoordinate;
 				}
-				
-				MKMapPoint newPoint = MKMapPointMake(enemyPoint.x + moveX, enemyPoint.y + moveY);
-				
-				CLLocationCoordinate2D newCoordinate = MKCoordinateForMapPoint(newPoint);
-				enemy.coordinate = newCoordinate;
+				else {
+					enemy.coordinate = _sonar.coordinate;
+					AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+					[self removeEnemyView:enemyView];
+					[self encounterEnemy:enemyView.annotation];
+				}
 			}
-			else {
-				enemy.coordinate = _sonar.coordinate;
-				AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-				[self removeEnemyView:enemyView];
-			}
+			[enemyView pulse];
 		}
-		[enemyView pulse];
+		[safeIterableCopy release];
 	}
-		[_lastEnemyUpdate release];
+	[_lastEnemyUpdate release];
 		_lastEnemyUpdate = [[NSDate date] retain];
 }
 
@@ -179,17 +195,27 @@
 }
 
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
-	Enemy *enemy = enemyView.annotation;
-	[self.mapView removeAnnotation:enemy];
-	[_enemies removeObject:enemy];
-	[_enemyViews removeObject:enemyView];
+	@synchronized (_enemyViews ) {
+		Enemy *enemy = enemyView.annotation;
+		[self.mapView removeAnnotation:enemy];
+		[_enemies removeObject:enemy];
+		[_enemyViews removeObject:enemyView];
+	}
+}
+
+- (void)addEnemyView:(EnemyAnnotationView *)enemyView {
+	@synchronized (_enemyViews ) {
+		[_enemyViews addObject:enemyView];
+	}
 }
 
 
 - (void)addEnemy:(Enemy *)enemy {
-	[self.mapView addAnnotation:enemy];
-	[_enemies addObject:enemy];
-}
+	@synchronized (_enemyViews ) {
+		[self.mapView addAnnotation:enemy];
+		[_enemies addObject:enemy];
+	}
+}	
 - (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	CLLocationDirection course = location.course;
@@ -273,7 +299,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	if ( [annotation isKindOfClass:[Enemy class]] ) {
 		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
-		[_enemyViews addObject:view];
+		[self addEnemyView:view];
 		return [view autorelease];
 	}
 	else
@@ -301,11 +327,14 @@
 	for ( EnemyAnnotationView *enemyView in safeToIterateCopy ) {
 		[self removeEnemyView:enemyView];
 	}
+	[safeToIterateCopy release];
 }
 
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
 	[self dismissModalViewControllerAnimated:YES];
 	[self setBattleViewController:nil];
+	if ( self.trek )
+		[self startGeneratingEnemies];
 }
 
 
@@ -318,7 +347,32 @@
 	[self presentModalViewController:self.battleViewController animated:YES];
 }
 
+- (void)removeTimerNamed:(NSString *)name {
+	NSTimer *timer = [_timers objectForKey:name];
+	[timer invalidate];
+	[_timers removeObjectForKey:name];
+}
 
+- (void)addTimerNamed:(NSString *)name withInterval:(NSTimeInterval)interval selector:(SEL)selector fireDate:(NSDate *)fireDate {
+	NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:selector	userInfo:nil repeats:YES];
+	[_timers setObject:timer forKey:name];
+	if ( fireDate )
+		[timer setFireDate:fireDate];
+	else
+		[timer fire];
+}
+
+- (void)startGeneratingEnemies {
+	[self addTimerNamed:@"EnemySpawn" withInterval:ENEMY_SPAWN_EVERY selector:@selector(spawnEnemy) fireDate:[NSDate dateWithTimeIntervalSinceNow:ENEMY_SPAWN_EVERY]];
+	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
+}
+
+- (void)stopGeneratingEnemies {
+	[self removeTimerNamed:@"EnemySpawn"];
+	[self removeTimerNamed:@"EnemyPulse"];
+}
+
+	
 - (IBAction)startStopPressed:(id)sender { 
 	UIButton *button = nil;
 	if ( [sender isKindOfClass:[UIButton class]] )
@@ -330,14 +384,8 @@
 		newTrek.date = [NSDate date];
 		self.trek = newTrek;
 		[newTrek release];
-		//[self generateEnemyForHeroAtLocation:locationManager.location];
-		NSTimer *enemyPulseTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pulseAllEnemies) userInfo:nil repeats:YES];
-		[_timers addObject:enemyPulseTimer];
-		[enemyPulseTimer fire];
-		
-		NSTimer *enemyGenerationTimer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(spawnEnemy) userInfo:nil repeats:YES];
-		[_timers addObject:enemyGenerationTimer];
-		[enemyGenerationTimer fire];
+		[self generateEnemyForHeroAtLocation:locationManager.location];
+		[self startGeneratingEnemies];
 	}
 	else {
 		[button setTitle:@"Start" forState:UIControlStateNormal];
@@ -347,12 +395,7 @@
 		if ( error )
 			NSLog(@"%@", error);
 		self.trek = nil;
-		
-		NSSet *safeIterableCopy = [_timers copy];
-		for ( NSTimer *timer in safeIterableCopy ) {
-			[timer invalidate];
-			[_timers removeObject:timer];
-		}
+		[self stopGeneratingEnemies];
 	}
 }
 

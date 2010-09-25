@@ -32,7 +32,7 @@
 	
 	NSNumberFormatter *_speedFormatter;
 	
-	NSMutableSet *_timers;
+	NSMutableDictionary *_timers;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
