@@ -11,6 +11,8 @@
 
 @implementation MainMenuViewController
 
+@synthesize delegate;
+
 #pragma mark -
 #pragma mark Initialization
 
@@ -31,6 +33,7 @@
 - (IBAction)playButtonPressed:(id)sender
 {
 	NSLog(@"playButtonPressed");
+	[delegate mainMenuViewControllerPlayButtonPressed:self];
 }
 
 - (IBAction)optionsButtonPressed:(id)sender

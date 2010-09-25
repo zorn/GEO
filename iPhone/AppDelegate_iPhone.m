@@ -11,7 +11,6 @@
 #import "MainMenuViewController.h"
 
 @implementation AppDelegate_iPhone
-@synthesize mainMenuViewController;
 @synthesize mapViewController;
 
 #pragma mark -
@@ -20,15 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
     // Override point for customization after application launch.
-	self.mainMenuViewController = [[[MainMenuViewController alloc] init] autorelease];
-	[self.window addSubview:self.mainMenuViewController.view];
-	
-//	MapViewController *vc = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
-//	self.mapViewController = vc;
-//	[vc release];
-//	self.mapViewController.view.frame = self.window.bounds;
-//	[self.window addSubview:vc.view];
-	
+	[self.window addSubview:self.mainMenuViewController.view];	
     [self.window makeKeyAndVisible];
 	
 	return YES;
@@ -83,17 +74,37 @@
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
+    [mainMenuViewController release];
     [super applicationDidReceiveMemoryWarning:application];
 }
 
 
 - (void)dealloc {
+	[mainMenuViewController release];
 	[mapViewController release];
 	[super dealloc];
 }
+
+- (MainMenuViewController *)mainMenuViewController
+{
+	if (!mainMenuViewController) {
+		mainMenuViewController = [[MainMenuViewController alloc] init]; 
+		[mainMenuViewController setDelegate:self];
+	}
+	return mainMenuViewController;
+}
+
+#pragma mark -
+#pragma mark MainMenuViewControllerDelegate methods
+
+- (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller
+{
+	[mainMenuViewController.view removeFromSuperview];
+	self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+	self.mapViewController.view.frame = self.window.bounds;
+	[self.window addSubview:self.mapViewController.view];
+}
+
 
 
 @end
