@@ -18,12 +18,12 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SimpleAudioEngine.h"
 
-#define ENEMY_GENERATION_BOUNDS_X .01f
-#define ENEMY_GENERATION_BOUNDS_Y .015f
-#define ENEMY_SPEED_VARIANCE 1.5f
-#define SLOWEST_ENEMY_SPEED 1.5f
+#define ENEMY_GENERATION_BOUNDS_X .001f
+#define ENEMY_GENERATION_BOUNDS_Y .0015f
+#define ENEMY_SPEED_VARIANCE 0.5f
+#define SLOWEST_ENEMY_SPEED 1.25f
 #define ENEMIES_TO_GENERATE 5
-
+#define ENEMY_GENERATION_RADIUS 50
 #define LOCATION_ACCURACY_THRESHOLD 50
 #define PRINT_TREKS 0
 
@@ -34,12 +34,13 @@
 //- (void)updatePath;
 - (void)showHUD;
 - (void)hideHUD;
+- (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
 @end
 
 @implementation MapViewController
 @synthesize hudView, overlayLabel, mapView, displayLink, speedLabel, durationLabel, trek, launchBattleButton, locationManager, battleViewController;
 
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+#pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
 		srand([[NSDate date] timeIntervalSince1970]);
@@ -58,23 +59,7 @@
 		_speedFormatter = [[NSNumberFormatter alloc] init];
 		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[_speedFormatter setMaximumSignificantDigits:2];
-#if PRINT_TREKS
-		NSArray	*treks = [[appDelegate managedObjectContext] fetchObjectsForEntityName:@"Trek"];
-		for ( Trek *trek in treks ) {
-			for (CLLocation *location in trek.locations )
-			{
-				if ( lastLocation ) {
-					NSLog(@"dt:\t%f", location.timestamp - lastLocation.timestamp);
-					NSLog(@"dd:\t%f", [location distanceFromLocation:lastLocation]);
-					NSLog(@"da:\t%f", location.altitude - lastLocation.altitude);
-				}
-				lastLocation = location;
-			}
-			NSLog(@"Distance:\t%f", trek.distance);
-			NSLog(@"Time:\t%f",trek.duration);
-			NSLog(@"Speed:\t%f",trek.averageSpeed);
-		}
-#endif
+		_timers = [[NSMutableSet alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"Hit_001.caf"];
@@ -99,29 +84,46 @@
 	[_enemies release];
     [launchBattleButton release];
 	[_enemyViews release];
+	[_timers release];
 	[super dealloc];
 }
 
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+    // Release any cached data, images, etc that aren't in use.
+}
 
+#pragma mark View Life Cycle
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[self startUpdatingLocation];
     [super viewDidLoad];
 }
 
-- (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
-	Enemy *enemy = enemyView.annotation;
-	[self.mapView removeAnnotation:enemy];
-	[_enemies removeObject:enemy];
-	[_enemyViews removeObject:enemyView];
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+	[self.displayLink invalidate];
+	self.displayLink = nil;
+	self.mapView = nil;
+	self.hudView = nil;
+	self.overlayLabel = nil;
+    self.launchBattleButton = nil;
 }
 
-- (void)cycleRadius:(CADisplayLink *)sender {
+#pragma mark Timer Fire Methods
+
+- (void)displayLinkDidFire:(CADisplayLink *)sender {
+	
+}
+
+- (void)pulseAllEnemies {
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
 		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
-	
-	if ( !_lastEnemyUpdate || timeSinceLastUpdate > 2.0f ) {
 		
 	for ( EnemyAnnotationView* enemyView in _enemyViews ) {
 		Enemy *enemy = enemyView.annotation;
@@ -129,15 +131,15 @@
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
 			MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
 			double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
-			double enemyStepSize =  enemy.speed*timeSinceLastUpdate*mapPointsPerMeter;
+			double enemyStepSize =  enemy.speed*timeSinceLastUpdate;
 			if ( MKMetersBetweenMapPoints(enemyPoint, heroPoint) > enemyStepSize ) {
 				double deltaX = enemyPoint.x - heroPoint.x;
 				double deltaY = enemyPoint.y - heroPoint.y;
 				
 				double theta = atan(deltaY/deltaX);
 				
-				double moveX = enemyStepSize*cos(theta);
-				double moveY = enemyStepSize*sin(theta);
+				double moveX = enemyStepSize*cos(theta)*mapPointsPerMeter;
+				double moveY = enemyStepSize*sin(theta)*mapPointsPerMeter;
 				
 				if ( deltaX > 0) {
 					moveX = -1.0f*moveX;
@@ -159,41 +161,58 @@
 	}
 		[_lastEnemyUpdate release];
 		_lastEnemyUpdate = [[NSDate date] retain];
-	}
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-	[self.displayLink invalidate];
-	self.displayLink = nil;
-	self.mapView = nil;
-	self.hudView = nil;
-	self.overlayLabel = nil;
-    self.launchBattleButton = nil;
 }
 
 - (void)startUpdatingLocation {
-	if ( !self.displayLink ) {
-		self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(cycleRadius:)];
-		[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-	}
+	//if ( !self.displayLink ) {
+//		self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkDidFire:)];
+//		[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+//	}
+	
 	[self.locationManager startUpdatingLocation];
 }
 
 - (void)stopUpdatingLocation {
-	[self.displayLink invalidate];
-	self.displayLink = nil;
+	//[self.displayLink invalidate];
+//	self.displayLink = nil;
 	[self.locationManager stopUpdatingLocation];
 }
+
+- (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
+	Enemy *enemy = enemyView.annotation;
+	[self.mapView removeAnnotation:enemy];
+	[_enemies removeObject:enemy];
+	[_enemyViews removeObject:enemyView];
+}
+
+
+- (void)addEnemy:(Enemy *)enemy {
+	[self.mapView addAnnotation:enemy];
+	[_enemies addObject:enemy];
+}
+- (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
+	CLLocationCoordinate2D coordinate = location.coordinate;
+	CLLocationDirection course = location.course;
+
+	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
+	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
+	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
+	
+	Enemy *enemy = [[Enemy alloc] initWithCoordinate:enemyCoordinate inManagedObjectContext:[appDelegate managedObjectContext]];
+	enemy.speed = ( location.speed > 0 ? location.speed : SLOWEST_ENEMY_SPEED ) + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
+	enemy.heading = 0;
+	
+	[self addEnemy:enemy];
+	[enemy release];
+}
+
+- (void)spawnEnemy {
+	[self generateEnemyForHeroAtLocation:locationManager.location];
+}
+
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
@@ -203,8 +222,7 @@
 		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
 		enemy.speed = SLOWEST_ENEMY_SPEED + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
 		enemy.heading = 0;
-		[self.mapView addAnnotation:enemy];
-		[_enemies addObject:enemy];
+		[self addEnemy:enemy];
 		[enemy release];
 	}
 }
@@ -312,7 +330,14 @@
 		newTrek.date = [NSDate date];
 		self.trek = newTrek;
 		[newTrek release];
-		[self loadEnemiesAroundLocation:locationManager.location];
+		//[self generateEnemyForHeroAtLocation:locationManager.location];
+		NSTimer *enemyPulseTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pulseAllEnemies) userInfo:nil repeats:YES];
+		[_timers addObject:enemyPulseTimer];
+		[enemyPulseTimer fire];
+		
+		NSTimer *enemyGenerationTimer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(spawnEnemy) userInfo:nil repeats:YES];
+		[_timers addObject:enemyGenerationTimer];
+		[enemyGenerationTimer fire];
 	}
 	else {
 		[button setTitle:@"Start" forState:UIControlStateNormal];
@@ -322,6 +347,12 @@
 		if ( error )
 			NSLog(@"%@", error);
 		self.trek = nil;
+		
+		NSSet *safeIterableCopy = [_timers copy];
+		for ( NSTimer *timer in safeIterableCopy ) {
+			[timer invalidate];
+			[_timers removeObject:timer];
+		}
 	}
 }
 

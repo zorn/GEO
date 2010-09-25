@@ -31,6 +31,8 @@
 	NSDate *_lastEnemyUpdate;
 	
 	NSNumberFormatter *_speedFormatter;
+	
+	NSMutableSet *_timers;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
