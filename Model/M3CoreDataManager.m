@@ -55,7 +55,16 @@
         return managedObjectModel;
     }
 	
-	NSURL *modelUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], modelName]];
+	
+	
+	
+	
+#warning This code is hard coded for RunQuest atm
+	NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"RunQuest" ofType:@"momd"];
+	NSLog(@"modelPath is %@", modelPath);
+    NSURL *modelUrl = [NSURL fileURLWithPath:modelPath];
+//	NSURL *modelUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], modelName]];
+	NSLog(@"modelUrl is %@", modelUrl);
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelUrl];    
     return managedObjectModel;
 }
@@ -132,9 +141,11 @@
     return managedObjectContext;
 }
 
+#warning Need to fix this to work on both platforms, not working atm not sure why.
 #ifdef TARGET_OS_IPHONE
 
-- (void)save {
+- (void)save
+{
 	NSError *error = nil;
 	//NSInteger reply = NSTerminateNow;
 	NSManagedObjectContext *moc = [self managedObjectContext];

@@ -1,6 +1,10 @@
 #import <Foundation/Foundation.h>
 
 @class M3CoreDataManager, M3SimpleCoreData;
+
+@class RQHero;
+@class RQEnemy;
+
 @interface RQModelController : NSObject {
 	M3CoreDataManager *coreDataManager;
 	M3SimpleCoreData *simpleCoreData;
@@ -17,5 +21,9 @@
 
 - (BOOL)shouldInsertInitialContents;
 - (void)insertInitialContent;
+
+- (RQHero *)hero;
+- (BOOL)heroExists;
+- (RQEnemy *)randomEnemy;
 
 @end

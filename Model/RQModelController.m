@@ -1,6 +1,10 @@
+#import <CoreData/CoreData.h>
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
 #import "M3SimpleCoreData.h"
+
+#import "RQHero.h"
+#import "RQEnemy.h"
 
 static RQModelController *defaultModelController = nil;
 
@@ -10,7 +14,7 @@ static RQModelController *defaultModelController = nil;
 	if (!defaultModelController) {
 		defaultModelController = [[RQModelController alloc] initWithInitialType:NSSQLiteStoreType 
 																 appSupportName:@"RunQuest" 
-																	  modelName:@"RunQuest.xcdatamodeld/RunQuest.xcdatamodel"
+																	  modelName:@"RunQuest.momd/RunQuest.mom"
 																  dataStoreName:@"RunQuest.sqlite"];
 	}
 	return defaultModelController;
@@ -43,9 +47,9 @@ static RQModelController *defaultModelController = nil;
 
 - (id)init {
 	return [self initWithInitialType:NSInMemoryStoreType 
-					  appSupportName:@"ProfitTrain" 
-						   modelName:@"PTDataModel.momd/schemaVersion1.mom" 
-					   dataStoreName:@"ProfitTrainCoreDataStore.sqlite"];
+					  appSupportName:@"RunQuest" 
+						   modelName:@"RunQuest.momd/RunQuest.mom" 
+					   dataStoreName:@"RunQuest.sqlite"];
 }
 
 
@@ -56,6 +60,46 @@ static RQModelController *defaultModelController = nil;
 - (NSUndoManager *)undoManager
 {
 	return [[[self coreDataManager] managedObjectContext] undoManager];
+}
+
+- (RQHero *)hero
+{
+	NSArray *heros = [simpleCoreData objectsInEntityWithName:@"Hero" predicate:nil sortedWithDescriptors:nil];
+	if (heros.count == 1) {
+		RQHero *foundHero = [heros lastObject];
+		return foundHero;
+	} else if (heros.count == 0) {
+		// make the hero
+		RQHero *hero = (RQHero *)[simpleCoreData newObjectInEntityWithName:@"Hero" values:nil];
+		[hero setName:@"Demo Hero"];
+		return hero;
+	} else {
+		NSLog(@"There is more than 1 hero in the db. Uh oh.");
+		// TODO: Something smart
+	}
+	return nil;
+}
+
+- (RQEnemy *)randomEnemy
+{
+	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
+	[newEnemy setName:@"Evil Snorlax"];
+	[newEnemy setMaxHP:25];
+	[newEnemy setCurrentHP:25];
+	[newEnemy setLevel:3];
+	[newEnemy setStamina:0];
+	[newEnemy setStaminaRegenRate:8.0];
+	return newEnemy;
+}
+
+- (BOOL)heroExists
+{
+	NSArray *heros = [simpleCoreData objectsInEntityWithName:@"Hero" predicate:nil sortedWithDescriptors:nil];
+	if (heros.count > 0) {
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 - (BOOL)shouldInsertInitialContents

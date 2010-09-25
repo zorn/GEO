@@ -13,6 +13,8 @@
 #import "MapViewController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
+#import "RQHero.h"
+#import "RQEnemy.h"
 #import "RQWeaponSprite.h"
 #import "RQBattleVictoryViewController.h"
 #import "SimpleAudioEngine.h"
@@ -162,6 +164,9 @@
 	NSTimeInterval currentTime = CACurrentMediaTime();
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
+	
+	//NSLog(@"tick, battle status hero %@ and enemy %@", self.battle.hero, self.battle.enemy);
+
 	
 	// game sim stuff
 	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];

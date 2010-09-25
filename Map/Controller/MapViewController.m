@@ -18,6 +18,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SimpleAudioEngine.h"
 
+#import "RQHero.h"
+#import "RQModelController.h"
+
 #define ENEMY_GENERATION_BOUNDS_X .01f
 #define ENEMY_GENERATION_BOUNDS_Y .015f
 #define ENEMY_SPEED_VARIANCE 1.5f
@@ -105,8 +108,10 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[self startUpdatingLocation];
+	//NSLog(@"MapViewController -viewDidLoad");
     [super viewDidLoad];
+	[self startUpdatingLocation];
+	RQHero *hero = [[RQModelController defaultModelController] hero];
 }
 
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
@@ -288,6 +293,7 @@
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
 	[self dismissModalViewControllerAnimated:YES];
 	[self setBattleViewController:nil];
+	[[[RQModelController defaultModelController] coreDataManager] save];
 }
 
 

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateHeroViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
-@interface MainMenuViewController : UIViewController {
+@interface MainMenuViewController : UIViewController <CreateHeroViewControllerDelegate> {
 
 }
 

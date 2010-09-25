@@ -8,7 +8,7 @@
 
 #import "EnemyAnnotationView.h"
 #import "EnemyAnnotationLayer.h"
-#import "Enemy.h";
+#import "EnemyMapSpawn.h";
 
 @implementation EnemyAnnotationView
 @synthesize pulsing;

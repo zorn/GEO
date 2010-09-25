@@ -13,6 +13,26 @@
 		1A6E3284124E4E210054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
 		1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3286124E4E830054949B /* M3CoreDataManager.m */; };
 		1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3288124E4E830054949B /* M3SimpleCoreData.m */; };
+		1A6E32E7124E5A240054949B /* LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E32E5124E5A1A0054949B /* LogicTests.m */; };
+		1A6E3321124E5D2D0054949B /* RQModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3320124E5D2D0054949B /* RQModelTests.m */; };
+		1A6E3322124E5D5B0054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
+		1A6E3323124E5D5B0054949B /* M3CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3286124E4E830054949B /* M3CoreDataManager.m */; };
+		1A6E3324124E5D5C0054949B /* M3SimpleCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3288124E4E830054949B /* M3SimpleCoreData.m */; };
+		1A6E3325124E5D7E0054949B /* RunQuest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* RunQuest.xcdatamodeld */; };
+		1A6E3326124E5D7F0054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
+		1A6E332D124E5DE00054949B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
+		1A6E332E124E5DE00054949B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1A6E3337124E5E280054949B /* RQHeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3336124E5E280054949B /* RQHeroTests.m */; };
+		1A6E333A124E5F000054949B /* RQHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3339124E5F000054949B /* RQHero.m */; };
+		1A6E333B124E5F000054949B /* RQHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3339124E5F000054949B /* RQHero.m */; };
+		1A6E333F124E5FAA0054949B /* RQEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E333E124E5FAA0054949B /* RQEnemy.m */; };
+		1A6E3340124E5FAA0054949B /* RQEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E333E124E5FAA0054949B /* RQEnemy.m */; };
+		1A6E3341124E5FAD0054949B /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
+		1A6E334B124E603C0054949B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
+		1A6E3364124E60CD0054949B /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
+		1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
+		1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
+		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
 		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
 		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
@@ -98,16 +118,31 @@
 /* Begin PBXFileReference section */
 		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
 		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
-		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattle.h; sourceTree = "<group>"; };
-		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattle.m; sourceTree = "<group>"; };
-		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMob.h; sourceTree = "<group>"; };
-		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMob.m; sourceTree = "<group>"; };
+		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQBattle.h; path = "../Game Engine/RQBattle.h"; sourceTree = "<group>"; };
+		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQBattle.m; path = "../Game Engine/RQBattle.m"; sourceTree = "<group>"; };
+		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQMob.h; path = "../Game Engine/RQMob.h"; sourceTree = "<group>"; };
+		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQMob.m; path = "../Game Engine/RQMob.m"; sourceTree = "<group>"; };
 		1A6E3282124E4E210054949B /* RQModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQModelController.h; sourceTree = "<group>"; };
 		1A6E3283124E4E210054949B /* RQModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQModelController.m; sourceTree = "<group>"; };
 		1A6E3285124E4E830054949B /* M3CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3CoreDataManager.h; sourceTree = "<group>"; };
 		1A6E3286124E4E830054949B /* M3CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3CoreDataManager.m; sourceTree = "<group>"; };
 		1A6E3287124E4E830054949B /* M3SimpleCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3SimpleCoreData.h; sourceTree = "<group>"; };
 		1A6E3288124E4E830054949B /* M3SimpleCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3SimpleCoreData.m; sourceTree = "<group>"; };
+		1A6E32DE124E59DD0054949B /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A6E32DF124E59DD0054949B /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
+		1A6E32E4124E5A1A0054949B /* LogicTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests.h; sourceTree = "<group>"; };
+		1A6E32E5124E5A1A0054949B /* LogicTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicTests.m; sourceTree = "<group>"; };
+		1A6E331F124E5D2D0054949B /* RQModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQModelTests.h; sourceTree = "<group>"; };
+		1A6E3320124E5D2D0054949B /* RQModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQModelTests.m; sourceTree = "<group>"; };
+		1A6E3335124E5E280054949B /* RQHeroTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQHeroTests.h; sourceTree = "<group>"; };
+		1A6E3336124E5E280054949B /* RQHeroTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQHeroTests.m; sourceTree = "<group>"; };
+		1A6E3338124E5F000054949B /* RQHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQHero.h; path = "../Game Engine/RQHero.h"; sourceTree = "<group>"; };
+		1A6E3339124E5F000054949B /* RQHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQHero.m; path = "../Game Engine/RQHero.m"; sourceTree = "<group>"; };
+		1A6E333D124E5FAA0054949B /* RQEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQEnemy.h; path = "../Game Engine/RQEnemy.h"; sourceTree = "<group>"; };
+		1A6E333E124E5FAA0054949B /* RQEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQEnemy.m; path = "../Game Engine/RQEnemy.m"; sourceTree = "<group>"; };
+		1A6E3445124E7D010054949B /* CreateHeroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateHeroView.xib; sourceTree = "<group>"; };
+		1A6E3447124E7D590054949B /* CreateHeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateHeroViewController.h; sourceTree = "<group>"; };
+		1A6E3448124E7D590054949B /* CreateHeroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateHeroViewController.m; sourceTree = "<group>"; };
 		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
@@ -222,6 +257,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1A6E32DB124E59DD0054949B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6E332D124E5DE00054949B /* CoreData.framework in Frameworks */,
+				1A6E332E124E5DE00054949B /* Foundation.framework in Frameworks */,
+				1A6E334B124E603C0054949B /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,8 +291,22 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* RunQuest.app */,
+				1A6E32DE124E59DD0054949B /* LogicTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1A6E32E3124E59F50054949B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1A6E32E4124E5A1A0054949B /* LogicTests.h */,
+				1A6E32E5124E5A1A0054949B /* LogicTests.m */,
+				1A6E331F124E5D2D0054949B /* RQModelTests.h */,
+				1A6E3320124E5D2D0054949B /* RQModelTests.m */,
+				1A6E3335124E5E280054949B /* RQHeroTests.h */,
+				1A6E3336124E5E280054949B /* RQHeroTests.m */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		1AC92473124D75CF00E09F6A /* ui */ = {
@@ -295,6 +354,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				C99A91F8124A7F9C005BAECF /* OpenAL.framework */,
+				1A6E32DF124E59DD0054949B /* LogicTests-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -464,10 +524,6 @@
 		D8C86C4E12450DAA007E44AF /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B23671246AD46000F9449 /* RQBattle.h */,
-				1A2B23681246AD46000F9449 /* RQBattle.m */,
-				1A2B23691246AD46000F9449 /* RQMob.h */,
-				1A2B236A1246AD46000F9449 /* RQMob.m */,
 			);
 			path = "Game Engine";
 			sourceTree = "<group>";
@@ -495,14 +551,23 @@
 		D8C86C6112450EDF007E44AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */,
-				D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */,
+				1A6E32E3124E59F50054949B /* Tests */,
 				1A6E3282124E4E210054949B /* RQModelController.h */,
 				1A6E3283124E4E210054949B /* RQModelController.m */,
 				1A6E3285124E4E830054949B /* M3CoreDataManager.h */,
 				1A6E3286124E4E830054949B /* M3CoreDataManager.m */,
 				1A6E3287124E4E830054949B /* M3SimpleCoreData.h */,
 				1A6E3288124E4E830054949B /* M3SimpleCoreData.m */,
+				1A2B23671246AD46000F9449 /* RQBattle.h */,
+				1A2B23681246AD46000F9449 /* RQBattle.m */,
+				1A2B23691246AD46000F9449 /* RQMob.h */,
+				1A2B236A1246AD46000F9449 /* RQMob.m */,
+				1A6E3338124E5F000054949B /* RQHero.h */,
+				1A6E3339124E5F000054949B /* RQHero.m */,
+				1A6E333D124E5FAA0054949B /* RQEnemy.h */,
+				1A6E333E124E5FAA0054949B /* RQEnemy.m */,
+				D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */,
+				D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,6 +602,9 @@
 				1AC92465124D755800E09F6A /* MainMenuViewController.h */,
 				1AC92466124D755800E09F6A /* MainMenuViewController.m */,
 				1AC92470124D75A000E09F6A /* MainMenuView.xib */,
+				1A6E3447124E7D590054949B /* CreateHeroViewController.h */,
+				1A6E3448124E7D590054949B /* CreateHeroViewController.m */,
+				1A6E3445124E7D010054949B /* CreateHeroView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -544,6 +612,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1A6E32DD124E59DD0054949B /* LogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A6E32E2124E59DE0054949B /* Build configuration list for PBXNativeTarget "LogicTests" */;
+			buildPhases = (
+				1A6E32D9124E59DD0054949B /* Resources */,
+				1A6E32DA124E59DD0054949B /* Sources */,
+				1A6E32DB124E59DD0054949B /* Frameworks */,
+				1A6E32DC124E59DD0054949B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LogicTests;
+			productName = LogicTests;
+			productReference = 1A6E32DE124E59DD0054949B /* LogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		1D6058900D05DD3D006BFB54 /* RunQuest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "RunQuest" */;
@@ -581,11 +667,19 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* RunQuest */,
+				1A6E32DD124E59DD0054949B /* LogicTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1A6E32D9124E59DD0054949B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,12 +726,48 @@
 				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
 				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
+				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A6E32DC124E59DD0054949B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" \n# Temp replacement to avoid bad errors in Xcode 3.2.4\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 1> /tmp/RunUnitTests.out";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		1A6E32DA124E59DD0054949B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6E32E7124E5A240054949B /* LogicTests.m in Sources */,
+				1A6E3321124E5D2D0054949B /* RQModelTests.m in Sources */,
+				1A6E3322124E5D5B0054949B /* RQModelController.m in Sources */,
+				1A6E3323124E5D5B0054949B /* M3CoreDataManager.m in Sources */,
+				1A6E3324124E5D5C0054949B /* M3SimpleCoreData.m in Sources */,
+				1A6E3325124E5D7E0054949B /* RunQuest.xcdatamodeld in Sources */,
+				1A6E3326124E5D7F0054949B /* RunQuest.xcdatamodel in Sources */,
+				1A6E3337124E5E280054949B /* RQHeroTests.m in Sources */,
+				1A6E333A124E5F000054949B /* RQHero.m in Sources */,
+				1A6E3340124E5FAA0054949B /* RQEnemy.m in Sources */,
+				1A6E3341124E5FAD0054949B /* RQMob.m in Sources */,
+				1A6E3364124E60CD0054949B /* RQBattle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -676,12 +806,74 @@
 				1A6E3284124E4E210054949B /* RQModelController.m in Sources */,
 				1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */,
 				1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */,
+				1A6E333B124E5F000054949B /* RQHero.m in Sources */,
+				1A6E333F124E5FAA0054949B /* RQEnemy.m in Sources */,
+				1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */,
+				1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		1A6E32E0124E59DD0054949B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1A6E32E1124E59DD0054949B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -744,6 +936,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1A6E32E2124E59DE0054949B /* Build configuration list for PBXNativeTarget "LogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A6E32E0124E59DD0054949B /* Debug */,
+				1A6E32E1124E59DD0054949B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "RunQuest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
