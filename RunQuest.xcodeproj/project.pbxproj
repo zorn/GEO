@@ -10,6 +10,9 @@
 		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
+		1A6E3284124E4E210054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
+		1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3286124E4E830054949B /* M3CoreDataManager.m */; };
+		1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3288124E4E830054949B /* M3SimpleCoreData.m */; };
 		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
 		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
 		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
@@ -86,7 +89,7 @@
 		D8C86C8D12451095007E44AF /* HeroPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8712451095007E44AF /* HeroPath.m */; };
 		D8C86C8E12451095007E44AF /* Sonar.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8912451095007E44AF /* Sonar.m */; };
 		D8C86C8F12451095007E44AF /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8B12451095007E44AF /* Trek.m */; };
-		D8C86C92124510A4007E44AF /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* Enemy.m */; };
+		D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */; };
 		D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */; };
 		D8CDDC9A123CFDFF005C9784 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */; };
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
@@ -99,6 +102,12 @@
 		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattle.m; sourceTree = "<group>"; };
 		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMob.h; sourceTree = "<group>"; };
 		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMob.m; sourceTree = "<group>"; };
+		1A6E3282124E4E210054949B /* RQModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQModelController.h; sourceTree = "<group>"; };
+		1A6E3283124E4E210054949B /* RQModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQModelController.m; sourceTree = "<group>"; };
+		1A6E3285124E4E830054949B /* M3CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3CoreDataManager.h; sourceTree = "<group>"; };
+		1A6E3286124E4E830054949B /* M3CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3CoreDataManager.m; sourceTree = "<group>"; };
+		1A6E3287124E4E830054949B /* M3SimpleCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3SimpleCoreData.h; sourceTree = "<group>"; };
+		1A6E3288124E4E830054949B /* M3SimpleCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3SimpleCoreData.m; sourceTree = "<group>"; };
 		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
@@ -203,8 +212,8 @@
 		D8C86C8912451095007E44AF /* Sonar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sonar.m; sourceTree = "<group>"; };
 		D8C86C8A12451095007E44AF /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
 		D8C86C8B12451095007E44AF /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
-		D8C86C90124510A4007E44AF /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
-		D8C86C91124510A4007E44AF /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMapSpawn.h; sourceTree = "<group>"; };
+		D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMapSpawn.m; sourceTree = "<group>"; };
 		D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
 		D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -486,8 +495,14 @@
 		D8C86C6112450EDF007E44AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8C86C90124510A4007E44AF /* Enemy.h */,
-				D8C86C91124510A4007E44AF /* Enemy.m */,
+				D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */,
+				D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */,
+				1A6E3282124E4E210054949B /* RQModelController.h */,
+				1A6E3283124E4E210054949B /* RQModelController.m */,
+				1A6E3285124E4E830054949B /* M3CoreDataManager.h */,
+				1A6E3286124E4E830054949B /* M3CoreDataManager.m */,
+				1A6E3287124E4E830054949B /* M3SimpleCoreData.h */,
+				1A6E3288124E4E830054949B /* M3SimpleCoreData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -644,7 +659,7 @@
 				D8C86C8D12451095007E44AF /* HeroPath.m in Sources */,
 				D8C86C8E12451095007E44AF /* Sonar.m in Sources */,
 				D8C86C8F12451095007E44AF /* Trek.m in Sources */,
-				D8C86C92124510A4007E44AF /* Enemy.m in Sources */,
+				D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */,
 				D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 				C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */,
 				C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */,
@@ -658,6 +673,9 @@
 				31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */,
 				31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */,
 				1AC92467124D755800E09F6A /* MainMenuViewController.m in Sources */,
+				1A6E3284124E4E210054949B /* RQModelController.m in Sources */,
+				1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */,
+				1A6E328A124E4E830054949B /* M3SimpleCoreData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

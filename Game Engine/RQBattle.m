@@ -87,21 +87,12 @@
 	return [NSDictionary dictionaryWithObjectsAndKeys:@"error", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
 }
 
-- (void)issuePhysicalShieldCommandFrom:(RQMob *)mob
+- (void)issueShieldCommandFrom:(RQMob *)mob
 {
 	if (mob == hero || mob == enemy) {
-		[mob setSecondsLeftOfPhysicalShields:RQBattleShieldLengthInSeconds];
+		[mob setSecondsLeftOfShields:RQBattleShieldLengthInSeconds];
 	} else {
 		NSLog(@"ERROR: issuePhysicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
-	}
-}
-
-- (void)issueMagicalShieldCommandFrom:(RQMob *)mob
-{
-	if (mob == hero || mob == enemy) {
-		[mob setSecondsLeftOfMagicalShields:RQBattleShieldLengthInSeconds];
-	} else {
-		NSLog(@"ERROR: issueMagicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
 	}
 }
 

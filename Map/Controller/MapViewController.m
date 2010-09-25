@@ -12,7 +12,7 @@
 #import "Trek.h"
 #import "AppDelegate_Shared.h"
 #import "NSManagedObjectContext+FetchAdditions.h"
-#import "Enemy.h"
+#import "EnemyMapSpawn.h"
 #import "EnemyAnnotationView.h"
 #import "RQBattleViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -110,7 +110,7 @@
 }
 
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
-	Enemy *enemy = enemyView.annotation;
+	EnemyMapSpawn *enemy = enemyView.annotation;
 	[self.mapView removeAnnotation:enemy];
 	[_enemies removeObject:enemy];
 	[_enemyViews removeObject:enemyView];
@@ -124,7 +124,7 @@
 	if ( !_lastEnemyUpdate || timeSinceLastUpdate > 2.0f ) {
 		
 	for ( EnemyAnnotationView* enemyView in _enemyViews ) {
-		Enemy *enemy = enemyView.annotation;
+		EnemyMapSpawn *enemy = enemyView.annotation;
 		if ( enemy.speed ) {
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
 			MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
@@ -200,7 +200,7 @@
 	for ( NSUInteger i = 1; i <= ENEMIES_TO_GENERATE; i++ ) {
 		double randX = ENEMY_GENERATION_BOUNDS_X*rand()/RAND_MAX;
 		double randY = ENEMY_GENERATION_BOUNDS_Y*rand()/RAND_MAX;
-		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
+		EnemyMapSpawn *enemy = [[EnemyMapSpawn alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
 		enemy.speed = SLOWEST_ENEMY_SPEED + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
 		enemy.heading = 0;
 		[self.mapView addAnnotation:enemy];
@@ -253,7 +253,7 @@
 #pragma mark MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-	if ( [annotation isKindOfClass:[Enemy class]] ) {
+	if ( [annotation isKindOfClass:[EnemyMapSpawn class]] ) {
 		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
 		[_enemyViews addObject:view];
 		return [view autorelease];

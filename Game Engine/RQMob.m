@@ -6,8 +6,7 @@
 {
 	if (self = [super init]) {
 		staminaRegenRate = 3.0;
-		secondsLeftOfPhysicalShields = 0;
-		secondsLeftOfMagicalShields = 0;
+		secondsLeftOfShields = 0;
 	}
 	return self;
 }
@@ -53,8 +52,7 @@
 }
 
 @synthesize staminaRegenRate;
-@synthesize secondsLeftOfPhysicalShields;
-@synthesize secondsLeftOfMagicalShields;
+@synthesize secondsLeftOfShields;
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob
 {

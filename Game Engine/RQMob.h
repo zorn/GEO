@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface RQMob : NSObject 
+@interface RQMob : NSManagedObject 
 {
 	NSString *name;
 	NSInteger currentHP;
@@ -10,8 +11,7 @@
 	float stamina; // 0.0 to 1.0 .. 1.0 is full
 	float staminaRegenRate; // 1.75 is to say it should take to 1.75 seconds to reach full stamina
 	
-	NSInteger secondsLeftOfPhysicalShields;
-	NSInteger secondsLeftOfMagicalShields;
+	NSInteger secondsLeftOfShields;
 
 }
 
@@ -22,8 +22,7 @@
 @property (readwrite, assign) NSInteger experiencePoints;
 @property (readwrite, assign) float stamina;
 @property (readwrite, assign) float staminaRegenRate;
-@property (readwrite, assign) NSInteger secondsLeftOfPhysicalShields;
-@property (readwrite, assign) NSInteger secondsLeftOfMagicalShields;
+@property (readwrite, assign) NSInteger secondsLeftOfShields;
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob;
 - (NSInteger)randomStrongAttackValueAgainstMob:(RQMob *)mob;
