@@ -21,7 +21,7 @@
 	if (( self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier] )) {
 		self.draggable = NO;
 		self.canShowCallout = NO;
-		self.bounds = CGRectMake(0, 0, 64, 64);
+		self.bounds = CGRectMake(0, 0, 42, 42);
 		self.opaque = NO;
 		self.pulsing = NO;
 		self.layer.opacity = 0;
@@ -48,7 +48,7 @@
 		CAAnimationGroup *pulse = [CAAnimationGroup animation];
 		pulse.animations = [NSArray arrayWithObjects:grow, fade, nil];
 		pulse.repeatCount = CGFLOAT_MAX;
-		pulse.duration = 2.0;
+		pulse.duration = 1.0;
 		
 		[self.layer addAnimation:pulse forKey:@"pulse"];
 	}

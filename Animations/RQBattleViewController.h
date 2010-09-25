@@ -15,6 +15,7 @@
 @class RQWeaponSprite;
 @class MapViewController;
 @class AVCaptureSession;
+@class AVCaptureVideoPreviewLayer;
 
 #define RQBattleViewFlickThreshold 320.0
 
@@ -24,7 +25,6 @@
 @interface RQBattleViewController : UIViewController <RQBattleVictoryViewControllerDelegate>
 {
 	RQBattleVictoryViewController *battleVictoryViewController;
-	MapViewController *mapViewController;
 	RQBattle *battle;
 	
 	RQEnemySprite *evilBoobsMonster;
@@ -53,6 +53,7 @@
 	//Camera stuff
 #if TARGET_OS_EMBEDDED
 	AVCaptureSession *_captureSession;
+	AVCaptureVideoPreviewLayer *_captureLayer;
 #endif
 }
 

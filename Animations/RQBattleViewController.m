@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RQSprite.h"
 #import "RQEnemySprite.h"
-#import "MapViewController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
 #import "RQHero.h"
@@ -35,11 +34,19 @@
 {
 	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
+#if TARGET_OS_EMBEDDED 
+	[_captureLayer removeFromSuperlayer];
+	_captureLayer.session = nil;
+	[_captureLayer release];
+	
+	[_captureSession stopRunning];
+	[_captureSession release];
+	_captureSession = nil;
+#endif
 	[frontFlashView release], frontFlashView = nil;
 	[heroHeathLabel release]; heroHeathLabel = nil;
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
-	[mapViewController release]; mapViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
     [super dealloc];
@@ -69,10 +76,10 @@
 			NSLog(@"%@", error);
 	
 		[_captureSession addInput: defaultVideoDeviceInput];
-		AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
-		layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-		layer.frame = self.view.layer.bounds;
-		[self.view.layer addSublayer:layer];
+		_captureLayer = [[AVCaptureVideoPreviewLayer layerWithSession:_captureSession] retain];
+		_captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+		_captureLayer.frame = self.view.layer.bounds;
+		[self.view.layer addSublayer:_captureLayer];
 		[_captureSession startRunning];
 	}
 #endif
@@ -269,10 +276,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	// If the user tries to active a weapon while the hero stamina is not full, say no
-	if (self.battle.hero.stamina < 1.0) {
-		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-		return;
-	}
+	
 	
 	// When a touch begins we need to assign an active weapon (as long as there isn't a current active weapon)
 	if (!activeWeapon) {
@@ -311,7 +315,7 @@
 				CGFloat deltaY = touchLocation.y - previousTouchLocation.y;
 				deltaX /= deltaTime;
 				deltaY /= deltaTime;
-				CGPoint newVelocity = CGPointMake(deltaX, deltaY);
+				CGPoint newVelocity = CGPointMake(deltaX*10, deltaY*10);
 				self.activeWeapon.velocity = CGPointMake(self.activeWeapon.velocity.x * 0.9 + newVelocity.x * 0.1,
 														 self.activeWeapon.velocity.y * 0.9 + newVelocity.y * 0.1);
 				previousTouchTimestamp = touch.timestamp;
@@ -333,13 +337,20 @@
 			//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
 
 			// if the velocity was too low do not "fire" the weapon but reset it
-			float min_velocity = 30.0;
-			if (!(self.activeWeapon.velocity.x > min_velocity || self.activeWeapon.velocity.x < (min_velocity * -1) ||
-				self.activeWeapon.velocity.y > min_velocity || self.activeWeapon.velocity.y < (min_velocity * -1))) 
+			float min_velocity = 100.0;
+			if ( self.battle.hero.stamina < 1.0 || ABS(self.activeWeapon.velocity.x) < min_velocity || ABS(self.activeWeapon.velocity.y) < min_velocity ) 
 			{
-				activeWeapon.position = activeWeapon.orininalPosition;
+				CGFloat deltaX = -.25f*(activeWeapon.position.x - activeWeapon.orininalPosition.x);
+				CGFloat deltaY = -.25f*(activeWeapon.position.y - activeWeapon.orininalPosition.y);
+				
+				[UIView animateWithDuration:0.2 
+								 animations:
+				 ^{activeWeapon.position = CGPointMake(activeWeapon.orininalPosition.x + deltaX, activeWeapon.orininalPosition.y + deltaY);} 
+								 completion: 
+				 ^(BOOL finished){[UIView animateWithDuration:0.1 animations:^{activeWeapon.position = activeWeapon.orininalPosition;
+								  [self setActiveWeapon:nil];}]; }];
 				activeWeapon.velocity = CGPointZero;
-				[self setActiveWeapon:nil];
+				
 			} else {
 				// Only play the launch sounds when the weapon will be moving
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
