@@ -6,27 +6,27 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "Enemy.h"
+#import "EnemyMapSpawn.h"
 
 
-@interface Enemy (CoreData) 
+@interface EnemyMapSpawn (CoreData) 
 @property (nonatomic, retain) NSNumber * headingNumber;
 @property (nonatomic, retain) NSNumber * latitudeNumber;
 @property (nonatomic, retain) NSNumber * longitudeNumber;
 @property (nonatomic, retain) NSNumber * speedNumber;
 @end
 
-@implementation Enemy (CoreData)
+@implementation EnemyMapSpawn (CoreData)
 @dynamic headingNumber;
 @dynamic latitudeNumber;
 @dynamic longitudeNumber;
 @dynamic speedNumber;
 @end
 
-@implementation Enemy
+@implementation EnemyMapSpawn
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)initialCoordinate inManagedObjectContext:(NSManagedObjectContext *)moc {
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Enemy" inManagedObjectContext:moc];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"EnemyMapSpawn" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:entity insertIntoManagedObjectContext:moc] )) {
 		self.coordinate = initialCoordinate;
 		self.speed = 0;

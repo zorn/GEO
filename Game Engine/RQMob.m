@@ -1,60 +1,90 @@
+#import <UIKit/UIKit.h> // for UIColor
 #import "RQMob.h"
 
 @implementation RQMob
 
-- (id)init
+- (void)awakeFromFetch
 {
-	if (self = [super init]) {
-		staminaRegenRate = 3.0;
-		secondsLeftOfPhysicalShields = 0;
-		secondsLeftOfMagicalShields = 0;
-	}
-	return self;
+	[self setStaminaRegenRate:3.0];
+	[self setSecondsLeftOfShields:0];
 }
 
-- (void)dealloc
-{
-	[name release]; name = nil;
-	[super dealloc]; 
-}
-
-@synthesize name;
+@dynamic name;
+@dynamic currentHPAsNumber;
+@dynamic maxHPAsNumber;
+@dynamic levelAsNumber;
+@dynamic experiencePointsAsNumber;
+@dynamic staminaAsNumber;
+@dynamic staminaRegenRateAsNumber;
+@dynamic secondsLeftOfShieldsAsNumber;
 
 - (NSInteger)currentHP {
-    return currentHP;
+    return [self.currentHPAsNumber integerValue];
 }
 
 - (void)setCurrentHP:(NSInteger)value {
-	currentHP = value;
-	if (currentHP > maxHP) {
-		currentHP = maxHP;
-	}
-	if (currentHP < 0) {
-		currentHP = 0;
+	if (value > self.maxHP) {
+		[self setCurrentHPAsNumber:[NSNumber numberWithInteger:self.maxHP]];
+	}else if (value <= 0) {
+		[self setCurrentHPAsNumber:[NSNumber numberWithInteger:0]];
+	} else {
+		[self setCurrentHPAsNumber:[NSNumber numberWithInteger:value]];
 	}
 }
 
-@synthesize maxHP;
-@synthesize level;
-@synthesize experiencePoints;
+- (NSInteger)maxHP {
+    return [self.maxHPAsNumber integerValue];
+}
+
+- (void)setMaxHP:(NSInteger)value {
+	[self setMaxHPAsNumber:[NSNumber numberWithInteger:value]];
+}
+
+- (NSInteger)level {
+    return [self.levelAsNumber integerValue];
+}
+
+- (void)setLevel:(NSInteger)value {
+	[self setLevelAsNumber:[NSNumber numberWithInteger:value]];
+}
+
+- (NSInteger)experiencePoints {
+    return [self.experiencePointsAsNumber integerValue];
+}
+
+- (void)setExperiencePoints:(NSInteger)value {
+	[self setExperiencePointsAsNumber:[NSNumber numberWithInteger:value]];
+}
 
 - (float)stamina {
-    return stamina;
+    return [self.staminaAsNumber floatValue];
 }
 
 - (void)setStamina:(float)value {
-	stamina = value;
-	if (stamina > 1.0) {
-		stamina = 1.0;
-	}
-	if (stamina < 0.0) {
-		stamina = 0.0;
+	if (value > 1.0) {
+		[self setStaminaAsNumber:[NSNumber numberWithFloat:1.0]];
+	} else if (value <= 0.0) {
+		[self setStaminaAsNumber:[NSNumber numberWithFloat:0.0]];
+	} else {
+		[self setStaminaAsNumber:[NSNumber numberWithFloat:value]];
 	}
 }
 
-@synthesize staminaRegenRate;
-@synthesize secondsLeftOfPhysicalShields;
-@synthesize secondsLeftOfMagicalShields;
+- (float)staminaRegenRate {
+    return [self.staminaRegenRateAsNumber floatValue];
+}
+
+- (void)setStaminaRegenRate:(float)value {
+	[self setStaminaRegenRateAsNumber:[NSNumber numberWithFloat:value]];
+}
+
+- (NSInteger)secondsLeftOfShields {
+    return [self.secondsLeftOfShieldsAsNumber integerValue];
+}
+
+- (void)setSecondsLeftOfShields:(NSInteger)value {
+	[self setSecondsLeftOfShieldsAsNumber:[NSNumber numberWithInteger:value]];
+}
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob
 {

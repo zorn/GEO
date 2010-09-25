@@ -1,5 +1,8 @@
+#import "RQModelController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
+#import "RQHero.h"
+#import "RQEnemy.h"
 
 @implementation RQBattle
 
@@ -8,32 +11,10 @@
 	if (self = [super init]) {
 		
 		// hard coding battle for now
+		[self setHero:[[RQModelController defaultModelController] hero]];
+		[self setEnemy:[[RQModelController defaultModelController] randomEnemy]];
 		
-		RQMob *newMob;
-		
-		newMob = [[RQMob alloc] init];
-		[newMob setName:@"Hero Mike"];
-		[newMob setMaxHP:30];
-		[newMob setCurrentHP:30];
-		[newMob setLevel:5];
-		[newMob setStamina:0];
-		[self setHero:newMob];
-		[newMob release]; newMob = nil;
-		
-		newMob = [[RQMob alloc] init];
-		[newMob setName:@"Evil Snorlax"];
-		[newMob setMaxHP:25];
-		[newMob setCurrentHP:25];
-		[newMob setLevel:3];
-		[newMob setStamina:0];
-		[newMob setStaminaRegenRate:8.0];
-		[self setEnemy:newMob];
-		[newMob release]; newMob = nil;
-		
-//		NSString *pathToHitSoundEffectPlayer = [[NSBundle mainBundle] pathForResource:@"Critical_Hit" ofType:@"m4a"];
-//		hitSoundEffectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:pathToHitSoundEffectPlayer] error:NULL];
-//		[hitSoundEffectPlayer prepareToPlay];
-		//[hitSoundEffectPlayer setDelegate:self];
+		NSLog(@"Battle started with hero %@ and enemy %@", self.hero, self.enemy);
 		
 		[self setBattleLog:[NSString stringWithFormat:@"Battle started at: %@\n", [NSDate date]]];
 	}
@@ -57,7 +38,7 @@
 	// issues an attack and returns a dictionary with results of the attack
 	NSInteger attackValue;
 	srandom(time(NULL));
-	if (mob == hero) {
+	if ((RQMob *)mob == hero) {
 		attackValue = [self.hero randomAttackValueAgainstMob:self.enemy];
 //		if (self.hero.stamina < 100) {
 //			// if the stamina wasn't full the attack value is decreased
@@ -77,7 +58,7 @@
 	} else if (mob == enemy) {
 		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero];
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
-		self.enemy.stamina = 0;
+		[self.enemy setStamina:0.0];
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.enemy.name, self.hero.name, attackValue]];
 		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
 	}
@@ -87,21 +68,12 @@
 	return [NSDictionary dictionaryWithObjectsAndKeys:@"error", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
 }
 
-- (void)issuePhysicalShieldCommandFrom:(RQMob *)mob
+- (void)issueShieldCommandFrom:(RQMob *)mob
 {
 	if (mob == hero || mob == enemy) {
-		[mob setSecondsLeftOfPhysicalShields:RQBattleShieldLengthInSeconds];
+		[mob setSecondsLeftOfShields:RQBattleShieldLengthInSeconds];
 	} else {
 		NSLog(@"ERROR: issuePhysicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
-	}
-}
-
-- (void)issueMagicalShieldCommandFrom:(RQMob *)mob
-{
-	if (mob == hero || mob == enemy) {
-		[mob setSecondsLeftOfMagicalShields:RQBattleShieldLengthInSeconds];
-	} else {
-		NSLog(@"ERROR: issueMagicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
 	}
 }
 

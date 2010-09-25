@@ -5,25 +5,26 @@
 #define RQBattleShieldLengthInSeconds 9
 
 @class RQMob;
+@class RQHero;
+@class RQEnemy;
 
 @interface RQBattle : NSObject 
 {
-	RQMob *hero;
-	RQMob *enemy;
+	RQHero *hero;
+	RQEnemy *enemy;
 	
 	AVAudioPlayer *hitSoundEffectPlayer;
 	
 	NSString *battleLog;
 }
 
-@property (readwrite, retain) RQMob *hero;
-@property (readwrite, retain) RQMob *enemy;
+@property (readwrite, retain) RQHero *hero;
+@property (readwrite, retain) RQEnemy *enemy;
 
 @property (readwrite, copy) NSString *battleLog;
 
 - (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob;
-- (void)issuePhysicalShieldCommandFrom:(RQMob *)mob;
-- (void)issueMagicalShieldCommandFrom:(RQMob *)mob;
+- (void)issueShieldCommandFrom:(RQMob *)mob;
 
 - (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta;
 - (void)runEnemyAI;

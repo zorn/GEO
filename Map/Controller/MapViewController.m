@@ -12,11 +12,14 @@
 #import "Trek.h"
 #import "AppDelegate_Shared.h"
 #import "NSManagedObjectContext+FetchAdditions.h"
-#import "Enemy.h"
+#import "EnemyMapSpawn.h"
 #import "EnemyAnnotationView.h"
 #import "RQBattleViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "SimpleAudioEngine.h"
+#import "RQModelController.h"
+#import "M3CoreDataManager.h"
+#import "RQHero.h"
 
 #define ENEMY_GENERATION_BOUNDS_X .001f
 #define ENEMY_GENERATION_BOUNDS_Y .0015f
@@ -37,7 +40,7 @@
 - (void)showHUD;
 - (void)hideHUD;
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
-- (void)encounterEnemy:(Enemy *)enemy;
+- (void)encounterEnemy:(EnemyMapSpawn *)enemy;
 - (void)startGeneratingEnemies;
 - (void)stopGeneratingEnemies;
 @end
@@ -125,7 +128,7 @@
 	
 }
 
-- (void)encounterEnemy:(Enemy *)enemy {
+- (void)encounterEnemy:(EnemyMapSpawn *)enemy {
 	[self stopGeneratingEnemies];
 	[self launchBattlePressed:self];
 }
@@ -139,7 +142,7 @@
 	@synchronized (_enemyViews ) {
 		NSSet *safeIterableCopy = [_enemyViews copy];
 		for ( EnemyAnnotationView* enemyView in safeIterableCopy ) {
-			Enemy *enemy = enemyView.annotation;
+			EnemyMapSpawn *enemy = enemyView.annotation;
 			if ( enemy.speed ) {
 				MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
 				MKMapPoint heroPoint = MKMapPointForCoordinate(locationManager.location.coordinate);
@@ -196,7 +199,7 @@
 
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView {
 	@synchronized (_enemyViews ) {
-		Enemy *enemy = enemyView.annotation;
+		EnemyMapSpawn *enemy = enemyView.annotation;
 		[self.mapView removeAnnotation:enemy];
 		[_enemies removeObject:enemy];
 		[_enemyViews removeObject:enemyView];
@@ -210,7 +213,7 @@
 }
 
 
-- (void)addEnemy:(Enemy *)enemy {
+- (void)addEnemy:(EnemyMapSpawn *)enemy {
 	@synchronized (_enemyViews ) {
 		[self.mapView addAnnotation:enemy];
 		[_enemies addObject:enemy];
@@ -227,7 +230,7 @@
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
-	Enemy *enemy = [[Enemy alloc] initWithCoordinate:enemyCoordinate inManagedObjectContext:[appDelegate managedObjectContext]];
+	EnemyMapSpawn *enemy = [[EnemyMapSpawn alloc] initWithCoordinate:enemyCoordinate inManagedObjectContext:[appDelegate managedObjectContext]];
 	enemy.speed = ( location.speed > 0 ? location.speed : SLOWEST_ENEMY_SPEED ) + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
 	enemy.heading = 0;
 	
@@ -245,7 +248,7 @@
 	for ( NSUInteger i = 1; i <= ENEMIES_TO_GENERATE; i++ ) {
 		double randX = ENEMY_GENERATION_BOUNDS_X*rand()/RAND_MAX;
 		double randY = ENEMY_GENERATION_BOUNDS_Y*rand()/RAND_MAX;
-		Enemy *enemy = [[Enemy alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
+		EnemyMapSpawn *enemy = [[EnemyMapSpawn alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
 		enemy.speed = SLOWEST_ENEMY_SPEED + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
 		enemy.heading = 0;
 		[self addEnemy:enemy];
@@ -297,7 +300,7 @@
 #pragma mark MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-	if ( [annotation isKindOfClass:[Enemy class]] ) {
+	if ( [annotation isKindOfClass:[EnemyMapSpawn class]] ) {
 		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
 		[self addEnemyView:view];
 		return [view autorelease];
@@ -335,6 +338,7 @@
 	[self setBattleViewController:nil];
 	if ( self.trek )
 		[self startGeneratingEnemies];
+	[[[RQModelController defaultModelController] coreDataManager] save];
 }
 
 
@@ -344,6 +348,11 @@
 - (IBAction)launchBattlePressed:(id)sender {
     self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
+	
+	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
+	RQHero *hero = [[RQModelController defaultModelController] hero];
+	[hero setCurrentHP:hero.maxHP];
+	
 	[self presentModalViewController:self.battleViewController animated:YES];
 }
 

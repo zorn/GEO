@@ -11,7 +11,7 @@
 #import <CoreData/CoreData.h>
 #import <pthread.h>
 
-@interface Enemy : NSManagedObject <MKAnnotation> {
+@interface EnemyMapSpawn : NSManagedObject <MKAnnotation> {
 	CLLocationCoordinate2D _coordinate;
 }
 
