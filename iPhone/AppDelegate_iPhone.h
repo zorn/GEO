@@ -16,11 +16,15 @@
 @class MapViewController;
 
 @interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate> {
-	MainMenuViewController *mainMenuViewController;
+	
 }
 
-@property (nonatomic, readonly, retain) MainMenuViewController *mainMenuViewController;
 @property (nonatomic, retain) MapViewController *mapViewController;
+@property (nonatomic, retain) UIViewController *currentViewController;
+@property (nonatomic, retain, readonly) MainMenuViewController *mainMenuViewController;
+
+- (IBAction)doneBrowsingTreks:(id)sender;
+- (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate;
 
 @end
 

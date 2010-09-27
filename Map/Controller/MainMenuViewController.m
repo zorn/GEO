@@ -56,8 +56,7 @@
 
 - (IBAction)optionsButtonPressed:(id)sender
 {
-	NSLog(@"optionsButtonPressed");
-	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+	[delegate mainMenuViewControllerTreksButtonPressed:self];
 }
 
 #pragma mark -
