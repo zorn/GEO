@@ -5,13 +5,13 @@
 
 - (void)awakeFromFetch
 {
+	[self setLevel:1];
 	[self setStaminaRegenRate:3.0];
 	[self setSecondsLeftOfShields:0];
 }
 
 @dynamic name;
 @dynamic currentHPAsNumber;
-@dynamic maxHPAsNumber;
 @dynamic levelAsNumber;
 @dynamic experiencePointsAsNumber;
 @dynamic staminaAsNumber;
@@ -33,11 +33,7 @@
 }
 
 - (NSInteger)maxHP {
-    return [self.maxHPAsNumber integerValue];
-}
-
-- (void)setMaxHP:(NSInteger)value {
-	[self setMaxHPAsNumber:[NSNumber numberWithInteger:value]];
+    return ((4*self.level)+1)*4;
 }
 
 - (NSInteger)level {
@@ -88,21 +84,50 @@
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob
 {
-	// generate a random value to represnt an attack form self against mob
-	// TODO: More interesting math
-	return 5*pow(self.stamina, 3.0);
+	// baseAttack power * rand(.5 - 1.5) * stamina effect .. when stam is full it is 1.0
+	float randomAttackPower = self.baseAttackPower * ((((rand()%11)+5.0)/10.0));
+	float staminaEffect = pow(self.stamina, 3.0);
+	NSInteger result = round(randomAttackPower * staminaEffect);
+	//NSLog(@"randomAttackPower %f * staminaEffect %f = %d", randomAttackPower, staminaEffect, result);
+	return result;
+	// TODO: double the attack value is the mob is weak to the weapon being used
 }
 
-- (NSInteger)randomStrongAttackValueAgainstMob:(RQMob *)mob
-{
-	// generate a random value to represnt an attack form self against mob
-	// TODO: More interesting math
-	return [self randomAttackValueAgainstMob:mob]*2;
-}
-
-+ (NSInteger)experinceNeedToLevelFromLevel:(NSInteger)level
++ (NSInteger)experinceNeededToLevelFromLevel:(NSInteger)level
 {
 	return level^3;
+}
+
+- (NSInteger)experiencePointsWorth
+{
+	// returns the number of xp a monster of self.level will give to the hero upon defeat
+	return ([RQMob experinceNeededToLevelFromLevel:[self level]]/[self level])*4;
+}
+
+- (BOOL)increaseLevelIfNeeded
+{
+	NSInteger expectedLevel = [RQMob expectedLevelGivenExperiencePointTotal:self.experiencePoints];
+	if (expectedLevel > self.level) {
+		self.level = expectedLevel;
+		return YES;
+	} else {
+		return NO;
+	}
+}
+
++ (NSInteger)expectedLevelGivenExperiencePointTotal:(NSInteger)total
+{
+	for (int i = 1; i < 51; i++) {
+		if (total < [RQMob experinceNeededToLevelFromLevel:i]) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+- (NSInteger)baseAttackPower
+{
+	return round(self.maxHP / 5);
 }
 
 - (NSArray *)weapons

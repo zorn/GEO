@@ -1,8 +1,13 @@
+September 26, 2010
+
+* MDZ: MaxHP is now a derived number.
+* MDZ: Lots of new logic added to mod model, levels, experience, attack power, etc.
+
 September 25, 2010
 
 * MDZ: Added and converted the RQMob into the main core data database.
 * MDZ: Added RQModelController which has a singleton defaultModelController. This is a nice class that lets you access objects from the core data soup in a clean way without excessive code.
-* MDZ: The hero state now stays around from session to session. We don't have the code yet to regen the hero health as you walk so before each battle we give you a full heal.
+* MDZ: The hero state now stays around from session to session. We don't have the code yet to regenerate the hero health as you walk so before each battle we give you a full heal.
 
 September 24, 2010
 

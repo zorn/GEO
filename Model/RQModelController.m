@@ -79,13 +79,13 @@ static RQModelController *defaultModelController = nil;
 	return nil;
 }
 
-- (RQEnemy *)randomEnemy
+- (RQEnemy *)randomEnemyBasedOnHero:(RQHero *)hero
 {
+	// Given the hero generate a random enemy for the hero 
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
 	[newEnemy setName:@"Evil Snorlax"];
-	[newEnemy setMaxHP:25];
-	[newEnemy setCurrentHP:25];
-	[newEnemy setLevel:3];
+	[newEnemy setLevel:hero.level];
+	[newEnemy setCurrentHP:[newEnemy maxHP]];
 	[newEnemy setStamina:0];
 	[newEnemy setStaminaRegenRate:8.0];
 	return newEnemy;

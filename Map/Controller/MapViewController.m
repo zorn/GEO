@@ -20,6 +20,7 @@
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
+#import "RQBattle.h"
 
 #define ENEMY_GENERATION_BOUNDS_X .001f
 #define ENEMY_GENERATION_BOUNDS_Y .0015f
@@ -348,10 +349,14 @@
 - (IBAction)launchBattlePressed:(id)sender {
     self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
+	RQHero *hero = [[RQModelController defaultModelController] hero];
+	self.battleViewController.battle.hero = hero;
 	
 	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
-	RQHero *hero = [[RQModelController defaultModelController] hero];
 	[hero setCurrentHP:hero.maxHP];
+	
+	// TODO: EnemyMapSpawn in the future should dictate the enemy the hero is fighting, but for now let's make a random enemy:
+	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero]; 
 	
 	[self presentModalViewController:self.battleViewController animated:YES];
 }

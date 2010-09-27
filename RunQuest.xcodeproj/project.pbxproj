@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
+		1A21DC26124EB9BE00191E77 /* man-tuss.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A21DC25124EB9BE00191E77 /* man-tuss.png */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
 		1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
 		1A6E3284124E4E210054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
@@ -118,6 +119,7 @@
 /* Begin PBXFileReference section */
 		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
 		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
+		1A21DC25124EB9BE00191E77 /* man-tuss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "man-tuss.png"; sourceTree = "<group>"; };
 		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQBattle.h; path = "../Game Engine/RQBattle.h"; sourceTree = "<group>"; };
 		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQBattle.m; path = "../Game Engine/RQBattle.m"; sourceTree = "<group>"; };
 		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQMob.h; path = "../Game Engine/RQMob.h"; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A21DC25124EB9BE00191E77 /* man-tuss.png */,
 				1AC92473124D75CF00E09F6A /* ui */,
 				C99A91B2124A7F47005BAECF /* sounds */,
 				1A8EA7A1124987870006A220 /* air_button@2x.png */,
@@ -727,6 +730,7 @@
 				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
 				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
+				1A21DC26124EB9BE00191E77 /* man-tuss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

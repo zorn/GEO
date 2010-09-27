@@ -26,6 +26,7 @@
 {
 	if (self = [super init]) {
 		weaponSprites = [[NSMutableArray alloc] init];
+		battle = [[RQBattle alloc] init];
 	}
 	return self;
 }
@@ -84,7 +85,6 @@
 	}
 #endif
 
-	battle = [[RQBattle alloc] init];
 	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
@@ -134,7 +134,7 @@
 		[weaponSprite release]; weaponSprite = nil;
 	}
 
-	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"boobs.png"]];
+	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"man-tuss.png"]];
     monsterView.frame = CGRectMake(1.350, 8.5, 106.0, 80.0);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
 	[monsterView release];

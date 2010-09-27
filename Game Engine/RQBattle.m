@@ -10,13 +10,6 @@
 {
 	if (self = [super init]) {
 		
-		// hard coding battle for now
-		[self setHero:[[RQModelController defaultModelController] hero]];
-		[self setEnemy:[[RQModelController defaultModelController] randomEnemy]];
-		
-		NSLog(@"Battle started with hero %@ and enemy %@", self.hero, self.enemy);
-		
-		[self setBattleLog:[NSString stringWithFormat:@"Battle started at: %@\n", [NSDate date]]];
 	}
 	return self;
 }

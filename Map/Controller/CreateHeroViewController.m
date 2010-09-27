@@ -47,9 +47,8 @@
 	}
 	RQHero *hero = [[RQModelController defaultModelController] hero];
 	[hero setName:newHeroName];
-	[hero setMaxHP:30];
-	[hero setCurrentHP:30];
-	[hero setLevel:5];
+	[hero setCurrentHP:[hero maxHP]];
+	[hero setLevel:1];
 	[hero setStamina:0];
 	[[[RQModelController defaultModelController] coreDataManager] save];
 	[delegate createHeroViewControllerDidEnd:self];

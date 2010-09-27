@@ -24,6 +24,6 @@
 
 - (RQHero *)hero;
 - (BOOL)heroExists;
-- (RQEnemy *)randomEnemy;
+- (RQEnemy *)randomEnemyBasedOnHero:(RQHero *)hero;
 
 @end

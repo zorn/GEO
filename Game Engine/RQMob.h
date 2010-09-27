@@ -8,7 +8,6 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSNumber *currentHPAsNumber;
-@property (nonatomic, retain) NSNumber *maxHPAsNumber;
 @property (nonatomic, retain) NSNumber *levelAsNumber;
 @property (nonatomic, retain) NSNumber *experiencePointsAsNumber;
 @property (nonatomic, retain) NSNumber *staminaAsNumber;
@@ -16,7 +15,7 @@
 @property (nonatomic, retain) NSNumber *secondsLeftOfShieldsAsNumber;
 
 @property (readwrite, assign) NSInteger currentHP;
-@property (readwrite, assign) NSInteger maxHP;
+@property (readonly, assign) NSInteger maxHP;
 @property (readwrite, assign) NSInteger level;
 @property (readwrite, assign) NSInteger experiencePoints;
 @property (readwrite, assign) float stamina;
@@ -24,9 +23,12 @@
 @property (readwrite, assign) NSInteger secondsLeftOfShields;
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob;
-- (NSInteger)randomStrongAttackValueAgainstMob:(RQMob *)mob;
 
-+ (NSInteger)experinceNeedToLevelFromLevel:(NSInteger)level;
++ (NSInteger)experinceNeededToLevelFromLevel:(NSInteger)level;
+- (NSInteger)experiencePointsWorth;
+- (BOOL)increaseLevelIfNeeded;
++ (NSInteger)expectedLevelGivenExperiencePointTotal:(NSInteger)total;
+- (NSInteger)baseAttackPower;
 
 - (NSArray *)weapons;
 
