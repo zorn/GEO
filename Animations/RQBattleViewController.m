@@ -19,6 +19,8 @@
 #import "SimpleAudioEngine.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "RQModelController.h"
+#import "M3CoreDataManager.h"
 
 @implementation RQBattleViewController
 
@@ -265,16 +267,21 @@
 	// check for end of battle conditions and if done, present the victory screen
 	if (self.battle.isBattleDone) {
 		[self stopAnimation];
-		[UIView animateWithDuration:1.0 
-							  delay:0.0 
-							options:UIViewAnimationCurveLinear 
-						 animations:^(void) {
-							 [evilBoobsMonster runDeathAnimation];
-							 evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
-						 } 
-						 completion:^(BOOL finished) {
-							 [self presentVictoryScreen];
-						 }];
+		if (self.battle.hero.currentHP > 0) {
+			[UIView animateWithDuration:1.0 
+								  delay:0.0 
+								options:UIViewAnimationCurveLinear 
+							 animations:^(void) {
+								 [evilBoobsMonster runDeathAnimation];
+								 evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+							 } 
+							 completion:^(BOOL finished) {
+								 [self presentVictoryScreen];
+							 }];
+		} else {
+			[self presentVictoryScreen];
+		}
+		
 	}
 	
 }
@@ -431,9 +438,14 @@
 - (void)presentVictoryScreen
 {
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
+	if (self.battle.hero.currentHP > 0) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
+	} else {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"You lose.m4a" loop:NO];
+	}
 	self.battleVictoryViewController = [[[RQBattleVictoryViewController alloc] init] autorelease];
 	[self.battleVictoryViewController setDelegate:self];
+	[self.battleVictoryViewController setBattle:self.battle];
 	[self.view.window addSubview:self.battleVictoryViewController.view];
     self.battleVictoryViewController.view.frame = self.view.window.bounds;
 	self.view.hidden = YES;
@@ -456,6 +468,7 @@
 {
 	[self.battleVictoryViewController.view removeFromSuperview];
 	[self setBattleVictoryViewController:nil];
+	[[[RQModelController defaultModelController] coreDataManager] save];
 	[self returnToMapView];
 }
 

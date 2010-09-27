@@ -3,9 +3,13 @@
 
 @implementation RQMob
 
-- (void)awakeFromFetch
+- (void)awakeFromInsert
 {
 	[self setLevel:1];
+}
+
+- (void)awakeFromFetch
+{
 	[self setStaminaRegenRate:3.0];
 	[self setSecondsLeftOfShields:0];
 }
@@ -95,13 +99,15 @@
 
 + (NSInteger)experinceNeededToLevelFromLevel:(NSInteger)level
 {
-	return level^3;
+	return pow(level,3);
 }
 
 - (NSInteger)experiencePointsWorth
 {
 	// returns the number of xp a monster of self.level will give to the hero upon defeat
-	return ([RQMob experinceNeededToLevelFromLevel:[self level]]/[self level])*4;
+	NSInteger a = [RQMob experinceNeededToLevelFromLevel:[self level]];
+	NSInteger l = [self level];
+	return (a/l)*4;
 }
 
 - (BOOL)increaseLevelIfNeeded
@@ -117,10 +123,14 @@
 
 + (NSInteger)expectedLevelGivenExperiencePointTotal:(NSInteger)total
 {
+	NSInteger calcTotal = 0;
 	for (int i = 1; i < 51; i++) {
-		if (total < [RQMob experinceNeededToLevelFromLevel:i]) {
+		calcTotal = calcTotal + [RQMob experinceNeededToLevelFromLevel:i];
+		//NSLog(@"calcTotal %d, total %d", calcTotal, total);
+		if (total - calcTotal <= 0) {
+			//NSLog(@"expectedLevel is %d givenExperiencePointTotal: %d", i, total);
 			return i;
-		}
+		} 
 	}
 	return -1;
 }

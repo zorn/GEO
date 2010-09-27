@@ -32,4 +32,7 @@
 - (void)appendToBattleLog:(NSString *)logAddition;
 - (BOOL)isBattleDone;
 
+- (void)issueBattleResults;
+- (BOOL)didHeroWin;
+
 @end

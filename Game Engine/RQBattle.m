@@ -45,7 +45,7 @@
 //		}
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
 		[hitSoundEffectPlayer play];
-		self.hero.stamina = 0;
+		self.hero.stamina = 0.0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];
 		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
 	} else if (mob == enemy) {
@@ -110,6 +110,15 @@
 	
 	// if the hero lost, take experience points away
 	
+}
+
+- (BOOL)didHeroWin
+{
+	if (self.hero.currentHP > 0 && self.isBattleDone) {
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 @end

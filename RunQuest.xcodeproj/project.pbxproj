@@ -46,6 +46,9 @@
 		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
+		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
+		1AC3B30212504B3E00416564 /* Coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B30112504B3E00416564 /* Coin.wav */; };
+		1AC3B33D12504F6D00416564 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B33C12504F6D00416564 /* Powerup.wav */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
@@ -157,6 +160,9 @@
 		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
+		1AC3B30112504B3E00416564 /* Coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Coin.wav; sourceTree = "<group>"; };
+		1AC3B33C12504F6D00416564 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		1AC92470124D75A000E09F6A /* MainMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
@@ -424,6 +430,8 @@
 		C99A91B3124A7F47005BAECF /* effects */ = {
 			isa = PBXGroup;
 			children = (
+				1AC3B33C12504F6D00416564 /* Powerup.wav */,
+				1AC3B30112504B3E00416564 /* Coin.wav */,
 				C99A91B4124A7F47005BAECF /* chimp_001.caf */,
 				C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */,
 				C99A91B6124A7F47005BAECF /* Critical_Hit.caf */,
@@ -458,6 +466,7 @@
 				C99A91CD124A7F47005BAECF /* victory_long.m4a */,
 				C99A91CE124A7F47005BAECF /* victory_song_002.m4a */,
 				C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */,
+				1AC3B2CD1250449600416564 /* You lose.m4a */,
 			);
 			path = music;
 			sourceTree = "<group>";
@@ -731,6 +740,9 @@
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
 				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
 				1A21DC26124EB9BE00191E77 /* man-tuss.png in Resources */,
+				1AC3B2CE1250449600416564 /* You lose.m4a in Resources */,
+				1AC3B30212504B3E00416564 /* Coin.wav in Resources */,
+				1AC3B33D12504F6D00416564 /* Powerup.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
