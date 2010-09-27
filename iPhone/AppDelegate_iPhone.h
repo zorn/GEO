@@ -21,6 +21,7 @@
 
 @property (nonatomic, readonly, retain) MainMenuViewController *mainMenuViewController;
 @property (nonatomic, retain) MapViewController *mapViewController;
+@property (nonatomic, retain) UINavigationController *trekViewController;
 
 @end
 

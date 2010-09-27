@@ -9,9 +9,10 @@
 #import "AppDelegate_iPhone.h"
 #import "MapViewController.h"
 #import "MainMenuViewController.h"
+#import "TrekListViewController.h"
 
 @implementation AppDelegate_iPhone
-@synthesize mapViewController;
+@synthesize mapViewController, trekViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -105,6 +106,29 @@
 	[self.window addSubview:self.mapViewController.view];
 }
 
+- (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller {
+	TrekListViewController *trekListVC = [[TrekListViewController alloc] initWithNibName:@"TrekListView" bundle:nil];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setEntity:[NSEntityDescription entityForName:@"Trek" inManagedObjectContext:self.managedObjectContext]];
+	[request setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO], nil]];
+	
+	NSFetchedResultsController *resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:@"uhh"];
+	[request release];
+	
+	trekListVC.fetchedResultsController= resultsController;
+	[resultsController release];
+	
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
+	[trekListVC release];
+	
+	self.trekViewController = navController;
+	[navController release];
+	
+	[mainMenuViewController.view removeFromSuperview];
+	self.trekViewController.view.frame = self.window.bounds;
+	[self.window addSubview:self.trekViewController.view];
+}
 
 
 @end
