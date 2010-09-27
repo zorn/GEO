@@ -183,6 +183,8 @@
 	// Move the monster around
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
 	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
+	CGFloat newMonsterZ = 0.75 + (0.5 * cos((float)monsterCounter * 0.008));
+	evilBoobsMonster.view.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
 	
