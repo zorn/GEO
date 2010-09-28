@@ -74,7 +74,7 @@
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    [mainMenuViewController release];
+    //[mainMenuViewController release];
     [super applicationDidReceiveMemoryWarning:application];
 }
 

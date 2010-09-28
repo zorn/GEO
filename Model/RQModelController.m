@@ -106,6 +106,27 @@ static RQModelController *defaultModelController = nil;
 	return NO;
 }
 
+- (NSArray *)monsterTemplates
+{
+	return [NSArray arrayWithObjects:
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Globby", @"name", @"boob1.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Globby", @"name", @"boob2.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Globby", @"name", @"boob3.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Globby", @"name", @"boob4.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			
+			[NSDictionary dictionaryWithObjectsAndKeys:@"ManTuss", @"name", @"man-tuss.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super ManTuss", @"name", @"man-tuss_blue.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra ManTuss", @"name", @"man-tuss_purple.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master ManTuss", @"name", @"man-tuss_red.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Meanie", @"name", @"meanie_1.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Meanie", @"name", @"meanie_2.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Meanie", @"name", @"meanie_3.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Meanie", @"name", @"meanie_4.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			
+			nil];
+}
+
 /**
  Inserts the initial content for the database from the info dict
  */

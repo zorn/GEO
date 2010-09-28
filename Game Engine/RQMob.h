@@ -1,6 +1,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+enum {
+    RQElementalTypeFire = 1,
+    RQElementalTypeWater = 2,
+    RQElementalTypeEarth = 3,
+    RQElementalTypeAir = 4,
+};
+typedef NSUInteger RQElementalType;
+
 @interface RQMob : NSManagedObject 
 {
 

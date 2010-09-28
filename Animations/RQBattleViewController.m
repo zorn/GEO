@@ -135,9 +135,12 @@
 		weaponSprite.velocity = CGPointZero;
 		[weaponSprite release]; weaponSprite = nil;
 	}
-
-	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"man-tuss.png"]];
-    monsterView.frame = CGRectMake(1.350, 8.5, 106.0, 80.0);
+	
+	UIImage *monsterImage = [UIImage imageNamed:@"boob1"];
+	
+	UIImageView *monsterView = [[UIImageView alloc] initWithImage:monsterImage];
+	//NSLog(@"w %f h %f s %f", monsterImage.size.width, monsterImage.size.height, monsterImage.scale);
+    monsterView.frame = CGRectMake(1.350, 8.5, monsterImage.size.width, monsterImage.size.height);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
 	[monsterView release];
 
@@ -273,7 +276,7 @@
 								options:UIViewAnimationCurveLinear 
 							 animations:^(void) {
 								 [evilBoobsMonster runDeathAnimation];
-								 evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+								 //evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
 							 } 
 							 completion:^(BOOL finished) {
 								 [self presentVictoryScreen];
