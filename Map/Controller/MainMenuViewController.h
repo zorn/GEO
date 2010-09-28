@@ -26,4 +26,6 @@
 
 @protocol MainMenuViewControllerDelegate 
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller;
+- (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller;
+- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller;
 @end

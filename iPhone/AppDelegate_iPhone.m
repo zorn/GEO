@@ -9,22 +9,21 @@
 #import "AppDelegate_iPhone.h"
 #import "MapViewController.h"
 #import "MainMenuViewController.h"
+#import "TrekListViewController.h"
 
 @implementation AppDelegate_iPhone
-@synthesize mapViewController;
+@synthesize currentViewController, mainMenuViewController, mapViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
     // Override point for customization after application launch.
-	[self.window addSubview:self.mainMenuViewController.view];	
+	[self setCurrentViewController:[self mainMenuViewController] animated:NO];
+	[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
-	
 	return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -70,42 +69,98 @@
 }
 
 
+- (MainMenuViewController *)mainMenuViewController {
+	if ( !mainMenuViewController ) {
+		mainMenuViewController = [[MainMenuViewController alloc] init]; 
+		[mainMenuViewController setDelegate:self];
+	}	
+	return mainMenuViewController;	
+}
+
 #pragma mark -
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    //[mainMenuViewController release];
+   
     [super applicationDidReceiveMemoryWarning:application];
 }
 
-
 - (void)dealloc {
-	[mainMenuViewController release];
 	[mapViewController release];
+	[mainMenuViewController release];
+	[currentViewController release];
 	[super dealloc];
 }
 
-- (MainMenuViewController *)mainMenuViewController
-{
-	if (!mainMenuViewController) {
-		mainMenuViewController = [[MainMenuViewController alloc] init]; 
-		[mainMenuViewController setDelegate:self];
+- (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
+	to.view.frame = self.window.frame;
+	void (^switchBlock)(BOOL) = ^(BOOL finished){
+		if (finished) {
+			[self.window addSubview:to.view];
+			[currentViewController.view removeFromSuperview];
+			[currentViewController release];
+			currentViewController = [to retain];
+		}};
+	
+	if ( animate ) {
+		UIViewAnimationOptions options = ( [to isKindOfClass:[MainMenuViewController class]] ? UIViewAnimationOptionTransitionCurlDown : UIViewAnimationOptionTransitionCurlUp );
+		[UIView transitionFromView:currentViewController.view toView:to.view duration:1.0f options:options completion:switchBlock];
 	}
-	return mainMenuViewController;
+	else {
+		switchBlock(YES);
+	}
+	
 }
+
+- (void)setCurrentViewController:(UIViewController *)to {
+	[self setCurrentViewController:to animated:YES];
+}
+
+
 
 #pragma mark -
 #pragma mark MainMenuViewControllerDelegate methods
 
-- (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller
-{
-	[mainMenuViewController.view removeFromSuperview];
-	self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
-	self.mapViewController.view.frame = self.window.bounds;
-	[self.window addSubview:self.mapViewController.view];
+- (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller {
+	MapViewController *mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+	self.mapViewController = mapVC;
+	[mapVC release];
+	self.currentViewController = self.mapViewController;
 }
 
+- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller {
+	
+}
 
+- (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller {
+	TrekListViewController *trekListVC = [[TrekListViewController alloc] initWithNibName:@"TrekListView" bundle:nil];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setEntity:[NSEntityDescription entityForName:@"Trek" inManagedObjectContext:self.managedObjectContext]];
+	[request setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO], nil]];
+	
+	NSFetchedResultsController *resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Treks"];
+	[request release];
+	
+	trekListVC.fetchedResultsController= resultsController;
+	[resultsController release];
+	
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
+	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBrowsingTreks:)];
+	navController.navigationBar.topItem.rightBarButtonItem = doneItem;
+	[doneItem release];
+
+	self.currentViewController = navController;
+	
+	[navController release];
+	
+	
+}
+
+- (IBAction)doneBrowsingTreks:(id)sender {
+	
+	self.currentViewController = [self mainMenuViewController];
+}
 
 @end
 
