@@ -1,6 +1,7 @@
 September 28, 2010
 
-* 
+* We now load 3 monsters with the 4 color variations each. Whom you battle is currently random.
+* I took out the red flash when we get hit due to the documented bug. A new effect is in the works from Matt.
 
 September 26, 2010
 
