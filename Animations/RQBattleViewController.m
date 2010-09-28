@@ -122,7 +122,22 @@
 	UIImageView *weaponImageView;
 	int xloc = 40;
 	for (NSDictionary *weapon in self.battle.hero.weapons) {
-		weaponImageName = [NSString stringWithFormat:@"%@_button", [weapon objectForKey:@"type"]]; 
+		
+		switch ([[weapon objectForKey:@"type"] integerValue]) {
+			case RQElementalTypeFire:
+				weaponImageName = @"fire_button";
+				break;
+			case RQElementalTypeWater:
+				weaponImageName = @"water_button";
+				break;
+			case RQElementalTypeEarth:
+				weaponImageName = @"earth_button";
+				break;
+			case RQElementalTypeAir:
+				weaponImageName = @"air_button";
+				break;
+		}
+		
 		weaponImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:weaponImageName]];
 		weaponSprite = [[RQWeaponSprite alloc] initWithView:weaponImageView];
 		[weaponImageView release];
@@ -136,7 +151,7 @@
 		[weaponSprite release]; weaponSprite = nil;
 	}
 	
-	UIImage *monsterImage = [UIImage imageNamed:@"boob1"];
+	UIImage *monsterImage = [UIImage imageNamed:self.battle.enemy.spriteImageName];
 	
 	UIImageView *monsterView = [[UIImageView alloc] initWithImage:monsterImage];
 	//NSLog(@"w %f h %f s %f", monsterImage.size.width, monsterImage.size.height, monsterImage.scale);
@@ -153,15 +168,16 @@
 	lastCollisionTime = 0.0;
 	
 	// Setup the self hit visual
-	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
-	CGRect ffFrame = self.frontFlashView.frame;
-	ffFrame.origin.x = 0.0;
-	ffFrame.origin.y = 0.0;
-	self.frontFlashView.frame = ffFrame;
-	frontFlashView.alpha = 0.0;
-	frontFlashView.backgroundColor = [UIColor redColor];
-	frontFlashView.userInteractionEnabled = NO;
-	[self.view addSubview:frontFlashView];
+	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
+//	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
+//	CGRect ffFrame = self.frontFlashView.frame;
+//	ffFrame.origin.x = 0.0;
+//	ffFrame.origin.y = 0.0;
+//	self.frontFlashView.frame = ffFrame;
+//	frontFlashView.alpha = 0.0;
+//	frontFlashView.backgroundColor = [UIColor redColor];
+//	frontFlashView.userInteractionEnabled = NO;
+//	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
 	[self startAnimation];
@@ -229,6 +245,7 @@
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
+				/*  TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
 				self.frontFlashView.alpha = 0.0f;
 				[UIView animateWithDuration:0.1f 
 									  delay:0.0f 
@@ -239,6 +256,7 @@
 								 completion:^(BOOL finished) {
 									 self.frontFlashView.alpha = 0.0f;
 								 }];
+			*/
 			}
 		} // end ememy AI
 	}

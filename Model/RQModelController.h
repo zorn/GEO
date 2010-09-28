@@ -18,6 +18,8 @@
 @property (readonly) M3SimpleCoreData *simpleCoreData;
 
 - (NSUndoManager *)undoManager;
+- (NSArray *)monsterTemplates;
+
 
 - (BOOL)shouldInsertInitialContents;
 - (void)insertInitialContent;

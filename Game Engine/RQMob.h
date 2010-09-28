@@ -15,8 +15,10 @@ typedef NSUInteger RQElementalType;
 }
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *spriteImageName;
 @property (nonatomic, retain) NSNumber *currentHPAsNumber;
 @property (nonatomic, retain) NSNumber *levelAsNumber;
+@property (nonatomic, retain) NSNumber *typeAsNumber;
 @property (nonatomic, retain) NSNumber *experiencePointsAsNumber;
 @property (nonatomic, retain) NSNumber *staminaAsNumber;
 @property (nonatomic, retain) NSNumber *staminaRegenRateAsNumber;
@@ -25,6 +27,7 @@ typedef NSUInteger RQElementalType;
 @property (readwrite, assign) NSInteger currentHP;
 @property (readonly, assign) NSInteger maxHP;
 @property (readwrite, assign) NSInteger level;
+@property (readwrite, assign) RQElementalType type;
 @property (readwrite, assign) NSInteger experiencePoints;
 @property (readwrite, assign) float stamina;
 @property (readwrite, assign) float staminaRegenRate;

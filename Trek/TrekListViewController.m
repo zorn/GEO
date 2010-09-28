@@ -158,7 +158,7 @@
 	
 
 	TrekViewController *trekViewController = [[TrekViewController alloc] initWithNibName:@"TrekView" bundle:nil];
-	trekViewController.trek = 
+	//trekViewController.trek = 
 	trekViewController.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
 	[self.navigationController pushViewController:trekViewController animated:YES];
 	[trekViewController release];

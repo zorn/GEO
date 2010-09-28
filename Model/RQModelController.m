@@ -82,8 +82,13 @@ static RQModelController *defaultModelController = nil;
 - (RQEnemy *)randomEnemyBasedOnHero:(RQHero *)hero
 {
 	// Given the hero generate a random enemy for the hero 
+	NSArray *monsterTemplates = [self monsterTemplates];
+	NSDictionary *monsterTemplate = [monsterTemplates objectAtIndex:(random() % [monsterTemplates count])];
+	
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
-	[newEnemy setName:@"Evil Snorlax"];
+	[newEnemy setName:[monsterTemplate objectForKey:@"name"]];
+	[newEnemy setTypeAsNumber:[monsterTemplate objectForKey:@"type"]];
+	[newEnemy setSpriteImageName:[monsterTemplate objectForKey:@"image"]];
 	[newEnemy setLevel:hero.level];
 	[newEnemy setCurrentHP:[newEnemy maxHP]];
 	[newEnemy setStamina:0];
@@ -109,20 +114,20 @@ static RQModelController *defaultModelController = nil;
 - (NSArray *)monsterTemplates
 {
 	return [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Globby", @"name", @"boob1.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Globby", @"name", @"boob2.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Globby", @"name", @"boob3.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Globby", @"name", @"boob4.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Globby", @"name", @"boob1.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Globby", @"name", @"boob2.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Globby", @"name", @"boob3.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Globby", @"name", @"boob4.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:@"ManTuss", @"name", @"man-tuss.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super ManTuss", @"name", @"man-tuss_blue.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra ManTuss", @"name", @"man-tuss_purple.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master ManTuss", @"name", @"man-tuss_red.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"ManTuss", @"name", @"man-tuss.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super ManTuss", @"name", @"man-tuss_blue.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra ManTuss", @"name", @"man-tuss_purple.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master ManTuss", @"name", @"man-tuss_red.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Meanie", @"name", @"meanie_1.png", @"image", @"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Meanie", @"name", @"meanie_2.png", @"image", @"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Meanie", @"name", @"meanie_3.png", @"image", @"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Meanie", @"name", @"meanie_4.png", @"image", @"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Meanie", @"name", @"meanie_1.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type",  [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Meanie", @"name", @"meanie_2.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Meanie", @"name", @"meanie_3.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Meanie", @"name", @"meanie_4.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
 			
 			nil];
 }

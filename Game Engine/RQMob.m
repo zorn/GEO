@@ -15,8 +15,10 @@
 }
 
 @dynamic name;
+@dynamic spriteImageName;
 @dynamic currentHPAsNumber;
 @dynamic levelAsNumber;
+@dynamic typeAsNumber;
 @dynamic experiencePointsAsNumber;
 @dynamic staminaAsNumber;
 @dynamic staminaRegenRateAsNumber;
@@ -46,6 +48,29 @@
 
 - (void)setLevel:(NSInteger)value {
 	[self setLevelAsNumber:[NSNumber numberWithInteger:value]];
+}
+
+- (RQElementalType)type {
+	RQElementalType answer;
+	switch ([self.levelAsNumber integerValue]) {
+		case RQElementalTypeFire:
+			answer = RQElementalTypeFire;
+			break;
+		case RQElementalTypeWater:
+			answer = RQElementalTypeWater;
+			break;
+		case RQElementalTypeEarth:
+			answer = RQElementalTypeWater;
+			break;
+		case RQElementalTypeAir:
+			answer = RQElementalTypeAir;
+			break;
+	}
+	return answer;
+}
+
+- (void)setType:(RQElementalType)value {
+	[self setTypeAsNumber:[NSNumber numberWithInteger:value]];
 }
 
 - (NSInteger)experiencePoints {
@@ -148,10 +173,10 @@
 	// Fire has dominance over Earth.
 	// Earth has dominance over Air.
 	return [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:@"fire", @"type", @"earth", @"strongTo", @"water", @"weakTo", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"water", @"type", @"fire", @"strongTo", @"wind", @"weakTo", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"earth", @"type", @"wind", @"strongTo", @"fire", @"weakTo", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"air", @"type", @"water", @"strongTo", @"earth", @"weakTo", [UIColor lightGrayColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
 			nil];
 }
 

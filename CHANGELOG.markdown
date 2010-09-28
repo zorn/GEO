@@ -1,3 +1,7 @@
+September 28, 2010
+
+* 
+
 September 26, 2010
 
 * MDZ: MaxHP is now a derived number.
