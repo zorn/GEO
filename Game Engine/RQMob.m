@@ -52,7 +52,7 @@
 
 - (RQElementalType)type {
 	RQElementalType answer;
-	switch ([self.levelAsNumber integerValue]) {
+	switch ([self.typeAsNumber integerValue]) {
 		case RQElementalTypeFire:
 			answer = RQElementalTypeFire;
 			break;
@@ -111,15 +111,20 @@
 	[self setSecondsLeftOfShieldsAsNumber:[NSNumber numberWithInteger:value]];
 }
 
-- (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob
+- (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType
 {
 	// baseAttack power * rand(.5 - 1.5) * stamina effect .. when stam is full it is 1.0
 	float randomAttackPower = self.baseAttackPower * ((((rand()%11)+5.0)/10.0));
 	float staminaEffect = pow(self.stamina, 3.0);
-	NSInteger result = round(randomAttackPower * staminaEffect);
-	//NSLog(@"randomAttackPower %f * staminaEffect %f = %d", randomAttackPower, staminaEffect, result);
+	float weaponEffect = 1.0;
+	if ([mob weakToType] == weaponType) {
+		weaponEffect = 2.0;
+	} else if ([mob strongToType] == weaponType) {
+		weaponEffect = 0.5;
+	}
+	NSInteger result = lroundf(randomAttackPower * staminaEffect * weaponEffect);
+	NSLog(@"randomAttackPower %f * staminaEffect %f * weaponEffect %f = %d", randomAttackPower, staminaEffect, weaponEffect, result);
 	return result;
-	// TODO: double the attack value is the mob is weak to the weapon being used
 }
 
 + (NSInteger)experinceNeededToLevelFromLevel:(NSInteger)level
@@ -178,6 +183,46 @@
 			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
 			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
 			nil];
+}
+
+- (RQElementalType)weakToType
+{
+	RQElementalType answer = 0;
+		switch ([self.typeAsNumber integerValue]) {
+			case RQElementalTypeFire:
+				answer = RQElementalTypeWater;
+				break;
+			case RQElementalTypeWater:
+				answer = RQElementalTypeAir;
+				break;
+			case RQElementalTypeEarth:
+				answer = RQElementalTypeFire;
+				break;
+			case RQElementalTypeAir:
+				answer = RQElementalTypeEarth;
+				break;
+		}
+	return answer;
+}
+
+- (RQElementalType)strongToType
+{
+	RQElementalType answer = 0;
+	switch ([self.typeAsNumber integerValue]) {
+		case RQElementalTypeWater:
+			answer = RQElementalTypeFire;
+			break;
+		case RQElementalTypeAir:
+			answer = RQElementalTypeWater;
+			break;
+		case RQElementalTypeFire:
+			answer = RQElementalTypeEarth;
+			break;
+		case RQElementalTypeEarth:
+			answer = RQElementalTypeAir;
+			break;
+	}
+	return answer;
 }
 
 @end

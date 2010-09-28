@@ -119,22 +119,29 @@
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
 	NSString *weaponImageName;
+	RQElementalType weaponType;
 	UIImageView *weaponImageView;
 	int xloc = 40;
 	for (NSDictionary *weapon in self.battle.hero.weapons) {
 		
+		weaponType = RQElementalTypeNone;
+		
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
 				weaponImageName = @"fire_button";
+				weaponType = RQElementalTypeFire;
 				break;
 			case RQElementalTypeWater:
 				weaponImageName = @"water_button";
+				weaponType = RQElementalTypeWater;
 				break;
 			case RQElementalTypeEarth:
 				weaponImageName = @"earth_button";
+				weaponType = RQElementalTypeEarth;
 				break;
 			case RQElementalTypeAir:
 				weaponImageName = @"air_button";
+				weaponType = RQElementalTypeAir;
 				break;
 		}
 		
@@ -142,6 +149,7 @@
 		weaponSprite = [[RQWeaponSprite alloc] initWithView:weaponImageView];
 		[weaponImageView release];
 		[weaponSprite setWeaponDetails:weapon];
+		[weaponSprite setType:weaponType];
 		[weaponSprites addObject:weaponSprite];
 		[self.view addSubview:weaponSprite.view];
 		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
@@ -212,7 +220,7 @@
 	
 	if (monsterHit) {
 		lastCollisionTime = currentTime;
-		NSDictionary *result = [self.battle issueAttackCommandFrom:self.battle.hero];
+		NSDictionary *result = [self.battle issueAttackCommandFrom:self.battle.hero withWeaponOfType:activeWeapon.type];
 		if ([[result objectForKey:@"status"] isEqualToString:@"hit"]) {
 			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
@@ -242,7 +250,7 @@
 		
 		// Run ememy AI if they have not been hit
 		if (self.battle.enemy.stamina >= 1.0) {
-			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
+			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
 				/*  TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
@@ -296,7 +304,7 @@
 								options:UIViewAnimationCurveLinear 
 							 animations:^(void) {
 								 [evilBoobsMonster runDeathAnimation];
-								 //evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+								 evilBoobsMonster.view.transform = CGAffineTransformMakeScale(0.01, 0.01);
 							 } 
 							 completion:^(BOOL finished) {
 								 [self presentVictoryScreen];

@@ -34,6 +34,9 @@
 		1A3B46B1125267E500DFE211 /* meanie_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6FC8B125132FF00D98CF3 /* meanie_3@2x.png */; };
 		1A3B46B2125267E600DFE211 /* meanie_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6FC8D125132FF00D98CF3 /* meanie_4@2x.png */; };
 		1A3B46B3125267E600DFE211 /* meanie_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6FC8C125132FF00D98CF3 /* meanie_4.png */; };
+		1A3B472F12527B2300DFE211 /* iteration.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B472D12527B2300DFE211 /* iteration.m4a */; };
+		1A3B473012527B2300DFE211 /* levelUp.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B472E12527B2300DFE211 /* levelUp.m4a */; };
+		1A3B474812527BED00DFE211 /* Coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B474712527BED00DFE211 /* Coin.wav */; };
 		1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
 		1A6E3284124E4E210054949B /* RQModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3283124E4E210054949B /* RQModelController.m */; };
 		1A6E3289124E4E830054949B /* M3CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3286124E4E830054949B /* M3CoreDataManager.m */; };
@@ -70,8 +73,6 @@
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
-		1AC3B30212504B3E00416564 /* Coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B30112504B3E00416564 /* Coin.wav */; };
-		1AC3B33D12504F6D00416564 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B33C12504F6D00416564 /* Powerup.wav */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
@@ -153,6 +154,9 @@
 		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQBattle.m; path = "../Game Engine/RQBattle.m"; sourceTree = "<group>"; };
 		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQMob.h; path = "../Game Engine/RQMob.h"; sourceTree = "<group>"; };
 		1A2B236A1246AD46000F9449 /* RQMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQMob.m; path = "../Game Engine/RQMob.m"; sourceTree = "<group>"; };
+		1A3B472D12527B2300DFE211 /* iteration.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = iteration.m4a; sourceTree = "<group>"; };
+		1A3B472E12527B2300DFE211 /* levelUp.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = levelUp.m4a; sourceTree = "<group>"; };
+		1A3B474712527BED00DFE211 /* Coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Coin.wav; sourceTree = "<group>"; };
 		1A6E3282124E4E210054949B /* RQModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQModelController.h; sourceTree = "<group>"; };
 		1A6E3283124E4E210054949B /* RQModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQModelController.m; sourceTree = "<group>"; };
 		1A6E3285124E4E830054949B /* M3CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3CoreDataManager.h; sourceTree = "<group>"; };
@@ -187,8 +191,6 @@
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
-		1AC3B30112504B3E00416564 /* Coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Coin.wav; sourceTree = "<group>"; };
-		1AC3B33C12504F6D00416564 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		1AC92470124D75A000E09F6A /* MainMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
@@ -518,8 +520,9 @@
 		C99A91B3124A7F47005BAECF /* effects */ = {
 			isa = PBXGroup;
 			children = (
-				1AC3B33C12504F6D00416564 /* Powerup.wav */,
-				1AC3B30112504B3E00416564 /* Coin.wav */,
+				1A3B474712527BED00DFE211 /* Coin.wav */,
+				1A3B472D12527B2300DFE211 /* iteration.m4a */,
+				1A3B472E12527B2300DFE211 /* levelUp.m4a */,
 				C99A91B4124A7F47005BAECF /* chimp_001.caf */,
 				C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */,
 				C99A91B6124A7F47005BAECF /* Critical_Hit.caf */,
@@ -842,8 +845,6 @@
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
 				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
 				1AC3B2CE1250449600416564 /* You lose.m4a in Resources */,
-				1AC3B30212504B3E00416564 /* Coin.wav in Resources */,
-				1AC3B33D12504F6D00416564 /* Powerup.wav in Resources */,
 				D8AF2281124FA792008AB638 /* TrekListView.xib in Resources */,
 				D832041E12511DFA00B2F944 /* TrekView.xib in Resources */,
 				1A3B469C125267DB00DFE211 /* boob1.png in Resources */,
@@ -870,6 +871,9 @@
 				1A3B46B1125267E500DFE211 /* meanie_3@2x.png in Resources */,
 				1A3B46B2125267E600DFE211 /* meanie_4@2x.png in Resources */,
 				1A3B46B3125267E600DFE211 /* meanie_4.png in Resources */,
+				1A3B472F12527B2300DFE211 /* iteration.m4a in Resources */,
+				1A3B473012527B2300DFE211 /* levelUp.m4a in Resources */,
+				1A3B474812527BED00DFE211 /* Coin.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

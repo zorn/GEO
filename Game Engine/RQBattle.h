@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "RQMob.h"
 
 #define RQBattleFrameRate 30
 #define RQBattleShieldLengthInSeconds 9
 
-@class RQMob;
 @class RQHero;
 @class RQEnemy;
 
@@ -12,9 +12,7 @@
 {
 	RQHero *hero;
 	RQEnemy *enemy;
-	
-	AVAudioPlayer *hitSoundEffectPlayer;
-	
+		
 	NSString *battleLog;
 }
 
@@ -23,11 +21,10 @@
 
 @property (readwrite, copy) NSString *battleLog;
 
-- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob;
+- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType;
 - (void)issueShieldCommandFrom:(RQMob *)mob;
 
 - (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta;
-- (void)runEnemyAI;
 
 - (void)appendToBattleLog:(NSString *)logAddition;
 - (BOOL)isBattleDone;

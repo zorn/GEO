@@ -112,7 +112,7 @@
 			[self.newLevelBannerLabel setText:@"New Level!"];
 			[self.newLevelMessageLabel setHidden:NO];
 			[self.newLevelMessageLabel setText:[NSString stringWithFormat:@"%@ is now level %d", self.battle.hero.name, self.battle.hero.level]];
-			[[SimpleAudioEngine sharedEngine] playEffect:@"Powerup.wav"];
+			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 		}
 	}
 	

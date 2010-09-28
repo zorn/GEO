@@ -2,6 +2,7 @@
 #import <CoreData/CoreData.h>
 
 enum {
+    RQElementalTypeNone = 0,
     RQElementalTypeFire = 1,
     RQElementalTypeWater = 2,
     RQElementalTypeEarth = 3,
@@ -33,7 +34,7 @@ typedef NSUInteger RQElementalType;
 @property (readwrite, assign) float staminaRegenRate;
 @property (readwrite, assign) NSInteger secondsLeftOfShields;
 
-- (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob;
+- (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType;
 
 + (NSInteger)experinceNeededToLevelFromLevel:(NSInteger)level;
 - (NSInteger)experiencePointsWorth;
@@ -42,5 +43,7 @@ typedef NSUInteger RQElementalType;
 - (NSInteger)baseAttackPower;
 
 - (NSArray *)weapons;
+- (RQElementalType)weakToType;
+- (RQElementalType)strongToType;
 
 @end
