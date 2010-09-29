@@ -162,7 +162,7 @@
 					
 					double theta = atan(deltaY/deltaX);
 					
-					double moveX = enemyStepSize*cos(theta)*mapPointsPerMeter;
+					double moveX = enemyStepSize*sin(theta)*mapPointsPerMeter;
 					double moveY = enemyStepSize*sin(theta)*mapPointsPerMeter;
 					
 					if ( deltaX > 0) {
