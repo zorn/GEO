@@ -12,6 +12,7 @@
 @interface RQSprite : NSObject {
 	
 	UIView *view;
+	UIView *imageView;
 	CGSize fullSize;
 	CGPoint position;
 	CGPoint orininalPosition;
@@ -27,6 +28,7 @@
 @property(nonatomic, assign) CGPoint orininalPosition;
 @property(nonatomic, assign) CGPoint velocity;
 @property(nonatomic, retain, readonly) UIView *view;
+@property(nonatomic, retain, readonly) UIView *imageView;
 @property(readonly) CGPoint	averageVelocity;
 
 - (id)initWithView:(UIView *)theView;
