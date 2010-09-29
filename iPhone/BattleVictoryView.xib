@@ -157,7 +157,7 @@
 					<object class="IBUILabel" id="689755333">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{20, 421}, {280, 19}}</string>
+						<string key="NSFrame">{{20, 441}, {280, 19}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -222,7 +222,7 @@
 						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 460}</string>
+				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -407,7 +407,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RQBattleVictoryViewController</string>
 					<string>UIResponder</string>
-					<string>{{753, 189}, {320, 460}}</string>
+					<string>{{668, 299}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

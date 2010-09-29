@@ -14,6 +14,7 @@
 @class RQEnemySprite;
 @class RQWeaponSprite;
 @class MapViewController;
+@class RQPassthroughView;
 @class AVCaptureSession;
 @class AVCaptureVideoPreviewLayer;
 
@@ -32,7 +33,7 @@
 	
 	RQWeaponSprite *activeWeapon;
 	UILabel *heroHeathLabel;
-	UIView *frontFlashView;
+	RQPassthroughView *frontFlashView;
 	
 	NSMutableArray *weaponSprites;
 	

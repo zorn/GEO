@@ -31,13 +31,13 @@
 		highlightLayer.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
 		highlightLayer.backgroundColor = [UIColor redColor].CGColor;
 		highlightLayer.opacity = 0.0f;
-		if ([theView isKindOfClass:[UIImageView class]]) {
-			UIImageView *maskView = [[UIImageView alloc] initWithImage:((UIImageView *)theView).image];
-			maskView.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
+		if ([self.imageView isKindOfClass:[UIImageView class]]) {
+			UIImageView *maskView = [[UIImageView alloc] initWithImage:((UIImageView *)self.imageView).image];
+			maskView.frame = CGRectMake(0.0f, 0.0f, self.imageView.frame.size.width, self.imageView.frame.size.height);
 			highlightLayer.mask = maskView.layer;
 			[maskView release];
 		}
-		[self.view.layer addSublayer:highlightLayer];
+		[self.imageView.layer addSublayer:highlightLayer];
 		
 		enemyHealthMeter = [[UIProgressView	alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
 		enemyHealthMeter.frame = CGRectMake(0.0, theView.frame.size.height+9.0, theView.frame.size.width, 9);
@@ -107,8 +107,8 @@
 	move.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 1.0, 0.0, 0.0)];
 	move.autoreverses = YES;
 	move.repeatCount = HUGE_VALF;
-	move.duration = 0.5;
-	[self.view.layer addAnimation:move forKey:@"position.x"];
+	move.duration = 0.25;
+	[self.imageView.layer addAnimation:move forKey:@"position.x"];
 }
 
 @end

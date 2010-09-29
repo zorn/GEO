@@ -10,6 +10,7 @@
 #import "MapViewController.h"
 #import "MainMenuViewController.h"
 #import "TrekListViewController.h"
+#import "CDAudioManager.h"
 
 @implementation AppDelegate_iPhone
 @synthesize currentViewController, mainMenuViewController, mapViewController;
@@ -22,6 +23,7 @@
 	[self setCurrentViewController:[self mainMenuViewController] animated:NO];
 	[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
+	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
 	return YES;
 }
 
@@ -93,7 +95,6 @@
 }
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
-	to.view.frame = self.window.frame;
 	void (^switchBlock)(BOOL) = ^(BOOL finished){
 		if (finished) {
 			[self.window addSubview:to.view];

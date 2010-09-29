@@ -21,6 +21,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
+#import "RQPassthroughView.h"
 
 @implementation RQBattleViewController
 
@@ -62,8 +63,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	
 #if TARGET_OS_EMBEDDED
 	_captureSession = [[AVCaptureSession alloc] init];
 	
@@ -177,15 +176,14 @@
 	
 	// Setup the self hit visual
 	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
-//	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
-//	CGRect ffFrame = self.frontFlashView.frame;
-//	ffFrame.origin.x = 0.0;
-//	ffFrame.origin.y = 0.0;
-//	self.frontFlashView.frame = ffFrame;
-//	frontFlashView.alpha = 0.0;
-//	frontFlashView.backgroundColor = [UIColor redColor];
-//	frontFlashView.userInteractionEnabled = NO;
-//	[self.view addSubview:frontFlashView];
+	self.frontFlashView = [[[RQPassthroughView alloc] initWithFrame:self.view.frame] autorelease];
+	CGRect ffFrame = self.frontFlashView.frame;
+	ffFrame.origin.x = 0.0;
+	ffFrame.origin.y = 0.0;
+	self.frontFlashView.frame = ffFrame;
+	frontFlashView.alpha = 0.0;
+	frontFlashView.backgroundColor = [UIColor redColor];
+	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
 	[self startAnimation];
@@ -193,6 +191,9 @@
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+}
 
 
 - (void)tick
@@ -210,7 +211,7 @@
 	// Move the monster around
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
 	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
-	CGFloat newMonsterZ = 0.75 + (0.5 * cos((float)monsterCounter * 0.008));
+	CGFloat newMonsterZ = 0.75 + (0.5 * sin((float)monsterCounter * 0.008));
 	evilBoobsMonster.view.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
@@ -254,19 +255,15 @@
 		if (self.battle.enemy.stamina >= 1.0) {
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
+				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
-				/*  TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
-				self.frontFlashView.alpha = 0.0f;
-				[UIView animateWithDuration:0.1f 
-									  delay:0.0f 
-									options:UIViewAnimationOptionAutoreverse 
-								 animations:^(void) {
-									 self.frontFlashView.alpha = 0.8f;
-								 } 
-								 completion:^(BOOL finished) {
-									 self.frontFlashView.alpha = 0.0f;
-								 }];
-			*/
+				CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+				flash.fromValue = [NSNumber numberWithFloat:0.0f];
+				flash.toValue = [NSNumber numberWithFloat:0.8f];
+				flash.autoreverses = YES;
+				flash.duration = 0.3;
+				flash.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+				[self.frontFlashView.layer addAnimation:flash forKey:@"opacity"];
 			}
 		} // end ememy AI
 	}

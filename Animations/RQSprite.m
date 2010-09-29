@@ -12,10 +12,11 @@
 
 @interface RQSprite ()
 @property(nonatomic, retain) UIView *view;
+@property(nonatomic, retain) UIView *imageView;
 @end
 
 @implementation RQSprite
-@synthesize fullSize, view, velocity;
+@synthesize fullSize, view, imageView, velocity;
 @dynamic position;
 @synthesize orininalPosition;
 
@@ -23,7 +24,9 @@
 #pragma mark Setup/Teardown
 - (id)initWithView:(UIView *)theView {
     if ((self = [super init])) {
-        view = [theView retain];
+        view = [[UIView alloc] initWithFrame:theView.frame];
+		imageView = [theView retain];
+		[view addSubview:imageView];
 		fullSize = theView.frame.size;
 		samples = 0;
 		positions = malloc( sizeof(CGPoint) * SAMPLE_SIZE);
@@ -39,6 +42,7 @@
 	free(positions);
 	free(times);
 	[view release];
+	[imageView release];
 	[super dealloc];
 }
 
