@@ -62,8 +62,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	
 #if TARGET_OS_EMBEDDED
 	_captureSession = [[AVCaptureSession alloc] init];
 	
@@ -193,6 +191,9 @@
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+}
 
 
 - (void)tick
