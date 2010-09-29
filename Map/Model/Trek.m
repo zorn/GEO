@@ -37,21 +37,15 @@
 }
 
 - (NSTimeInterval)duration {
+	NSDate *startTime = self.date;
+	NSDate *endTime =  [NSDate date];
 	if ( [self.locations count] ) {
-		NSDate *startTime = [(CLLocation *)[self.locations objectAtIndex:0] timestamp];
-		NSDate *endTime = nil;
+		startTime = [(CLLocation *)[self.locations objectAtIndex:0] timestamp];
 		if ( self.isStopped ) {
 			endTime = [(CLLocation *)[self.locations lastObject] timestamp];
 		}
-		else {
-			endTime = [NSDate date];
-		}
-		return [endTime timeIntervalSinceDate:startTime];
 	}
-	else {
-		return 0;
-	}
-
+	return [endTime timeIntervalSinceDate:startTime];
 }
 
 - (void)stop {

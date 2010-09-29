@@ -265,6 +265,7 @@
 }
 
 - (void)updateTimerLabel {
+	NSLog(@"%f", self.trek.duration);
 	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
 }
 
