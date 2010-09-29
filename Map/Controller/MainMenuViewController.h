@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CreateHeroViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
-@interface MainMenuViewController : UIViewController <CreateHeroViewControllerDelegate> {
-
+@interface MainMenuViewController : UIViewController
+{
+	
 }
 
 @property (readwrite, assign) id <MainMenuViewControllerDelegate> delegate;
@@ -25,6 +25,7 @@
 
 
 @protocol MainMenuViewControllerDelegate 
+- (void)presentStory:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller;

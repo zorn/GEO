@@ -13,7 +13,7 @@
 #import "CDAudioManager.h"
 
 @implementation AppDelegate_iPhone
-@synthesize currentViewController, mainMenuViewController, mapViewController;
+@synthesize currentViewController, mainMenuViewController, mapViewController, storyViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -117,10 +117,26 @@
 	[self setCurrentViewController:to animated:YES];
 }
 
+#pragma mark -
+#pragma mark StoryViewControllerDelegate methods
 
+- (void)storyViewControllerDidEnd:(StoryViewController *)controller
+{
+	[self mainMenuViewControllerPlayButtonPressed:nil];
+	self.storyViewController = nil;
+}
 
 #pragma mark -
 #pragma mark MainMenuViewControllerDelegate methods
+
+- (void)presentStory:(MainMenuViewController *)controller
+{
+	StoryViewController *storyVC = [[StoryViewController alloc] init];
+	[storyVC setDelegate:self];
+	self.storyViewController = storyVC;
+	[storyVC release];
+	self.currentViewController = self.storyViewController;
+}
 
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller {
 	MapViewController *mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];

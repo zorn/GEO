@@ -9,6 +9,7 @@
 #import "MainMenuViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "RQModelController.h"
+#import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "CreateHeroViewController.h"
 
@@ -45,10 +46,16 @@
 	RQModelController *modelController = [RQModelController defaultModelController];
 	if (![modelController heroExists]) {
 		
-		CreateHeroViewController *vc = [[CreateHeroViewController alloc] init];
-		[vc setDelegate:self];
-		[self presentModalViewController:vc animated:YES];
-		[vc release];
+		// Used to have a window to ask for hero name .. taking it out for now
+		RQHero *hero = [modelController hero];
+		[hero setName:@"Hero"];
+		[hero setCurrentHP:[hero maxHP]];
+		[hero setLevel:1];
+		[hero setStamina:0];
+		[[modelController coreDataManager] save];
+		
+		[delegate presentStory:self];
+		
 	} else {
 		[delegate mainMenuViewControllerPlayButtonPressed:self];
 	}	
@@ -58,15 +65,5 @@
 {
 	[delegate mainMenuViewControllerTreksButtonPressed:self];
 }
-
-#pragma mark -
-#pragma mark CreateHeroViewControllerDelegate methods
-
-- (void)createHeroViewControllerDidEnd:(CreateHeroViewController *)controller;
-{
-	[self dismissModalViewControllerAnimated:YES];
-	[delegate mainMenuViewControllerPlayButtonPressed:self];
-}
-
 
 @end

@@ -1,3 +1,8 @@
+September 29, 2010
+
+* Took out the naming of the hero screen. It's now hard coded with a name of "Hero".
+* Replaced this with a new StoryViewController which will flip through a small collection of images with overlaying textviews. before jumping into the map view.
+
 September 28, 2010
 
 * We now load 3 monsters with the 4 color variations each. Whom you battle is currently random.
