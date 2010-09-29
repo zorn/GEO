@@ -117,6 +117,7 @@
 		C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CE124A7F47005BAECF /* victory_song_002.m4a */; };
 		C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */; };
 		C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99A91F8124A7F9C005BAECF /* OpenAL.framework */; };
+		C9D8A011125353130034583F /* RQPassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D8A010125353130034583F /* RQPassthroughView.m */; };
 		C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleViewController.m */; };
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
@@ -275,6 +276,8 @@
 		C99A91CE124A7F47005BAECF /* victory_song_002.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_song_002.m4a; sourceTree = "<group>"; };
 		C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = VictorySoundPlaceholder.m4a; sourceTree = "<group>"; };
 		C99A91F8124A7F9C005BAECF /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		C9D8A00F125353130034583F /* RQPassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQPassthroughView.h; sourceTree = "<group>"; };
+		C9D8A010125353130034583F /* RQPassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQPassthroughView.m; sourceTree = "<group>"; };
 		C9DCF7711245505500BCABB1 /* RQBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleViewController.h; sourceTree = "<group>"; };
 		C9DCF7721245505500BCABB1 /* RQBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleViewController.m; sourceTree = "<group>"; };
 		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
@@ -638,6 +641,8 @@
 				1A8EA8FC124A4E680006A220 /* RQBattleVictoryViewController.h */,
 				1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */,
 				1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */,
+				C9D8A00F125353130034583F /* RQPassthroughView.h */,
+				C9D8A010125353130034583F /* RQPassthroughView.m */,
 			);
 			name = BattleView;
 			path = Animations;
@@ -965,6 +970,7 @@
 				D8AF2280124FA792008AB638 /* TrekListViewController.m in Sources */,
 				D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */,
 				C9ECBCB61252BFF0000D4C4A /* RQAudioUtil.m in Sources */,
+				C9D8A011125353130034583F /* RQPassthroughView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

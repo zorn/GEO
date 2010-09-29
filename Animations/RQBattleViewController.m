@@ -21,6 +21,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
+#import "RQPassthroughView.h"
 
 @implementation RQBattleViewController
 
@@ -175,15 +176,14 @@
 	
 	// Setup the self hit visual
 	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
-//	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
-//	CGRect ffFrame = self.frontFlashView.frame;
-//	ffFrame.origin.x = 0.0;
-//	ffFrame.origin.y = 0.0;
-//	self.frontFlashView.frame = ffFrame;
-//	frontFlashView.alpha = 0.0;
-//	frontFlashView.backgroundColor = [UIColor redColor];
-//	frontFlashView.userInteractionEnabled = NO;
-//	[self.view addSubview:frontFlashView];
+	self.frontFlashView = [[[RQPassthroughView alloc] initWithFrame:self.view.frame] autorelease];
+	CGRect ffFrame = self.frontFlashView.frame;
+	ffFrame.origin.x = 0.0;
+	ffFrame.origin.y = 0.0;
+	self.frontFlashView.frame = ffFrame;
+	frontFlashView.alpha = 0.0;
+	frontFlashView.backgroundColor = [UIColor redColor];
+	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
 	[self startAnimation];
@@ -254,18 +254,12 @@
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
-				/*  TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
-				self.frontFlashView.alpha = 0.0f;
-				[UIView animateWithDuration:0.1f 
-									  delay:0.0f 
-									options:UIViewAnimationOptionAutoreverse 
-								 animations:^(void) {
-									 self.frontFlashView.alpha = 0.8f;
-								 } 
-								 completion:^(BOOL finished) {
-									 self.frontFlashView.alpha = 0.0f;
-								 }];
-			*/
+				CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+				flash.fromValue = [NSNumber numberWithFloat:0.0f];
+				flash.toValue = [NSNumber numberWithFloat:0.8f];
+				flash.autoreverses = YES;
+				flash.duration = 0.1;
+				[self.frontFlashView.layer addAnimation:flash forKey:@"opacity"];
 			}
 		} // end ememy AI
 	}
