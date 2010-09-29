@@ -61,6 +61,8 @@
 		1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
 		1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
+		1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B38511252DDA0007F0497 /* StoryViewController.m */; };
+		1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B38531252DDB8007F0497 /* StoryView.xib */; };
 		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
 		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
 		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
@@ -178,6 +180,9 @@
 		1A6E3445124E7D010054949B /* CreateHeroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateHeroView.xib; sourceTree = "<group>"; };
 		1A6E3447124E7D590054949B /* CreateHeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateHeroViewController.h; sourceTree = "<group>"; };
 		1A6E3448124E7D590054949B /* CreateHeroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateHeroViewController.m; sourceTree = "<group>"; };
+		1A7B38501252DDA0007F0497 /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryViewController.h; path = Story/StoryViewController.h; sourceTree = "<group>"; };
+		1A7B38511252DDA0007F0497 /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryViewController.m; path = Story/StoryViewController.m; sourceTree = "<group>"; };
+		1A7B38531252DDB8007F0497 /* StoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryView.xib; sourceTree = "<group>"; };
 		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
@@ -375,6 +380,16 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		1A7B38251252D6E6007F0497 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B38501252DDA0007F0497 /* StoryViewController.h */,
+				1A7B38511252DDA0007F0497 /* StoryViewController.m */,
+				1A7B38531252DDB8007F0497 /* StoryView.xib */,
+			);
+			name = Story;
+			sourceTree = "<group>";
+		};
 		1AC92473124D75CF00E09F6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +458,7 @@
 				D8C86C6112450EDF007E44AF /* Model */,
 				D8AF2278124FA725008AB638 /* Trek */,
 				D8C86C5312450DE9007E44AF /* Map */,
+				1A7B38251252D6E6007F0497 /* Story */,
 				31D9AF2F124D0BE700C2F8F6 /* CocosDenshion */,
 				D8C86C4E12450DAA007E44AF /* Game Engine */,
 				D8C86C4D12450DA3007E44AF /* BattleView */,
@@ -874,6 +890,7 @@
 				1A3B472F12527B2300DFE211 /* iteration.m4a in Resources */,
 				1A3B473012527B2300DFE211 /* levelUp.m4a in Resources */,
 				1A3B474812527BED00DFE211 /* Coin.wav in Resources */,
+				1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +976,7 @@
 				1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */,
 				D8AF2280124FA792008AB638 /* TrekListViewController.m in Sources */,
 				D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */,
+				1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
