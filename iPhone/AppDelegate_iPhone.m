@@ -93,7 +93,6 @@
 }
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
-	to.view.frame = self.window.frame;
 	void (^switchBlock)(BOOL) = ^(BOOL finished){
 		if (finished) {
 			[self.window addSubview:to.view];

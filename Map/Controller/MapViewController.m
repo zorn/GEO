@@ -47,7 +47,7 @@
 @end
 
 @implementation MapViewController
-@synthesize hudView, overlayLabel, mapView, displayLink, speedLabel, durationLabel, trek, launchBattleButton, locationManager, battleViewController;
+@synthesize hudView, overlayLabel, mapView, displayLink, timerLabel, trek, launchBattleButton, locationManager, battleViewController;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -64,10 +64,9 @@
 		
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
-		
-		_speedFormatter = [[NSNumberFormatter alloc] init];
-		[_speedFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-		[_speedFormatter setMaximumSignificantDigits:2];
+		_timerFormatter = [[NSDateFormatter alloc] init];
+		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		[_timerFormatter setDateFormat:@"HH:mm:ss"];
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
@@ -83,16 +82,15 @@
 	[mapView release];
 	[hudView release];
 	[overlayLabel release];
-	[speedLabel release];
-	[durationLabel release];
+	[timerLabel release];
 	[launchBattleButton release];
-	[_speedFormatter release];
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
     [launchBattleButton release];
 	[_enemyViews release];
+	[_timerFormatter release];
 	[_timers release];
 	[super dealloc];
 }
@@ -108,7 +106,16 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[self startUpdatingLocation];
+	
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)viewDidUnload {
@@ -257,12 +264,8 @@
 	}
 }
 
-- (void)updateSpeedLabel {
-	self.speedLabel.text = [NSString stringWithFormat:@"%@ m/s", [_speedFormatter stringFromNumber:[NSNumber numberWithDouble:self.trek.averageSpeed]]];
-}
-
-- (void)updateDurationLabel {
-	self.durationLabel.text = [_speedFormatter stringFromNumber:[NSNumber numberWithDouble:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+- (void)updateTimerLabel {
+	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
 }
 
 #pragma mark CLLocationManagerDelegate
@@ -280,9 +283,6 @@
 	if ( newLocation && newLocation.horizontalAccuracy > 0) {
 		if ( newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD && self.trek )
 				[self.trek addLocation:newLocation];
-		
-		[self updateSpeedLabel];
-		[self updateDurationLabel];
 	}
 }
 
@@ -356,9 +356,13 @@
 	[hero setCurrentHP:hero.maxHP];
 	
 	// TODO: EnemyMapSpawn in the future should dictate the enemy the hero is fighting, but for now let's make a random enemy:
-	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero]; 
-	
+	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[self presentModalViewController:self.battleViewController animated:YES];
+//	self.battleViewController.view.frame = CGRectMake(0, -1.0f*self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+//	[self.view.superview addSubview:self.battleViewController.view];
+//	self.modalViewController = self.battleViewController;
+//	[self.battleViewController.view animateWithDuration:1.0f animations:^{self.battleViewController.view.frame = self.view.frame; } completion:^(BOOL finished){ [self.view removeFromSuperview]; self.modalViewController = self.battleViewController;}];
 }
 
 - (void)removeTimerNamed:(NSString *)name {
@@ -398,10 +402,12 @@
 		newTrek.date = [NSDate date];
 		self.trek = newTrek;
 		[newTrek release];
+		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
 		[self generateEnemyForHeroAtLocation:locationManager.location];
 		[self startGeneratingEnemies];
 	}
 	else {
+		[self removeTimerNamed:@"Tick"];
 		[button setTitle:@"Start" forState:UIControlStateNormal];
 		[self removeAllEnemies];
 		NSError *error = nil;
