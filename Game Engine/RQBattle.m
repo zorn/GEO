@@ -26,30 +26,19 @@
 
 @synthesize battleLog;
 
-- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob
+- (NSDictionary *)issueAttackCommandFrom:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType
 {
 	// issues an attack and returns a dictionary with results of the attack
 	NSInteger attackValue;
 	srandom(time(NULL));
 	if ((RQMob *)mob == hero) {
-		attackValue = [self.hero randomAttackValueAgainstMob:self.enemy];
-//		if (self.hero.stamina < 100) {
-//			// if the stamina wasn't full the attack value is decreased
-//			if (rand() % 100 > 40.0) {
-//				attackValue = floor(attackValue / (2 + (rand() % 10)))+1;
-//			} else {
-//				self.hero.stamina = 0;
-//				[self appendToBattleLog:[NSString stringWithFormat:@"%@'s attack missed!", self.hero.name]];
-//				return [NSDictionary dictionaryWithObjectsAndKeys:@"miss", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
-//			}
-//		}
+		attackValue = [self.hero randomAttackValueAgainstMob:self.enemy withWeaponOfType:weaponType];
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
-		[hitSoundEffectPlayer play];
 		self.hero.stamina = 0.0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];
 		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
 	} else if (mob == enemy) {
-		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero];
+		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero withWeaponOfType:weaponType];
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
 		[self.enemy setStamina:0.0];
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.enemy.name, self.hero.name, attackValue]];
@@ -80,13 +69,6 @@
 	float howMuchStaminaTheEnemyWouldGainInAFullSecond = 1.0 / self.enemy.staminaRegenRate;
 	float oneFrameWorthForTheEnemy = timeDelta * howMuchStaminaTheEnemyWouldGainInAFullSecond;
 	[self.enemy setStamina:self.enemy.stamina + oneFrameWorthForTheEnemy];
-}
-
-- (void)runEnemyAI
-{
-	if (self.enemy.stamina == 100) {
-		[self issueAttackCommandFrom:self.enemy];
-	}
 }
 
 - (void)appendToBattleLog:(NSString *)logAddition

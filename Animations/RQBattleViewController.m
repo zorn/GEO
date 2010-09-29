@@ -119,14 +119,37 @@
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
 	NSString *weaponImageName;
+	RQElementalType weaponType;
 	UIImageView *weaponImageView;
 	int xloc = 40;
 	for (NSDictionary *weapon in self.battle.hero.weapons) {
-		weaponImageName = [NSString stringWithFormat:@"%@_button", [weapon objectForKey:@"type"]]; 
+		
+		weaponType = RQElementalTypeNone;
+		
+		switch ([[weapon objectForKey:@"type"] integerValue]) {
+			case RQElementalTypeFire:
+				weaponImageName = @"fire_button";
+				weaponType = RQElementalTypeFire;
+				break;
+			case RQElementalTypeWater:
+				weaponImageName = @"water_button";
+				weaponType = RQElementalTypeWater;
+				break;
+			case RQElementalTypeEarth:
+				weaponImageName = @"earth_button";
+				weaponType = RQElementalTypeEarth;
+				break;
+			case RQElementalTypeAir:
+				weaponImageName = @"air_button";
+				weaponType = RQElementalTypeAir;
+				break;
+		}
+		
 		weaponImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:weaponImageName]];
 		weaponSprite = [[RQWeaponSprite alloc] initWithView:weaponImageView];
 		[weaponImageView release];
 		[weaponSprite setWeaponDetails:weapon];
+		[weaponSprite setType:weaponType];
 		[weaponSprites addObject:weaponSprite];
 		[self.view addSubview:weaponSprite.view];
 		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
@@ -135,9 +158,12 @@
 		weaponSprite.velocity = CGPointZero;
 		[weaponSprite release]; weaponSprite = nil;
 	}
-
-	UIImageView *monsterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"man-tuss.png"]];
-    monsterView.frame = CGRectMake(1.350, 8.5, 106.0, 80.0);
+	
+	UIImage *monsterImage = [UIImage imageNamed:self.battle.enemy.spriteImageName];
+	
+	UIImageView *monsterView = [[UIImageView alloc] initWithImage:monsterImage];
+	//NSLog(@"w %f h %f s %f", monsterImage.size.width, monsterImage.size.height, monsterImage.scale);
+    monsterView.frame = CGRectMake(1.350, 8.5, monsterImage.size.width, monsterImage.size.height);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
 	[monsterView release];
 
@@ -150,15 +176,16 @@
 	lastCollisionTime = 0.0;
 	
 	// Setup the self hit visual
-	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
-	CGRect ffFrame = self.frontFlashView.frame;
-	ffFrame.origin.x = 0.0;
-	ffFrame.origin.y = 0.0;
-	self.frontFlashView.frame = ffFrame;
-	frontFlashView.alpha = 0.0;
-	frontFlashView.backgroundColor = [UIColor redColor];
-	frontFlashView.userInteractionEnabled = NO;
-	[self.view addSubview:frontFlashView];
+	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
+//	self.frontFlashView = [[[UIView alloc] initWithFrame:self.view.frame] autorelease];
+//	CGRect ffFrame = self.frontFlashView.frame;
+//	ffFrame.origin.x = 0.0;
+//	ffFrame.origin.y = 0.0;
+//	self.frontFlashView.frame = ffFrame;
+//	frontFlashView.alpha = 0.0;
+//	frontFlashView.backgroundColor = [UIColor redColor];
+//	frontFlashView.userInteractionEnabled = NO;
+//	[self.view addSubview:frontFlashView];
 	
 	[self setupGameLoop];
 	[self startAnimation];
@@ -193,7 +220,7 @@
 	
 	if (monsterHit) {
 		lastCollisionTime = currentTime;
-		NSDictionary *result = [self.battle issueAttackCommandFrom:self.battle.hero];
+		NSDictionary *result = [self.battle issueAttackCommandFrom:self.battle.hero withWeaponOfType:activeWeapon.type];
 		if ([[result objectForKey:@"status"] isEqualToString:@"hit"]) {
 			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
@@ -223,9 +250,10 @@
 		
 		// Run ememy AI if they have not been hit
 		if (self.battle.enemy.stamina >= 1.0) {
-			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy];
+			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
+				/*  TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
 				self.frontFlashView.alpha = 0.0f;
 				[UIView animateWithDuration:0.1f 
 									  delay:0.0f 
@@ -236,6 +264,7 @@
 								 completion:^(BOOL finished) {
 									 self.frontFlashView.alpha = 0.0f;
 								 }];
+			*/
 			}
 		} // end ememy AI
 	}

@@ -1,3 +1,9 @@
+September 28, 2010
+
+* We now load 3 monsters with the 4 color variations each. Whom you battle is currently random.
+* I took out the red flash when we get hit due to the documented bug. A new effect is in the works from Matt.
+* Added elemental types to all weapons and monsters. When an attack hits it will now be a strong (1.5) normal (1.0) or weak (0.5) attack value.
+
 September 26, 2010
 
 * MDZ: MaxHP is now a derived number.

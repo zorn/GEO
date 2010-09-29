@@ -20,6 +20,7 @@
 @synthesize weaponDetails;
 @synthesize stamina;
 @synthesize touch;
+@synthesize type;
 
 - (void)updateView
 {
