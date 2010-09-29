@@ -33,16 +33,20 @@
 	srandom(time(NULL));
 	if ((RQMob *)mob == hero) {
 		attackValue = [self.hero randomAttackValueAgainstMob:self.enemy withWeaponOfType:weaponType];
+		BOOL attackWasStrong = NO;
+		if ([self.enemy weakToType] == weaponType) {
+			attackWasStrong = YES;
+		} 
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
 		self.hero.stamina = 0.0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];
-		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
+		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", [NSNumber numberWithBool:attackWasStrong], @"attackWasStrong", nil];
 	} else if (mob == enemy) {
 		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero withWeaponOfType:weaponType];
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
 		[self.enemy setStamina:0.0];
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.enemy.name, self.hero.name, attackValue]];
-		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", nil];
+		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", [NSNumber numberWithBool:NO], @"attackWasStrong", nil];
 	}
 	
 	// failure

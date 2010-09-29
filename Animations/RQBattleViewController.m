@@ -226,11 +226,13 @@
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
 			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
 			
-			NSInteger attackValue = [[result objectForKey:@"attackValue"] integerValue];
-			if ( (1.0f* attackValue / self.battle.enemy.currentHP) < .10f )
-				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_004.caf"];
-			else
+			if ( [[result objectForKey:@"attackWasStrong"] boolValue] == YES ) {
+				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_002.caf"];
+				NSLog(@"stong attack");
+			} else {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
+			}
+				
 			
 		}
 	} else {
