@@ -47,7 +47,7 @@
 @end
 
 @implementation MapViewController
-@synthesize hudView, overlayLabel, mapView, displayLink, timerLabel, trek, launchBattleButton, locationManager, battleViewController;
+@synthesize startButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, launchBattleButton, locationManager, battleViewController;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -128,6 +128,7 @@
 	self.hudView = nil;
 	self.overlayLabel = nil;
     self.launchBattleButton = nil;
+	self.startButton = nil;
 }
 
 #pragma mark Timer Fire Methods
@@ -265,7 +266,6 @@
 }
 
 - (void)updateTimerLabel {
-	NSLog(@"%f", self.trek.duration);
 	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
 }
 
@@ -391,32 +391,42 @@
 	[self removeTimerNamed:@"EnemyPulse"];
 }
 
+- (void)startTrek {
+	[self.trek startWithLocation:locationManager.location];
+	[startButton setTitle:@"Stop" forState:UIControlStateNormal];
+	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
+	[self generateEnemyForHeroAtLocation:locationManager.location];
+	[self startGeneratingEnemies];
+}
 	
+- (void)stopTrek {
+	[self.trek stop];
+	[startButton setTitle:@"Start" forState:UIControlStateNormal];
+	[self removeTimerNamed:@"Tick"];
+	[self removeAllEnemies];
+	NSError *error = nil;
+	[[appDelegate managedObjectContext] save:&error];
+	if ( error )
+		NSLog(@"%@", error);
+	[self stopGeneratingEnemies];
+}
+
 - (IBAction)startStopPressed:(id)sender { 
 	UIButton *button = nil;
 	if ( [sender isKindOfClass:[UIButton class]] )
 		button = sender;
 	
 	if ( !self.trek ) {
-		[button setTitle:@"Stop" forState:UIControlStateNormal];
 		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
-		newTrek.date = [NSDate date];
 		self.trek = newTrek;
 		[newTrek release];
-		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
-		[self generateEnemyForHeroAtLocation:locationManager.location];
-		[self startGeneratingEnemies];
+		[self startTrek];
+	}	
+	else if ( self.trek.isStopped ) {
+		[self startTrek];
 	}
 	else {
-		[self removeTimerNamed:@"Tick"];
-		[button setTitle:@"Start" forState:UIControlStateNormal];
-		[self removeAllEnemies];
-		NSError *error = nil;
-		[[appDelegate managedObjectContext] save:&error];
-		if ( error )
-			NSLog(@"%@", error);
-		self.trek = nil;
-		[self stopGeneratingEnemies];
+		[self stopTrek];
 	}
 }
 
