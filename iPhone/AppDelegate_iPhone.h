@@ -10,24 +10,28 @@
 #import "AppDelegate_Shared.h"
 #import "MainMenuViewController.h"
 #import "StoryViewController.h"
+#import "SettingsViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
 @class MainMenuViewController;
 @class StoryViewController;
+@class SettingsViewController;
 @class MapViewController;
 
-@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, StoryViewControllerDelegate> {
+@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
 	
 }
 
 @property (nonatomic, retain) MapViewController *mapViewController;
 @property (nonatomic, retain) StoryViewController *storyViewController;
+@property (nonatomic, retain) SettingsViewController *settingsViewController;
 @property (nonatomic, retain) UIViewController *currentViewController;
 @property (nonatomic, retain, readonly) MainMenuViewController *mainMenuViewController;
 
 - (IBAction)doneBrowsingTreks:(id)sender;
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate;
+- (void)updateAudioSystemVolumeSettings;
 
 @end
 

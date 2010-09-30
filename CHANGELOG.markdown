@@ -2,6 +2,7 @@ September 29, 2010
 
 * Took out the naming of the hero screen. It's now hard coded with a name of "Hero".
 * Replaced this with a new StoryViewController which will flip through a small collection of images with overlaying textviews. before jumping into the map view.
+* Added a new SettingsViewController. It lets you adjust volume levels for music and effects. There is also a toggle (defaults to on) that lets our app pause the iPod before a battle and un-pause it after. This works well except for a bug where sound effects won't play on the followup battle if we were pausing the iPod. I suspect changing the mode if causing this. Don't have a work around just yet.
 
 September 28, 2010
 

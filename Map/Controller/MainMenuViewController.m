@@ -63,6 +63,11 @@
 
 - (IBAction)optionsButtonPressed:(id)sender
 {
+	[delegate mainMenuViewControllerOptionsButtonPressed:self];
+}
+
+- (IBAction)logButtonPressed:(id)sender
+{
 	[delegate mainMenuViewControllerTreksButtonPressed:self];
 }
 

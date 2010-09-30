@@ -11,19 +11,22 @@
 #import "MainMenuViewController.h"
 #import "TrekListViewController.h"
 #import "CDAudioManager.h"
+#import "SimpleAudioEngine.h"
 
 @implementation AppDelegate_iPhone
-@synthesize currentViewController, mainMenuViewController, mapViewController, storyViewController;
+@synthesize currentViewController, mainMenuViewController, mapViewController, storyViewController, settingsViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     // Override point for customization after application launch.
+	[self updateAudioSystemVolumeSettings];
+	
 	[self setCurrentViewController:[self mainMenuViewController] animated:NO];
 	[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
-	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
+	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
 	return YES;
 }
 
@@ -82,6 +85,16 @@
 #pragma mark -
 #pragma mark Memory management
 
++ (void)initialize
+{
+    NSMutableDictionary *regDictionary = [NSMutableDictionary dictionary];
+    [regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeMusic"];
+	[regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeEffects"];
+	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQSoundMuteIPod"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:regDictionary];
+}
+
+
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
    
     [super applicationDidReceiveMemoryWarning:application];
@@ -89,6 +102,7 @@
 
 - (void)dealloc {
 	[mapViewController release];
+	[settingsViewController release];
 	[mainMenuViewController release];
 	[currentViewController release];
 	[super dealloc];
@@ -117,6 +131,15 @@
 	[self setCurrentViewController:to animated:YES];
 }
 
+- (void)updateAudioSystemVolumeSettings
+{
+	float backgroundMusic = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeMusic"] floatValue];
+	float soundEffects = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeEffects"] floatValue];
+	
+	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:backgroundMusic];
+	[[SimpleAudioEngine sharedEngine] setEffectsVolume:soundEffects];
+}
+
 #pragma mark -
 #pragma mark StoryViewControllerDelegate methods
 
@@ -124,6 +147,14 @@
 {
 	[self mainMenuViewControllerPlayButtonPressed:nil];
 	self.storyViewController = nil;
+}
+#pragma mark -
+#pragma mark SettingsViewControllerDelegate methods
+
+- (void)settingsViewControllerDidEnd:(SettingsViewController *)controller;
+{
+	self.currentViewController = self.mainMenuViewController;
+	self.settingsViewController = nil;
 }
 
 #pragma mark -
@@ -145,8 +176,13 @@
 	self.currentViewController = self.mapViewController;
 }
 
-- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller {
-	
+- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller
+{
+	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+	[settingsVC setDelegate:self];
+	self.settingsViewController = settingsVC;
+	[settingsVC release];
+	self.currentViewController = self.settingsViewController;
 }
 
 - (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller {

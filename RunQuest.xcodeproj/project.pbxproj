@@ -76,6 +76,9 @@
 		1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A4124987870006A220 /* water_button@2x.png */; };
 		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
+		1A945BD612540B7800CE44D8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A945BD512540B7800CE44D8 /* SettingsViewController.m */; };
+		1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A945BD712540B8900CE44D8 /* SettingsView.xib */; };
+		1A945CEC12542CE200CE44D8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
@@ -202,6 +205,10 @@
 		1A8EA8FC124A4E680006A220 /* RQBattleVictoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleVictoryViewController.h; sourceTree = "<group>"; };
 		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
+		1A945BD412540B7800CE44D8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		1A945BD512540B7800CE44D8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		1A945BD712540B8900CE44D8 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
@@ -364,6 +371,7 @@
 				D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */,
 				1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */,
 				C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */,
+				1A945CEC12542CE200CE44D8 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +527,7 @@
 				D8901D00123F89BA004C5D27 /* CoreGraphics.framework */,
 				D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */,
 				1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */,
+				1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -757,6 +766,9 @@
 				1A6E3447124E7D590054949B /* CreateHeroViewController.h */,
 				1A6E3448124E7D590054949B /* CreateHeroViewController.m */,
 				1A6E3445124E7D010054949B /* CreateHeroView.xib */,
+				1A945BD412540B7800CE44D8 /* SettingsViewController.h */,
+				1A945BD512540B7800CE44D8 /* SettingsViewController.m */,
+				1A945BD712540B8900CE44D8 /* SettingsView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -913,6 +925,7 @@
 				1A6767FB1253995C00BB4C5C /* 50321.jpg in Resources */,
 				1A6767FC1253995C00BB4C5C /* 51539.jpg in Resources */,
 				1A6767FD1253995C00BB4C5C /* 53681.jpg in Resources */,
+				1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1014,7 @@
 				1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */,
 				C9ECBCB61252BFF0000D4C4A /* RQAudioUtil.m in Sources */,
 				C9D8A011125353130034583F /* RQPassthroughView.m in Sources */,
+				1A945BD612540B7800CE44D8 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

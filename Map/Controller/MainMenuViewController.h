@@ -20,6 +20,7 @@
 
 - (IBAction)playButtonPressed:(id)sender;
 - (IBAction)optionsButtonPressed:(id)sender;
+- (IBAction)logButtonPressed:(id)sender;
 
 @end
 

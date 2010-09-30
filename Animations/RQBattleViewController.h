@@ -31,6 +31,8 @@
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
 	
+	BOOL didPauseIPod;
+	
 	RQWeaponSprite *activeWeapon;
 	UILabel *heroHeathLabel;
 	RQPassthroughView *frontFlashView;
