@@ -26,6 +26,7 @@
     if ((self = [super init])) {
         view = [[UIView alloc] initWithFrame:theView.frame];
 		imageView = [theView retain];
+		imageView.frame = CGRectMake(0.0f, 0.0f, theView.frame.size.width, theView.frame.size.height);
 		[view addSubview:imageView];
 		fullSize = theView.frame.size;
 		samples = 0;
@@ -101,11 +102,12 @@
 }
 
 - (BOOL)isIntersectingRect:(CGRect)otherRect {
-	
-	if ((self.view.frame.origin.x < otherRect.origin.x + otherRect.size.width &&
-		 self.view.frame.origin.x + self.view.frame.size.width > otherRect.origin.x) &&
-		(self.view.frame.origin.y < otherRect.origin.y + otherRect.size.height &&
-		 self.view.frame.origin.y + self.view.frame.size.height > otherRect.origin.y))
+	CGRect aRect = [self.view convertRect:self.imageView.frame toView:self.view.superview];
+
+	if ((aRect.origin.x < otherRect.origin.x + otherRect.size.width &&
+		 aRect.origin.x + aRect.size.width > otherRect.origin.x) &&
+		(aRect.origin.y < otherRect.origin.y + otherRect.size.height &&
+		 aRect.origin.y + aRect.size.height > otherRect.origin.y))
 		return YES;
 		
 	return NO;
