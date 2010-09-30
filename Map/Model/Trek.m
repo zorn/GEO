@@ -2,84 +2,75 @@
 //  Trek.m
 //  RunQuest
 //
-//  Created by Joe Walsh on 9/15/10.
+//  Created by Joe Walsh on 9/29/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import "Trek.h"
+#import "Segment.h"
 
-#define INITIAL_LOCATION_SPACE 1000
-#define INITIAL_SEGMENT_SPACE  1000
+@interface Trek (Private)
+- (void)addNewSegmentWithLocation:(CLLocation *)location;
+@end
+
 @implementation Trek
-@dynamic locations, date;
+@dynamic segments;
+
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc {
 	NSEntityDescription *trekEntity = [NSEntityDescription entityForName:@"Trek" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:trekEntity insertIntoManagedObjectContext:moc] )) {
-		NSMutableArray *initalLocationsArray = [[NSMutableArray alloc] initWithCapacity:INITIAL_LOCATION_SPACE];
-		self.locations = initalLocationsArray;
-		[initalLocationsArray release];
-		
-		self.date = [NSDate date];
-		
-		stopped = NO;
-		
+		[self addNewSegmentWithLocation:location];
 	} return self;
 }
 
-- (void)awakeFromFetch {
-	stopped = YES;
-	[super awakeFromFetch];
+- (NSArray *)orderedSegments {
+	return [[self.segments allObjects] sortedArrayUsingSelector:@selector(compare:)];
 }
 
-- (void)dealloc {
-	[super dealloc];
+- (Segment *)oldestSegment {
+	return [self.orderedSegments objectAtIndex:0];
 }
 
-- (NSTimeInterval)duration {
-	if ( [self.locations count] ) {
-		NSDate *startTime = [(CLLocation *)[self.locations objectAtIndex:0] timestamp];
-		NSDate *endTime = nil;
-		if ( self.isStopped ) {
-			endTime = [(CLLocation *)[self.locations lastObject] timestamp];
-		}
-		else {
-			endTime = [NSDate date];
-		}
-		return [endTime timeIntervalSinceDate:startTime];
-	}
-	else {
-		return 0;
-	}
-
-}
-
-- (void)stop {
-	stopped = YES;
-}
-
-- (BOOL)isStopped {
-	return stopped;
+- (Segment *)newestSegment {
+	return [self.orderedSegments lastObject];
 }
 
 - (void)addLocation:(CLLocation *)location {
-	[self.locations addObject:location];
+	[self.newestSegment addLocation:location];
 }
 
-- (double)averageSpeed {
-	return [self distance]/[self duration];
+- (NSDate *)date {
+	if ( [self.segments count] == 1 )
+		return [[self.segments anyObject] date];
+	else if ( [self.segments count] > 1 )
+		return [[[self orderedSegments] objectAtIndex:0] date];
+	else
+		return nil;
 }
 
-- (double)distance {
-	CLLocationDistance dist = 0;
-	NSUInteger i = 1;
-	for ( CLLocation *location in self.locations) {
-		if ( i < [self.locations count] ) {
-			dist+= [[self.locations objectAtIndex:i] distanceFromLocation:location];
-		}
-		i++;
-	}
-	return (double)dist;
+- (BOOL)isStopped {
+	return self.newestSegment.isStopped;
+}
+
+- (NSTimeInterval)duration {
+	return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
+}
+
+- (void)addNewSegmentWithLocation:(CLLocation *)location {
+	Segment *segment = [[Segment alloc] initWithLocation:location inManagedObjectContext:[self managedObjectContext]];
+	[self addSegmentsObject:segment];
+	[segment release];
+}
+
+- (void)startWithLocation:(CLLocation *)location {
+	if ( self.isStopped )
+		[self addNewSegmentWithLocation:location];
+}
+
+- (void)stop {
+	if ( ![self isStopped] )
+		[self.newestSegment stop];
 }
 
 @end

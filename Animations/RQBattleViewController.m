@@ -25,6 +25,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "AppDelegate_iPhone.h"
 
+
 @implementation RQBattleViewController
 
 - (id)init
@@ -223,12 +224,15 @@
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
 	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
 	CGFloat newMonsterZ = 0.75 + (0.5 * sin((float)monsterCounter * 0.008));
-	evilBoobsMonster.view.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
+	evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
 	
 	// Figure out if the monster has been hit
-	BOOL monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
+	BOOL monsterHit = NO;
+	if (activeWeapon) {
+		monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
+	}
 	
 	if (monsterHit) {
 		lastCollisionTime = currentTime;
@@ -236,7 +240,7 @@
 		if ([[result objectForKey:@"status"] isEqualToString:@"hit"]) {
 			[evilBoobsMonster hitWithText:[(NSNumber *)[result objectForKey:@"attackValue"] stringValue]];
 			float hpPercent = self.battle.enemy.currentHP * 1.0f / self.battle.enemy.maxHP;
-			[[evilBoobsMonster enemyHealthMeter] setProgress:hpPercent];
+			[evilBoobsMonster setPercent:hpPercent duration:1.0];
 			
 			if ( [[result objectForKey:@"attackWasStrong"] boolValue] == YES ) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_002.caf"];
