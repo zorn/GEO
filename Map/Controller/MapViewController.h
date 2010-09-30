@@ -44,6 +44,7 @@
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 @property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
+@property (nonatomic, retain) IBOutlet UIButton *startButton;
 
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;

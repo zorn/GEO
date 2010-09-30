@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Trek;
+@class Segment;
 
 @interface TrekViewController : UIViewController {
 
 }
 
-@property (nonatomic, retain) Trek *trek;
+@property (nonatomic, retain) Segment *trek;
 
 @end

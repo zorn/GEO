@@ -128,6 +128,7 @@
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
 		C9ECBCB61252BFF0000D4C4A /* RQAudioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ECBCB51252BFF0000D4C4A /* RQAudioUtil.m */; };
+		D82F2384125406C3003F66BA /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F2383125406C3003F66BA /* Trek.m */; };
 		D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D832041B12511DFA00B2F944 /* TrekViewController.m */; };
 		D832041E12511DFA00B2F944 /* TrekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D832041C12511DFA00B2F944 /* TrekView.xib */; };
 		D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */; };
@@ -148,7 +149,7 @@
 		D8C86C8C12451095007E44AF /* CrumbPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8512451095007E44AF /* CrumbPath.m */; };
 		D8C86C8D12451095007E44AF /* HeroPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8712451095007E44AF /* HeroPath.m */; };
 		D8C86C8E12451095007E44AF /* Sonar.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8912451095007E44AF /* Sonar.m */; };
-		D8C86C8F12451095007E44AF /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8B12451095007E44AF /* Trek.m */; };
+		D8C86C8F12451095007E44AF /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8B12451095007E44AF /* Segment.m */; };
 		D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */; };
 		D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */; };
 		D8CDDC9A123CFDFF005C9784 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */; };
@@ -299,6 +300,8 @@
 		C9DCF783124557F600BCABB1 /* boobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boobs.png; sourceTree = "<group>"; };
 		C9ECBCB41252BFF0000D4C4A /* RQAudioUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQAudioUtil.h; sourceTree = "<group>"; };
 		C9ECBCB51252BFF0000D4C4A /* RQAudioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQAudioUtil.m; sourceTree = "<group>"; };
+		D82F2382125406C3003F66BA /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
+		D82F2383125406C3003F66BA /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
 		D832041A12511DFA00B2F944 /* TrekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrekViewController.h; sourceTree = "<group>"; };
 		D832041B12511DFA00B2F944 /* TrekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrekViewController.m; sourceTree = "<group>"; };
 		D832041C12511DFA00B2F944 /* TrekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrekView.xib; sourceTree = "<group>"; };
@@ -331,8 +334,8 @@
 		D8C86C8712451095007E44AF /* HeroPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroPath.m; sourceTree = "<group>"; };
 		D8C86C8812451095007E44AF /* Sonar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sonar.h; sourceTree = "<group>"; };
 		D8C86C8912451095007E44AF /* Sonar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sonar.m; sourceTree = "<group>"; };
-		D8C86C8A12451095007E44AF /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
-		D8C86C8B12451095007E44AF /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
+		D8C86C8A12451095007E44AF /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
+		D8C86C8B12451095007E44AF /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segment.m; sourceTree = "<group>"; };
 		D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMapSpawn.h; sourceTree = "<group>"; };
 		D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMapSpawn.m; sourceTree = "<group>"; };
 		D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
@@ -616,8 +619,10 @@
 				D8C86C8712451095007E44AF /* HeroPath.m */,
 				D8C86C8812451095007E44AF /* Sonar.h */,
 				D8C86C8912451095007E44AF /* Sonar.m */,
-				D8C86C8A12451095007E44AF /* Trek.h */,
-				D8C86C8B12451095007E44AF /* Trek.m */,
+				D8C86C8A12451095007E44AF /* Segment.h */,
+				D8C86C8B12451095007E44AF /* Segment.m */,
+				D82F2382125406C3003F66BA /* Trek.h */,
+				D82F2383125406C3003F66BA /* Trek.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -979,7 +984,7 @@
 				D8C86C8C12451095007E44AF /* CrumbPath.m in Sources */,
 				D8C86C8D12451095007E44AF /* HeroPath.m in Sources */,
 				D8C86C8E12451095007E44AF /* Sonar.m in Sources */,
-				D8C86C8F12451095007E44AF /* Trek.m in Sources */,
+				D8C86C8F12451095007E44AF /* Segment.m in Sources */,
 				D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */,
 				D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 				C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */,
@@ -1007,6 +1012,7 @@
 				C9ECBCB61252BFF0000D4C4A /* RQAudioUtil.m in Sources */,
 				C9D8A011125353130034583F /* RQPassthroughView.m in Sources */,
 				C99721BC1254145700A6247F /* RQBarView.m in Sources */,
+				D82F2384125406C3003F66BA /* Trek.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
