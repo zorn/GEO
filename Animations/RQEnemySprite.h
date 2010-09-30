@@ -10,14 +10,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RQSprite.h"
 
+@class RQBarView;
 
 @interface RQEnemySprite : RQSprite
 {
-	UIProgressView *enemyHealthMeter;
 }
 
-- (UIProgressView *)enemyHealthMeter;
 - (void)hitWithText:(NSString *)hitText;
 - (void)runDeathAnimation;
+- (void)setPercent:(CGFloat)percent duration:(CGFloat)duration;
 
 @end

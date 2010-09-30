@@ -7,16 +7,19 @@
 //
 
 #import "RQEnemySprite.h"
+#import "RQBarView.h"
 
 
 @interface RQEnemySprite ()
 @property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) CALayer *highlightLayer;
+@property (nonatomic, retain) RQBarView *enemyHealthMeter;
 @end
 
 @implementation RQEnemySprite
 @synthesize textLabel;
 @synthesize highlightLayer;
+@synthesize enemyHealthMeter;
 
 - (id)initWithView:(UIView *)theView {
     if ((self = [super initWithView:theView])) {
@@ -25,7 +28,9 @@
 		textLabel.textColor = [UIColor whiteColor];
 		textLabel.layer.opacity = 0.0f;
 		textLabel.backgroundColor = [UIColor clearColor];
-		[self.view.layer addSublayer:textLabel.layer];
+		textLabel.shadowColor = [UIColor blackColor];
+		textLabel.shadowOffset = CGSizeMake(0.0, 0.0);
+		[self.view addSubview:textLabel];
 				
 		highlightLayer = [[CALayer alloc] init];
 		highlightLayer.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
@@ -39,10 +44,9 @@
 		}
 		[self.imageView.layer addSublayer:highlightLayer];
 		
-		enemyHealthMeter = [[UIProgressView	alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-		enemyHealthMeter.frame = CGRectMake(0.0, theView.frame.size.height+9.0, theView.frame.size.width, 9);
-		[enemyHealthMeter setProgress:100.0];
-		[theView addSubview:enemyHealthMeter];
+		enemyHealthMeter = [[RQBarView alloc] initWithFrame:CGRectMake(0.0, theView.frame.size.height+9.0, theView.frame.size.width, 9)];
+		self.enemyHealthMeter.layer.opacity = 0.0f;
+		[self.view addSubview:enemyHealthMeter];
 	}
     return self;
 }
@@ -56,17 +60,14 @@
 	[super dealloc];
 }
 
-- (UIProgressView *)enemyHealthMeter
-{
-	return enemyHealthMeter;
-}
 
 - (void)hitWithText:(NSString *)hitText {
 	textLabel.text = hitText;
 	CGSize textSize = [textLabel.text sizeWithFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:50.0]];
-	CGRect textFrame = CGRectMake((self.view.frame.size.width / 2.0), 
-								  (0.0 - (self.view.frame.size.height / 3.0)), 
-								  textSize.width + 5.0, 
+	textSize.width += 5.0;
+	CGRect textFrame = CGRectMake((fabsf(self.view.frame.size.width - textSize.width) / 2.0), 
+								  0.0, 
+								  textSize.width, 
 								  textSize.height);
 	textLabel.frame = textFrame;
 	
@@ -109,6 +110,16 @@
 	move.repeatCount = HUGE_VALF;
 	move.duration = 0.25;
 	[self.imageView.layer addAnimation:move forKey:@"position.x"];
+}
+
+
+- (void)setPercent:(CGFloat)percent duration:(CGFloat)duration {
+	CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+	fadeAnimation.duration = duration;
+	fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0f];
+	fadeAnimation.toValue = [NSNumber numberWithFloat:0.0f];
+	[self.enemyHealthMeter.layer addAnimation:fadeAnimation forKey:@"opacity"];
+	[self.enemyHealthMeter setPercent:percent duration:duration];
 }
 
 @end
