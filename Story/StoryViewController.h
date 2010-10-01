@@ -4,19 +4,23 @@
 
 @interface StoryViewController : UIViewController
 {
-	UIView *storyView1;
-	UIView *storyView2;
-	UIView *storyView3;
-	
-	
-	
 	UIImageView *storyImageView1;
 	UIImageView *storyImageView2;
 	UIImageView *storyImageView3;
+	UIImageView *storyImageView3b;
+	UIImageView *storyImageView3c;
+	UIImageView *storyImageView4;
+	UIImageView *storyImageView5;
+	UIImageView *storyImageView6;
 	
 	UITextView *storyTextView1;
 	UITextView *storyTextView2;
 	UITextView *storyTextView3;
+	UITextView *storyTextView3b;
+	UITextView *storyTextView3c;
+	UITextView *storyTextView4;
+	UITextView *storyTextView5;
+	UITextView *storyTextView6;
 	
 	NSInteger currentFrame;
 	
@@ -25,12 +29,7 @@
 
 @property (readwrite, assign) id <StoryViewControllerDelegate> delegate;
 
-@property (retain) IBOutlet UIView *storyView1;
-@property (retain) IBOutlet UIView *storyView2;
-@property (retain) IBOutlet UIView *storyView3;
-
 -(void)performImageViewTransition;
-
 
 @end
 
