@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
 
+@class Trek;
+
 @interface Segment : NSManagedObject {
 }
 
@@ -20,6 +22,7 @@
 @property (nonatomic, retain)	NSMutableArray*	locations;
 @property (nonatomic, retain)	NSDate*			startDate;
 @property (nonatomic, retain)	NSDate*			stopDate;
+@property (nonatomic, retain) Trek * trek;
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc;
 - (void)addLocation:(CLLocation *)location;

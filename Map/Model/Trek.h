@@ -17,7 +17,7 @@
 
 @property (nonatomic, retain) NSSet* segments;
 @property (readonly) NSTimeInterval	duration;
-@property (readonly) NSDate *date;
+@property (nonatomic, retain) NSDate *date;
 @property (readonly) NSArray *orderedSegments;
 @property (readonly) Segment *oldestSegment;
 @property (readonly) Segment *newestSegment;
