@@ -21,6 +21,7 @@
 - (IBAction)playButtonPressed:(id)sender;
 - (IBAction)optionsButtonPressed:(id)sender;
 - (IBAction)logButtonPressed:(id)sender;
+- (IBAction)storyButtonPressed:(id)sender;
 
 @end
 
@@ -30,4 +31,5 @@
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller;
+- (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller;
 @end

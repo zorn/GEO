@@ -1,3 +1,8 @@
+October 1, 2010
+
+* Redid the home screen. Added a new story button (probably just there for testing).
+* Filled in the new story copy.
+
 September 29, 2010
 
 * Took out the naming of the hero screen. It's now hard coded with a name of "Hero".

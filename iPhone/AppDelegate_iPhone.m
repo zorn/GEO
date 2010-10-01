@@ -206,8 +206,11 @@
 	self.currentViewController = navController;
 	
 	[navController release];
-	
-	
+}
+
+- (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller
+{
+	[self presentStory:nil];
 }
 
 - (IBAction)doneBrowsingTreks:(id)sender {
