@@ -14,13 +14,14 @@
 @end
 
 @implementation Trek
-@dynamic segments;
+@dynamic segments, date;
 
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc {
 	NSEntityDescription *trekEntity = [NSEntityDescription entityForName:@"Trek" inManagedObjectContext:moc];
 	if (( self = [super initWithEntity:trekEntity insertIntoManagedObjectContext:moc] )) {
 		[self addNewSegmentWithLocation:location];
+		self.date = [NSDate date];
 	} return self;
 }
 
@@ -38,15 +39,6 @@
 
 - (void)addLocation:(CLLocation *)location {
 	[self.newestSegment addLocation:location];
-}
-
-- (NSDate *)date {
-	if ( [self.segments count] == 1 )
-		return [[self.segments anyObject] date];
-	else if ( [self.segments count] > 1 )
-		return [[[self orderedSegments] objectAtIndex:0] date];
-	else
-		return nil;
 }
 
 - (BOOL)isStopped {

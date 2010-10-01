@@ -11,7 +11,7 @@
 #define INITIAL_LOCATION_SPACE 1000
 #define INITIAL_SEGMENT_SPACE  1000
 @implementation Segment
-@dynamic locations, startDate, stopDate;
+@dynamic locations, startDate, stopDate, trek;
 
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc {
 	NSEntityDescription *segmentEntity = [NSEntityDescription entityForName:@"Segment" inManagedObjectContext:moc];
