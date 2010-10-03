@@ -17,7 +17,10 @@
 @class Trek;
 @class AppDelegate_Shared;
 
+@protocol MapViewControllerDelegate;
+
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate> {
+	
 	id <MKOverlay> _pathOverlay;
 	
 	Sonar *_sonar;
@@ -35,6 +38,8 @@
 	NSMutableDictionary *_timers;
 }
 
+@property (nonatomic, assign) id <MapViewControllerDelegate> delegate;
+
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
@@ -43,13 +48,18 @@
 @property (nonatomic, retain) IBOutlet UILabel *timerLabel;
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
-@property (nonatomic, retain) IBOutlet UIButton *launchBattleButton;
-@property (nonatomic, retain) IBOutlet UIButton *startButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *startButton;
 
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;
+- (IBAction)doneButtonPressed:(id)sender;
 
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
 
+@end
+
+
+@protocol MapViewControllerDelegate
+- (void)mapViewControllerDidEnd:(MapViewController *)mapViewController;
 @end

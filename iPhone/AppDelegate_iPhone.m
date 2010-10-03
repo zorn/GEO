@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate_iPhone.h"
-#import "MapViewController.h"
 #import "MainMenuViewController.h"
 #import "TrekListViewController.h"
 #import "CDAudioManager.h"
@@ -109,6 +108,7 @@
 }
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
+    to.view.frame = self.window.frame;
 	void (^switchBlock)(BOOL) = ^(BOOL finished){
 		if (finished) {
 			[self.window addSubview:to.view];
@@ -158,6 +158,14 @@
 }
 
 #pragma mark -
+#pragma mark MapViewControllerDelegate Methods
+
+- (void)mapViewControllerDidEnd:(MapViewController *)controller {
+	self.currentViewController = self.mainMenuViewController;
+	self.mapViewController = nil;
+}
+
+#pragma mark -
 #pragma mark MainMenuViewControllerDelegate methods
 
 - (void)presentStory:(MainMenuViewController *)controller
@@ -172,6 +180,7 @@
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller {
 	MapViewController *mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
 	self.mapViewController = mapVC;
+	self.mapViewController.delegate = self;
 	[mapVC release];
 	self.currentViewController = self.mapViewController;
 }

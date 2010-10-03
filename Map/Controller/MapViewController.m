@@ -47,7 +47,7 @@
 @end
 
 @implementation MapViewController
-@synthesize startButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, launchBattleButton, locationManager, battleViewController;
+@synthesize delegate, startButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, locationManager, battleViewController;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -83,12 +83,10 @@
 	[hudView release];
 	[overlayLabel release];
 	[timerLabel release];
-	[launchBattleButton release];
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
-    [launchBattleButton release];
 	[_enemyViews release];
 	[_timerFormatter release];
 	[_timers release];
@@ -127,7 +125,6 @@
 	self.mapView = nil;
 	self.hudView = nil;
 	self.overlayLabel = nil;
-    self.launchBattleButton = nil;
 	self.startButton = nil;
 }
 
@@ -393,7 +390,7 @@
 
 - (void)startTrek {
 	[self.trek startWithLocation:locationManager.location];
-	[startButton setTitle:@"Stop" forState:UIControlStateNormal];
+	startButton.title = @"Stop";
 	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
 	[self generateEnemyForHeroAtLocation:locationManager.location];
 	[self startGeneratingEnemies];
@@ -401,7 +398,7 @@
 	
 - (void)stopTrek {
 	[self.trek stop];
-	[startButton setTitle:@"Start" forState:UIControlStateNormal];
+	startButton.title = @"Start";
 	[self removeTimerNamed:@"Tick"];
 	[self removeAllEnemies];
 	NSError *error = nil;
@@ -428,6 +425,10 @@
 	else {
 		[self stopTrek];
 	}
+}
+
+- (IBAction)doneButtonPressed:(id)sender {
+	[delegate mapViewControllerDidEnd:self];
 }
 
 @end

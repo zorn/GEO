@@ -11,15 +11,17 @@
 #import "MainMenuViewController.h"
 #import "StoryViewController.h"
 #import "SettingsViewController.h"
+#import "MapViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
+
 
 @class MainMenuViewController;
 @class StoryViewController;
 @class SettingsViewController;
 @class MapViewController;
 
-@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
+@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
 	
 }
 
