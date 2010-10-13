@@ -271,7 +271,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* RunQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* G.E.O..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G.E.O..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2860E389111B897F00E27156 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* RunQuest.app */,
+				1D6058910D05DD3D006BFB54 /* G.E.O..app */,
 				1A6E32DE124E59DD0054949B /* LogicTests.octest */,
 			);
 			name = Products;
@@ -542,7 +542,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				C99A91F8124A7F9C005BAECF /* OpenAL.framework */,
 				1A6E32DF124E59DD0054949B /* LogicTests-Info.plist */,
 			);
 			name = CustomTemplate;
@@ -570,6 +569,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C99A91F8124A7F9C005BAECF /* OpenAL.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				28EEBFDC1118E19E00187D67 /* CoreData.framework */,
 				D8B38F33123C3A8100B0783E /* MapKit.framework */,
@@ -865,7 +865,7 @@
 			);
 			name = RunQuest;
 			productName = RunQuest;
-			productReference = 1D6058910D05DD3D006BFB54 /* RunQuest.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* G.E.O..app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1161,7 +1161,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
 				INFOPLIST_FILE = "RunQuest-Info.plist";
-				PRODUCT_NAME = RunQuest;
+				PRODUCT_NAME = G.E.O.;
 			};
 			name = Debug;
 		};
@@ -1173,7 +1173,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
 				INFOPLIST_FILE = "RunQuest-Info.plist";
-				PRODUCT_NAME = RunQuest;
+				PRODUCT_NAME = G.E.O.;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

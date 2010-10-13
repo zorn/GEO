@@ -1,3 +1,7 @@
+October 13, 2010
+
+* Changed Product name to G.E.O. -- have not taken the time to rename other folders/files yet.
+
 October 1, 2010
 
 * Redid the home screen. Added a new story button (probably just there for testing).
