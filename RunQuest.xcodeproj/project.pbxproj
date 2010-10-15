@@ -10,6 +10,11 @@
 		1A132550125574900088A751 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A945BD512540B7800CE44D8 /* SettingsViewController.m */; };
 		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
+		1A1F91F9126663660078C733 /* map_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F91F8126663660078C733 /* map_bk.png */; };
+		1A1F91FB1266699E0078C733 /* location_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F91FA1266699E0078C733 /* location_button_icon.png */; };
+		1A1F91FF126685A00078C733 /* wieght_log_tab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F91FD126685A00078C733 /* wieght_log_tab_icon.png */; };
+		1A1F9200126685A00078C733 /* workout_log_tab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F91FE126685A00078C733 /* workout_log_tab_icon.png */; };
+		1A1F9202126685F30078C733 /* LogBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F9201126685F30078C733 /* LogBookView.xib */; };
 		1A2B236B1246AD46000F9449 /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
 		1A3B469C125267DB00DFE211 /* boob1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6FC76125132FF00D98CF3 /* boob1.png */; };
 		1A3B469D125267DB00DFE211 /* boob1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6FC77125132FF00D98CF3 /* boob1@2x.png */; };
@@ -175,6 +180,11 @@
 /* Begin PBXFileReference section */
 		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
 		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
+		1A1F91F8126663660078C733 /* map_bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_bk.png; path = Assets/Mockups/map_bk.png; sourceTree = SOURCE_ROOT; };
+		1A1F91FA1266699E0078C733 /* location_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location_button_icon.png; path = Assets/Mockups/location_button_icon.png; sourceTree = SOURCE_ROOT; };
+		1A1F91FD126685A00078C733 /* wieght_log_tab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wieght_log_tab_icon.png; path = Assets/Mockups/wieght_log_tab_icon.png; sourceTree = SOURCE_ROOT; };
+		1A1F91FE126685A00078C733 /* workout_log_tab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = workout_log_tab_icon.png; path = Assets/Mockups/workout_log_tab_icon.png; sourceTree = SOURCE_ROOT; };
+		1A1F9201126685F30078C733 /* LogBookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogBookView.xib; sourceTree = SOURCE_ROOT; };
 		1A2B23671246AD46000F9449 /* RQBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQBattle.h; path = "../Game Engine/RQBattle.h"; sourceTree = "<group>"; };
 		1A2B23681246AD46000F9449 /* RQBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQBattle.m; path = "../Game Engine/RQBattle.m"; sourceTree = "<group>"; };
 		1A2B23691246AD46000F9449 /* RQMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQMob.h; path = "../Game Engine/RQMob.h"; sourceTree = "<group>"; };
@@ -468,6 +478,10 @@
 		1AC92473124D75CF00E09F6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				1A1F91FD126685A00078C733 /* wieght_log_tab_icon.png */,
+				1A1F91FE126685A00078C733 /* workout_log_tab_icon.png */,
+				1A1F91FA1266699E0078C733 /* location_button_icon.png */,
+				1A1F91F8126663660078C733 /* map_bk.png */,
 				1AC92474124D75DA00E09F6A /* menu_bk.png */,
 			);
 			name = ui;
@@ -705,6 +719,7 @@
 		D8AF2278124FA725008AB638 /* Trek */ = {
 			isa = PBXGroup;
 			children = (
+				1A1F9201126685F30078C733 /* LogBookView.xib */,
 				D832041A12511DFA00B2F944 /* TrekViewController.h */,
 				D832041B12511DFA00B2F944 /* TrekViewController.m */,
 				D832041C12511DFA00B2F944 /* TrekView.xib */,
@@ -996,6 +1011,11 @@
 				1A6BF4BA12556CF200934DD3 /* Panel4@2x.png in Resources */,
 				1A6BF4BB12556CF200934DD3 /* Panel5@2x.png in Resources */,
 				1A6BF4BC12556CF200934DD3 /* Panel6@2x.png in Resources */,
+				1A1F91F9126663660078C733 /* map_bk.png in Resources */,
+				1A1F91FB1266699E0078C733 /* location_button_icon.png in Resources */,
+				1A1F91FF126685A00078C733 /* wieght_log_tab_icon.png in Resources */,
+				1A1F9200126685A00078C733 /* workout_log_tab_icon.png in Resources */,
+				1A1F9202126685F30078C733 /* LogBookView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
