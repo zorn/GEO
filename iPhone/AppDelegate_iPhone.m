@@ -11,9 +11,10 @@
 #import "TrekListViewController.h"
 #import "CDAudioManager.h"
 #import "SimpleAudioEngine.h"
+#import "DeveloperToolboxViewController.h"
 
 @implementation AppDelegate_iPhone
-@synthesize currentViewController, mainMenuViewController, mapViewController, storyViewController, settingsViewController;
+@synthesize currentViewController, mainMenuViewController, developerToolboxNavigationController, mapViewController, storyViewController, settingsViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -100,6 +101,7 @@
 }
 
 - (void)dealloc {
+	[developerToolboxNavigationController release];
 	[mapViewController release];
 	[settingsViewController release];
 	[mainMenuViewController release];
@@ -166,6 +168,16 @@
 }
 
 #pragma mark -
+#pragma mark DeveloperToolboxViewControllerDelegate Methods
+
+- (void)developerToolboxViewControllerDidEnd:(DeveloperToolboxViewController *)controller
+{
+	// destroy the nav controller hosting the dev toolbox
+	[developerToolboxNavigationController.view removeFromSuperview];
+	[developerToolboxNavigationController release]; developerToolboxNavigationController = nil;
+}
+
+#pragma mark -
 #pragma mark MainMenuViewControllerDelegate methods
 
 - (void)presentStory:(MainMenuViewController *)controller
@@ -220,6 +232,16 @@
 - (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller
 {
 	[self presentStory:nil];
+}
+
+- (void)mainMenuViewControllerDeveloperToolboxButtonPressed:(MainMenuViewController *)controller
+{
+	DeveloperToolboxViewController *devVC = [[DeveloperToolboxViewController alloc] init];
+	[devVC setDelegate:self];
+	developerToolboxNavigationController = [[UINavigationController alloc] initWithRootViewController:devVC];
+	[devVC release];
+	
+	[self.window addSubview:[developerToolboxNavigationController view]];
 }
 
 - (IBAction)doneBrowsingTreks:(id)sender {

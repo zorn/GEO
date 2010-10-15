@@ -85,6 +85,12 @@
 		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B38511252DDA0007F0497 /* StoryViewController.m */; };
 		1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B38531252DDB8007F0497 /* StoryView.xib */; };
+		1A8B918B1268EFED00D8E5F3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8B91881268EF9A00D8E5F3 /* libCorePlot-CocoaTouch.a */; };
+		1A8B91B21268F1AD00D8E5F3 /* CorePlotTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */; };
+		1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */; };
+		1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */; };
+		1A8B9233126900BA00D8E5F3 /* DeveloperToolboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */; };
+		1A8D64551268E3AA00A68146 /* RQWeightLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D64541268E3AA00A68146 /* RQWeightLog.m */; };
 		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
 		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
 		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
@@ -177,6 +183,23 @@
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1A8B91871268EF9A00D8E5F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA /* libCorePlot-CocoaTouch.a */;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		1A8B91891268EFC100D8E5F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA /* CorePlot-CocoaTouch */;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
 		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
@@ -232,6 +255,15 @@
 		1A7B38501252DDA0007F0497 /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryViewController.h; path = Story/StoryViewController.h; sourceTree = "<group>"; };
 		1A7B38511252DDA0007F0497 /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryViewController.m; path = Story/StoryViewController.m; sourceTree = "<group>"; };
 		1A7B38531252DDB8007F0497 /* StoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryView.xib; sourceTree = "<group>"; };
+		1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "ThirdPartyStuff/core-plot/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorePlotTestViewController.h; path = WeightLog/CorePlotTestViewController.h; sourceTree = SOURCE_ROOT; };
+		1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CorePlotTestViewController.m; path = WeightLog/CorePlotTestViewController.m; sourceTree = SOURCE_ROOT; };
+		1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CorePlotTestView.xib; path = WeightLog/CorePlotTestView.xib; sourceTree = SOURCE_ROOT; };
+		1A8B922F1269009F00D8E5F3 /* DeveloperToolboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeveloperToolboxViewController.h; path = DeveloperToolbox/DeveloperToolboxViewController.h; sourceTree = SOURCE_ROOT; };
+		1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeveloperToolboxViewController.m; path = DeveloperToolbox/DeveloperToolboxViewController.m; sourceTree = SOURCE_ROOT; };
+		1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DeveloperToolboxView.xib; path = DeveloperToolbox/DeveloperToolboxView.xib; sourceTree = SOURCE_ROOT; };
+		1A8D64531268E3AA00A68146 /* RQWeightLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQWeightLog.h; path = WeightLog/RQWeightLog.h; sourceTree = SOURCE_ROOT; };
+		1A8D64541268E3AA00A68146 /* RQWeightLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQWeightLog.m; path = WeightLog/RQWeightLog.m; sourceTree = SOURCE_ROOT; };
 		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
@@ -403,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A8B918B1268EFED00D8E5F3 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */,
 				D8B38F34123C3A8100B0783E /* MapKit.framework in Frameworks */,
@@ -475,6 +508,54 @@
 			name = Story;
 			sourceTree = "<group>";
 		};
+		1A8B917A1268EF4F00D8E5F3 /* ThirdPartyStuff */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B917C1268EF5A00D8E5F3 /* core-plot */,
+			);
+			name = ThirdPartyStuff;
+			sourceTree = "<group>";
+		};
+		1A8B917C1268EF5A00D8E5F3 /* core-plot */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */,
+			);
+			name = "core-plot";
+			sourceTree = "<group>";
+		};
+		1A8B917F1268EF9A00D8E5F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B91881268EF9A00D8E5F3 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A8B922E1269006B00D8E5F3 /* Developer Toolbox */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B922F1269009F00D8E5F3 /* DeveloperToolboxViewController.h */,
+				1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */,
+				1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */,
+			);
+			name = "Developer Toolbox";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A8D64521268E2D600A68146 /* Log Book */ = {
+			isa = PBXGroup;
+			children = (
+				1A8D64531268E3AA00A68146 /* RQWeightLog.h */,
+				1A8D64541268E3AA00A68146 /* RQWeightLog.m */,
+				1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */,
+				1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */,
+				1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */,
+			);
+			name = "Log Book";
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1AC92473124D75CF00E09F6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,9 +623,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1A8B917A1268EF4F00D8E5F3 /* ThirdPartyStuff */,
 				1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */,
 				D8C86C5512450E67007E44AF /* App */,
 				D8C86C6112450EDF007E44AF /* Model */,
+				1A8B922E1269006B00D8E5F3 /* Developer Toolbox */,
+				1A8D64521268E2D600A68146 /* Log Book */,
 				D8AF2278124FA725008AB638 /* Trek */,
 				D8C86C5312450DE9007E44AF /* Map */,
 				1A7B38251252D6E6007F0497 /* Story */,
@@ -877,6 +961,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1A8B918A1268EFC100D8E5F3 /* PBXTargetDependency */,
 			);
 			name = RunQuest;
 			productName = RunQuest;
@@ -900,6 +985,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1A8B917F1268EF9A00D8E5F3 /* Products */;
+					ProjectRef = 1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* RunQuest */,
@@ -907,6 +998,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1A8B91881268EF9A00D8E5F3 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 1A8B91871268EF9A00D8E5F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1A6E32D9124E59DD0054949B /* Resources */ = {
@@ -1016,6 +1117,8 @@
 				1A1F91FF126685A00078C733 /* wieght_log_tab_icon.png in Resources */,
 				1A1F9200126685A00078C733 /* workout_log_tab_icon.png in Resources */,
 				1A1F9202126685F30078C733 /* LogBookView.xib in Resources */,
+				1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */,
+				1A8B9233126900BA00D8E5F3 /* DeveloperToolboxView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,10 +1210,21 @@
 				C99721BC1254145700A6247F /* RQBarView.m in Sources */,
 				D82F2384125406C3003F66BA /* Trek.m in Sources */,
 				1A132550125574900088A751 /* SettingsViewController.m in Sources */,
+				1A8D64551268E3AA00A68146 /* RQWeightLog.m in Sources */,
+				1A8B91B21268F1AD00D8E5F3 /* CorePlotTestViewController.m in Sources */,
+				1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A8B918A1268EFC100D8E5F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 1A8B91891268EFC100D8E5F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A6E32E0124E59DD0054949B /* Debug */ = {
@@ -1180,7 +1294,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/Users/zorn/Projects/runquest/ThirdPartyStuff/core-plot/Source/framework/**";
 				INFOPLIST_FILE = "RunQuest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = G.E.O.;
 			};
 			name = Debug;
@@ -1192,7 +1311,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/Users/zorn/Projects/runquest/ThirdPartyStuff/core-plot/Source/framework/**";
 				INFOPLIST_FILE = "RunQuest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = G.E.O.;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -71,6 +71,12 @@
 	[delegate mainMenuViewControllerTreksButtonPressed:self];
 }
 
+- (IBAction)developerToolboxButtonPressed:(id)sender
+{
+	[delegate mainMenuViewControllerDeveloperToolboxButtonPressed:self];
+}
+
+
 - (IBAction)storyButtonPressed:(id)sender
 {
 	// because the story currently pushed them into the mapview we should make sure they have a hero first

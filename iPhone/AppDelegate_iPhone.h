@@ -12,6 +12,7 @@
 #import "StoryViewController.h"
 #import "SettingsViewController.h"
 #import "MapViewController.h"
+#import "DeveloperToolboxViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
@@ -21,10 +22,10 @@
 @class SettingsViewController;
 @class MapViewController;
 
-@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
+@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate, DeveloperToolboxViewControllerDelegate> {
 	
 }
-
+@property (nonatomic, retain) UINavigationController *developerToolboxNavigationController;
 @property (nonatomic, retain) MapViewController *mapViewController;
 @property (nonatomic, retain) StoryViewController *storyViewController;
 @property (nonatomic, retain) SettingsViewController *settingsViewController;

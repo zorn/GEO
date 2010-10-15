@@ -1,0 +1,9 @@
+<area shape="rect" id="node9" href="$interface_c_p_x_y_theme.html" title="Creates a CPXYGraph instance formatted with padding of 60 on each side and X and..." alt="" coords="411,237,515,267">
+<area shape="rect" id="node2" href="doxygen-cocoa-tags.xml$http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/Reference/Reference.html" title="NSObject" alt="" coords="420,83,505,112">
+<area shape="rect" id="node4" href="doxygen-cocoa-tags.xml$http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html" title="\&lt; NSObject \&gt;" alt="" coords="305,5,420,35">
+<area shape="rect" id="node6" href="doxygen-cocoa-tags.xml$http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Protocols/NSKeyValueBindingCreation_Protocol/Reference/Reference.html" title="\&lt; NSKeyValueBindingCreation \&gt;" alt="" coords="444,5,681,35">
+<area shape="rect" id="node11" href="$interface_c_p_dark_gradient_theme.html" title="Creates a CPXYGraph instance formatted with dark gray gradient backgrounds and light..." alt="" coords="5,315,181,344">
+<area shape="rect" id="node13" href="$interface_c_p_plain_black_theme.html" title="Creates a CPXYGraph instance formatted with black backgrounds and white lines." alt="" coords="205,315,360,344">
+<area shape="rect" id="node15" href="$interface_c_p_plain_white_theme.html" title="Creates a CPXYGraph instance formatted with white backgrounds and black lines." alt="" coords="384,315,541,344">
+<area shape="rect" id="node17" href="$interface_c_p_slate_theme.html" title="Creates a CPXYGraph instance with colors that match the default iPhone navigation..." alt="" coords="565,315,688,344">
+<area shape="rect" id="node19" href="$interface_c_p_stocks_theme.html" title="Creates a CPXYGraph instance formatted with a gradient background and white lines..." alt="" coords="712,315,843,344">
