@@ -1,6 +1,10 @@
+October 20, 2010
+
+* Now save data set when they hit done on map view.
+
 October 13, 2010
 
-* Changed Product name to G.E.O. -- have not taken the time to rename other folders/files yet.
+* Changed Product name to GEO -- have not taken the time to rename other folders/files yet.
 
 October 1, 2010
 

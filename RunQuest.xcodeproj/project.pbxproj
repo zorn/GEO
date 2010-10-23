@@ -188,14 +188,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA /* libCorePlot-CocoaTouch.a */;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
 			remoteInfo = "CorePlot-CocoaTouch";
 		};
 		1A8B91891268EFC100D8E5F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA /* CorePlot-CocoaTouch */;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
 			remoteInfo = "CorePlot-CocoaTouch";
 		};
 /* End PBXContainerItemProxy section */
@@ -313,7 +313,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* G.E.O..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G.E.O..app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* GEO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GEO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2860E389111B897F00E27156 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* G.E.O..app */,
+				1D6058910D05DD3D006BFB54 /* GEO.app */,
 				1A6E32DE124E59DD0054949B /* LogicTests.octest */,
 			);
 			name = Products;
@@ -538,6 +538,9 @@
 				1A8B922F1269009F00D8E5F3 /* DeveloperToolboxViewController.h */,
 				1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */,
 				1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */,
+				1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */,
+				1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */,
+				1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */,
 			);
 			name = "Developer Toolbox";
 			path = Model;
@@ -548,9 +551,6 @@
 			children = (
 				1A8D64531268E3AA00A68146 /* RQWeightLog.h */,
 				1A8D64541268E3AA00A68146 /* RQWeightLog.m */,
-				1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */,
-				1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */,
-				1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */,
 			);
 			name = "Log Book";
 			path = Model;
@@ -623,8 +623,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				1A8B917A1268EF4F00D8E5F3 /* ThirdPartyStuff */,
 				1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */,
+				1A8B917A1268EF4F00D8E5F3 /* ThirdPartyStuff */,
 				D8C86C5512450E67007E44AF /* App */,
 				D8C86C6112450EDF007E44AF /* Model */,
 				1A8B922E1269006B00D8E5F3 /* Developer Toolbox */,
@@ -965,7 +965,7 @@
 			);
 			name = RunQuest;
 			productName = RunQuest;
-			productReference = 1D6058910D05DD3D006BFB54 /* G.E.O..app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* GEO.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1294,13 +1294,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
-				HEADER_SEARCH_PATHS = "/Users/zorn/Projects/runquest/ThirdPartyStuff/core-plot/Source/framework/**";
+				HEADER_SEARCH_PATHS = "ThirdPartyStuff/core-plot/Source/framework/**";
 				INFOPLIST_FILE = "RunQuest-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = G.E.O.;
+				PRODUCT_NAME = GEO;
 			};
 			name = Debug;
 		};
@@ -1311,13 +1311,13 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
-				HEADER_SEARCH_PATHS = "/Users/zorn/Projects/runquest/ThirdPartyStuff/core-plot/Source/framework/**";
+				HEADER_SEARCH_PATHS = "ThirdPartyStuff/core-plot/Source/framework/**";
 				INFOPLIST_FILE = "RunQuest-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = G.E.O.;
+				PRODUCT_NAME = GEO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

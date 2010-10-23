@@ -12,6 +12,8 @@
 #import "CDAudioManager.h"
 #import "SimpleAudioEngine.h"
 #import "DeveloperToolboxViewController.h"
+#import "RQModelController.h"
+#import "M3CoreDataManager.h"
 
 @implementation AppDelegate_iPhone
 @synthesize currentViewController, mainMenuViewController, developerToolboxNavigationController, mapViewController, storyViewController, settingsViewController;
@@ -163,6 +165,7 @@
 #pragma mark MapViewControllerDelegate Methods
 
 - (void)mapViewControllerDidEnd:(MapViewController *)controller {
+	[[[RQModelController defaultModelController] coreDataManager] save];
 	self.currentViewController = self.mainMenuViewController;
 	self.mapViewController = nil;
 }
