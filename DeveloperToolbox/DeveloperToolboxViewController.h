@@ -17,6 +17,7 @@
 @property (readwrite, assign) id <DeveloperToolboxViewControllerDelegate> delegate;
 
 - (IBAction)loadCorePlotDemoOne:(id)sender;
+- (IBAction)watchStory:(id)sender;
 
 @end
 

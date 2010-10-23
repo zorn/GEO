@@ -4,6 +4,10 @@ October 23, 2010
 
 <http://indyhalllabs.basecamphq.com/projects/5521331/posts/37719465/comments>
 
+* I bought a license for "Glyphish Pro". Some of the icons will come in handy. Raw icons in ThirdPartyStuff.
+* Redid the look of the main menu. The layout is closer to what I hope the final screen will look like. The look is temporary, something I did in photoshop to hold in place.
+* Watch Story was moves from the main menu to the dev tools. 
+
 October 20, 2010
 
 * Now save data set when they hit done on map view.

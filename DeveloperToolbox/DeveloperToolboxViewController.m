@@ -8,6 +8,7 @@
 
 #import "DeveloperToolboxViewController.h"
 #import "CorePlotTestViewController.h"
+#import "AppDelegate_iPhone.h"
 
 @implementation DeveloperToolboxViewController
 
@@ -36,6 +37,11 @@
 	CorePlotTestViewController *controller = [[CorePlotTestViewController alloc] init];
 	[self.navigationController pushViewController:controller animated:YES];
 	[controller release];
+}
+
+- (IBAction)watchStory:(id)sender
+{
+	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] presentStory:nil];
 }
 
 - (void)returnToMainMenu
