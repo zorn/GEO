@@ -43,6 +43,7 @@
 		1A3B472F12527B2300DFE211 /* iteration.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B472D12527B2300DFE211 /* iteration.m4a */; };
 		1A3B473012527B2300DFE211 /* levelUp.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B472E12527B2300DFE211 /* levelUp.m4a */; };
 		1A3B474812527BED00DFE211 /* Coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B474712527BED00DFE211 /* Coin.wav */; };
+		1A4B54FD12736FCB00B313E1 /* BattleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4B54FC12736FCB00B313E1 /* BattleView.xib */; };
 		1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC92466124D755800E09F6A /* MainMenuViewController.m */; };
 		1A6BF49C1255668E00934DD3 /* Panel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6BF4941255668E00934DD3 /* Panel1.png */; };
 		1A6BF49D1255668E00934DD3 /* Panel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6BF4951255668E00934DD3 /* Panel2.png */; };
@@ -215,6 +216,7 @@
 		1A3B472D12527B2300DFE211 /* iteration.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = iteration.m4a; sourceTree = "<group>"; };
 		1A3B472E12527B2300DFE211 /* levelUp.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = levelUp.m4a; sourceTree = "<group>"; };
 		1A3B474712527BED00DFE211 /* Coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Coin.wav; sourceTree = "<group>"; };
+		1A4B54FC12736FCB00B313E1 /* BattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleView.xib; path = iPhone/BattleView.xib; sourceTree = SOURCE_ROOT; };
 		1A6BF4941255668E00934DD3 /* Panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel1.png; path = story/Panel1.png; sourceTree = "<group>"; };
 		1A6BF4951255668E00934DD3 /* Panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel2.png; path = story/Panel2.png; sourceTree = "<group>"; };
 		1A6BF4961255668E00934DD3 /* Panel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel3.png; path = story/Panel3.png; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 				C99721BB1254145700A6247F /* RQBarView.m */,
 				C9DCF7711245505500BCABB1 /* RQBattleViewController.h */,
 				C9DCF7721245505500BCABB1 /* RQBattleViewController.m */,
+				1A4B54FC12736FCB00B313E1 /* BattleView.xib */,
 				C9DCF7731245505500BCABB1 /* RQSprite.h */,
 				C9DCF7741245505500BCABB1 /* RQSprite.m */,
 				C90F10EC12455B81000E456A /* RQEnemySprite.h */,
@@ -1119,6 +1122,7 @@
 				1A1F9202126685F30078C733 /* LogBookView.xib in Resources */,
 				1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */,
 				1A8B9233126900BA00D8E5F3 /* DeveloperToolboxView.xib in Resources */,
+				1A4B54FD12736FCB00B313E1 /* BattleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

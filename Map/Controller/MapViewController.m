@@ -104,16 +104,17 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[self startUpdatingLocation];
-	
     [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+	[super viewDidAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+- (void)viewWillAppear:(BOOL)animated
+{
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+	[super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload {

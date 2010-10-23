@@ -1,3 +1,9 @@
+October 23, 2010
+
+* Turned off the animation in the setCurrentViewController method and added a hard frame assignment to avoid the nasty status bar / frame issue documented on basecamp. I've tried to fix this but can not figure it out. This is the only workaround I could get going.
+
+<http://indyhalllabs.basecamphq.com/projects/5521331/posts/37719465/comments>
+
 October 20, 2010
 
 * Now save data set when they hit done on map view.

@@ -30,7 +30,7 @@
 
 - (id)init
 {
-	if (self = [super init]) {
+	if (self = [super initWithNibName:@"BattleView" bundle:nil]) {
 		weaponSprites = [[NSMutableArray alloc] init];
 		battle = [[RQBattle alloc] init];
 	}

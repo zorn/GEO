@@ -39,6 +39,16 @@
 	[super viewDidLoad];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+	[super viewWillAppear:animated];
+}
+
 - (IBAction)playButtonPressed:(id)sender
 {
 	NSLog(@"playButtonPressed");

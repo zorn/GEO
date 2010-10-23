@@ -41,6 +41,12 @@
 #pragma mark -
 #pragma mark View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+	[super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

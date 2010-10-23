@@ -112,13 +112,20 @@
 }
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
-    to.view.frame = self.window.frame;
+    // FIXME: For now, I'm turning off animations. I can't find the cause of the status bar bug but adding a hard frame assignemnt (see below)
+	// fixes the issue. If this is left in place with animations on you see a studder effect.
+	// http://indyhalllabs.basecamphq.com/projects/5521331/posts/37719465/comments
+	animate = NO;
+
+	to.view.frame = self.window.frame;
 	void (^switchBlock)(BOOL) = ^(BOOL finished){
 		if (finished) {
 			[self.window addSubview:to.view];
 			[currentViewController.view removeFromSuperview];
 			[currentViewController release];
 			currentViewController = [to retain];
+			// FIXME: Force full screen frame
+			currentViewController.view.frame = CGRectMake(0, 0, 320, 480);
 		}};
 	
 	if ( animate ) {
