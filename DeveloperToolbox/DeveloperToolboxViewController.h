@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryViewController.h"
 
 @protocol DeveloperToolboxViewControllerDelegate;
 
-@interface DeveloperToolboxViewController : UIViewController {
+@interface DeveloperToolboxViewController : UIViewController <StoryViewControllerDelegate>
+{
 
 }
 

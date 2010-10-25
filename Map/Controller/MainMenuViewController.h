@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsViewController.h"
+#import "DeveloperToolboxViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
-@interface MainMenuViewController : UIViewController
+@interface MainMenuViewController : UIViewController <SettingsViewControllerDelegate, DeveloperToolboxViewControllerDelegate>
 {
 	
 }
@@ -23,6 +25,8 @@
 - (IBAction)logButtonPressed:(id)sender;
 - (IBAction)developerToolboxButtonPressed:(id)sender;
 - (IBAction)storyButtonPressed:(id)sender;
+- (IBAction)doneBrowsingLogBook:(id)sender;
+- (IBAction)doneBrowsingDevToolbox:(id)sender;
 
 @end
 
@@ -30,8 +34,5 @@
 @protocol MainMenuViewControllerDelegate 
 - (void)presentStory:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller;
-- (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller;
-- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller;
 - (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller;
-- (void)mainMenuViewControllerDeveloperToolboxButtonPressed:(MainMenuViewController *)controller;
 @end

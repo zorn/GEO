@@ -52,6 +52,7 @@
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+		self.wantsFullScreenLayout = YES;
 		srand([[NSDate date] timeIntervalSince1970]);
 		appDelegate = [[UIApplication sharedApplication] delegate];
 		CLLocationManager *manager = [[CLLocationManager alloc] init];

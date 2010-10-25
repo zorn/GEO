@@ -11,6 +11,18 @@
 #import <CoreData/CoreData.h>
 
 @implementation TrekListViewController
+
+- (id)init {
+	if (self = [super initWithNibName:@"TrekListView" bundle:nil]) {
+		
+		self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Workouts" 
+															  image:[UIImage imageNamed:@"workout_log_tab_icon.png"] 
+																tag:0] autorelease];
+		[[self navigationItem] setTitle:@"Log Book"];
+	}
+	return self;
+}
+
 @synthesize fetchedResultsController;
 
 #pragma mark -

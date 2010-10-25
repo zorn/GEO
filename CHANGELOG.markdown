@@ -1,3 +1,8 @@
+October 25, 2010
+
+* Re-enabled animations, though using a flip now. I am starting to work on fixes to the status bar problem. I believe it was a lack of `self.wantsFullScreenLayout = YES;`
+* The log book, settings, dev toolbox are now all modal off the main menu.
+
 October 23, 2010
 
 * Turned off the animation in the setCurrentViewController method and added a hard frame assignment to avoid the nasty status bar / frame issue documented on basecamp. I've tried to fix this but can not figure it out. This is the only workaround I could get going.

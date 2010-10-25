@@ -45,7 +45,7 @@
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:soundEffects] forKey:@"RQSoundVolumeEffects"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
-	[(AppDelegate_iPhone *)delegate updateAudioSystemVolumeSettings];
+	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] updateAudioSystemVolumeSettings];
 	
 	[delegate settingsViewControllerDidEnd:self];
 }

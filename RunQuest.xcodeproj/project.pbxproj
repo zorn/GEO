@@ -118,6 +118,10 @@
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
+		1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */; };
+		1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */; };
+		1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */; };
+		1ADD6BC41275002900E8C76A /* wieght_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC31275002900E8C76A /* wieght_log_tab_icon@2x.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -332,6 +336,11 @@
 		1AD6FC8B125132FF00D98CF3 /* meanie_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "meanie_3@2x.png"; path = "monsters/meanie_3@2x.png"; sourceTree = "<group>"; };
 		1AD6FC8C125132FF00D98CF3 /* meanie_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meanie_4.png; path = monsters/meanie_4.png; sourceTree = "<group>"; };
 		1AD6FC8D125132FF00D98CF3 /* meanie_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "meanie_4@2x.png"; path = "monsters/meanie_4@2x.png"; sourceTree = "<group>"; };
+		1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "workout_log_tab_icon@2x.png"; path = "Assets/Mockups/workout_log_tab_icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		1ADD6BBC1274FE8600E8C76A /* WeightLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogViewController.h; path = WeightLog/WeightLogViewController.h; sourceTree = SOURCE_ROOT; };
+		1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogViewController.m; path = WeightLog/WeightLogViewController.m; sourceTree = SOURCE_ROOT; };
+		1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeightLogView.xib; path = WeightLog/WeightLogView.xib; sourceTree = SOURCE_ROOT; };
+		1ADD6BC31275002900E8C76A /* wieght_log_tab_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wieght_log_tab_icon@2x.png"; path = "Assets/Mockups/wieght_log_tab_icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
@@ -573,6 +582,9 @@
 			children = (
 				1A8D64531268E3AA00A68146 /* RQWeightLog.h */,
 				1A8D64541268E3AA00A68146 /* RQWeightLog.m */,
+				1ADD6BBC1274FE8600E8C76A /* WeightLogViewController.h */,
+				1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */,
+				1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */,
 			);
 			name = "Log Book";
 			path = Model;
@@ -592,7 +604,9 @@
 				1A4B55511273853700B313E1 /* geo_main_menu_bk.png */,
 				1A4B55521273853700B313E1 /* geo_main_menu_bk@2x.png */,
 				1A1F91FD126685A00078C733 /* wieght_log_tab_icon.png */,
+				1ADD6BC31275002900E8C76A /* wieght_log_tab_icon@2x.png */,
 				1A1F91FE126685A00078C733 /* workout_log_tab_icon.png */,
+				1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */,
 				1A1F91FA1266699E0078C733 /* location_button_icon.png */,
 				1A1F91F8126663660078C733 /* map_bk.png */,
 				1AC92474124D75DA00E09F6A /* menu_bk.png */,
@@ -1163,6 +1177,9 @@
 				1A4B55631273895200B313E1 /* 19-gear@2x.png in Resources */,
 				1A4B55641273895200B313E1 /* 21-skull.png in Resources */,
 				1A4B55651273895200B313E1 /* 21-skull@2x.png in Resources */,
+				1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */,
+				1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */,
+				1ADD6BC41275002900E8C76A /* wieght_log_tab_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,6 +1274,7 @@
 				1A8D64551268E3AA00A68146 /* RQWeightLog.m in Sources */,
 				1A8B91B21268F1AD00D8E5F3 /* CorePlotTestViewController.m in Sources */,
 				1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */,
+				1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

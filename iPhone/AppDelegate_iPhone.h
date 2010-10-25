@@ -22,7 +22,7 @@
 @class SettingsViewController;
 @class MapViewController;
 
-@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate, DeveloperToolboxViewControllerDelegate> {
+@interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
 	
 }
 @property (nonatomic, retain) UINavigationController *developerToolboxNavigationController;
@@ -32,7 +32,6 @@
 @property (nonatomic, retain) UIViewController *currentViewController;
 @property (nonatomic, retain, readonly) MainMenuViewController *mainMenuViewController;
 
-- (IBAction)doneBrowsingTreks:(id)sender;
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate;
 - (void)updateAudioSystemVolumeSettings;
 

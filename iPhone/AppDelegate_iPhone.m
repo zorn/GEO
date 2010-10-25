@@ -14,6 +14,7 @@
 #import "DeveloperToolboxViewController.h"
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
+#import "WeightLogViewController.h"
 
 @implementation AppDelegate_iPhone
 @synthesize currentViewController, mainMenuViewController, developerToolboxNavigationController, mapViewController, storyViewController, settingsViewController;
@@ -112,24 +113,17 @@
 }
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate {
-    // FIXME: For now, I'm turning off animations. I can't find the cause of the status bar bug but adding a hard frame assignemnt (see below)
-	// fixes the issue. If this is left in place with animations on you see a studder effect.
-	// http://indyhalllabs.basecamphq.com/projects/5521331/posts/37719465/comments
-	animate = NO;
-
-	to.view.frame = self.window.frame;
+   to.view.frame = self.window.frame;
 	void (^switchBlock)(BOOL) = ^(BOOL finished){
 		if (finished) {
 			[self.window addSubview:to.view];
 			[currentViewController.view removeFromSuperview];
 			[currentViewController release];
 			currentViewController = [to retain];
-			// FIXME: Force full screen frame
-			currentViewController.view.frame = CGRectMake(0, 0, 320, 480);
 		}};
 	
 	if ( animate ) {
-		UIViewAnimationOptions options = ( [to isKindOfClass:[MainMenuViewController class]] ? UIViewAnimationOptionTransitionCurlDown : UIViewAnimationOptionTransitionCurlUp );
+		UIViewAnimationOptions options = ( [to isKindOfClass:[MainMenuViewController class]] ? UIViewAnimationOptionTransitionFlipFromLeft : UIViewAnimationOptionTransitionFlipFromRight );
 		[UIView transitionFromView:currentViewController.view toView:to.view duration:1.0f options:options completion:switchBlock];
 	}
 	else {
@@ -178,16 +172,6 @@
 }
 
 #pragma mark -
-#pragma mark DeveloperToolboxViewControllerDelegate Methods
-
-- (void)developerToolboxViewControllerDidEnd:(DeveloperToolboxViewController *)controller
-{
-	// destroy the nav controller hosting the dev toolbox
-	[developerToolboxNavigationController.view removeFromSuperview];
-	[developerToolboxNavigationController release]; developerToolboxNavigationController = nil;
-}
-
-#pragma mark -
 #pragma mark MainMenuViewControllerDelegate methods
 
 - (void)presentStory:(MainMenuViewController *)controller
@@ -207,56 +191,9 @@
 	self.currentViewController = self.mapViewController;
 }
 
-- (void)mainMenuViewControllerOptionsButtonPressed:(MainMenuViewController *)controller
-{
-	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
-	[settingsVC setDelegate:self];
-	self.settingsViewController = settingsVC;
-	[settingsVC release];
-	self.currentViewController = self.settingsViewController;
-}
-
-- (void)mainMenuViewControllerTreksButtonPressed:(MainMenuViewController *)controller {
-	TrekListViewController *trekListVC = [[TrekListViewController alloc] initWithNibName:@"TrekListView" bundle:nil];
-	
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	[request setEntity:[NSEntityDescription entityForName:@"Trek" inManagedObjectContext:self.managedObjectContext]];
-	[request setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO], nil]];
-	
-	NSFetchedResultsController *resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Treks"];
-	[request release];
-	
-	trekListVC.fetchedResultsController= resultsController;
-	[resultsController release];
-	
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
-	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBrowsingTreks:)];
-	navController.navigationBar.topItem.rightBarButtonItem = doneItem;
-	[doneItem release];
-
-	self.currentViewController = navController;
-	
-	[navController release];
-}
-
 - (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller
 {
 	[self presentStory:nil];
-}
-
-- (void)mainMenuViewControllerDeveloperToolboxButtonPressed:(MainMenuViewController *)controller
-{
-	DeveloperToolboxViewController *devVC = [[DeveloperToolboxViewController alloc] init];
-	[devVC setDelegate:self];
-	developerToolboxNavigationController = [[UINavigationController alloc] initWithRootViewController:devVC];
-	[devVC release];
-	
-	[self.window addSubview:[developerToolboxNavigationController view]];
-}
-
-- (IBAction)doneBrowsingTreks:(id)sender {
-	
-	self.currentViewController = [self mainMenuViewController];
 }
 
 @end

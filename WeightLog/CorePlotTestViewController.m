@@ -8,7 +8,7 @@
 - (id)init
 {
 	if (self = [super initWithNibName:@"CorePlotTestView" bundle:nil]) {
-		
+		self.wantsFullScreenLayout = YES;
 	}
 	return self;
 }

@@ -19,8 +19,9 @@
 {
 	if (self = [super initWithNibName:@"DeveloperToolboxView" bundle:nil]) {
 		[[self navigationItem] setTitle:@"Developer Toolbox"];
-		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(returnToMainMenu)];
-		[[self navigationItem] setLeftBarButtonItem:newBackButton];
+		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(returnToMainMenu)];
+		[[self navigationItem] setRightBarButtonItem:newBackButton];
+		self.wantsFullScreenLayout = YES;
 	}
 	return self;
 }
@@ -41,12 +42,25 @@
 
 - (IBAction)watchStory:(id)sender
 {
-	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] presentStory:nil];
+	//[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] presentStory:nil];
+	StoryViewController *storyVC = [[StoryViewController alloc] init];
+	[storyVC setDelegate:self];
+	[self presentModalViewController:storyVC animated:YES];
+	[storyVC release];
+	
 }
 
 - (void)returnToMainMenu
 {
 	[self.delegate developerToolboxViewControllerDidEnd:self];
+}
+
+#pragma mark -
+#pragma mark StoryViewControllerDelegate methods
+
+- (void)storyViewControllerDidEnd:(StoryViewController *)controller
+{
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 @end

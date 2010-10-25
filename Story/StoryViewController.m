@@ -6,6 +6,7 @@
 - (id)init
 {
 	if (self = [super initWithNibName:@"StoryView" bundle:nil]) {
+		self.wantsFullScreenLayout = YES;
 		transitioning = NO;
 		currentFrame = 1;
 	}
