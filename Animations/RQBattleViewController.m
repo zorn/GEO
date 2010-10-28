@@ -26,7 +26,15 @@
 #import "AppDelegate_iPhone.h"
 
 
+@interface RQBattleViewController ()
+@property (nonatomic, assign) BOOL enemyShotFired;
+@property (nonatomic, retain) UIView *enemyShotView;
+@end
+
+
 @implementation RQBattleViewController
+@synthesize enemyShotFired;
+@synthesize enemyShotView;
 
 - (id)init
 {
@@ -56,6 +64,7 @@
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
 	[battle release]; battle = nil;
 	[evilBoobsMonster release];
+    [enemyShotView release];
     [super dealloc];
 }
 @synthesize delegate;
@@ -267,7 +276,28 @@
 		}
 		
 		// Run ememy AI if they have not been hit
+        if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.95)) {
+            self.enemyShotFired = YES;
+            self.enemyShotView = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
+            self.enemyShotView.center = evilBoobsMonster.view.center;
+            self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+            self.enemyShotView.backgroundColor = [UIColor greenColor];
+            self.enemyShotView.alpha = 0.6f;
+            [self.view addSubview:self.enemyShotView];
+            [UIView animateWithDuration:0.5 
+                                  delay:0.0 
+                                options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseIn 
+                             animations:^(void) { 
+                                 self.enemyShotView.transform = CGAffineTransformIdentity;
+                                 self.enemyShotView.center = self.view.center;
+            } 
+                             completion:NULL];
+        }
 		if (self.battle.enemy.stamina >= 1.0) {
+            self.enemyShotFired = NO;
+            [self.enemyShotView removeFromSuperview];
+            self.enemyShotView = nil;
+            
 			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
