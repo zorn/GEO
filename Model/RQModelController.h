@@ -4,6 +4,7 @@
 
 @class RQHero;
 @class RQEnemy;
+@class RQWeightLogEntry;
 
 @interface RQModelController : NSObject {
 	M3CoreDataManager *coreDataManager;
@@ -18,6 +19,11 @@
 @property (readonly) M3SimpleCoreData *simpleCoreData;
 
 - (NSUndoManager *)undoManager;
+
+- (NSArray *)weightLogEntries;
+- (RQWeightLogEntry *)newWeightLogEntry;
+- (void)deleteWeightLogEntry:(RQWeightLogEntry *)entry;
+
 - (NSArray *)monsterTemplates;
 
 

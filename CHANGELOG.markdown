@@ -1,7 +1,11 @@
+October 27, 2010
+
+* Weight Logbook section is coming along. Can now enter today's weight as well as browse, edit and delete previous weight log entries.
+
 October 25, 2010
 
-* Re-enabled animations, though using a flip now. I am starting to work on fixes to the status bar problem. I believe it was a lack of `self.wantsFullScreenLayout = YES;`
-* The log book, settings, dev toolbox are now all modal off the main menu.
+* Re-enabled animations, though using a flip now. I am starting to work on fixes to the status bar problem. I believe it was a lack of `self.wantsFullScreenLayout = YES;` -- time will tell.
+* The log book, settings, dev toolbox are now all modal off the main menu. They have a consistant "done" button in the upper right.
 
 October 23, 2010
 

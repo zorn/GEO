@@ -3,8 +3,10 @@
 #import "M3CoreDataManager.h"
 #import "M3SimpleCoreData.h"
 
+// models
 #import "RQHero.h"
 #import "RQEnemy.h"
+#import "RQWeightLogEntry.h"
 
 static RQModelController *defaultModelController = nil;
 
@@ -106,9 +108,29 @@ static RQModelController *defaultModelController = nil;
 	}
 }
 
+- (NSArray *)weightLogEntries
+{
+	return [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:nil];
+}
+
+- (RQWeightLogEntry *)newWeightLogEntry
+{
+	[self willChangeValueForKey:@"weightLogEntries"];
+	RQWeightLogEntry *entry = (RQWeightLogEntry *)[simpleCoreData newObjectInEntityWithName:@"WeightLogEntry" values:nil];
+	[self didChangeValueForKey:@"weightLogEntries"];
+	return entry;
+}
+
+- (void)deleteWeightLogEntry:(RQWeightLogEntry *)entry
+{
+	[self willChangeValueForKey:@"weightLogEntries"];
+	[[simpleCoreData managedObjectContext] deleteObject:entry];
+	[self didChangeValueForKey:@"weightLogEntries"];
+}
+
 - (BOOL)shouldInsertInitialContents
 {
-	return NO;
+	return ![self heroExists];
 }
 
 - (NSArray *)monsterTemplates
@@ -132,23 +154,29 @@ static RQModelController *defaultModelController = nil;
 			nil];
 }
 
-/**
- Inserts the initial content for the database from the info dict
- */
-- (void)insertInitialContent {
-	//	NSArray *authors = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"Authors"];
-	//	for (NSDictionary *authorDict in authors) { 
-	//		M3Author *author = [self newAuthor];
-	//		[author setName:[authorDict valueForKey:@"name"]];
-	//		[author setEmail:[authorDict valueForKey:@"email"]];
-	//	}
-	//	
-	//	
-	//	NSArray *categories = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"Categories"];
-	//	for (NSString *categoryTitle in categories) { 
-	//		M3Category *category = [self newCategory];
-	//		[category setTitle:categoryTitle];
-	//	}	
+- (void)insertInitialContent
+{
+	// SAMPLE DATE FOR WEIGHT LOG VIEWS 
+	// create two months worth of random weight-in data, assuming they enter in a weight ~3 days and the delta +0.5 -2.5 pounds.
+//	int totalDays = 0;
+//	float currentWeight = 200.0;
+//	while (totalDays <= 60) {
+//		
+//		int numberOfDays = (random() % 3) + 1; // 1, 2 or 3
+//		int entryDate = 60 - totalDays - numberOfDays;
+//		
+//		NSDate *weightinDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24* -1 * entryDate];
+//		currentWeight = currentWeight + ((random() % 4) - 3); // -2 .. +1 
+//		
+//		RQWeightLogEntry *newEntry = [self newWeightLogEntry];
+//		[newEntry setDateTaken:weightinDate];
+//		[newEntry setWeightTaken:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", currentWeight]]];
+//		//NSLog(@"newEntry: %@", newEntry);
+//		
+//		totalDays = totalDays + numberOfDays;
+//	} 
 }
+
+
 
 @end

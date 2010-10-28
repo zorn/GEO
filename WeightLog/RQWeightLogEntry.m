@@ -1,6 +1,6 @@
-#import "RQWeightLog.h"
+#import "RQWeightLogEntry.h"
 
-@implementation RQWeightLog
+@implementation RQWeightLogEntry
 
 - (void)awakeFromInsert
 {

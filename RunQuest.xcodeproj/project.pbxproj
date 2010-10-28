@@ -101,7 +101,7 @@
 		1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */; };
 		1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */; };
 		1A8B9233126900BA00D8E5F3 /* DeveloperToolboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */; };
-		1A8D64551268E3AA00A68146 /* RQWeightLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D64541268E3AA00A68146 /* RQWeightLog.m */; };
+		1A8D64551268E3AA00A68146 /* RQWeightLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D64541268E3AA00A68146 /* RQWeightLogEntry.m */; };
 		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
 		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
 		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
@@ -122,6 +122,12 @@
 		1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */; };
 		1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */; };
 		1ADD6BC41275002900E8C76A /* wieght_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC31275002900E8C76A /* wieght_log_tab_icon@2x.png */; };
+		1ADD6DA0127621FB00E8C76A /* WeightLogListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6D9F127621FB00E8C76A /* WeightLogListViewController.m */; };
+		1ADD6DA21276225A00E8C76A /* WeightLogListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6DA11276225A00E8C76A /* WeightLogListView.xib */; };
+		1ADD6E4612762D9100E8C76A /* WeightLogEventEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6E4512762D9100E8C76A /* WeightLogEventEditViewController.m */; };
+		1ADD6E4812762DEE00E8C76A /* WeightLogEventEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6E4712762DEE00E8C76A /* WeightLogEventEditView.xib */; };
+		1ADD708512775FD700E8C76A /* WeightLogListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD708412775FD700E8C76A /* WeightLogListCell.m */; };
+		1ADD70871277609F00E8C76A /* WeightLogListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD70861277609F00E8C76A /* WeightLogListCell.xib */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -288,8 +294,8 @@
 		1A8B922F1269009F00D8E5F3 /* DeveloperToolboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeveloperToolboxViewController.h; path = DeveloperToolbox/DeveloperToolboxViewController.h; sourceTree = SOURCE_ROOT; };
 		1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeveloperToolboxViewController.m; path = DeveloperToolbox/DeveloperToolboxViewController.m; sourceTree = SOURCE_ROOT; };
 		1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DeveloperToolboxView.xib; path = DeveloperToolbox/DeveloperToolboxView.xib; sourceTree = SOURCE_ROOT; };
-		1A8D64531268E3AA00A68146 /* RQWeightLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQWeightLog.h; path = WeightLog/RQWeightLog.h; sourceTree = SOURCE_ROOT; };
-		1A8D64541268E3AA00A68146 /* RQWeightLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQWeightLog.m; path = WeightLog/RQWeightLog.m; sourceTree = SOURCE_ROOT; };
+		1A8D64531268E3AA00A68146 /* RQWeightLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQWeightLogEntry.h; path = WeightLog/RQWeightLogEntry.h; sourceTree = SOURCE_ROOT; };
+		1A8D64541268E3AA00A68146 /* RQWeightLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQWeightLogEntry.m; path = WeightLog/RQWeightLogEntry.m; sourceTree = SOURCE_ROOT; };
 		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
 		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
@@ -341,6 +347,15 @@
 		1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogViewController.m; path = WeightLog/WeightLogViewController.m; sourceTree = SOURCE_ROOT; };
 		1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeightLogView.xib; path = WeightLog/WeightLogView.xib; sourceTree = SOURCE_ROOT; };
 		1ADD6BC31275002900E8C76A /* wieght_log_tab_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wieght_log_tab_icon@2x.png"; path = "Assets/Mockups/wieght_log_tab_icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		1ADD6D9E127621FB00E8C76A /* WeightLogListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogListViewController.h; path = WeightLog/WeightLogListViewController.h; sourceTree = SOURCE_ROOT; };
+		1ADD6D9F127621FB00E8C76A /* WeightLogListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogListViewController.m; path = WeightLog/WeightLogListViewController.m; sourceTree = SOURCE_ROOT; };
+		1ADD6DA11276225A00E8C76A /* WeightLogListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeightLogListView.xib; path = WeightLog/WeightLogListView.xib; sourceTree = SOURCE_ROOT; };
+		1ADD6E4412762D9100E8C76A /* WeightLogEventEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogEventEditViewController.h; path = WeightLog/WeightLogEventEditViewController.h; sourceTree = SOURCE_ROOT; };
+		1ADD6E4512762D9100E8C76A /* WeightLogEventEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogEventEditViewController.m; path = WeightLog/WeightLogEventEditViewController.m; sourceTree = SOURCE_ROOT; };
+		1ADD6E4712762DEE00E8C76A /* WeightLogEventEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeightLogEventEditView.xib; path = WeightLog/WeightLogEventEditView.xib; sourceTree = SOURCE_ROOT; };
+		1ADD708312775FD700E8C76A /* WeightLogListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogListCell.h; path = WeightLog/WeightLogListCell.h; sourceTree = SOURCE_ROOT; };
+		1ADD708412775FD700E8C76A /* WeightLogListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogListCell.m; path = WeightLog/WeightLogListCell.m; sourceTree = SOURCE_ROOT; };
+		1ADD70861277609F00E8C76A /* WeightLogListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeightLogListCell.xib; path = WeightLog/WeightLogListCell.xib; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
@@ -580,11 +595,18 @@
 		1A8D64521268E2D600A68146 /* Log Book */ = {
 			isa = PBXGroup;
 			children = (
-				1A8D64531268E3AA00A68146 /* RQWeightLog.h */,
-				1A8D64541268E3AA00A68146 /* RQWeightLog.m */,
 				1ADD6BBC1274FE8600E8C76A /* WeightLogViewController.h */,
 				1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */,
 				1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */,
+				1ADD6D9E127621FB00E8C76A /* WeightLogListViewController.h */,
+				1ADD6D9F127621FB00E8C76A /* WeightLogListViewController.m */,
+				1ADD6DA11276225A00E8C76A /* WeightLogListView.xib */,
+				1ADD6E4412762D9100E8C76A /* WeightLogEventEditViewController.h */,
+				1ADD6E4512762D9100E8C76A /* WeightLogEventEditViewController.m */,
+				1ADD6E4712762DEE00E8C76A /* WeightLogEventEditView.xib */,
+				1ADD708312775FD700E8C76A /* WeightLogListCell.h */,
+				1ADD708412775FD700E8C76A /* WeightLogListCell.m */,
+				1ADD70861277609F00E8C76A /* WeightLogListCell.xib */,
 			);
 			name = "Log Book";
 			path = Model;
@@ -930,6 +952,8 @@
 				1A6E3339124E5F000054949B /* RQHero.m */,
 				1A6E333D124E5FAA0054949B /* RQEnemy.h */,
 				1A6E333E124E5FAA0054949B /* RQEnemy.m */,
+				1A8D64531268E3AA00A68146 /* RQWeightLogEntry.h */,
+				1A8D64541268E3AA00A68146 /* RQWeightLogEntry.m */,
 				D8C86C90124510A4007E44AF /* EnemyMapSpawn.h */,
 				D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */,
 			);
@@ -1180,6 +1204,9 @@
 				1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */,
 				1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */,
 				1ADD6BC41275002900E8C76A /* wieght_log_tab_icon@2x.png in Resources */,
+				1ADD6DA21276225A00E8C76A /* WeightLogListView.xib in Resources */,
+				1ADD6E4812762DEE00E8C76A /* WeightLogEventEditView.xib in Resources */,
+				1ADD70871277609F00E8C76A /* WeightLogListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,10 +1298,13 @@
 				C99721BC1254145700A6247F /* RQBarView.m in Sources */,
 				D82F2384125406C3003F66BA /* Trek.m in Sources */,
 				1A132550125574900088A751 /* SettingsViewController.m in Sources */,
-				1A8D64551268E3AA00A68146 /* RQWeightLog.m in Sources */,
+				1A8D64551268E3AA00A68146 /* RQWeightLogEntry.m in Sources */,
 				1A8B91B21268F1AD00D8E5F3 /* CorePlotTestViewController.m in Sources */,
 				1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */,
 				1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */,
+				1ADD6DA0127621FB00E8C76A /* WeightLogListViewController.m in Sources */,
+				1ADD6E4612762D9100E8C76A /* WeightLogEventEditViewController.m in Sources */,
+				1ADD708512775FD700E8C76A /* WeightLogListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

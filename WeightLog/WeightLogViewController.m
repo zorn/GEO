@@ -1,5 +1,5 @@
 #import "WeightLogViewController.h"
-
+#import "WeightLogListViewController.h"
 
 @implementation WeightLogViewController
 
@@ -12,7 +12,9 @@
 		self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Weight-ins" 
 														 image:[UIImage imageNamed:@"wieght_log_tab_icon.png"] 
 														   tag:0] autorelease];
-		[[self navigationItem] setTitle:@"Log Book"];
+		[[self navigationItem] setTitle:@"Weight Summary"];
+		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStyleBordered target:nil action:nil];
+		[[self navigationItem] setBackBarButtonItem:newBackButton];
 	}
 	return self;
 }
@@ -22,5 +24,28 @@
 	[super dealloc];
 }
 
+- (IBAction)enterTodaysWeight:(id)sender
+{
+	WeightLogEventEditViewController *controller = [[WeightLogEventEditViewController alloc] init];
+	[controller setEditMode:NO]; // make a new object when they save
+	[controller setDelegate:self];
+	[self presentModalViewController:controller animated:YES];
+	[controller release];
+}
+
+- (IBAction)editPreviousWeightins:(id)sender
+{
+	WeightLogListViewController *controller = [[WeightLogListViewController alloc] init];
+	[self.navigationController pushViewController:controller animated:YES];
+	[controller release];
+}
+
+#pragma mark -
+#pragma mark WeightLogEventEditViewControllerDelegate methods
+
+- (void)weightLogEventEditViewControllerDidEnd:(WeightLogEventEditViewController *)controller
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 @end

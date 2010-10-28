@@ -18,7 +18,9 @@
 		self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Workouts" 
 															  image:[UIImage imageNamed:@"workout_log_tab_icon.png"] 
 																tag:0] autorelease];
-		[[self navigationItem] setTitle:@"Log Book"];
+		[[self navigationItem] setTitle:@"Workout Summary"];
+		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStyleBordered target:nil action:nil];
+		[[self navigationItem] setBackBarButtonItem:newBackButton];
 	}
 	return self;
 }
