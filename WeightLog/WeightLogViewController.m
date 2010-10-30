@@ -1,6 +1,9 @@
 #import "WeightLogViewController.h"
 #import "WeightLogListViewController.h"
 
+// models
+#import "RQModelController.h"
+
 @implementation WeightLogViewController
 
 #pragma mark -
@@ -21,8 +24,44 @@
 
 - (void)dealloc
 {
+	[weightLostToDateLabel release]; weightLostToDateLabel = nil;
+	[listViewButton release]; listViewButton = nil;
 	[super dealloc];
 }
+
+@synthesize weightLostToDateLabel;
+@synthesize listViewButton;
+
+#pragma mark -
+#pragma mark View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Update top label
+	NSDecimalNumber *weightLostToDate = [[RQModelController defaultModelController] weightLostToDate];
+	if (weightLostToDate) {
+		// NSOrderedAscending if the value of decimalNumber is greater than the receiver; NSOrderedSame if they’re equal; and NSOrderedDescending if the value of decimalNumber is less than the receiver.
+		if ([[NSDecimalNumber zero] compare:weightLostToDate] != NSOrderedDescending) {
+			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have lost %@ pounds.", weightLostToDate]];
+		} else {
+			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have gained %@ pounds.", [weightLostToDate decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"-1"]]]];
+		}
+		
+	} else {
+		[self.weightLostToDateLabel setText:@"Enter your weight below."];
+	}
+	[super viewWillAppear:animated];
+	
+	// disable the list view button while zero items to list
+	if ([[[RQModelController defaultModelController] weightLogEntries] count] > 0) {
+		[self.listViewButton setEnabled:YES];
+	} else {
+		[self.listViewButton setEnabled:NO];
+	}
+}
+
+#pragma mark -
+#pragma mark Actions
 
 - (IBAction)enterTodaysWeight:(id)sender
 {

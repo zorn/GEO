@@ -9,4 +9,7 @@
 @property (nonatomic, copy) NSDecimalNumber *weightTaken;
 @property (nonatomic, copy) NSDate *dateTaken;
 
+- (NSDecimalNumber *)weightLostAsOfSelf;
+
+
 @end

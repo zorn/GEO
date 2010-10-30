@@ -59,6 +59,11 @@ static RQModelController *defaultModelController = nil;
 @synthesize coreDataManager;
 @synthesize simpleCoreData;
 
+- (void)save
+{
+	[self.coreDataManager save];
+}
+
 - (NSUndoManager *)undoManager
 {
 	return [[[self coreDataManager] managedObjectContext] undoManager];
@@ -126,6 +131,61 @@ static RQModelController *defaultModelController = nil;
 	[self willChangeValueForKey:@"weightLogEntries"];
 	[[simpleCoreData managedObjectContext] deleteObject:entry];
 	[self didChangeValueForKey:@"weightLogEntries"];
+}
+
+- (RQWeightLogEntry *)oldestWeightLogEntry
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTaken" ascending:YES selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [entries objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+- (RQWeightLogEntry *)newestWeightLogEntry
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTaken" ascending:NO selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [entries objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+- (RQWeightLogEntry *)weightLogEntryFromDate:(NSDate *)someDate
+{
+	// Will return the closest match. IE: if we have a weight log entry on the 23rd and 25th and you ask for the 24th we will give you 23rd.
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTaken" ascending:NO selector:@selector(compare:)];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateTaken <= %@", someDate];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:predicate sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [entries objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+- (NSDecimalNumber *)weightLostToDate
+{
+	return [self weightLostToDate:[NSDate date]];
+}
+
+- (NSDecimalNumber *)weightLostToDate:(NSDate *)someDate
+{
+	RQWeightLogEntry *oldest = [self oldestWeightLogEntry];
+	RQWeightLogEntry *newest = [self weightLogEntryFromDate:someDate];
+	if (oldest && newest) {
+		NSLog(@"oldest: %@, newest: %@", oldest.weightTaken, newest.weightTaken);
+		return [oldest.weightTaken decimalNumberBySubtracting:newest.weightTaken];
+	} else {
+		return nil;
+	}
 }
 
 - (BOOL)shouldInsertInitialContents

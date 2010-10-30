@@ -6,6 +6,7 @@
 // models
 #import "RQModelController.h"
 #import "M3SimpleCoreData.h"
+#import "RQWeightLogEntry.h"
 
 // controllers
 #import "WeightLogEventEditViewController.h"
@@ -96,10 +97,21 @@
 
 - (void)configureCell:(WeightLogListCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
-	id object = [fetchedResultsController objectAtIndexPath:indexPath];
-	[cell.weightLabel setText:[[object valueForKey:@"weightTaken"] stringValue]];
-	[cell.weightLostLabel setText:@"123.4"];
-	[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];	
+	@try {
+		id object = [fetchedResultsController objectAtIndexPath:indexPath];
+		[cell.weightLabel setText:[[object valueForKey:@"weightTaken"] stringValue]];
+		[cell.weightLostLabel setText:[[(RQWeightLogEntry *)object weightLostAsOfSelf] stringValue]];
+		[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];	
+	}
+	@catch (NSException * e) {
+		NSLog(@"%@",e);
+		[cell.weightLabel setText:@""];
+		[cell.weightLostLabel setText:@""];
+		[cell.dateLabel setText:@""];	
+	}
+	@finally {
+		
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {

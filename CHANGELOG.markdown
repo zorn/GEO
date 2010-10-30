@@ -1,3 +1,9 @@
+October 30, 2010
+
+* Weight Logbook list view doesn't work well with no previous entries (WTF NSFetchedResultsController, you suck.). Going to disable the button to get to it while zero entries exist.
+* We now show a proper message at the top of weight log home screen, showing a lose or gain of weight or, if needed, a message encouraging you to enter your weight.
+* The weight list view now shows how much weight was lost as of the weight taken date of the row/cell being shown.
+
 October 27, 2010
 
 * Weight Logbook section is coming along. Can now enter today's weight as well as browse, edit and delete previous weight log entries.

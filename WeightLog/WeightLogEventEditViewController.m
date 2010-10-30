@@ -93,6 +93,7 @@
 			[newEntry setDateTaken:self.tempDate];
 			[newEntry setWeightTaken:self.tempWeight];
 		}
+		[[RQModelController defaultModelController] save];
 	} else {
 		// cancel
 	}

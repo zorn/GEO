@@ -18,11 +18,18 @@
 @property (readonly) M3CoreDataManager *coreDataManager;
 @property (readonly) M3SimpleCoreData *simpleCoreData;
 
+- (void)save;
 - (NSUndoManager *)undoManager;
 
 - (NSArray *)weightLogEntries;
 - (RQWeightLogEntry *)newWeightLogEntry;
 - (void)deleteWeightLogEntry:(RQWeightLogEntry *)entry;
+- (RQWeightLogEntry *)oldestWeightLogEntry;
+- (RQWeightLogEntry *)newestWeightLogEntry;
+- (RQWeightLogEntry *)weightLogEntryFromDate:(NSDate *)someDate;
+
+- (NSDecimalNumber *)weightLostToDate;
+- (NSDecimalNumber *)weightLostToDate:(NSDate *)someDate;
 
 - (NSArray *)monsterTemplates;
 
