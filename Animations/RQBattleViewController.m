@@ -24,11 +24,12 @@
 #import "RQPassthroughView.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AppDelegate_iPhone.h"
+#import "RQEnemyWeaponView.h"
 
 
 @interface RQBattleViewController ()
 @property (nonatomic, assign) BOOL enemyShotFired;
-@property (nonatomic, retain) UIView *enemyShotView;
+@property (nonatomic, retain) RQEnemyWeaponView *enemyShotView;
 @end
 
 
@@ -278,10 +279,9 @@
 		// Run ememy AI if they have not been hit
         if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.95)) {
             self.enemyShotFired = YES;
-            self.enemyShotView = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
+            self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
             self.enemyShotView.center = evilBoobsMonster.view.center;
             self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-            self.enemyShotView.backgroundColor = [UIColor greenColor];
             self.enemyShotView.alpha = 0.6f;
             [self.view addSubview:self.enemyShotView];
             [UIView animateWithDuration:0.5 

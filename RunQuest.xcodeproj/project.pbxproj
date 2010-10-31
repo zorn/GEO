@@ -142,6 +142,7 @@
 		31D9AF3B124D0BE700C2F8F6 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF36124D0BE700C2F8F6 /* CocosDenshion.m */; };
 		31D9AF3C124D0BE700C2F8F6 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D9AF38124D0BE700C2F8F6 /* SimpleAudioEngine.m */; };
 		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
+		C9142D6B127DB88300412AFF /* RQEnemyWeaponView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9142D6A127DB88300412AFF /* RQEnemyWeaponView.m */; };
 		C99721BC1254145700A6247F /* RQBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C99721BB1254145700A6247F /* RQBarView.m */; };
 		C99A91D0124A7F47005BAECF /* chimp_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B4124A7F47005BAECF /* chimp_001.caf */; };
 		C99A91D1124A7F47005BAECF /* Computer_Data_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91B5124A7F47005BAECF /* Computer_Data_001.caf */; };
@@ -382,6 +383,8 @@
 		8D1107310486CEB800E47090 /* RunQuest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RunQuest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C90F10EC12455B81000E456A /* RQEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemySprite.h; sourceTree = "<group>"; };
 		C90F10ED12455B81000E456A /* RQEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemySprite.m; sourceTree = "<group>"; };
+		C9142D69127DB88300412AFF /* RQEnemyWeaponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemyWeaponView.h; sourceTree = "<group>"; };
+		C9142D6A127DB88300412AFF /* RQEnemyWeaponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemyWeaponView.m; sourceTree = "<group>"; };
 		C99721BA1254145700A6247F /* RQBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBarView.h; sourceTree = "<group>"; };
 		C99721BB1254145700A6247F /* RQBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBarView.m; sourceTree = "<group>"; };
 		C99A91B4124A7F47005BAECF /* chimp_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chimp_001.caf; sourceTree = "<group>"; };
@@ -886,6 +889,8 @@
 		D8C86C4D12450DA3007E44AF /* BattleView */ = {
 			isa = PBXGroup;
 			children = (
+				C9142D69127DB88300412AFF /* RQEnemyWeaponView.h */,
+				C9142D6A127DB88300412AFF /* RQEnemyWeaponView.m */,
 				C99721BA1254145700A6247F /* RQBarView.h */,
 				C99721BB1254145700A6247F /* RQBarView.m */,
 				C9DCF7711245505500BCABB1 /* RQBattleViewController.h */,
@@ -1305,6 +1310,7 @@
 				1ADD6DA0127621FB00E8C76A /* WeightLogListViewController.m in Sources */,
 				1ADD6E4612762D9100E8C76A /* WeightLogEventEditViewController.m in Sources */,
 				1ADD708512775FD700E8C76A /* WeightLogListCell.m in Sources */,
+				C9142D6B127DB88300412AFF /* RQEnemyWeaponView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
