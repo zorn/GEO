@@ -1,3 +1,7 @@
+November 1, 2010
+
+* Weight Logbook graph now has a nice labeled y axis and fills more of the screen. Long term I'd like to add a labeled x axis but since we aren't browsing Y from 0 to max I believe I'd have to do custom labels which is a little more work. For now I'm going to commit as-is.
+
 October 30, 2010
 
 * Weight Logbook list view doesn't work well with no previous entries (WTF NSFetchedResultsController, you suck.). Going to disable the button to get to it while zero entries exist.

@@ -66,6 +66,12 @@
 		NSLog(@"%@", error);  // TODO: care
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[[RQModelController defaultModelController] save];
+	[super viewWillDisappear:animated];
+}
+
 #pragma mark -
 #pragma mark Table view data source
 

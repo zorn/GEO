@@ -118,6 +118,12 @@ static RQModelController *defaultModelController = nil;
 	return [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:nil];
 }
 
+- (NSArray *)weightLogEntriesSortedByDate
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTaken" ascending:YES selector:@selector(compare:)];
+	return [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+}
+
 - (RQWeightLogEntry *)newWeightLogEntry
 {
 	[self willChangeValueForKey:@"weightLogEntries"];
@@ -173,7 +179,7 @@ static RQModelController *defaultModelController = nil;
 
 - (NSDecimalNumber *)weightLostToDate
 {
-	return [self weightLostToDate:[NSDate date]];
+	return [self weightLostToDate:[NSDate distantFuture]];
 }
 
 - (NSDecimalNumber *)weightLostToDate:(NSDate *)someDate
@@ -188,9 +194,33 @@ static RQModelController *defaultModelController = nil;
 	}
 }
 
+- (NSDecimalNumber *)maxWeightLogged
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"weightTaken" ascending:NO selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [[entries objectAtIndex:0] weightTaken];
+	} else {
+		return nil;
+	}
+}
+
+- (NSDecimalNumber *)minWeightLogged
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"weightTaken" ascending:YES selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [[entries objectAtIndex:0] weightTaken];
+	} else {
+		return nil;
+	}
+}
+
 - (BOOL)shouldInsertInitialContents
 {
-	return ![self heroExists];
+	return ![self heroExists] && [[self weightLogEntries] count] <= 0;
 }
 
 - (NSArray *)monsterTemplates
@@ -218,23 +248,26 @@ static RQModelController *defaultModelController = nil;
 {
 	// SAMPLE DATE FOR WEIGHT LOG VIEWS 
 	// create two months worth of random weight-in data, assuming they enter in a weight ~3 days and the delta +0.5 -2.5 pounds.
-//	int totalDays = 0;
-//	float currentWeight = 200.0;
-//	while (totalDays <= 60) {
-//		
-//		int numberOfDays = (random() % 3) + 1; // 1, 2 or 3
-//		int entryDate = 60 - totalDays - numberOfDays;
-//		
-//		NSDate *weightinDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24* -1 * entryDate];
-//		currentWeight = currentWeight + ((random() % 4) - 3); // -2 .. +1 
-//		
-//		RQWeightLogEntry *newEntry = [self newWeightLogEntry];
-//		[newEntry setDateTaken:weightinDate];
-//		[newEntry setWeightTaken:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", currentWeight]]];
-//		//NSLog(@"newEntry: %@", newEntry);
-//		
-//		totalDays = totalDays + numberOfDays;
-//	} 
+	/*
+	int totalDays = 0;
+	int daysToGenerate = 2;
+	float currentWeight = 200.0;
+	while (totalDays <= daysToGenerate) {
+		
+		int numberOfDays = (random() % 3) + 1; // 1, 2 or 3
+		int entryDate = daysToGenerate - totalDays - numberOfDays;
+		
+		NSDate *weightinDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24* -1 * entryDate];
+		currentWeight = currentWeight + ((random() % 4) - 3); // -2 .. +1 
+		
+		RQWeightLogEntry *newEntry = [self newWeightLogEntry];
+		[newEntry setDateTaken:weightinDate];
+		[newEntry setWeightTaken:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", currentWeight]]];
+		//NSLog(@"newEntry: %@", newEntry);
+		
+		totalDays = totalDays + numberOfDays;
+	}
+	*/
 }
 
 
