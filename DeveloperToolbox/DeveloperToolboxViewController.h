@@ -20,6 +20,7 @@
 
 - (IBAction)loadCorePlotDemoOne:(id)sender;
 - (IBAction)watchStory:(id)sender;
+- (IBAction)editHero:(id)sender;
 
 @end
 

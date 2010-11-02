@@ -86,7 +86,7 @@
 }
 
 - (void)setStamina:(float)value {
-	if (value > 1.0) {
+	if (value >= 1.0) {
 		[self setStaminaAsNumber:[NSNumber numberWithFloat:1.0]];
 	} else if (value <= 0.0) {
 		[self setStaminaAsNumber:[NSNumber numberWithFloat:0.0]];
@@ -165,25 +165,20 @@
 	return -1;
 }
 
++ (NSInteger)expectedExperiencePointTotalGivenLevel:(NSInteger)someLevel
+{
+	NSInteger XPTotal = 0;
+	for (int i = 1; i < someLevel+1; i++) {
+		XPTotal = XPTotal + [RQMob experinceNeededToLevelFromLevel:i];
+	}
+	return XPTotal;
+}
+
 - (NSInteger)baseAttackPower
 {
 	return round(self.maxHP / 5);
 }
 
-- (NSArray *)weapons
-{
-	// classical D&D elemental system
-	// Air has dominance over Water.
-	// Water has dominance over Fire.
-	// Fire has dominance over Earth.
-	// Earth has dominance over Air.
-	return [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
-			nil];
-}
 
 - (RQElementalType)weakToType
 {

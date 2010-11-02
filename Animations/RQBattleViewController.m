@@ -133,11 +133,16 @@
 	NSString *weaponImageName;
 	RQElementalType weaponType;
 	UIImageView *weaponImageView;
-	int xloc = 40;
+	
+	float spacerWidth = 320 / (self.battle.hero.weapons.count+1);
+	NSLog(@"spacerWidth: %f", spacerWidth);
+	int weaponPlace = 0;
+	float xloc = 0;
 	for (NSDictionary *weapon in self.battle.hero.weapons) {
 		
 		weaponType = RQElementalTypeNone;
 		
+		NSLog(@"building weapon: %@", weapon);
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
 				weaponImageName = @"fire_button";
@@ -164,10 +169,17 @@
 		[weaponSprite setType:weaponType];
 		[weaponSprites addObject:weaponSprite];
 		[self.view addSubview:weaponSprite.view];
+
+		xloc = xloc + spacerWidth;
+
+		NSLog(@"xloc: %f", xloc);
 		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
 		weaponSprite.orininalPosition = weaponSprite.position;
-		xloc = xloc + 80;
+		
 		weaponSprite.velocity = CGPointZero;
+
+		weaponPlace++;
+		
 		[weaponSprite release]; weaponSprite = nil;
 	}
 	
@@ -188,7 +200,6 @@
 	lastCollisionTime = 0.0;
 	
 	// Setup the self hit visual
-	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
 	self.frontFlashView = [[[RQPassthroughView alloc] initWithFrame:self.view.frame] autorelease];
 	CGRect ffFrame = self.frontFlashView.frame;
 	ffFrame.origin.x = 0.0;
@@ -202,6 +213,7 @@
 	[self startAnimation];
 	
 	// If the user would like us to mute the iPod during battles to hear our own sweet music and the iPod is in fact playing
+#if !(TARGET_IPHONE_SIMULATOR)
 	didPauseIPod = NO;
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && [[MPMusicPlayerController iPodMusicPlayer] playbackState] == MPMusicPlaybackStatePlaying ) {
 		NSLog(@"pauseing iPod");
@@ -209,6 +221,7 @@
 		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
 		didPauseIPod = YES;
 	}
+#endif
 
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
 }

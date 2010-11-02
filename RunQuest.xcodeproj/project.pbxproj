@@ -118,6 +118,8 @@
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
+		1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC9520127F982F004E5073 /* HeroEditViewController.m */; };
+		1ACC9523127F984E004E5073 /* HeroEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACC9522127F984E004E5073 /* HeroEditView.xib */; };
 		1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */; };
 		1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */; };
 		1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */; };
@@ -318,6 +320,9 @@
 		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		1AC92470124D75A000E09F6A /* MainMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
 		1AC92474124D75DA00E09F6A /* menu_bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_bk.png; path = ui/menu_bk.png; sourceTree = "<group>"; };
+		1ACC951F127F982F004E5073 /* HeroEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroEditViewController.h; path = DeveloperToolbox/HeroEditViewController.h; sourceTree = SOURCE_ROOT; };
+		1ACC9520127F982F004E5073 /* HeroEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroEditViewController.m; path = DeveloperToolbox/HeroEditViewController.m; sourceTree = SOURCE_ROOT; };
+		1ACC9522127F984E004E5073 /* HeroEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HeroEditView.xib; path = DeveloperToolbox/HeroEditView.xib; sourceTree = SOURCE_ROOT; };
 		1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		1AD6FC76125132FF00D98CF3 /* boob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boob1.png; path = monsters/boob1.png; sourceTree = "<group>"; };
 		1AD6FC77125132FF00D98CF3 /* boob1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boob1@2x.png"; path = "monsters/boob1@2x.png"; sourceTree = "<group>"; };
@@ -590,6 +595,9 @@
 				1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */,
 				1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */,
 				1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */,
+				1ACC951F127F982F004E5073 /* HeroEditViewController.h */,
+				1ACC9520127F982F004E5073 /* HeroEditViewController.m */,
+				1ACC9522127F984E004E5073 /* HeroEditView.xib */,
 			);
 			name = "Developer Toolbox";
 			path = Model;
@@ -1212,6 +1220,7 @@
 				1ADD6DA21276225A00E8C76A /* WeightLogListView.xib in Resources */,
 				1ADD6E4812762DEE00E8C76A /* WeightLogEventEditView.xib in Resources */,
 				1ADD70871277609F00E8C76A /* WeightLogListCell.xib in Resources */,
+				1ACC9523127F984E004E5073 /* HeroEditView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1311,6 +1320,7 @@
 				1ADD6E4612762D9100E8C76A /* WeightLogEventEditViewController.m in Sources */,
 				1ADD708512775FD700E8C76A /* WeightLogListCell.m in Sources */,
 				C9142D6B127DB88300412AFF /* RQEnemyWeaponView.m in Sources */,
+				1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

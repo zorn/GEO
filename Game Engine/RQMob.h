@@ -40,9 +40,9 @@ typedef NSUInteger RQElementalType;
 - (NSInteger)experiencePointsWorth;
 - (BOOL)increaseLevelIfNeeded;
 + (NSInteger)expectedLevelGivenExperiencePointTotal:(NSInteger)total;
++ (NSInteger)expectedExperiencePointTotalGivenLevel:(NSInteger)someLevel;
 - (NSInteger)baseAttackPower;
 
-- (NSArray *)weapons;
 - (RQElementalType)weakToType;
 - (RQElementalType)strongToType;
 
