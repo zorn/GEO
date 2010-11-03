@@ -344,6 +344,40 @@
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
 		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
+		NSString *weaponImageName;
+		switch (weaponSprite.type) {
+			case RQElementalTypeFire:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"fire_button";
+				} else {
+					weaponImageName = @"fire_button_desaturated";
+				}
+				break;
+			case RQElementalTypeWater:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"water_button";
+				} else {
+					weaponImageName = @"water_button_desaturated";
+				}
+				break;
+			case RQElementalTypeEarth:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"earth_button";
+				} else {
+					weaponImageName = @"earth_button_desaturated";
+				}
+				break;
+			case RQElementalTypeAir:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"air_button";
+				} else {
+					weaponImageName = @"air_button_desaturated";
+				}
+				break;
+		}
+		// sub in new image view
+		[(UIImageView *)weaponSprite.imageView setImage:[UIImage imageNamed:weaponImageName]];
+		
 		// if we are at the last step of making the weapons enabled play a sound cue
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
 			[[SimpleAudioEngine sharedEngine] playEffect:@"chimp_001.caf"];
@@ -611,6 +645,7 @@
 {
 	// give the hero 10 seconds of shields
 	[self.battle.hero setSecondsLeftOfShields:10.0];
+	[[SimpleAudioEngine sharedEngine] playEffect:@"Shields_up.caf"];
 }
 
 @end

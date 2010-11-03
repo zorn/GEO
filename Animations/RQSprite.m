@@ -10,11 +10,6 @@
 
 #define SAMPLE_SIZE 3
 
-@interface RQSprite ()
-@property(nonatomic, retain) UIView *view;
-@property(nonatomic, retain) UIView *imageView;
-@end
-
 @implementation RQSprite
 @synthesize fullSize, view, imageView, velocity;
 @dynamic position;
