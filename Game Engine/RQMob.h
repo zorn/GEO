@@ -32,7 +32,7 @@ typedef NSUInteger RQElementalType;
 @property (readwrite, assign) NSInteger experiencePoints;
 @property (readwrite, assign) float stamina;
 @property (readwrite, assign) float staminaRegenRate;
-@property (readwrite, assign) NSInteger secondsLeftOfShields;
+@property (readwrite, assign) float secondsLeftOfShields;
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType;
 

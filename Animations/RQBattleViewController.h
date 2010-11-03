@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RQBattleVictoryViewController.h"
+#import "ShieldDrawLineView.h"
 
 @class RQBattle;
 @class RQSprite;
@@ -17,13 +18,14 @@
 @class RQPassthroughView;
 @class AVCaptureSession;
 @class AVCaptureVideoPreviewLayer;
+@class ShieldDrawLineView;
 
 #define RQBattleViewFlickThreshold 280.0
 
 @protocol RQBattleViewControllerDelegate;
 @protocol RQBattleVictoryViewControllerDelegate;
 
-@interface RQBattleViewController : UIViewController <RQBattleVictoryViewControllerDelegate>
+@interface RQBattleViewController : UIViewController <RQBattleVictoryViewControllerDelegate, ShieldDrawLineViewDelegate>
 {
 	RQBattleVictoryViewController *battleVictoryViewController;
 	RQBattle *battle;
@@ -36,6 +38,10 @@
 	RQWeaponSprite *activeWeapon;
 	UILabel *heroHeathLabel;
 	RQPassthroughView *frontFlashView;
+	
+	UIImageView *leftShield;
+	UIImageView *rightShield;
+	ShieldDrawLineView *shieldDrawLineView;
 	
 	NSMutableArray *weaponSprites;
 	
@@ -52,12 +58,6 @@
     NSInteger animationFrameInterval;
     id displayLink;
     NSTimer *animationTimer;
-	
-	//Camera stuff
-#if TARGET_OS_EMBEDDED
-	AVCaptureSession *_captureSession;
-	AVCaptureVideoPreviewLayer *_captureLayer;
-#endif
 }
 
 @property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
@@ -65,6 +65,9 @@
 @property (readwrite, retain) RQBattle *battle;
 @property (readwrite, retain) RQWeaponSprite *activeWeapon;
 @property (nonatomic, retain) UIView *frontFlashView;
+@property (nonatomic, retain) UIImageView *leftShield;
+@property (nonatomic, retain) UIImageView *rightShield;
+@property (nonatomic, retain) ShieldDrawLineView *shieldDrawLineView;
 
 - (void)tick;
 - (void)setupGameLoop;

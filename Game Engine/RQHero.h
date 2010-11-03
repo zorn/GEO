@@ -17,6 +17,7 @@
 - (BOOL)canUseWaterWeapon;
 - (BOOL)canUseEarthWeapon;
 - (BOOL)canUseAirWeapon;
+- (BOOL)canUseShields;
 
 - (NSArray *)weapons;
 

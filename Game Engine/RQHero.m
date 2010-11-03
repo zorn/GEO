@@ -43,6 +43,14 @@
 	}
 }
 
+- (BOOL)canUseShields
+{
+	if (self.level >= 10) {
+		return YES;
+	} else {
+		return NO;
+	}
+}
 
 - (NSArray *)weapons
 {

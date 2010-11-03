@@ -1,3 +1,10 @@
+November 2, 2010
+
+* Edited the Core Data format (made shields a float, used to be an int). Be sure to delete previous app installs to avoid save crashes.
+* Shields is now implemented. You get them at level 10. Reminder use the hero editor in the dev toolbox to change your level.
+* To put shields up drag from one blue orb to the other. Shields will deteriorate over time. It currently lasts 10 seconds. While shields are up incoming damage is halved (I could edit the dmg reduction to be in ratio to the shield power, thoughts?).
+* The camera background of the battle view has been taken out (per last meeting discussions).
+
 November 1, 2010
 
 * Weight Logbook graph now has a nice labeled y axis and fills more of the screen. Long term I'd like to add a labeled x axis but since we aren't browsing Y from 0 to max I believe I'd have to do custom labels which is a little more work. For now I'm going to commit as-is.
