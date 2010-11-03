@@ -103,12 +103,12 @@
 	[self setStaminaRegenRateAsNumber:[NSNumber numberWithFloat:value]];
 }
 
-- (NSInteger)secondsLeftOfShields {
-    return [self.secondsLeftOfShieldsAsNumber integerValue];
+- (float)secondsLeftOfShields {
+    return [self.secondsLeftOfShieldsAsNumber floatValue];
 }
 
-- (void)setSecondsLeftOfShields:(NSInteger)value {
-	[self setSecondsLeftOfShieldsAsNumber:[NSNumber numberWithInteger:value]];
+- (void)setSecondsLeftOfShields:(float)value {
+	[self setSecondsLeftOfShieldsAsNumber:[NSNumber numberWithFloat:value]];
 }
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType

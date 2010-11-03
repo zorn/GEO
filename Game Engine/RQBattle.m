@@ -43,6 +43,12 @@
 		return [NSDictionary dictionaryWithObjectsAndKeys:@"hit", @"status", [NSNumber numberWithInteger:attackValue], @"attackValue", [NSNumber numberWithBool:attackWasStrong], @"attackWasStrong", nil];
 	} else if (mob == enemy) {
 		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero withWeaponOfType:weaponType];
+		// If hero has sheids half the attack
+		if (self.hero.secondsLeftOfShields > 0) {
+			NSLog(@"halving attack value from sheilds from: %i", attackValue);
+			attackValue = round(attackValue / 2);
+			NSLog(@"new attack value: %i", attackValue);
+		}
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
 		[self.enemy setStamina:0.0];
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.enemy.name, self.hero.name, attackValue]];
@@ -73,6 +79,18 @@
 	float howMuchStaminaTheEnemyWouldGainInAFullSecond = 1.0 / self.enemy.staminaRegenRate;
 	float oneFrameWorthForTheEnemy = timeDelta * howMuchStaminaTheEnemyWouldGainInAFullSecond;
 	[self.enemy setStamina:self.enemy.stamina + oneFrameWorthForTheEnemy];
+}
+
+- (void)updateHeroShieldsBasedOnTimeDelta:(NSTimeInterval)timeDelta
+{
+	if (self.hero.secondsLeftOfShields > 0.0) {
+		float newShieldTime = self.hero.secondsLeftOfShields - timeDelta;
+		if (newShieldTime < 0) {
+			[self.hero setSecondsLeftOfShields:0.0];
+		} else {
+			[self.hero setSecondsLeftOfShields:newShieldTime];
+		}
+	}
 }
 
 - (void)appendToBattleLog:(NSString *)logAddition

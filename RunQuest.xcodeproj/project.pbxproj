@@ -96,6 +96,10 @@
 		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B38511252DDA0007F0497 /* StoryViewController.m */; };
 		1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B38531252DDB8007F0497 /* StoryView.xib */; };
+		1A817C841280689D00B02D1E /* shields.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A817C821280689D00B02D1E /* shields.png */; };
+		1A817C851280689D00B02D1E /* shields@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A817C831280689D00B02D1E /* shields@2x.png */; };
+		1A817CBA1280705700B02D1E /* ShieldDrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A817CB91280705700B02D1E /* ShieldDrawLineView.m */; };
+		1A817CBD1280708F00B02D1E /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A817CBC1280708F00B02D1E /* Line.m */; };
 		1A8B918B1268EFED00D8E5F3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8B91881268EF9A00D8E5F3 /* libCorePlot-CocoaTouch.a */; };
 		1A8B91B21268F1AD00D8E5F3 /* CorePlotTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */; };
 		1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */; };
@@ -115,6 +119,14 @@
 		1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A945BD712540B8900CE44D8 /* SettingsView.xib */; };
 		1A945CEC12542CE200CE44D8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
+		1AB37DDC128102A300D227E4 /* air_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD4128102A300D227E4 /* air_button_desaturated.png */; };
+		1AB37DDD128102A300D227E4 /* air_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */; };
+		1AB37DDE128102A300D227E4 /* earth_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */; };
+		1AB37DDF128102A300D227E4 /* earth_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */; };
+		1AB37DE0128102A300D227E4 /* fire_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */; };
+		1AB37DE1128102A300D227E4 /* fire_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */; };
+		1AB37DE2128102A300D227E4 /* water_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DDA128102A300D227E4 /* water_button_desaturated.png */; };
+		1AB37DE3128102A300D227E4 /* water_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
@@ -295,6 +307,12 @@
 		1A7B38501252DDA0007F0497 /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryViewController.h; path = Story/StoryViewController.h; sourceTree = "<group>"; };
 		1A7B38511252DDA0007F0497 /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryViewController.m; path = Story/StoryViewController.m; sourceTree = "<group>"; };
 		1A7B38531252DDB8007F0497 /* StoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryView.xib; sourceTree = "<group>"; };
+		1A817C821280689D00B02D1E /* shields.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shields.png; path = Assets/Mockups/shields.png; sourceTree = SOURCE_ROOT; };
+		1A817C831280689D00B02D1E /* shields@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shields@2x.png"; path = "Assets/Mockups/shields@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A817CB81280705700B02D1E /* ShieldDrawLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShieldDrawLineView.h; sourceTree = "<group>"; };
+		1A817CB91280705700B02D1E /* ShieldDrawLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShieldDrawLineView.m; sourceTree = "<group>"; };
+		1A817CBB1280708F00B02D1E /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		1A817CBC1280708F00B02D1E /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		1A8B917E1268EF9A00D8E5F3 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "ThirdPartyStuff/core-plot/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		1A8B91B01268F1AD00D8E5F3 /* CorePlotTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorePlotTestViewController.h; path = WeightLog/CorePlotTestViewController.h; sourceTree = SOURCE_ROOT; };
 		1A8B91B11268F1AD00D8E5F3 /* CorePlotTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CorePlotTestViewController.m; path = WeightLog/CorePlotTestViewController.m; sourceTree = SOURCE_ROOT; };
@@ -320,6 +338,14 @@
 		1A945BD712540B8900CE44D8 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1AB37DD4128102A300D227E4 /* air_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button_desaturated.png; path = Assets/Mockups/air_button_desaturated.png; sourceTree = SOURCE_ROOT; };
+		1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_button_desaturated@2x.png"; path = "Assets/Mockups/air_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button_desaturated.png; path = Assets/Mockups/earth_button_desaturated.png; sourceTree = SOURCE_ROOT; };
+		1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_button_desaturated@2x.png"; path = "Assets/Mockups/earth_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button_desaturated.png; path = Assets/Mockups/fire_button_desaturated.png; sourceTree = SOURCE_ROOT; };
+		1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_button_desaturated@2x.png"; path = "Assets/Mockups/fire_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AB37DDA128102A300D227E4 /* water_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_button_desaturated.png; path = Assets/Mockups/water_button_desaturated.png; sourceTree = SOURCE_ROOT; };
+		1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_button_desaturated@2x.png"; path = "Assets/Mockups/water_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
@@ -636,6 +662,8 @@
 		1AC92473124D75CF00E09F6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				1A817C821280689D00B02D1E /* shields.png */,
+				1A817C831280689D00B02D1E /* shields@2x.png */,
 				1A4B555E1273895200B313E1 /* 19-gear.png */,
 				1A4B555F1273895200B313E1 /* 19-gear@2x.png */,
 				1A4B55601273895200B313E1 /* 21-skull.png */,
@@ -888,6 +916,14 @@
 				1AD6FC75125132D400D98CF3 /* monster sprites */,
 				1AC92473124D75CF00E09F6A /* ui */,
 				C99A91B2124A7F47005BAECF /* sounds */,
+				1AB37DD4128102A300D227E4 /* air_button_desaturated.png */,
+				1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */,
+				1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */,
+				1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */,
+				1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */,
+				1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */,
+				1AB37DDA128102A300D227E4 /* water_button_desaturated.png */,
+				1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */,
 				1A8EA7A1124987870006A220 /* air_button@2x.png */,
 				1A8EA7A2124987870006A220 /* earth_button@2x.png */,
 				1A8EA7A3124987870006A220 /* fire_button@2x.png */,
@@ -938,6 +974,10 @@
 				1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */,
 				C9D8A00F125353130034583F /* RQPassthroughView.h */,
 				C9D8A010125353130034583F /* RQPassthroughView.m */,
+				1A817CB81280705700B02D1E /* ShieldDrawLineView.h */,
+				1A817CB91280705700B02D1E /* ShieldDrawLineView.m */,
+				1A817CBB1280708F00B02D1E /* Line.h */,
+				1A817CBC1280708F00B02D1E /* Line.m */,
 			);
 			name = BattleView;
 			path = Animations;
@@ -1249,6 +1289,16 @@
 				C937018D1280FDED00C2514F /* victorySilhouette@2x.png in Resources */,
 				C93701911281023800C2514F /* victoryText.png in Resources */,
 				C93701921281023800C2514F /* victoryText@2x.png in Resources */,
+				1A817C841280689D00B02D1E /* shields.png in Resources */,
+				1A817C851280689D00B02D1E /* shields@2x.png in Resources */,
+				1AB37DDC128102A300D227E4 /* air_button_desaturated.png in Resources */,
+				1AB37DDD128102A300D227E4 /* air_button_desaturated@2x.png in Resources */,
+				1AB37DDE128102A300D227E4 /* earth_button_desaturated.png in Resources */,
+				1AB37DDF128102A300D227E4 /* earth_button_desaturated@2x.png in Resources */,
+				1AB37DE0128102A300D227E4 /* fire_button_desaturated.png in Resources */,
+				1AB37DE1128102A300D227E4 /* fire_button_desaturated@2x.png in Resources */,
+				1AB37DE2128102A300D227E4 /* water_button_desaturated.png in Resources */,
+				1AB37DE3128102A300D227E4 /* water_button_desaturated@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1349,6 +1399,8 @@
 				1ADD708512775FD700E8C76A /* WeightLogListCell.m in Sources */,
 				C9142D6B127DB88300412AFF /* RQEnemyWeaponView.m in Sources */,
 				1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */,
+				1A817CBA1280705700B02D1E /* ShieldDrawLineView.m in Sources */,
+				1A817CBD1280708F00B02D1E /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

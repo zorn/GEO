@@ -29,7 +29,7 @@
 @property(nonatomic, assign) CGPoint orininalPosition;
 @property(nonatomic, assign) CGPoint velocity;
 @property(nonatomic, retain, readonly) UIView *view;
-@property(nonatomic, retain, readonly) UIView *imageView;
+@property(nonatomic, retain, readwrite) UIView *imageView;
 @property(readonly) CGPoint	averageVelocity;
 
 - (id)initWithView:(UIView *)theView;
