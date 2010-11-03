@@ -34,6 +34,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *heroXPFractionLabel;
 @property (nonatomic, retain) IBOutlet UILabel *heroXPReceivedLabel;
 @property (nonatomic, retain) IBOutlet UIView *moreInfoContainerView;
+@property (nonatomic, retain) IBOutlet UIImageView *silhouetteView;
+@property (nonatomic, retain) IBOutlet UIImageView *victoryText;
 @property (readwrite, retain) RQBattle *battle;
 
 @property (readwrite, assign) id <RQBattleVictoryViewControllerDelegate> delegate;
