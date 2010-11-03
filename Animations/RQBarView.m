@@ -11,47 +11,71 @@
 
 @interface RQBarView ()
 @property (nonatomic, retain) CALayer *percentLayer;
+- (void)initialization;
 @end
 
 
 @implementation RQBarView
 @dynamic percent;
+@synthesize barColor;
 @synthesize percentLayer;
 
 
 - (id) initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-		CGColorRef color = [UIColor greenColor].CGColor;
-		
-		percentLayer = [[CALayer alloc] init];
-		percentLayer.backgroundColor = color;
-		percentLayer.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
-		[self.layer addSublayer:percentLayer];
-		
-		self.layer.delegate = self;
-		self.layer.borderWidth = 2;
-        self.layer.borderColor = color;
-        self.layer.cornerRadius = self.frame.size.height / 2.0;
-		self.layer.masksToBounds = YES;
-		self.layer.backgroundColor = [UIColor blackColor].CGColor;
-		
-		percent = 1.0f;
+		[self initialization];
     }
     return self;
 }
 
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder])) {
+		[self initialization];
+    }
+    return self;
+}
+
+
+- (void)initialization
+{
+	// Initialization code
+	CGColorRef color = [UIColor greenColor].CGColor;
+	
+	percentLayer = [[CALayer alloc] init];
+	percentLayer.backgroundColor = color;
+	percentLayer.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
+	[self.layer addSublayer:percentLayer];
+	
+	self.layer.delegate = self;
+	self.layer.borderWidth = 2;
+	self.layer.borderColor = color;
+	self.layer.cornerRadius = self.frame.size.height / 2.0;
+	self.layer.masksToBounds = YES;
+	self.layer.backgroundColor = [UIColor blackColor].CGColor;
+	
+	percent = 1.0f;	
+}
+
+
 - (void)dealloc {
+	[barColor release];
     [super dealloc];
 }
 
 - (void)setPercent:(float)aPercent duration:(CFTimeInterval)duration {
-	CGFloat red = MIN(1.0, ((1.0f - aPercent) * 2));
-	CGFloat green = MIN(1.0, aPercent * 2.0);
-	CGColorRef color = [UIColor colorWithRed:red green:green blue:0.0f alpha:1.0f].CGColor;
-	self.percentLayer.backgroundColor = color;
-	self.layer.borderColor = color;
+	if (self.barColor) {
+		self.percentLayer.backgroundColor = self.barColor.CGColor;
+		self.layer.borderColor = self.barColor.CGColor;
+	}
+	else {
+		CGFloat red = MIN(1.0, ((1.0f - aPercent) * 2));
+		CGFloat green = MIN(1.0, aPercent * 2.0);
+		CGColorRef color = [UIColor colorWithRed:red green:green blue:0.0f alpha:1.0f].CGColor;
+		self.percentLayer.backgroundColor = color;
+		self.layer.borderColor = color;		
+	}
 	
 	CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"frame.size.width"];
 	anim.fromValue = [NSNumber numberWithFloat:self.percent];

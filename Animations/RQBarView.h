@@ -14,6 +14,7 @@
 	float percent;
 }
 @property (nonatomic, assign) float percent;
+@property (nonatomic, retain) UIColor *barColor;
 - (id)initWithFrame:(CGRect)frame;
 - (void)setPercent:(float)aPercent duration:(CFTimeInterval)duration;
 @end

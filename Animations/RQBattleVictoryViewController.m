@@ -12,12 +12,18 @@
 #import "RQBattle.h"
 #import "RQHero.h"
 #import "RQEnemy.h"
+#import "RQBarView.h"
 
 @implementation RQBattleVictoryViewController
+@synthesize xpBarView;
+@synthesize heroLevelLabel;
+@synthesize heroXPFractionLabel;
+@synthesize heroXPReceivedLabel;
+@synthesize moreInfoContainerView;
 
 - (id)init
 {
-	if (self = [super initWithNibName:@"BattleVictoryView" bundle:nil]) {
+	if (self = [super initWithNibName:@"RQBattleVictoryViewController" bundle:nil]) {
 		experienceGained = 0;
 	}
 	return self;
@@ -27,7 +33,13 @@
 {
 	NSLog(@"RQBattleVictoryViewController -dealloc called...");
 	[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
-
+	
+	[xpBarView release];
+	[heroLevelLabel release];
+	[heroXPFractionLabel release];
+	[heroXPReceivedLabel release];
+	[moreInfoContainerView release];
+	
 	[victoryTitle release]; victoryTitle = nil;
 	[battleXPLabel release]; battleXPLabel = nil;
 	[battleXPCountLabel release]; battleXPCountLabel = nil;
@@ -56,6 +68,24 @@
 {
     [super viewDidLoad];
 	NSLog(@"RQBattleVictoryViewController -viewDidLoad");
+	
+	xpBarView.barColor = [UIColor whiteColor];
+	CGFloat xpPercent = (CGFloat)self.battle.hero.experiencePoints / (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level];
+	NSLog(@"xp: %f, total: %f, percent: %f", (CGFloat)self.battle.hero.experiencePoints, (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level], xpPercent);
+	[xpBarView setPercent:xpPercent duration:0.0];
+	self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
+	self.heroXPFractionLabel.text = [NSString stringWithFormat:@"%d/%d", 
+									 self.battle.hero.experiencePoints, 
+									 [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level]];
+	self.heroXPReceivedLabel.alpha = 0.0f;
+	self.heroXPFractionLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
+	self.moreInfoContainerView.layer.cornerRadius = 6.0;
+	
+	CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+	gradientLayer.frame = self.view.frame;
+	gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:0.086 green:0.080 blue:0.563 alpha:1.000].CGColor, 
+							(id)[UIColor colorWithRed:0.339 green:0.085 blue:0.563 alpha:1.000].CGColor, nil];
+	[self.view.layer insertSublayer:gradientLayer atIndex:0];
 
 	UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
 	[recognizer setNumberOfTapsRequired:2];
@@ -85,7 +115,28 @@
 
 - (void)startXPAnimation
 {
-	xpCountTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(animateXPGains) userInfo:nil repeats:YES] retain];
+	//xpCountTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(animateXPGains) userInfo:nil repeats:YES] retain];
+	self.battle.hero.experiencePoints += experienceGained;
+	self.heroXPReceivedLabel.text = [NSString stringWithFormat:@"+%d", experienceGained];
+	CGFloat xpPercent = (CGFloat)self.battle.hero.experiencePoints / (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level];
+	NSLog(@"xp: %f, total: %f, percent: %f", (CGFloat)self.battle.hero.experiencePoints, (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level], xpPercent);
+	[xpBarView setPercent:xpPercent duration:3.0];
+	self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
+	self.heroXPFractionLabel.text = [NSString stringWithFormat:@"%d/%d", 
+									 self.battle.hero.experiencePoints, 
+									 [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level]];
+	self.moreInfoContainerView.layer.cornerRadius = 6.0;
+	
+	[UIView animateWithDuration:1.0 
+						  delay:0.0 
+						options:UIViewAnimationOptionAllowUserInteraction 
+					 animations:^(void) {
+						 self.heroXPReceivedLabel.alpha = 1.0;
+						 self.heroXPReceivedLabel.transform = CGAffineTransformIdentity;
+					 } 
+					 completion:NULL];
+	
+	experienceGained = 0;
 }
 
 - (void)animateXPGains
@@ -127,7 +178,7 @@
 {
 	if (experienceGained > 0) {
 		// they are still animating xp gains, don't quit just yet
-		[self animateXPGainsJumpToLast:YES];
+		//[self animateXPGainsJumpToLast:YES];
 		//[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:1.0];
 	} else {
 		[delegate battleVictoryControllerDidEnd:self];
