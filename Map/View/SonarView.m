@@ -23,21 +23,29 @@
           inContext:(CGContextRef)context
 {
     Sonar *objects = (Sonar *)(self.overlay);
-    
-    CGFloat lineWidth = MKRoadWidthAtZoomScale(zoomScale);
+
+	CGRect rectToDraw = [self rectForMapRect:mapRect];
 	
     [objects lockForReading];
 	CGPoint center = [self pointForMapPoint:MKMapPointForCoordinate(self.overlay.coordinate)];
-	CLLocationDegrees radius = objects.radius;
+	CLLocationDegrees radius = 1000.0f;
     [objects unlockForReading];
 	
-	CGRect rect = CGRectMake(center.x - radius/2.0, center.y - radius/2.0, radius, radius);
-
-	CGContextAddEllipseInRect(context, rect);
-	CGContextSetRGBStrokeColor(context, 0, 0, 1.0, 0.5);
-	CGContextSetLineWidth(context, lineWidth);
-	CGContextStrokePath(context);
-
+	CGRect rect = CGRectMake(center.x - radius/2.0f, center.y - radius/2.0f, radius, radius);
+	 
+	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.75f);
+	CGContextFillRect(context, rectToDraw);
+	if ( CGRectIntersectsRect(rectToDraw, rect ) ) {
+		CGContextClearRect(context, rect);
+		CGContextSaveGState(context);
+		CGContextSetBlendMode(context, kCGBlendModeCopy);
+		CGContextAddEllipseInRect(context, rect);
+		CGContextAddRect(context, CGRectInset(rect, -10.0f, -10.0f));
+		CGContextEOFillPath(context);
+		CGContextRestoreGState(context);
+		//CGRect rectNotToDraw = CGRectIntersection(rectToDraw, rect);
+		
+	}
 }
 
 

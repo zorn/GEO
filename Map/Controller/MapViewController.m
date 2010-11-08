@@ -226,7 +226,12 @@
 		[self.mapView addAnnotation:enemy];
 		[_enemies addObject:enemy];
 	}
-}	
+}
+
+- (void)generateMapForHeroAtLocation:(CLLocation *)location {
+	
+}
+
 - (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	CLLocationDirection course = location.course;
@@ -276,13 +281,17 @@
 	
 	if ( !oldLocation ) {
 		[self hideHUD];
-		MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
-		[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
 	}
 	
 	if ( newLocation && newLocation.horizontalAccuracy > 0) {
-		if ( newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD && self.trek )
-				[self.trek addLocation:newLocation];
+		if ( !firstZoomDidOccur ) {
+			MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
+			[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
+		}
+		if ( newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD && self.trek ) {
+			[self.trek addLocation:newLocation];
+			_sonar.coordinate = newLocation.coordinate;
+		}
 	}
 }
 
@@ -312,12 +321,7 @@
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
 	MKOverlayView *overlayView = nil;
-	if ( [overlay isKindOfClass:[MKPolyline class]] ) {
-//		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
-//		polylineView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.6f];
-//		overlayView = [polylineView autorelease];
-		
-	} else if ( [overlay isKindOfClass:[Sonar class]] ) {
+	if ( [overlay isKindOfClass:[Sonar class]] ) {
 		if ( !_sonarView )
 			_sonarView = [[SonarView alloc] initWithOverlay:_sonar];
 		overlayView = _sonarView;
@@ -365,6 +369,14 @@
 //	[self.battleViewController.view animateWithDuration:1.0f animations:^{self.battleViewController.view.frame = self.view.frame; } completion:^(BOOL finished){ [self.view removeFromSuperview]; self.modalViewController = self.battleViewController;}];
 }
 
+- (IBAction)centerMapOnLocation:(id)sender {
+	if ( self.locationManager.location ) {
+		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationManager.location.coordinate, ENEMY_GENERATION_RADIUS, ENEMY_GENERATION_RADIUS);
+		[self.mapView setRegion:region animated:YES];
+	}
+}
+
+
 - (void)removeTimerNamed:(NSString *)name {
 	NSTimer *timer = [_timers objectForKey:name];
 	[timer invalidate];
@@ -395,6 +407,8 @@
 	startButton.title = @"Stop";
 	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
 	[self generateEnemyForHeroAtLocation:locationManager.location];
+	_sonar = [[Sonar alloc] initWithCoordinate:locationManager.location.coordinate range:.015];
+	[self.mapView addOverlay:_sonar];
 	[self startGeneratingEnemies];
 }
 	

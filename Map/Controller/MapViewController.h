@@ -36,6 +36,8 @@
 	NSDateFormatter *_timerFormatter;
 	
 	NSMutableDictionary *_timers;
+	
+	BOOL firstZoomDidOccur;
 }
 
 @property (nonatomic, assign) id <MapViewControllerDelegate> delegate;
@@ -53,7 +55,7 @@
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
-
+- (IBAction)centerMapOnLocation:(id)sender;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
 
