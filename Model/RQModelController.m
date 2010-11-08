@@ -7,6 +7,7 @@
 #import "RQHero.h"
 #import "RQEnemy.h"
 #import "RQWeightLogEntry.h"
+#import "RQMonsterTemplate.h"
 
 static RQModelController *defaultModelController = nil;
 
@@ -54,7 +55,13 @@ static RQModelController *defaultModelController = nil;
 					   dataStoreName:@"RunQuest.sqlite"];
 }
 
-
+- (void)dealloc
+{
+	[coreDataManager release]; coreDataManager = nil;
+	[simpleCoreData release]; simpleCoreData = nil;
+	[_monsterTemplates release]; _monsterTemplates = nil;
+	[super dealloc];
+}
 
 @synthesize coreDataManager;
 @synthesize simpleCoreData;
@@ -90,12 +97,13 @@ static RQModelController *defaultModelController = nil;
 {
 	// Given the hero generate a random enemy for the hero 
 	NSArray *monsterTemplates = [self monsterTemplates];
-	NSDictionary *monsterTemplate = [monsterTemplates objectAtIndex:(random() % [monsterTemplates count])];
+	NSUInteger randomIndex = arc4random() % [monsterTemplates count];
+	RQMonsterTemplate *monsterTemplate = [monsterTemplates objectAtIndex:randomIndex];
 	
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
-	[newEnemy setName:[monsterTemplate objectForKey:@"name"]];
-	[newEnemy setTypeAsNumber:[monsterTemplate objectForKey:@"type"]];
-	[newEnemy setSpriteImageName:[monsterTemplate objectForKey:@"image"]];
+	[newEnemy setName:[monsterTemplate name]];
+	[newEnemy setType:[monsterTemplate type]];
+	[newEnemy setSpriteImageName:[monsterTemplate imageFileName]];
 	[newEnemy setLevel:hero.level];
 	[newEnemy setCurrentHP:[newEnemy maxHP]];
 	[newEnemy setStamina:0];
@@ -225,23 +233,38 @@ static RQModelController *defaultModelController = nil;
 
 - (NSArray *)monsterTemplates
 {
-	return [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Globby", @"name", @"boob1.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Globby", @"name", @"boob2.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Globby", @"name", @"boob3.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Globby", @"name", @"boob4.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
+	if (!_monsterTemplates) {
+		
+		// Read the monster templates from the plist
+		NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"monsters" ofType:@"plist"];
+		NSArray *plistArray = [NSArray arrayWithContentsOfFile:plistPath];
+		
+		_monsterTemplates = [[NSMutableArray alloc] init];
+		RQMonsterTemplate *newTemplate;
+		for (NSDictionary *d in plistArray) {
+			newTemplate = [[RQMonsterTemplate alloc] init];
+			[newTemplate setName:[d objectForKey:@"name"]];
+			[newTemplate setImageFileName:[d objectForKey:@"image_file"]];
+			if ([[d objectForKey:@"type"] isEqualToString:@"fire"]) {
+				[newTemplate setType:RQElementalTypeFire];
+			} else if ([[d objectForKey:@"type"] isEqualToString:@"water"]) {
+				[newTemplate setType:RQElementalTypeWater];
+			} else if ([[d objectForKey:@"type"] isEqualToString:@"earth"]) {
+				[newTemplate setType:RQElementalTypeEarth];
+			} else if ([[d objectForKey:@"type"] isEqualToString:@"air"]) {
+				[newTemplate setType:RQElementalTypeAir];
+			}
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:@"ManTuss", @"name", @"man-tuss.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type", [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super ManTuss", @"name", @"man-tuss_blue.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra ManTuss", @"name", @"man-tuss_purple.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master ManTuss", @"name", @"man-tuss_red.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
-			
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Meanie", @"name", @"meanie_1.png", @"image", [NSNumber numberWithInteger: RQElementalTypeFire], @"type",  [UIColor redColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Super Meanie", @"name", @"meanie_2.png", @"image", [NSNumber numberWithInteger: RQElementalTypeWater], @"type", [UIColor blueColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Ultra Meanie", @"name", @"meanie_3.png", @"image", [NSNumber numberWithInteger: RQElementalTypeEarth], @"type", [UIColor brownColor], @"color", nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Master Meanie", @"name", @"meanie_4.png", @"image", [NSNumber numberWithInteger: RQElementalTypeAir], @"type", [UIColor lightGrayColor], @"color", nil],
-			
-			nil];
+			if ([[d objectForKey:@"movement_type"] isEqualToString:@"flying"]) {
+				[newTemplate setMovementType:RQMonsterMovementTypeFlying];
+			} else if ([[d objectForKey:@"movement_type"] isEqualToString:@"warp"]) {
+				[newTemplate setMovementType:RQMonsterMovementTypeWarp];
+			}
+			[_monsterTemplates addObject:newTemplate];
+			[newTemplate release]; newTemplate = nil;
+		}
+	} 
+	return [NSArray arrayWithArray:_monsterTemplates];
 }
 
 - (void)insertInitialContent

@@ -1,6 +1,8 @@
 November 8, 2010
 
 * Re-enabled the tap to skip xp animations in the victory view.
+* Added new plist format to store monster names, types, file names, movement style.
+* Added new monsters from phil. We now have 12 "designs" with 2 elemental styles each.
 
 November 2, 2010
 

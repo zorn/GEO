@@ -9,6 +9,8 @@
 @interface RQModelController : NSObject {
 	M3CoreDataManager *coreDataManager;
 	M3SimpleCoreData *simpleCoreData;
+	
+	NSMutableArray *_monsterTemplates;
 }
 
 + (RQModelController *)defaultModelController;
