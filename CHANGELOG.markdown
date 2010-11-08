@@ -1,3 +1,18 @@
+November 2, 2010
+
+* Edited the Core Data format (made shields a float, used to be an int). Be sure to delete previous app installs to avoid save crashes.
+* Shields is now implemented. You get them at level 10. Reminder use the hero editor in the dev toolbox to change your level.
+* To put shields up drag from one blue orb to the other. Shields will deteriorate over time. It currently lasts 10 seconds. While shields are up incoming damage is halved (I could edit the dmg reduction to be in ratio to the shield power, thoughts?).
+* The camera background of the battle view has been taken out (per last meeting discussions).
+
+November 1, 2010
+
+* Weight Logbook graph now has a nice labeled y axis and fills more of the screen. Long term I'd like to add a labeled x axis but since we aren't browsing Y from 0 to max I believe I'd have to do custom labels which is a little more work. For now I'm going to commit as-is.
+* Added SIMULATOR ifdef to avoid slow battle launches due to missing iPod app.
+* Added new developer tool to let you change the level of the hero (useful for testing weapon/story progression).
+* Weapons are now given out over time. Fire then water (lv5) then earth (lv15) then air (lv25). In the future shields will be given out at lv10.
+* Adjusted the spacing of weapons dependent on how many are on the field. They are a little closer to each other (really show with four up) but this will change as battle designs / graphics come in.
+
 October 30, 2010
 
 * Weight Logbook list view doesn't work well with no previous entries (WTF NSFetchedResultsController, you suck.). Going to disable the button to get to it while zero entries exist.
@@ -11,7 +26,7 @@ October 27, 2010
 October 25, 2010
 
 * Re-enabled animations, though using a flip now. I am starting to work on fixes to the status bar problem. I believe it was a lack of `self.wantsFullScreenLayout = YES;` -- time will tell.
-* The log book, settings, dev toolbox are now all modal off the main menu. They have a consistant "done" button in the upper right.
+* The log book, settings, dev toolbox are now all modal off the main menu. They have a consistent "done" button in the upper right.
 
 October 23, 2010
 

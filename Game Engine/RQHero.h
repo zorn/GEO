@@ -13,4 +13,12 @@
 
 }
 
+- (BOOL)canUseFireWeapon;
+- (BOOL)canUseWaterWeapon;
+- (BOOL)canUseEarthWeapon;
+- (BOOL)canUseAirWeapon;
+- (BOOL)canUseShields;
+
+- (NSArray *)weapons;
+
 @end

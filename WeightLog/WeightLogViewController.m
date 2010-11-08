@@ -3,6 +3,7 @@
 
 // models
 #import "RQModelController.h"
+#import "RQWeightLogEntry.h"
 
 @implementation WeightLogViewController
 
@@ -26,14 +27,53 @@
 {
 	[weightLostToDateLabel release]; weightLostToDateLabel = nil;
 	[listViewButton release]; listViewButton = nil;
+	[graphDisplayView release]; graphDisplayView = nil;
+	
 	[super dealloc];
 }
 
 @synthesize weightLostToDateLabel;
 @synthesize listViewButton;
+@synthesize graphDisplayView;
 
 #pragma mark -
 #pragma mark View lifecycle
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	graph = [[CPXYGraph alloc] initWithFrame:self.graphDisplayView.bounds];	
+	// TODO: Move all of our own themeing into a class file
+	//CPTheme *theme = [CPTheme themeNamed:kCPStocksTheme];
+	//[graph applyTheme:theme];
+	
+	// theme stuff
+	graph.fill = [CPFill fillWithColor:[CPColor clearColor]];
+	
+	CPLayerHostingView *hostingView = self.graphDisplayView;
+	hostingView.hostedLayer = graph;
+	graph.paddingLeft = 0.0;
+	graph.paddingTop = 0.0;
+	graph.paddingRight = 0.0;
+	graph.paddingBottom = 0.0;
+	
+	CPGradient *stocksBackgroundGradient = [[[CPGradient alloc] init] autorelease];
+    stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.21569 green:0.28627 blue:0.44706 alpha:1.0] atPosition:0.0];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.09412 green:0.17255 blue:0.36078 alpha:1.0] atPosition:0.5];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:0.5];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:1.0];
+    stocksBackgroundGradient.angle = 270.0;
+	graph.plotAreaFrame.fill = [CPFill fillWithGradient:stocksBackgroundGradient];
+	
+	CPLineStyle *borderLineStyle = [CPLineStyle lineStyle];
+	borderLineStyle.lineColor = [CPColor colorWithGenericGray:0.2];
+	borderLineStyle.lineWidth = 0.0;
+	
+	graph.plotAreaFrame.borderLineStyle = borderLineStyle;
+	graph.plotAreaFrame.cornerRadius = 14.0;
+	
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -58,6 +98,82 @@
 	} else {
 		[self.listViewButton setEnabled:NO];
 	}
+	
+	// update graph
+	NSDecimalNumber *maxWeight = [[RQModelController defaultModelController] maxWeightLogged];
+	if (!maxWeight) maxWeight = [NSDecimalNumber zero]; 
+	NSDecimalNumber *minWeight = [[RQModelController defaultModelController] minWeightLogged];
+	if (!minWeight) minWeight = [NSDecimalNumber zero];
+	
+	NSLog(@"max %@ min %@", maxWeight, minWeight);
+	
+	NSArray *entries = [[RQModelController defaultModelController] weightLogEntries];
+	
+	NSDecimalNumber *graphMin = [minWeight decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:@"10"]];
+	NSDecimalNumber *graphLength = [[maxWeight decimalNumberBySubtracting:minWeight] decimalNumberByAdding:[NSDecimalNumber decimalNumberWithString:@"20"]];
+	
+	float paddingForYLabels = ((20*entries.count)/60);
+	if (paddingForYLabels < 1) paddingForYLabels = 1.0; 
+	
+	
+	CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
+	if (entries.count > 0) {
+		plotSpace.xRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-paddingForYLabels) 
+													   length:CPDecimalFromInteger([entries count]+paddingForYLabels)];
+		plotSpace.yRange = [CPPlotRange plotRangeWithLocation:[graphMin decimalValue] 
+													   length:[graphLength decimalValue]];
+	} else {
+		paddingForYLabels = 1.0;
+		plotSpace.xRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-paddingForYLabels) 
+													   length:CPDecimalFromInteger(2+paddingForYLabels)];
+		plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(150) 
+													   length:CPDecimalFromFloat(50)];
+	}
+	
+	
+	CPScatterPlot *dataSourceLinePlot = [[[CPScatterPlot alloc] initWithFrame:graph.bounds] autorelease];
+	dataSourceLinePlot.identifier = @"Weight";
+	dataSourceLinePlot.dataLineStyle.lineWidth = 3.0f;
+	dataSourceLinePlot.dataLineStyle.lineColor = [CPColor whiteColor];
+	dataSourceLinePlot.dataSource = self;
+	[graph addPlot:dataSourceLinePlot];
+	
+	CPXYAxisSet *axisSet = (CPXYAxisSet *)graph.axisSet;
+	
+	CPLineStyle *ThreePXWhitelineStyle = [CPLineStyle lineStyle];
+	ThreePXWhitelineStyle.lineColor = [CPColor whiteColor];
+	ThreePXWhitelineStyle.lineWidth = 3.0f;
+	
+	CPLineStyle *OnePXWhitelineStyle = [CPLineStyle lineStyle];
+	OnePXWhitelineStyle.lineColor = [CPColor whiteColor];
+	OnePXWhitelineStyle.lineWidth = 1.0f;
+	
+	CPTextStyle *whiteTextStyle = [[[CPTextStyle alloc] init] autorelease];
+	whiteTextStyle.color = [CPColor whiteColor];
+	whiteTextStyle.fontSize = 14.0;
+	
+	//	axisSet.xAxis.majorIntervalLength = [[NSDecimalNumber decimalNumberWithString:@"5"] decimalValue];
+	//	axisSet.xAxis.minorTicksPerInterval = 4;
+	//	axisSet.xAxis.majorTickLineStyle = lineStyle;
+	//	axisSet.xAxis.minorTickLineStyle = lineStyle;
+	axisSet.xAxis.axisLineStyle = ThreePXWhitelineStyle;
+	//	axisSet.xAxis.minorTickLength = 5.0f;
+	//	axisSet.xAxis.majorTickLength = 7.0f;
+	//axisSet.xAxis.labelExclusionRanges = [NSArray arrayWithObject:[CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10000) 
+	//																						  length:CPDecimalFromFloat(20000)]];
+	
+	axisSet.yAxis.majorIntervalLength = [[NSDecimalNumber decimalNumberWithString:@"10"] decimalValue];
+	axisSet.yAxis.minorTicksPerInterval = 9;
+	axisSet.yAxis.majorTickLineStyle = OnePXWhitelineStyle;
+	axisSet.yAxis.minorTickLineStyle = OnePXWhitelineStyle;
+	axisSet.yAxis.axisLineStyle = ThreePXWhitelineStyle;
+	axisSet.yAxis.minorTickLength = 5.0f;
+	axisSet.yAxis.majorTickLength = 7.0f;
+	axisSet.yAxis.labelTextStyle = whiteTextStyle;
+
+	//axisSet.yAxis.labelExclusionRanges = [NSArray arrayWithObject:[CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10000) 
+	//																						  length:CPDecimalFromFloat(20000)]];
+	[graph reloadData];
 }
 
 #pragma mark -
@@ -85,6 +201,35 @@
 - (void)weightLogEventEditViewControllerDidEnd:(WeightLogEventEditViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark WeightLogEventEditViewControllerDelegate methods
+
+-(NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot; 
+{
+	//NSLog(@"numberOfRecordsForPlot: %@", plot);
+	NSArray *entries = [[RQModelController defaultModelController] weightLogEntriesSortedByDate];
+	//NSLog(@"returning %i", [entries count]);
+	return [entries count];
+}
+
+-(NSNumber *)numberForPlot:(CPPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index;
+{
+	//NSLog(@"numberForPlot:%@ field:%i recordIndex:%i called...", plot, fieldEnum, index);
+	switch (fieldEnum)
+	{
+		case CPScatterPlotFieldX: 
+		{
+			return [NSDecimalNumber numberWithInteger:index];
+		}
+		case CPScatterPlotFieldY:
+		{
+			NSArray *entries = [[RQModelController defaultModelController] weightLogEntriesSortedByDate];
+			return [(RQWeightLogEntry *)[entries objectAtIndex:index] weightTaken];
+		}
+	}
+	return nil;
 }
 
 @end

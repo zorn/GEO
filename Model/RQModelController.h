@@ -22,6 +22,7 @@
 - (NSUndoManager *)undoManager;
 
 - (NSArray *)weightLogEntries;
+- (NSArray *)weightLogEntriesSortedByDate;
 - (RQWeightLogEntry *)newWeightLogEntry;
 - (void)deleteWeightLogEntry:(RQWeightLogEntry *)entry;
 - (RQWeightLogEntry *)oldestWeightLogEntry;
@@ -30,6 +31,9 @@
 
 - (NSDecimalNumber *)weightLostToDate;
 - (NSDecimalNumber *)weightLostToDate:(NSDate *)someDate;
+
+- (NSDecimalNumber *)maxWeightLogged;
+- (NSDecimalNumber *)minWeightLogged;
 
 - (NSArray *)monsterTemplates;
 

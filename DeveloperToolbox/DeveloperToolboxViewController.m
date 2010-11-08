@@ -7,8 +7,11 @@
 //
 
 #import "DeveloperToolboxViewController.h"
-#import "CorePlotTestViewController.h"
 #import "AppDelegate_iPhone.h"
+
+// Controllers
+#import "HeroEditViewController.h"
+#import "CorePlotTestViewController.h"
 
 @implementation DeveloperToolboxViewController
 
@@ -48,6 +51,13 @@
 	[self presentModalViewController:storyVC animated:YES];
 	[storyVC release];
 	
+}
+
+- (IBAction)editHero:(id)sender
+{
+	HeroEditViewController *controller = [[HeroEditViewController alloc] init];
+	[self.navigationController pushViewController:controller animated:YES];
+	[controller release];
 }
 
 - (void)returnToMainMenu

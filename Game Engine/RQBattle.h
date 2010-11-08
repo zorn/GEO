@@ -25,6 +25,7 @@
 - (void)issueShieldCommandFrom:(RQMob *)mob;
 
 - (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta;
+- (void)updateHeroShieldsBasedOnTimeDelta:(NSTimeInterval)timeDelta;
 
 - (void)appendToBattleLog:(NSString *)logAddition;
 - (BOOL)isBattleDone;

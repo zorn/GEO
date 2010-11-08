@@ -1,8 +1,10 @@
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @protocol RQBattleVictoryViewControllerDelegate;
 
 @class RQBattle;
+@class RQBarView;
 
 @interface RQBattleVictoryViewController : UIViewController
 {
@@ -27,6 +29,13 @@
 @property (retain) IBOutlet UILabel *heroXPCountLabel;
 @property (retain) IBOutlet UILabel *newLevelBannerLabel;
 @property (retain) IBOutlet UILabel *newLevelMessageLabel;
+@property (nonatomic, retain) IBOutlet RQBarView *xpBarView;
+@property (nonatomic, retain) IBOutlet UILabel *heroLevelLabel;
+@property (nonatomic, retain) IBOutlet UILabel *heroXPFractionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *heroXPReceivedLabel;
+@property (nonatomic, retain) IBOutlet UIView *moreInfoContainerView;
+@property (nonatomic, retain) IBOutlet UIImageView *silhouetteView;
+@property (nonatomic, retain) IBOutlet UIImageView *victoryText;
 @property (readwrite, retain) RQBattle *battle;
 
 @property (readwrite, assign) id <RQBattleVictoryViewControllerDelegate> delegate;

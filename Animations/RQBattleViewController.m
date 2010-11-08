@@ -24,11 +24,15 @@
 #import "RQPassthroughView.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AppDelegate_iPhone.h"
+#import "RQEnemyWeaponView.h"
+
+// view
+#import "ShieldDrawLineView.h"
 
 
 @interface RQBattleViewController ()
 @property (nonatomic, assign) BOOL enemyShotFired;
-@property (nonatomic, retain) UIView *enemyShotView;
+@property (nonatomic, retain) RQEnemyWeaponView *enemyShotView;
 @end
 
 
@@ -49,15 +53,9 @@
 {
 	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
-#if TARGET_OS_EMBEDDED 
-	[_captureLayer removeFromSuperlayer];
-	_captureLayer.session = nil;
-	[_captureLayer release];
-	
-	[_captureSession stopRunning];
-	[_captureSession release];
-	_captureSession = nil;
-#endif
+	[shieldDrawLineView release]; shieldDrawLineView = nil;
+	[rightShield release], rightShield = nil;
+	[leftShield release], leftShield = nil;
 	[frontFlashView release], frontFlashView = nil;
 	[heroHeathLabel release]; heroHeathLabel = nil;
 	[weaponSprites release]; weaponSprites = nil;
@@ -72,41 +70,14 @@
 @synthesize battle;
 @synthesize activeWeapon;
 @synthesize frontFlashView;
+@synthesize leftShield;
+@synthesize rightShield;
+@synthesize shieldDrawLineView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-#if TARGET_OS_EMBEDDED
-	_captureSession = [[AVCaptureSession alloc] init];
-	
-	NSError *error = nil;
-	
-	AVCaptureDevice *defaultVideoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-	
-	if ( defaultVideoDevice )  {
-		AVCaptureDeviceInput *defaultVideoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:defaultVideoDevice error:&error];
-	
-		if (error)
-		//TODO: CARE
-			NSLog(@"%@", error);
-	
-		[_captureSession addInput: defaultVideoDeviceInput];
-		_captureLayer = [[AVCaptureVideoPreviewLayer layerWithSession:_captureSession] retain];
-		_captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-		_captureLayer.frame = self.view.layer.bounds;
-		[self.view.layer addSublayer:_captureLayer];
-		[_captureSession startRunning];
-	}
-#endif
 
-	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-	
-	// Setup the run button
-	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[runButton setTitle:@"Run" forState:UIControlStateNormal];
-	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:runButton];
-	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
 	
 	// Setup the textual hp meter
 	NSString *typicalHPReading = @"9999/9999";
@@ -132,11 +103,16 @@
 	NSString *weaponImageName;
 	RQElementalType weaponType;
 	UIImageView *weaponImageView;
-	int xloc = 40;
+	
+	float spacerWidth = 320 / (self.battle.hero.weapons.count+1);
+	NSLog(@"spacerWidth: %f", spacerWidth);
+	int weaponPlace = 0;
+	float xloc = 0;
 	for (NSDictionary *weapon in self.battle.hero.weapons) {
 		
 		weaponType = RQElementalTypeNone;
 		
+		NSLog(@"building weapon: %@", weapon);
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
 				weaponImageName = @"fire_button";
@@ -163,11 +139,41 @@
 		[weaponSprite setType:weaponType];
 		[weaponSprites addObject:weaponSprite];
 		[self.view addSubview:weaponSprite.view];
+
+		xloc = xloc + spacerWidth;
+
+		NSLog(@"xloc: %f", xloc);
 		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
 		weaponSprite.orininalPosition = weaponSprite.position;
-		xloc = xloc + 80;
+		
 		weaponSprite.velocity = CGPointZero;
+
+		weaponPlace++;
+		
 		[weaponSprite release]; weaponSprite = nil;
+	}
+	
+	if (self.battle.hero.canUseShields) {
+		// make two shield sprites
+		UIImage *shieldImage = [UIImage imageNamed:@"shields.png"];
+		leftShield = [[UIImageView alloc] initWithImage:shieldImage];
+		CGRect newLeftFrame = leftShield.frame;
+		newLeftFrame.origin.x = 0 - newLeftFrame.size.width/2;
+		newLeftFrame.origin.y = self.view.frame.size.height - 160;
+		[self.view addSubview:leftShield];
+		[leftShield setFrame:newLeftFrame];
+		
+		rightShield = [[UIImageView alloc] initWithImage:shieldImage];
+		CGRect newRightFrame = leftShield.frame;
+		newRightFrame.origin.x = self.view.frame.size.width - newLeftFrame.size.width/2;
+		newRightFrame.origin.y = self.view.frame.size.height - 160;
+		[self.view addSubview:rightShield];
+		[rightShield setFrame:newRightFrame];
+		
+		shieldDrawLineView = [[ShieldDrawLineView alloc] initWithFrame:self.view.frame];
+		[shieldDrawLineView setBackgroundColor:[UIColor clearColor]];
+		[shieldDrawLineView setDelegate:self];
+		[self.view addSubview:shieldDrawLineView];
 	}
 	
 	UIImage *monsterImage = [UIImage imageNamed:self.battle.enemy.spriteImageName];
@@ -187,7 +193,6 @@
 	lastCollisionTime = 0.0;
 	
 	// Setup the self hit visual
-	// TODO: Taking this out for now as it bugs out flicking. Should be introduced with a new hit graphic/effect on the weapons via Matt. 
 	self.frontFlashView = [[[RQPassthroughView alloc] initWithFrame:self.view.frame] autorelease];
 	CGRect ffFrame = self.frontFlashView.frame;
 	ffFrame.origin.x = 0.0;
@@ -201,6 +206,7 @@
 	[self startAnimation];
 	
 	// If the user would like us to mute the iPod during battles to hear our own sweet music and the iPod is in fact playing
+#if !(TARGET_IPHONE_SIMULATOR)
 	didPauseIPod = NO;
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && [[MPMusicPlayerController iPodMusicPlayer] playbackState] == MPMusicPlaybackStatePlaying ) {
 		NSLog(@"pauseing iPod");
@@ -208,8 +214,16 @@
 		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
 		didPauseIPod = YES;
 	}
+#endif
 
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
+	
+	// Setup the run button
+	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[runButton setTitle:@"Run" forState:UIControlStateNormal];
+	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:runButton];
+	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -228,6 +242,13 @@
 	
 	// game sim stuff
 	[self.battle updateCombatantStaminaBasedOnTimeDelta:deltaTime];
+	
+	
+	// update the shield line for major incriments
+	if (self.shieldDrawLineView.shieldPower - self.battle.hero.secondsLeftOfShields > 1.0 || self.battle.hero.secondsLeftOfShields == 10.0 || self.battle.hero.secondsLeftOfShields == 0.0) {
+		[self.shieldDrawLineView setShieldPower:[[self.battle hero] secondsLeftOfShields]];
+	}
+	[self.battle updateHeroShieldsBasedOnTimeDelta:deltaTime];
 	
 	// Move the monster around
 	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
@@ -278,10 +299,9 @@
 		// Run ememy AI if they have not been hit
         if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.95)) {
             self.enemyShotFired = YES;
-            self.enemyShotView = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
+            self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
             self.enemyShotView.center = evilBoobsMonster.view.center;
             self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-            self.enemyShotView.backgroundColor = [UIColor greenColor];
             self.enemyShotView.alpha = 0.6f;
             [self.view addSubview:self.enemyShotView];
             [UIView animateWithDuration:0.5 
@@ -324,6 +344,40 @@
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
 		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
+		NSString *weaponImageName;
+		switch (weaponSprite.type) {
+			case RQElementalTypeFire:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"fire_button";
+				} else {
+					weaponImageName = @"fire_button_desaturated";
+				}
+				break;
+			case RQElementalTypeWater:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"water_button";
+				} else {
+					weaponImageName = @"water_button_desaturated";
+				}
+				break;
+			case RQElementalTypeEarth:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"earth_button";
+				} else {
+					weaponImageName = @"earth_button_desaturated";
+				}
+				break;
+			case RQElementalTypeAir:
+				if (self.battle.hero.stamina >= 1.0) {
+					weaponImageName = @"air_button";
+				} else {
+					weaponImageName = @"air_button_desaturated";
+				}
+				break;
+		}
+		// sub in new image view
+		[(UIImageView *)weaponSprite.imageView setImage:[UIImage imageNamed:weaponImageName]];
+		
 		// if we are at the last step of making the weapons enabled play a sound cue
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
 			[[SimpleAudioEngine sharedEngine] playEffect:@"chimp_001.caf"];
@@ -560,6 +614,38 @@
 	[self setBattleVictoryViewController:nil];
 	[[[RQModelController defaultModelController] coreDataManager] save];
 	[self returnToMapView];
+}
+
+#pragma mark -
+#pragma mark ShieldDrawLineViewDelegate Methods
+
+- (BOOL)isTouchInsideShieldBase:(UITouch *)touch
+{
+	CGRect temp = [self frameOfTouchedShieldBase:touch];
+	if (CGRectEqualToRect(temp, CGRectZero)) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
+- (CGRect)frameOfTouchedShieldBase:(UITouch *)touch
+{
+	CGPoint touchLocation = [touch locationInView:self.view];
+	if (CGRectContainsPoint(self.leftShield.frame, touchLocation)) {
+		return self.leftShield.frame;
+	} else if (CGRectContainsPoint(self.rightShield.frame, touchLocation)) {
+		return self.rightShield.frame;
+	} else {
+		return CGRectZero;
+	}
+}
+
+- (void)shieldsUp
+{
+	// give the hero 10 seconds of shields
+	[self.battle.hero setSecondsLeftOfShields:10.0];
+	[[SimpleAudioEngine sharedEngine] playEffect:@"Shields_up.caf"];
 }
 
 @end
