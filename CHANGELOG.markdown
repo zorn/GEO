@@ -1,3 +1,7 @@
+November 8, 2010
+
+* Re-enabled the tap to skip xp animations in the victory view.
+
 November 2, 2010
 
 * Edited the Core Data format (made shields a float, used to be an int). Be sure to delete previous app installs to avoid save crashes.

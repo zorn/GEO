@@ -215,8 +215,8 @@
 {
 	if (experienceGained > 0) {
 		// they are still animating xp gains, don't quit just yet
-		//[self animateXPGainsJumpToLast:YES];
-		//[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:1.0];
+		[self animateXPGainsJumpToLast:YES];
+		[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:1.0];
 	} else {
 		[delegate battleVictoryControllerDidEnd:self];
 	}
