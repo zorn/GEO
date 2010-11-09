@@ -88,10 +88,24 @@
 	heroHeathLabel.font = heroHeathLabelFont;
 	heroHeathLabel.textAlignment = UITextAlignmentRight;
 	heroHeathLabel.backgroundColor = [UIColor clearColor];
-	heroHeathLabel.textColor = [UIColor whiteColor];
+	heroHeathLabel.textColor = [UIColor redColor];
 	heroHeathLabel.shadowColor= [UIColor blackColor];
 	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
 	heroHeathLabel.text = typicalHPReading;
+	
+	// Setup the textual glove power meter
+	NSString *typicalGlovePowerReading = @"100/100";
+	UIFont *heroGlovePowerLabelFont = [UIFont boldSystemFontOfSize:22];
+	CGSize heroGlovePowerLabelSize = [typicalGlovePowerReading sizeWithFont:heroGlovePowerLabelFont];
+	heroGlovePowerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 110, self.view.frame.size.width/2, heroGlovePowerLabelSize.height)];
+	[self.view addSubview:heroGlovePowerLabel];
+	heroGlovePowerLabel.font = heroGlovePowerLabelFont;
+	heroGlovePowerLabel.textAlignment = UITextAlignmentLeft;
+	heroGlovePowerLabel.backgroundColor = [UIColor clearColor];
+	heroGlovePowerLabel.textColor = [UIColor blueColor];
+	heroGlovePowerLabel.shadowColor= [UIColor blackColor];
+	heroGlovePowerLabel.shadowOffset = CGSizeMake(1.0, 1.0);
+	heroGlovePowerLabel.text = typicalGlovePowerReading;
 	
 	// Setup the flick threshold visual
 	//UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
@@ -339,6 +353,7 @@
 	
 	// Update the hero health meter
 	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
+	heroGlovePowerLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.glovePower, 100];
 	
 	// Update the weapons to help visualize the hero stamina
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
@@ -456,9 +471,11 @@
 			[self setActiveWeapon:nil];}]; }];
 		activeWeapon.velocity = CGPointZero;
 		
+		
 	} else {
 		// Only play the launch sounds when the weapon will be moving
 		[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
+		self.battle.hero.glovePower = self.battle.hero.glovePower - 5;
 	}
 }
 

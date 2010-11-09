@@ -11,6 +11,12 @@
 
 @implementation RQHero
 
+- (void)awakeFromInsert
+{
+	[super awakeFromInsert];
+	[self setGlovePower:50.0];
+}
+
 - (BOOL)canUseFireWeapon
 {
 	return YES;

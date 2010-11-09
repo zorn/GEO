@@ -36,7 +36,12 @@
 		BOOL attackWasStrong = NO;
 		if ([self.enemy weakToType] == weaponType) {
 			attackWasStrong = YES;
-		} 
+		}
+		// apply glove power to attackValue
+		NSLog(@"orig: attackValue %i", attackValue); 
+		attackValue = lroundf(attackValue * (1.0 + (self.hero.glovePower/100.0)));
+		NSLog(@"new: attackValue %i", attackValue); 
+		NSLog(@"glovePower: %i", self.hero.glovePower); 
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
 		self.hero.stamina = 0.0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];

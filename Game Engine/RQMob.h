@@ -24,6 +24,7 @@ typedef NSUInteger RQElementalType;
 @property (nonatomic, retain) NSNumber *staminaAsNumber;
 @property (nonatomic, retain) NSNumber *staminaRegenRateAsNumber;
 @property (nonatomic, retain) NSNumber *secondsLeftOfShieldsAsNumber;
+@property (nonatomic, retain) NSNumber *glovePowerAsNumber;
 
 @property (readwrite, assign) NSInteger currentHP;
 @property (readonly, assign) NSInteger maxHP;
@@ -33,6 +34,7 @@ typedef NSUInteger RQElementalType;
 @property (readwrite, assign) float stamina;
 @property (readwrite, assign) float staminaRegenRate;
 @property (readwrite, assign) float secondsLeftOfShields;
+@property (readwrite, assign) NSInteger glovePower;
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType;
 
