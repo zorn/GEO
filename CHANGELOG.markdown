@@ -1,3 +1,7 @@
+November 10, 2010
+
+* Monster will now spawn based on hero's available weapons. IE: You have the weapon to match the monster's weakness.
+
 November 9, 2010
 
 * Added a new property for the hero called Glove Power. It is an int in the range of 0..100. Glove Power increases the damage done by the hero's weapons. When a hero is created it defaults to 50. As you fire weapons you lose it, as you walk on the map you gain it. Glove power is currently displayed in the battle view as text, this is temporary.

@@ -311,9 +311,10 @@
 		}
 		
 		// Run ememy AI if they have not been hit
-        if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.95)) {
+        if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.85)) {
             self.enemyShotFired = YES;
-            self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
+            float shotWidth = self.view.frame.size.width; 
+			self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, shotWidth, shotWidth)] autorelease];
             self.enemyShotView.center = evilBoobsMonster.view.center;
             self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             self.enemyShotView.alpha = 0.6f;

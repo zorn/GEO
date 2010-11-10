@@ -94,11 +94,40 @@ static RQModelController *defaultModelController = nil;
 }
 
 - (RQEnemy *)randomEnemyBasedOnHero:(RQHero *)hero
-{
+{	
 	// Given the hero generate a random enemy for the hero 
-	NSArray *monsterTemplates = [self monsterTemplates];
+	NSArray *allMonsterTemplates = [self monsterTemplates];
+	
+	// while progressing we will limit the enemies to match the weapons of the hero
+	// Build a list of monster templates appriopiate for the hero
+	NSMutableSet *monsterTemplates = [[NSMutableSet alloc] init];
+	for (RQMonsterTemplate *template in allMonsterTemplates) {
+		
+		// if the hero has the weapon the template is weak to
+		
+		// earth is weak to fire
+		if ([hero canUseFireWeapon] && [template type] == RQElementalTypeEarth) {
+			[monsterTemplates addObject:template];
+		}
+		
+		// fire is weak to water
+		if ([hero canUseWaterWeapon] && [template type] == RQElementalTypeFire) {
+			[monsterTemplates addObject:template];
+		}
+		
+		// air is weak to earth
+		if ([hero canUseEarthWeapon] && [template type] == RQElementalTypeAir) {
+			[monsterTemplates addObject:template];
+		}
+		
+		// water is weak to air
+		if ([hero canUseAirWeapon] && [template type] == RQElementalTypeWater) {
+			[monsterTemplates addObject:template];
+		}
+	}
+	
 	NSUInteger randomIndex = arc4random() % [monsterTemplates count];
-	RQMonsterTemplate *monsterTemplate = [monsterTemplates objectAtIndex:randomIndex];
+	RQMonsterTemplate *monsterTemplate = [[monsterTemplates allObjects] objectAtIndex:randomIndex];
 	
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
 	[newEnemy setName:[monsterTemplate name]];
@@ -107,7 +136,7 @@ static RQModelController *defaultModelController = nil;
 	[newEnemy setLevel:hero.level];
 	[newEnemy setCurrentHP:[newEnemy maxHP]];
 	[newEnemy setStamina:0];
-	[newEnemy setStaminaRegenRate:8.0];
+	[newEnemy setStaminaRegenRate:4.0];
 	return newEnemy;
 }
 
