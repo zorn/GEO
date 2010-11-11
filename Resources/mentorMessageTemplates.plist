@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>shields</string>
+		<key>message</key>
+		<string>Make sure to keep shields up to reduce incoming damage.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Did you know that I am watching you...all the time?</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>I wish you could charge that glove faster. You must keep moving!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>One day I will have to take that glove back for repairs. Don't get killed!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>That glove is special to me. Keep powering it up!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>There is a disturbance in the space-time rift. Something big is out there!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>I don't have time for advice. I'm busy watching my Lost DVDs.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Remember that glove is on loan. Keep it clean!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>I'd offer to do some fighting for you, but I'm too good looking to die!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>I'm impressed. You're better than 1% of the Ranger clan.</string>
+	</dict>
+</array>
+</plist>

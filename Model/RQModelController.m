@@ -8,6 +8,7 @@
 #import "RQEnemy.h"
 #import "RQWeightLogEntry.h"
 #import "RQMonsterTemplate.h"
+#import "RQMentorMessageTemplate.h"
 
 static RQModelController *defaultModelController = nil;
 
@@ -138,6 +139,31 @@ static RQModelController *defaultModelController = nil;
 	[newEnemy setStamina:0];
 	[newEnemy setStaminaRegenRate:4.0];
 	return newEnemy;
+}
+
+- (RQMentorMessageTemplate *)randomMentorMessageBasedOnBattle:(RQBattle *)battle
+{
+	// TODO: Current implimentation does not use battle, but should .. all messages are currently victory based.
+	NSArray *allMentorTemplates = [self mentorMessageTemplates];
+	
+	// Build a list of mentor message templates appriopiate for the battle
+	NSMutableSet *mentorTemplates = [[NSMutableSet alloc] init];
+	for (RQMentorMessageTemplate *template in allMentorTemplates) {
+		
+		// Only add the shield related messages when the hero has shields
+		if ([[battle hero] canUseShields] && [template relatedToMechanic] == RQMechanicShields) {
+			[mentorTemplates addObject:template];
+		}
+		
+		if ([template relatedToMechanic] == RQMechanicNone) {
+			[mentorTemplates addObject:template];
+		}
+	}
+	
+	NSUInteger randomIndex = arc4random() % [mentorTemplates count];
+	RQMentorMessageTemplate *mentorTemplate = [[mentorTemplates allObjects] objectAtIndex:randomIndex];
+	[mentorTemplates autorelease];
+	return mentorTemplate;
 }
 
 - (BOOL)heroExists
@@ -294,6 +320,36 @@ static RQModelController *defaultModelController = nil;
 		}
 	} 
 	return [NSArray arrayWithArray:_monsterTemplates];
+}
+
+- (NSArray *)mentorMessageTemplates
+{
+	if (!_mentorMessageTemplates) {
+		
+		// Read the mentor message templates from the plist
+		NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"mentorMessageTemplates" ofType:@"plist"];
+		NSArray *plistArray = [NSArray arrayWithContentsOfFile:plistPath];
+		
+		_mentorMessageTemplates = [[NSMutableArray alloc] init];
+		RQMentorMessageTemplate *newTemplate;
+		for (NSDictionary *d in plistArray) {
+			newTemplate = [[RQMentorMessageTemplate alloc] init];
+			
+			if ([[d objectForKey:@"event"] isEqualToString:@"random"]) {
+				[newTemplate setEventType:RQMessageEventTypeRandom];
+			}
+			if ([[d objectForKey:@"relatedToMechanic"] isEqualToString:@"shields"]) {
+				[newTemplate setRelatedToMechanic:RQMechanicShields];
+			} else {
+				[newTemplate setRelatedToMechanic:RQMechanicNone];
+			}
+			[newTemplate setMessage:[d objectForKey:@"message"]];
+
+			[_mentorMessageTemplates addObject:newTemplate];
+			[newTemplate release]; newTemplate = nil;
+		}
+	} 
+	return [NSArray arrayWithArray:_mentorMessageTemplates];
 }
 
 - (void)insertInitialContent

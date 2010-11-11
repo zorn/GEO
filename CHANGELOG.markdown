@@ -1,3 +1,7 @@
+November 11, 2010
+
+* Started to implement the mentor messages in the victory screen. They are defined in a plist for easy editing. They currently aren't very suitable for the failure screen.
+
 November 10, 2010
 
 * Monster will now spawn based on hero's available weapons. IE: You have the weapon to match the monster's weakness.

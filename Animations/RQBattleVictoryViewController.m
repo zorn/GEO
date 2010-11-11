@@ -14,6 +14,9 @@
 #import "RQEnemy.h"
 #import "RQBarView.h"
 
+// models
+#import "RQModelController.h"
+#import "RQMentorMessageTemplate.h"
 
 @interface RQBattleVictoryViewController ()
 - (void)updateStats;
@@ -28,6 +31,9 @@
 @synthesize moreInfoContainerView;
 @synthesize silhouetteView;
 @synthesize victoryText;
+@synthesize mentorMessageTextView;
+@synthesize mentorAvatarImageView;
+
 
 - (id)init
 {
@@ -49,6 +55,8 @@
 	[moreInfoContainerView release];
 	[silhouetteView release];
 	[victoryText release];
+	[mentorMessageTextView release];
+	[mentorAvatarImageView release];
 	
 	[battle release]; battle = nil;
 	[super dealloc];
@@ -70,6 +78,12 @@
 	self.heroXPReceivedLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
 	self.moreInfoContainerView.layer.cornerRadius = 6.0;
 	[self updateStats];
+	
+	// setup the mentor avatar and message
+	RQMentorMessageTemplate *mentorMessage = [[RQModelController defaultModelController] randomMentorMessageBasedOnBattle:self.battle];
+	UIImage *mentorImage = [UIImage imageNamed:@"mentor_message_avatar_calm.png"];
+	[self.mentorAvatarImageView setImage:mentorImage];
+	[self.mentorMessageTextView setText:mentorMessage.message];
 	
 	CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
 	gradientLayer.frame = self.view.frame;

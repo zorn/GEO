@@ -5,12 +5,15 @@
 @class RQHero;
 @class RQEnemy;
 @class RQWeightLogEntry;
+@class RQMentorMessageTemplate;
+@class RQBattle;
 
 @interface RQModelController : NSObject {
 	M3CoreDataManager *coreDataManager;
 	M3SimpleCoreData *simpleCoreData;
 	
 	NSMutableArray *_monsterTemplates;
+	NSMutableArray *_mentorMessageTemplates;
 }
 
 + (RQModelController *)defaultModelController;
@@ -38,12 +41,13 @@
 - (NSDecimalNumber *)minWeightLogged;
 
 - (NSArray *)monsterTemplates;
-
+- (NSArray *)mentorMessageTemplates;
 
 - (BOOL)shouldInsertInitialContents;
 - (void)insertInitialContent;
 
 - (RQHero *)hero;
+- (RQMentorMessageTemplate *)randomMentorMessageBasedOnBattle:(RQBattle *)battle;
 - (BOOL)heroExists;
 - (RQEnemy *)randomEnemyBasedOnHero:(RQHero *)hero;
 

@@ -23,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UIView *moreInfoContainerView;
 @property (nonatomic, retain) IBOutlet UIImageView *silhouetteView;
 @property (nonatomic, retain) IBOutlet UIImageView *victoryText;
+@property (nonatomic, retain) IBOutlet UITextView *mentorMessageTextView;
+@property (nonatomic, retain) IBOutlet UIImageView *mentorAvatarImageView;
 @property (readwrite, retain) RQBattle *battle;
 
 @property (readwrite, assign) id <RQBattleVictoryViewControllerDelegate> delegate;
