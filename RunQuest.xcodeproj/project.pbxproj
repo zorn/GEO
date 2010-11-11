@@ -148,14 +148,6 @@
 		1A8B91B41268F24300D8E5F3 /* CorePlotTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B91B31268F24300D8E5F3 /* CorePlotTestView.xib */; };
 		1A8B92311269009F00D8E5F3 /* DeveloperToolboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B92301269009F00D8E5F3 /* DeveloperToolboxViewController.m */; };
 		1A8D64551268E3AA00A68146 /* RQWeightLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D64541268E3AA00A68146 /* RQWeightLogEntry.m */; };
-		1A8EA75C12497EC90006A220 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75812497EC90006A220 /* earth_button.png */; };
-		1A8EA75D12497EC90006A220 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA75912497EC90006A220 /* fire_button.png */; };
-		1A8EA76C1249805A0006A220 /* air_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76A1249805A0006A220 /* air_button.png */; };
-		1A8EA76D1249805A0006A220 /* water_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA76B1249805A0006A220 /* water_button.png */; };
-		1A8EA7A5124987870006A220 /* air_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A1124987870006A220 /* air_button@2x.png */; };
-		1A8EA7A6124987870006A220 /* earth_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A2124987870006A220 /* earth_button@2x.png */; };
-		1A8EA7A7124987870006A220 /* fire_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A3124987870006A220 /* fire_button@2x.png */; };
-		1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA7A4124987870006A220 /* water_button@2x.png */; };
 		1A8EA8FE124A4E680006A220 /* RQBattleVictoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */; };
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A945BD712540B8900CE44D8 /* SettingsView.xib */; };
@@ -166,15 +158,27 @@
 		1AA3E26C128C59C9001F99A1 /* mentor_message_avatar_mad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E26A128C59C9001F99A1 /* mentor_message_avatar_mad.png */; };
 		1AA3E26F128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E26D128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png */; };
 		1AA3E270128C5A02001F99A1 /* mentor_message_avatar_mad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E26E128C5A02001F99A1 /* mentor_message_avatar_mad@2x.png */; };
+		1AA3E2CE128C73B7001F99A1 /* new_battleview_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2CC128C73B7001F99A1 /* new_battleview_bk.png */; };
+		1AA3E2CF128C73B7001F99A1 /* new_battleview_bk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2CD128C73B7001F99A1 /* new_battleview_bk@2x.png */; };
+		1AA3E2DC128C776F001F99A1 /* air_weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D4128C776F001F99A1 /* air_weapon.png */; };
+		1AA3E2DD128C776F001F99A1 /* air_weapon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D5128C776F001F99A1 /* air_weapon@2x.png */; };
+		1AA3E2DE128C776F001F99A1 /* earth_weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D6128C776F001F99A1 /* earth_weapon.png */; };
+		1AA3E2DF128C776F001F99A1 /* earth_weapon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D7128C776F001F99A1 /* earth_weapon@2x.png */; };
+		1AA3E2E0128C776F001F99A1 /* fire_weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D8128C776F001F99A1 /* fire_weapon.png */; };
+		1AA3E2E1128C776F001F99A1 /* fire_weapon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2D9128C776F001F99A1 /* fire_weapon@2x.png */; };
+		1AA3E2E2128C776F001F99A1 /* water_weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2DA128C776F001F99A1 /* water_weapon.png */; };
+		1AA3E2E3128C776F001F99A1 /* water_weapon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E2DB128C776F001F99A1 /* water_weapon@2x.png */; };
+		1AA3E322128C7C15001F99A1 /* weapon_shelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E320128C7C15001F99A1 /* weapon_shelf.png */; };
+		1AA3E323128C7C15001F99A1 /* weapon_shelf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E321128C7C15001F99A1 /* weapon_shelf@2x.png */; };
+		1AA3E376128C8177001F99A1 /* air_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E36E128C8177001F99A1 /* air_weapon_desaturated.png */; };
+		1AA3E377128C8177001F99A1 /* air_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E36F128C8177001F99A1 /* air_weapon_desaturated@2x.png */; };
+		1AA3E378128C8177001F99A1 /* earth_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E370128C8177001F99A1 /* earth_weapon_desaturated.png */; };
+		1AA3E379128C8177001F99A1 /* earth_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E371128C8177001F99A1 /* earth_weapon_desaturated@2x.png */; };
+		1AA3E37A128C8177001F99A1 /* fire_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E372128C8177001F99A1 /* fire_weapon_desaturated.png */; };
+		1AA3E37B128C8177001F99A1 /* fire_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E373128C8177001F99A1 /* fire_weapon_desaturated@2x.png */; };
+		1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */; };
+		1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
-		1AB37DDC128102A300D227E4 /* air_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD4128102A300D227E4 /* air_button_desaturated.png */; };
-		1AB37DDD128102A300D227E4 /* air_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */; };
-		1AB37DDE128102A300D227E4 /* earth_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */; };
-		1AB37DDF128102A300D227E4 /* earth_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */; };
-		1AB37DE0128102A300D227E4 /* fire_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */; };
-		1AB37DE1128102A300D227E4 /* fire_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */; };
-		1AB37DE2128102A300D227E4 /* water_button_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DDA128102A300D227E4 /* water_button_desaturated.png */; };
-		1AB37DE3128102A300D227E4 /* water_button_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
@@ -441,14 +445,6 @@
 		1A8B9232126900BA00D8E5F3 /* DeveloperToolboxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DeveloperToolboxView.xib; path = DeveloperToolbox/DeveloperToolboxView.xib; sourceTree = SOURCE_ROOT; };
 		1A8D64531268E3AA00A68146 /* RQWeightLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQWeightLogEntry.h; path = WeightLog/RQWeightLogEntry.h; sourceTree = SOURCE_ROOT; };
 		1A8D64541268E3AA00A68146 /* RQWeightLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQWeightLogEntry.m; path = WeightLog/RQWeightLogEntry.m; sourceTree = SOURCE_ROOT; };
-		1A8EA75812497EC90006A220 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button.png; path = Assets/Mockups/earth_button.png; sourceTree = SOURCE_ROOT; };
-		1A8EA75912497EC90006A220 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button.png; path = Assets/Mockups/fire_button.png; sourceTree = SOURCE_ROOT; };
-		1A8EA76A1249805A0006A220 /* air_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button.png; path = Assets/Mockups/air_button.png; sourceTree = SOURCE_ROOT; };
-		1A8EA76B1249805A0006A220 /* water_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_button.png; path = Assets/Mockups/water_button.png; sourceTree = SOURCE_ROOT; };
-		1A8EA7A1124987870006A220 /* air_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_button@2x.png"; path = "Assets/Mockups/air_button@2x.png"; sourceTree = SOURCE_ROOT; };
-		1A8EA7A2124987870006A220 /* earth_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_button@2x.png"; path = "Assets/Mockups/earth_button@2x.png"; sourceTree = SOURCE_ROOT; };
-		1A8EA7A3124987870006A220 /* fire_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_button@2x.png"; path = "Assets/Mockups/fire_button@2x.png"; sourceTree = SOURCE_ROOT; };
-		1A8EA7A4124987870006A220 /* water_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_button@2x.png"; path = "Assets/Mockups/water_button@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A8EA8FC124A4E680006A220 /* RQBattleVictoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleVictoryViewController.h; sourceTree = "<group>"; };
 		1A8EA8FD124A4E680006A220 /* RQBattleVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleVictoryViewController.m; sourceTree = "<group>"; };
 		1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BattleVictoryView.xib; path = iPhone/BattleVictoryView.xib; sourceTree = SOURCE_ROOT; };
@@ -463,15 +459,27 @@
 		1AA3E26A128C59C9001F99A1 /* mentor_message_avatar_mad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mentor_message_avatar_mad.png; sourceTree = "<group>"; };
 		1AA3E26D128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mentor_message_avatar_calm@2x.png"; sourceTree = "<group>"; };
 		1AA3E26E128C5A02001F99A1 /* mentor_message_avatar_mad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mentor_message_avatar_mad@2x.png"; sourceTree = "<group>"; };
+		1AA3E2CC128C73B7001F99A1 /* new_battleview_bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_battleview_bk.png; path = ui/new_battleview_bk.png; sourceTree = "<group>"; };
+		1AA3E2CD128C73B7001F99A1 /* new_battleview_bk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_battleview_bk@2x.png"; path = "ui/new_battleview_bk@2x.png"; sourceTree = "<group>"; };
+		1AA3E2D4128C776F001F99A1 /* air_weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_weapon.png; path = ui/air_weapon.png; sourceTree = "<group>"; };
+		1AA3E2D5128C776F001F99A1 /* air_weapon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_weapon@2x.png"; path = "ui/air_weapon@2x.png"; sourceTree = "<group>"; };
+		1AA3E2D6128C776F001F99A1 /* earth_weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_weapon.png; path = ui/earth_weapon.png; sourceTree = "<group>"; };
+		1AA3E2D7128C776F001F99A1 /* earth_weapon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_weapon@2x.png"; path = "ui/earth_weapon@2x.png"; sourceTree = "<group>"; };
+		1AA3E2D8128C776F001F99A1 /* fire_weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_weapon.png; path = ui/fire_weapon.png; sourceTree = "<group>"; };
+		1AA3E2D9128C776F001F99A1 /* fire_weapon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_weapon@2x.png"; path = "ui/fire_weapon@2x.png"; sourceTree = "<group>"; };
+		1AA3E2DA128C776F001F99A1 /* water_weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_weapon.png; path = ui/water_weapon.png; sourceTree = "<group>"; };
+		1AA3E2DB128C776F001F99A1 /* water_weapon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_weapon@2x.png"; path = "ui/water_weapon@2x.png"; sourceTree = "<group>"; };
+		1AA3E320128C7C15001F99A1 /* weapon_shelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weapon_shelf.png; path = ui/weapon_shelf.png; sourceTree = "<group>"; };
+		1AA3E321128C7C15001F99A1 /* weapon_shelf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weapon_shelf@2x.png"; path = "ui/weapon_shelf@2x.png"; sourceTree = "<group>"; };
+		1AA3E36E128C8177001F99A1 /* air_weapon_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_weapon_desaturated.png; path = ui/air_weapon_desaturated.png; sourceTree = "<group>"; };
+		1AA3E36F128C8177001F99A1 /* air_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_weapon_desaturated@2x.png"; path = "ui/air_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
+		1AA3E370128C8177001F99A1 /* earth_weapon_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_weapon_desaturated.png; path = ui/earth_weapon_desaturated.png; sourceTree = "<group>"; };
+		1AA3E371128C8177001F99A1 /* earth_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_weapon_desaturated@2x.png"; path = "ui/earth_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
+		1AA3E372128C8177001F99A1 /* fire_weapon_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_weapon_desaturated.png; path = ui/fire_weapon_desaturated.png; sourceTree = "<group>"; };
+		1AA3E373128C8177001F99A1 /* fire_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_weapon_desaturated@2x.png"; path = "ui/fire_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
+		1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_weapon_desaturated.png; path = ui/water_weapon_desaturated.png; sourceTree = "<group>"; };
+		1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_weapon_desaturated@2x.png"; path = "ui/water_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		1AB37DD4128102A300D227E4 /* air_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = air_button_desaturated.png; path = Assets/Mockups/air_button_desaturated.png; sourceTree = SOURCE_ROOT; };
-		1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "air_button_desaturated@2x.png"; path = "Assets/Mockups/air_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
-		1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = earth_button_desaturated.png; path = Assets/Mockups/earth_button_desaturated.png; sourceTree = SOURCE_ROOT; };
-		1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth_button_desaturated@2x.png"; path = "Assets/Mockups/earth_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
-		1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire_button_desaturated.png; path = Assets/Mockups/fire_button_desaturated.png; sourceTree = SOURCE_ROOT; };
-		1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_button_desaturated@2x.png"; path = "Assets/Mockups/fire_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
-		1AB37DDA128102A300D227E4 /* water_button_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_button_desaturated.png; path = Assets/Mockups/water_button_desaturated.png; sourceTree = SOURCE_ROOT; };
-		1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_button_desaturated@2x.png"; path = "Assets/Mockups/water_button_desaturated@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		1AC92466124D755800E09F6A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
@@ -763,6 +771,33 @@
 			);
 			name = "Log Book";
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1AA3E2C6128C7336001F99A1 /* new_design */ = {
+			isa = PBXGroup;
+			children = (
+				1AA3E36E128C8177001F99A1 /* air_weapon_desaturated.png */,
+				1AA3E36F128C8177001F99A1 /* air_weapon_desaturated@2x.png */,
+				1AA3E370128C8177001F99A1 /* earth_weapon_desaturated.png */,
+				1AA3E371128C8177001F99A1 /* earth_weapon_desaturated@2x.png */,
+				1AA3E372128C8177001F99A1 /* fire_weapon_desaturated.png */,
+				1AA3E373128C8177001F99A1 /* fire_weapon_desaturated@2x.png */,
+				1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */,
+				1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */,
+				1AA3E320128C7C15001F99A1 /* weapon_shelf.png */,
+				1AA3E321128C7C15001F99A1 /* weapon_shelf@2x.png */,
+				1AA3E2D4128C776F001F99A1 /* air_weapon.png */,
+				1AA3E2D5128C776F001F99A1 /* air_weapon@2x.png */,
+				1AA3E2D6128C776F001F99A1 /* earth_weapon.png */,
+				1AA3E2D7128C776F001F99A1 /* earth_weapon@2x.png */,
+				1AA3E2D8128C776F001F99A1 /* fire_weapon.png */,
+				1AA3E2D9128C776F001F99A1 /* fire_weapon@2x.png */,
+				1AA3E2DA128C776F001F99A1 /* water_weapon.png */,
+				1AA3E2DB128C776F001F99A1 /* water_weapon@2x.png */,
+				1AA3E2CC128C73B7001F99A1 /* new_battleview_bk.png */,
+				1AA3E2CD128C73B7001F99A1 /* new_battleview_bk@2x.png */,
+			);
+			name = new_design;
 			sourceTree = "<group>";
 		};
 		1AC92473124D75CF00E09F6A /* ui */ = {
@@ -1062,6 +1097,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1AA3E2C6128C7336001F99A1 /* new_design */,
 				1AA3E26D128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png */,
 				1AA3E26E128C5A02001F99A1 /* mentor_message_avatar_mad@2x.png */,
 				1AA3E269128C59C9001F99A1 /* mentor_message_avatar_calm.png */,
@@ -1072,22 +1108,6 @@
 				1AD6FC75125132D400D98CF3 /* monster sprites */,
 				1AC92473124D75CF00E09F6A /* ui */,
 				C99A91B2124A7F47005BAECF /* sounds */,
-				1AB37DD4128102A300D227E4 /* air_button_desaturated.png */,
-				1AB37DD5128102A300D227E4 /* air_button_desaturated@2x.png */,
-				1AB37DD6128102A300D227E4 /* earth_button_desaturated.png */,
-				1AB37DD7128102A300D227E4 /* earth_button_desaturated@2x.png */,
-				1AB37DD8128102A300D227E4 /* fire_button_desaturated.png */,
-				1AB37DD9128102A300D227E4 /* fire_button_desaturated@2x.png */,
-				1AB37DDA128102A300D227E4 /* water_button_desaturated.png */,
-				1AB37DDB128102A300D227E4 /* water_button_desaturated@2x.png */,
-				1A8EA7A1124987870006A220 /* air_button@2x.png */,
-				1A8EA7A2124987870006A220 /* earth_button@2x.png */,
-				1A8EA7A3124987870006A220 /* fire_button@2x.png */,
-				1A8EA7A4124987870006A220 /* water_button@2x.png */,
-				1A8EA76A1249805A0006A220 /* air_button.png */,
-				1A8EA76B1249805A0006A220 /* water_button.png */,
-				1A8EA75812497EC90006A220 /* earth_button.png */,
-				1A8EA75912497EC90006A220 /* fire_button.png */,
 				C9DCF783124557F600BCABB1 /* boobs.png */,
 			);
 			path = Resources;
@@ -1332,14 +1352,6 @@
 				2860E38B111B897F00E27156 /* MainWindow_iPhone.xib in Resources */,
 				D8C86C8312451082007E44AF /* MapViewController.xib in Resources */,
 				C9DCF784124557F600BCABB1 /* boobs.png in Resources */,
-				1A8EA75C12497EC90006A220 /* earth_button.png in Resources */,
-				1A8EA75D12497EC90006A220 /* fire_button.png in Resources */,
-				1A8EA76C1249805A0006A220 /* air_button.png in Resources */,
-				1A8EA76D1249805A0006A220 /* water_button.png in Resources */,
-				1A8EA7A5124987870006A220 /* air_button@2x.png in Resources */,
-				1A8EA7A6124987870006A220 /* earth_button@2x.png in Resources */,
-				1A8EA7A7124987870006A220 /* fire_button@2x.png in Resources */,
-				1A8EA7A8124987870006A220 /* water_button@2x.png in Resources */,
 				1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */,
 				C99A91D0124A7F47005BAECF /* chimp_001.caf in Resources */,
 				C99A91D1124A7F47005BAECF /* Computer_Data_001.caf in Resources */,
@@ -1426,14 +1438,6 @@
 				C93701921281023800C2514F /* victoryText@2x.png in Resources */,
 				1A817C841280689D00B02D1E /* shields.png in Resources */,
 				1A817C851280689D00B02D1E /* shields@2x.png in Resources */,
-				1AB37DDC128102A300D227E4 /* air_button_desaturated.png in Resources */,
-				1AB37DDD128102A300D227E4 /* air_button_desaturated@2x.png in Resources */,
-				1AB37DDE128102A300D227E4 /* earth_button_desaturated.png in Resources */,
-				1AB37DDF128102A300D227E4 /* earth_button_desaturated@2x.png in Resources */,
-				1AB37DE0128102A300D227E4 /* fire_button_desaturated.png in Resources */,
-				1AB37DE1128102A300D227E4 /* fire_button_desaturated@2x.png in Resources */,
-				1AB37DE2128102A300D227E4 /* water_button_desaturated.png in Resources */,
-				1AB37DE3128102A300D227E4 /* water_button_desaturated@2x.png in Resources */,
 				C99B447C12818CC600D4E151 /* failureSilhouette.png in Resources */,
 				C99B447D12818CC600D4E151 /* failureSilhouette@2x.png in Resources */,
 				C99B447E12818CC600D4E151 /* failureText.png in Resources */,
@@ -1509,6 +1513,26 @@
 				1AA3E26C128C59C9001F99A1 /* mentor_message_avatar_mad.png in Resources */,
 				1AA3E26F128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png in Resources */,
 				1AA3E270128C5A02001F99A1 /* mentor_message_avatar_mad@2x.png in Resources */,
+				1AA3E2CE128C73B7001F99A1 /* new_battleview_bk.png in Resources */,
+				1AA3E2CF128C73B7001F99A1 /* new_battleview_bk@2x.png in Resources */,
+				1AA3E2DC128C776F001F99A1 /* air_weapon.png in Resources */,
+				1AA3E2DD128C776F001F99A1 /* air_weapon@2x.png in Resources */,
+				1AA3E2DE128C776F001F99A1 /* earth_weapon.png in Resources */,
+				1AA3E2DF128C776F001F99A1 /* earth_weapon@2x.png in Resources */,
+				1AA3E2E0128C776F001F99A1 /* fire_weapon.png in Resources */,
+				1AA3E2E1128C776F001F99A1 /* fire_weapon@2x.png in Resources */,
+				1AA3E2E2128C776F001F99A1 /* water_weapon.png in Resources */,
+				1AA3E2E3128C776F001F99A1 /* water_weapon@2x.png in Resources */,
+				1AA3E322128C7C15001F99A1 /* weapon_shelf.png in Resources */,
+				1AA3E323128C7C15001F99A1 /* weapon_shelf@2x.png in Resources */,
+				1AA3E376128C8177001F99A1 /* air_weapon_desaturated.png in Resources */,
+				1AA3E377128C8177001F99A1 /* air_weapon_desaturated@2x.png in Resources */,
+				1AA3E378128C8177001F99A1 /* earth_weapon_desaturated.png in Resources */,
+				1AA3E379128C8177001F99A1 /* earth_weapon_desaturated@2x.png in Resources */,
+				1AA3E37A128C8177001F99A1 /* fire_weapon_desaturated.png in Resources */,
+				1AA3E37B128C8177001F99A1 /* fire_weapon_desaturated@2x.png in Resources */,
+				1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */,
+				1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

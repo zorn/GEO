@@ -109,7 +109,7 @@
 	if (self.battle.didHeroWin) {
 		experienceGained = self.battle.enemy.experiencePointsWorth;
 		self.heroXPReceivedLabel.text = [NSString stringWithFormat:@"+%d", experienceGained];
-		[self performSelector:@selector(startXPAnimation) withObject:nil afterDelay:0.5];
+		[self performSelector:@selector(startXPAnimation) withObject:nil afterDelay:0.0];
 		[UIView animateWithDuration:1.0 
 							  delay:0.0 
 							options:UIViewAnimationOptionAllowUserInteraction 
@@ -174,7 +174,7 @@
 	if (experienceGained > 0) {
 		// they are still animating xp gains, don't quit just yet
 		[self animateXPGainsJumpToLast:YES];
-		[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:1.0];
+		[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:0.0];
 	} else {
 		[delegate battleVictoryControllerDidEnd:self];
 	}

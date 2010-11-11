@@ -79,6 +79,20 @@
 
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
+	// create background image view
+	UIImage *backgroundImage = [UIImage imageNamed:@"new_battleview_bk.png"];
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+	[self.view addSubview:backgroundImageView];
+	
+	// create weapon shelf image view
+	UIImage *weaponShelfImage = [UIImage imageNamed:@"weapon_shelf.png"];
+	UIImageView *weaponShelfImageView = [[UIImageView alloc] initWithImage:weaponShelfImage];
+	[self.view addSubview:weaponShelfImageView];
+	CGRect newFrame = weaponShelfImageView.frame;
+	newFrame.origin.y = self.view.frame.size.height - weaponShelfImageView.frame.size.height;
+	newFrame.origin.x = (self.view.frame.size.width - weaponShelfImageView.frame.size.width)/2;
+	weaponShelfImageView.frame = newFrame;
+	
 	// Setup the textual hp meter
 	NSString *typicalHPReading = @"9999/9999";
 	UIFont *heroHeathLabelFont = [UIFont boldSystemFontOfSize:22];
@@ -129,19 +143,19 @@
 		NSLog(@"building weapon: %@", weapon);
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
-				weaponImageName = @"fire_button";
+				weaponImageName = @"fire_weapon";
 				weaponType = RQElementalTypeFire;
 				break;
 			case RQElementalTypeWater:
-				weaponImageName = @"water_button";
+				weaponImageName = @"water_weapon";
 				weaponType = RQElementalTypeWater;
 				break;
 			case RQElementalTypeEarth:
-				weaponImageName = @"earth_button";
+				weaponImageName = @"earth_weapon";
 				weaponType = RQElementalTypeEarth;
 				break;
 			case RQElementalTypeAir:
-				weaponImageName = @"air_button";
+				weaponImageName = @"air_weapon";
 				weaponType = RQElementalTypeAir;
 				break;
 		}
@@ -364,35 +378,36 @@
 		switch (weaponSprite.type) {
 			case RQElementalTypeFire:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"fire_button";
+					weaponImageName = @"fire_weapon";
 				} else {
-					weaponImageName = @"fire_button_desaturated";
+					weaponImageName = @"fire_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeWater:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"water_button";
+					weaponImageName = @"water_weapon";
 				} else {
-					weaponImageName = @"water_button_desaturated";
+					weaponImageName = @"water_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeEarth:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"earth_button";
+					weaponImageName = @"earth_weapon";
 				} else {
-					weaponImageName = @"earth_button_desaturated";
+					weaponImageName = @"earth_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeAir:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"air_button";
+					weaponImageName = @"air_weapon";
 				} else {
-					weaponImageName = @"air_button_desaturated";
+					weaponImageName = @"air_weapon_desaturated";
 				}
 				break;
 		}
 		// sub in new image view
 		[(UIImageView *)weaponSprite.imageView setImage:[UIImage imageNamed:weaponImageName]];
+		
 		
 		// if we are at the last step of making the weapons enabled play a sound cue
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {

@@ -1,6 +1,7 @@
 November 11, 2010
 
 * Started to implement the mentor messages in the victory screen. They are defined in a plist for easy editing. They currently aren't very suitable for the failure screen.
+* Started to add some of the real design elements into the battle view screen.
 
 November 10, 2010
 
