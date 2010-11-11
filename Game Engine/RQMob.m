@@ -132,8 +132,6 @@
 	} else {
 		[self setGlovePowerAsNumber:[NSNumber numberWithInteger:value]];
 	}
-	
-	
 }
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType

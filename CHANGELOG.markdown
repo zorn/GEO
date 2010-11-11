@@ -1,6 +1,9 @@
 November 10, 2010
 
 * Monster will now spawn based on hero's available weapons. IE: You have the weapon to match the monster's weakness.
+* Cleaned up some dangling outlet code that was left in place from a previous implementation of the victory screen.
+* Changed the math behind the percent of level being gained. Was wrong before. It works now, though at low levels, the bar feels too bouncy.
+* Added some math to calculate a experienceCountByAmount so we aren't always incrementing by 1. On the high levels it would animate for a looooong time.
 
 November 9, 2010
 

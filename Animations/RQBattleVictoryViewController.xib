@@ -464,19 +464,12 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>battleXPCountLabel</string>
-							<string>battleXPLabel</string>
 							<string>heroLevelLabel</string>
-							<string>heroXPCountLabel</string>
 							<string>heroXPFractionLabel</string>
-							<string>heroXPLabel</string>
 							<string>heroXPReceivedLabel</string>
 							<string>moreInfoContainerView</string>
-							<string>newLevelBannerLabel</string>
-							<string>newLevelMessageLabel</string>
 							<string>silhouetteView</string>
 							<string>victoryText</string>
-							<string>victoryTitle</string>
 							<string>xpBarView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -484,16 +477,9 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>UIView</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
-							<string>UILabel</string>
 							<string>RQBarView</string>
 						</object>
 					</object>
@@ -501,45 +487,22 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>battleXPCountLabel</string>
-							<string>battleXPLabel</string>
 							<string>heroLevelLabel</string>
-							<string>heroXPCountLabel</string>
 							<string>heroXPFractionLabel</string>
-							<string>heroXPLabel</string>
 							<string>heroXPReceivedLabel</string>
 							<string>moreInfoContainerView</string>
-							<string>newLevelBannerLabel</string>
-							<string>newLevelMessageLabel</string>
 							<string>silhouetteView</string>
 							<string>victoryText</string>
-							<string>victoryTitle</string>
 							<string>xpBarView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">battleXPCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">battleXPLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">heroLevelLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">heroXPCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">heroXPFractionLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">heroXPLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -551,24 +514,12 @@
 								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">newLevelBannerLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">newLevelMessageLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">silhouetteView</string>
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">victoryText</string>
 								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">victoryTitle</string>
-								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">xpBarView</string>
