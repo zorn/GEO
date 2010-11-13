@@ -28,9 +28,6 @@
 	
 	[self setCurrentViewController:[self mainMenuViewController] animated:NO];
 	
-	//Testing
-	[self mainMenuViewControllerPlayButtonPressed:[self mainMenuViewController]];
-	
 	[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
 	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];

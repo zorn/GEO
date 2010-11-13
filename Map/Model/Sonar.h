@@ -17,14 +17,13 @@
 	MKMapRect _boundingMapRect;
 	
 	CLLocationDegrees radius;
-	CLLocationDegrees range;
 	
 	NSTimer *_timer;
 	pthread_rwlock_t rwLock;
 }
 
 @property (nonatomic) CLLocationDegrees radius;
-@property (nonatomic) CLLocationDegrees range;
+@property (nonatomic) CLLocationDistance range;
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
 - (void)lockForReading;

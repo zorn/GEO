@@ -225,6 +225,8 @@
 		D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */; };
 		D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */; };
 		D8CDDC9A123CFDFF005C9784 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */; };
+		D8E5FDEF128B565400B6373E /* RandomWalkLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */; };
+		D8E5FEBE128C8DF500B6373E /* CLLocation+RQAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */; };
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
 /* End PBXBuildFile section */
 
@@ -514,6 +516,10 @@
 		D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
 		D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D8E5FDED128B565400B6373E /* RandomWalkLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomWalkLocationManager.h; sourceTree = "<group>"; };
+		D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomWalkLocationManager.m; sourceTree = "<group>"; };
+		D8E5FEBC128C8DF500B6373E /* CLLocation+RQAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+RQAdditions.h"; sourceTree = "<group>"; };
+		D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+RQAdditions.m"; sourceTree = "<group>"; };
 		D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroPathView.h; sourceTree = "<group>"; };
 		D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroPathView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1008,6 +1014,8 @@
 				D8C86C7C12451067007E44AF /* Controller */,
 				D8C86C6312450F44007E44AF /* View */,
 				D8901E1712411DAE004C5D27 /* Model */,
+				D8E5FEBC128C8DF500B6373E /* CLLocation+RQAdditions.h */,
+				D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1084,6 +1092,8 @@
 				1A945BD412540B7800CE44D8 /* SettingsViewController.h */,
 				1A945BD512540B7800CE44D8 /* SettingsViewController.m */,
 				1A945BD712540B8900CE44D8 /* SettingsView.xib */,
+				D8E5FDED128B565400B6373E /* RandomWalkLocationManager.h */,
+				D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1417,6 +1427,8 @@
 				1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */,
 				1A817CBA1280705700B02D1E /* ShieldDrawLineView.m in Sources */,
 				1A817CBD1280708F00B02D1E /* Line.m in Sources */,
+				D8E5FDEF128B565400B6373E /* RandomWalkLocationManager.m in Sources */,
+				D8E5FEBE128C8DF500B6373E /* CLLocation+RQAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1558,6 +1570,71 @@
 			};
 			name = Release;
 		};
+		D8E5FE2F128B6EB600B6373E /* Debug-Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = TESTING;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-Testing";
+		};
+		D8E5FE30128B6EB600B6373E /* Debug-Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
+				HEADER_SEARCH_PATHS = "ThirdPartyStuff/core-plot/Source/framework/**";
+				INFOPLIST_FILE = "RunQuest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = GEO;
+			};
+			name = "Debug-Testing";
+		};
+		D8E5FE31128B6EB600B6373E /* Debug-Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Debug-Testing";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1565,6 +1642,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A6E32E0124E59DD0054949B /* Debug */,
+				D8E5FE31128B6EB600B6373E /* Debug-Testing */,
 				1A6E32E1124E59DD0054949B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1574,6 +1652,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				D8E5FE30128B6EB600B6373E /* Debug-Testing */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1583,6 +1662,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				D8E5FE2F128B6EB600B6373E /* Debug-Testing */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

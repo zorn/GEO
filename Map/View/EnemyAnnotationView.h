@@ -16,5 +16,6 @@
 @property (nonatomic,getter=isPulsing) BOOL pulsing; 
 
 - (void)pulse;
+- (void)stopPulsing;
 
 @end

@@ -28,11 +28,12 @@
 	
     [objects lockForReading];
 	CGPoint center = [self pointForMapPoint:MKMapPointForCoordinate(self.overlay.coordinate)];
-	CLLocationDegrees radius = 1000.0f;
+	CLLocationDistance radius = objects.range;
     [objects unlockForReading];
-	
+	CGFloat heroRadius = radius/5.0f;
 	CGRect rect = CGRectMake(center.x - radius/2.0f, center.y - radius/2.0f, radius, radius);
-	 
+	CGRect heroRect = CGRectMake(center.x - heroRadius/2.0f, center.y - heroRadius/2.0f, heroRadius, heroRadius);
+	
 	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.75f);
 	CGContextFillRect(context, rectToDraw);
 	if ( CGRectIntersectsRect(rectToDraw, rect ) ) {
@@ -40,11 +41,15 @@
 		CGContextSaveGState(context);
 		CGContextSetBlendMode(context, kCGBlendModeCopy);
 		CGContextAddEllipseInRect(context, rect);
-		CGContextAddRect(context, CGRectInset(rect, -10.0f, -10.0f));
+		CGContextAddRect(context, CGRectInset(rect, -100.0f, -100.0f));
+		CGContextClosePath(context);
 		CGContextEOFillPath(context);
-		CGContextRestoreGState(context);
-		//CGRect rectNotToDraw = CGRectIntersection(rectToDraw, rect);
 		
+		CGContextSetRGBFillColor(context, 0.0f, 0.0f, 1.0f, 0.75f);
+		CGContextAddEllipseInRect(context, heroRect);
+		CGContextFillPath(context);
+		
+		CGContextRestoreGState(context);
 	}
 }
 

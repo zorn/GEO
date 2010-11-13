@@ -19,7 +19,7 @@
 @implementation Sonar
 @synthesize radius, range;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)initialCoordinate range:(CLLocationDegrees)sonarRange{
+- (id)initWithCoordinate:(CLLocationCoordinate2D)initialCoordinate range:(CLLocationDistance)sonarRange{
 	if (( self = [super init] )) {
 		coordinate = initialCoordinate;
 		self.range = sonarRange;

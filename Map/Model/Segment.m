@@ -53,7 +53,7 @@
 }
 
 - (void)addLocation:(CLLocation *)location {
-	NSMutableArray *locationsCopy = [[self locations] copy];
+	NSMutableArray *locationsCopy = [[self locations] mutableCopy];
 	[locationsCopy addObject:location];
 	self.locations = locationsCopy;
 }

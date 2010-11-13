@@ -14,7 +14,7 @@
 
 -(void) drawInContext:(CGContextRef)context {
 	CGRect rect = self.bounds;
-	CGContextSetRGBFillColor(context, 1., 0, 0, 1);
+	CGContextSetRGBFillColor(context, 1., 0, 0, .5);
 	CGContextFillEllipseInRect(context, rect);
 }
 
