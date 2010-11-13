@@ -151,9 +151,36 @@
 		
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			
+			break;
+		case 1:
+			[self launchBattlePressed:self];
+			break;
+
+		default:
+			break;
+	}
+}
+
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy {
 	[self stopGeneratingEnemies];
-	[self launchBattlePressed:self];
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
+														message:NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy") 
+													   delegate:self 
+											  cancelButtonTitle:NSLocalizedString(@"No", @"No") 
+											  otherButtonTitles:NSLocalizedString(@"Yes", @"Yes"), nil];
+	
+	[alertView show];
+	[alertView release];
+//	UILocalNotification *note = [[UILocalNotification alloc] init];
+//	note.soundName = UILocalNotificationDefaultSoundName;
+//	note.alertBody
+//	[[UIApplication sharedApplication] presentLocalNotificationNow:<#(UILocalNotification *)notification#>
+	//[self presentModalViewController:<#(UIViewController *)modalViewController#> animated:<#(BOOL)animated#>
+	
 }
 
 - (void)pulseEnemies {
@@ -170,7 +197,7 @@
 			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
 			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint);
 			if ( metersToHero < ENEMY_MAGNET_RADIUS )
-				enemy.speed = 5.0f;
+				enemy.speed = 20.0f;
 			else 
 				enemy.speed = 0;
 			
@@ -338,13 +365,11 @@
 #pragma mark Loading Overlay
 
 - (void)showHUD { 
-	if ( self.hudView.isHidden )
-		hudView.hidden = NO;
+	hudView.hidden = NO;
 }
 
 - (void)hideHUD {
-	if ( !self.hudView.isHidden )
-		hudView.hidden = YES;
+	hudView.hidden = YES;
 }
 
 #pragma mark MKMapViewDelegate
@@ -391,6 +416,7 @@
 #pragma mark Action
 
 - (IBAction)launchBattlePressed:(id)sender {
+	[self.trek stop];
     self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
 	RQHero *hero = [[RQModelController defaultModelController] hero];
@@ -443,20 +469,20 @@
 	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
 }
 
-- (void) advanceRandomWalkOfHero {
-	
-}
-
 - (void)stopGeneratingEnemies {
 	//[self removeTimerNamed:@"EnemySpawn"];
 	[self removeTimerNamed:@"EnemyPulse"];
+	for ( EnemyAnnotationView *enemyView in _enemyViews ) {
+		EnemyMapSpawn *spawn = enemyView.annotation;
+		spawn.speed = 0;
+		[enemyView stopPulsing];
+	}
 }
 
 - (void)startTrek {
 	[self.trek startWithLocation:locationManager.location];
 	startButton.title = @"Stop";
 	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
-//	[self generateEnemyForHeroAtLocation:locationManager.location];
 	[self startGeneratingEnemies];
 }
 	
@@ -464,7 +490,6 @@
 	[self.trek stop];
 	startButton.title = @"Start";
 	[self removeTimerNamed:@"Tick"];
-	[self removeAllEnemies];
 	NSError *error = nil;
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
