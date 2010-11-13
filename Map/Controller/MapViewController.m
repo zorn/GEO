@@ -41,6 +41,7 @@
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 250.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
+#define ENEMY_SPEED_ADVANTAGE .5f
 
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleViewController *battleViewController;
@@ -175,12 +176,6 @@
 	
 	[alertView show];
 	[alertView release];
-//	UILocalNotification *note = [[UILocalNotification alloc] init];
-//	note.soundName = UILocalNotificationDefaultSoundName;
-//	note.alertBody
-//	[[UIApplication sharedApplication] presentLocalNotificationNow:<#(UILocalNotification *)notification#>
-	//[self presentModalViewController:<#(UIViewController *)modalViewController#> animated:<#(BOOL)animated#>
-	
 }
 
 - (void)pulseEnemies {
@@ -197,7 +192,7 @@
 			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
 			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint);
 			if ( metersToHero < ENEMY_MAGNET_RADIUS )
-				enemy.speed = 20.0f;
+				enemy.speed = locationManager.location.speed + ENEMY_SPEED_ADVANTAGE;
 			else 
 				enemy.speed = 0;
 			
