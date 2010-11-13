@@ -27,10 +27,15 @@
 	CGRect rectToDraw = [self rectForMapRect:mapRect];
 	
     [objects lockForReading];
-	CGPoint center = [self pointForMapPoint:MKMapPointForCoordinate(self.overlay.coordinate)];
+	CLLocationCoordinate2D coordinate = self.overlay.coordinate;
+	CGPoint center = [self pointForMapPoint:MKMapPointForCoordinate(coordinate)];
 	CLLocationDistance radius = objects.range;
     [objects unlockForReading];
-	CGFloat heroRadius = radius/5.0f;
+	
+	double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
+	radius = mapPointsPerMeter * radius;
+	
+	CGFloat heroRadius = 20*mapPointsPerMeter;
 	CGRect rect = CGRectMake(center.x - radius/2.0f, center.y - radius/2.0f, radius, radius);
 	CGRect heroRect = CGRectMake(center.x - heroRadius/2.0f, center.y - heroRadius/2.0f, heroRadius, heroRadius);
 	

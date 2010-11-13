@@ -39,7 +39,7 @@
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
 #define ENEMY_PULSE_EVERY 1 //second
-#define ENEMY_MAGNET_RADIUS 250.0f //meters
+#define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
 #define ENEMY_SPEED_ADVANTAGE .5f
 
@@ -191,7 +191,7 @@
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
 			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
 			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint);
-			if ( metersToHero < ENEMY_MAGNET_RADIUS )
+			if ( metersToHero < _sonar.range )
 				enemy.speed = locationManager.location.speed + ENEMY_SPEED_ADVANTAGE;
 			else 
 				enemy.speed = 0;
@@ -341,7 +341,7 @@
 			[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
 			firstZoomDidOccur = YES;
 			[self loadEnemiesAroundLocation:locationManager.location];
-			_sonar = [[Sonar alloc] initWithCoordinate:locationManager.location.coordinate range:1000.0f];
+			_sonar = [[Sonar alloc] initWithCoordinate:locationManager.location.coordinate range:ENEMY_MAGNET_RADIUS];
 			[self.mapView addOverlay:_sonar];
 			[self hideHUD];
 		}
