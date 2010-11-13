@@ -399,6 +399,9 @@
 	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
 	[hero setCurrentHP:hero.maxHP];
 	
+	// TODO: Typically the hero will regen glove power as they walk, for now lets add 15 before each fight
+	[hero setGlovePower:hero.glovePower+15];
+	
 	// TODO: EnemyMapSpawn in the future should dictate the enemy the hero is fighting, but for now let's make a random enemy:
 	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];

@@ -1,3 +1,25 @@
+November 11, 2010
+
+* Started to implement the mentor messages in the victory screen. They are defined in a plist for easy editing. They currently aren't very suitable for the failure screen.
+* Started to add some of the real design elements into the battle view screen.
+
+November 10, 2010
+
+* Monster will now spawn based on hero's available weapons. IE: You have the weapon to match the monster's weakness.
+* Cleaned up some dangling outlet code that was left in place from a previous implementation of the victory screen.
+* Changed the math behind the percent of level being gained. Was wrong before. It works now, though at low levels, the bar feels too bouncy.
+* Added some math to calculate a experienceCountByAmount so we aren't always incrementing by 1. On the high levels it would animate for a looooong time.
+
+November 9, 2010
+
+* Added a new property for the hero called Glove Power. It is an int in the range of 0..100. Glove Power increases the damage done by the hero's weapons. When a hero is created it defaults to 50. As you fire weapons you lose it, as you walk on the map you gain it. Glove power is currently displayed in the battle view as text, this is temporary.
+
+November 8, 2010
+
+* Re-enabled the tap to skip xp animations in the victory view.
+* Added new plist format to store monster names, types, file names, movement style.
+* Added new monsters from phil. We now have 12 "designs" with 2 elemental styles each.
+
 November 2, 2010
 
 * Edited the Core Data format (made shields a float, used to be an int). Be sure to delete previous app installs to avoid save crashes.

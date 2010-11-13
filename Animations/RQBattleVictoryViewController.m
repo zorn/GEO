@@ -14,6 +14,9 @@
 #import "RQEnemy.h"
 #import "RQBarView.h"
 
+// models
+#import "RQModelController.h"
+#import "RQMentorMessageTemplate.h"
 
 @interface RQBattleVictoryViewController ()
 - (void)updateStats;
@@ -28,6 +31,9 @@
 @synthesize moreInfoContainerView;
 @synthesize silhouetteView;
 @synthesize victoryText;
+@synthesize mentorMessageTextView;
+@synthesize mentorAvatarImageView;
+
 
 - (id)init
 {
@@ -49,25 +55,13 @@
 	[moreInfoContainerView release];
 	[silhouetteView release];
 	[victoryText release];
+	[mentorMessageTextView release];
+	[mentorAvatarImageView release];
 	
-	[victoryTitle release]; victoryTitle = nil;
-	[battleXPLabel release]; battleXPLabel = nil;
-	[battleXPCountLabel release]; battleXPCountLabel = nil;
-	[heroXPLabel release]; heroXPLabel = nil;
-	[heroXPCountLabel release]; heroXPCountLabel = nil;
-	[newLevelBannerLabel release]; newLevelBannerLabel = nil;
-	[newLevelMessageLabel release]; newLevelMessageLabel = nil;
 	[battle release]; battle = nil;
 	[super dealloc];
 }
 
-@synthesize victoryTitle;
-@synthesize battleXPLabel;
-@synthesize battleXPCountLabel;
-@synthesize heroXPLabel;
-@synthesize heroXPCountLabel;
-@synthesize newLevelBannerLabel;
-@synthesize newLevelMessageLabel;
 @synthesize battle;
 @synthesize delegate;
 
@@ -84,6 +78,12 @@
 	self.heroXPReceivedLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
 	self.moreInfoContainerView.layer.cornerRadius = 6.0;
 	[self updateStats];
+	
+	// setup the mentor avatar and message
+	RQMentorMessageTemplate *mentorMessage = [[RQModelController defaultModelController] randomMentorMessageBasedOnBattle:self.battle];
+	UIImage *mentorImage = [UIImage imageNamed:@"mentor_message_avatar_calm.png"];
+	[self.mentorAvatarImageView setImage:mentorImage];
+	[self.mentorMessageTextView setText:mentorMessage.message];
 	
 	CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
 	gradientLayer.frame = self.view.frame;
@@ -106,18 +106,10 @@
 	[self.view addGestureRecognizer:recognizer];
 	[recognizer release]; recognizer = nil;
 	
-	if (self.battle.hero.currentHP) {
-		[self.victoryTitle setText:@"You Won!"];
-	} else {
-		[self.victoryTitle setText:@"You Lost"];
-	}
-	[self.newLevelBannerLabel setHidden:YES];
-	[self.newLevelMessageLabel setHidden:YES];
-	
 	if (self.battle.didHeroWin) {
 		experienceGained = self.battle.enemy.experiencePointsWorth;
 		self.heroXPReceivedLabel.text = [NSString stringWithFormat:@"+%d", experienceGained];
-		[self performSelector:@selector(startXPAnimation) withObject:nil afterDelay:0.5];
+		[self performSelector:@selector(startXPAnimation) withObject:nil afterDelay:0.0];
 		[UIView animateWithDuration:1.0 
 							  delay:0.0 
 							options:UIViewAnimationOptionAllowUserInteraction 
@@ -127,39 +119,12 @@
 						 } 
 						 completion:NULL];		
 	}
-	
-	[self.battleXPLabel setText:@"Battle experience:"];
-	[self.battleXPCountLabel setText:[NSString stringWithFormat:@"%d", experienceGained]];
-	
-	[self.heroXPLabel setText:[NSString stringWithFormat:@"%@'s experience:", self.battle.hero.name]];
-	[self.heroXPCountLabel setText:[NSString stringWithFormat:@"%d", self.battle.hero.experiencePoints]];
-	
 }
 
 - (void)startXPAnimation
 {
 	xpCountTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(animateXPGains) userInfo:nil repeats:YES] retain];
-//	self.battle.hero.experiencePoints += experienceGained;
-//	self.heroXPReceivedLabel.text = [NSString stringWithFormat:@"+%d", experienceGained];
-//	CGFloat xpPercent = (CGFloat)self.battle.hero.experiencePoints / (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level];
-//	NSLog(@"xp: %f, total: %f, percent: %f", (CGFloat)self.battle.hero.experiencePoints, (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level], xpPercent);
-//	[xpBarView setPercent:xpPercent duration:3.0];
-//	self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
-//	self.heroXPFractionLabel.text = [NSString stringWithFormat:@"%d/%d", 
-//									 self.battle.hero.experiencePoints, 
-//									 [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level]];
-//	self.moreInfoContainerView.layer.cornerRadius = 6.0;
-//	
-//	[UIView animateWithDuration:1.0 
-//						  delay:0.0 
-//						options:UIViewAnimationOptionAllowUserInteraction 
-//					 animations:^(void) {
-//						 self.heroXPReceivedLabel.alpha = 1.0;
-//						 self.heroXPReceivedLabel.transform = CGAffineTransformIdentity;
-//					 } 
-//					 completion:NULL];
-//	
-//	experienceGained = 0;
+	experienceCountByAmount = floor(experienceGained / 40) + 1;
 }
 
 - (void)animateXPGains
@@ -169,28 +134,21 @@
 
 - (void)animateXPGainsJumpToLast:(BOOL)jumpToLastFrame
 {
-	[self updateStats];
 	if (experienceGained > 0) {
 		if (jumpToLastFrame == YES) {
 			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + experienceGained;
 			experienceGained = 0;
 		} else {
-			experienceGained = experienceGained - 1;
-			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + 1;
+			
+			experienceGained = experienceGained - experienceCountByAmount;
+			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + experienceCountByAmount;
 		}
 		
-		[self.battleXPCountLabel setText:[NSString stringWithFormat:@"%d", experienceGained]];
-		[self.heroXPCountLabel setText:[NSString stringWithFormat:@"%d", self.battle.hero.experiencePoints]];
 		[[SimpleAudioEngine sharedEngine] playEffect:@"Coin.wav"];
 		if ([self.battle.hero increaseLevelIfNeeded]) {
 			NSLog(@"newLevel: %d", self.battle.hero.level);
-			[self.newLevelBannerLabel setHidden:NO];
-			[self.newLevelBannerLabel setText:@"New Level!"];
-			[self.newLevelMessageLabel setHidden:NO];
-			[self.newLevelMessageLabel setText:[NSString stringWithFormat:@"%@ is now level %d", self.battle.hero.name, self.battle.hero.level]];
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 			
-			[xpBarView setPercent:100.0 duration:0.0];
 			self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
 			[UIView animateWithDuration:0.5 
 								  delay:0.0 
@@ -203,7 +161,7 @@
 							 }];
 		}
 	}
-	
+	[self updateStats];
 	if (experienceGained <= 0) {
 		[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
 	}
@@ -215,8 +173,8 @@
 {
 	if (experienceGained > 0) {
 		// they are still animating xp gains, don't quit just yet
-		//[self animateXPGainsJumpToLast:YES];
-		//[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:1.0];
+		[self animateXPGainsJumpToLast:YES];
+		[self performSelector:@selector(tapRecognized:) withObject:nil afterDelay:0.0];
 	} else {
 		[delegate battleVictoryControllerDidEnd:self];
 	}
@@ -225,14 +183,24 @@
 
 - (void)updateStats
 {
-	CGFloat xpNeededToLevel = (CGFloat)[RQMob experinceNeededToLevelFromLevel:self.battle.hero.level];
-	CGFloat xpPercent = ((CGFloat)self.battle.hero.experiencePoints - xpNeededToLevel) / (CGFloat)[RQMob experinceNeededToLevelFromLevel:self.battle.hero.level];
-	NSLog(@"xp: %f, total: %f, percent: %f", ((CGFloat)self.battle.hero.experiencePoints - xpNeededToLevel), (CGFloat)[RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level], xpPercent);
-	[xpBarView setPercent:xpPercent duration:0.0];
+	// these var labels don't make much sense but the math is right, I think.
+	NSInteger heroCurrentXP = self.battle.hero.experiencePoints;
+	NSInteger totalXPForLevel;
+	if (self.battle.hero.level > 1) {
+		totalXPForLevel = [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level] - [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level-1];
+		heroCurrentXP = heroCurrentXP - [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level-1];
+	} else {
+		totalXPForLevel = [RQMob expectedExperiencePointTotalGivenLevel:self.battle.hero.level];
+	}
+	
+	CGFloat xpPercent = ((CGFloat)heroCurrentXP / totalXPForLevel);
+	//NSLog(@"hero level %i, heroCurrentXP %i, totalXPForLevel %i, xpPercent %f", self.battle.hero.level, heroCurrentXP, totalXPForLevel, xpPercent);
+	
+	[self.xpBarView setPercent:xpPercent duration:0.0];
 	self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
 	self.heroXPFractionLabel.text = [NSString stringWithFormat:@"%d/%d", 
-									 self.battle.hero.experiencePoints, 
-									 [RQMob expectedExperiencePointTotalGivenLevel:(CGFloat)self.battle.hero.level]];	
+									 heroCurrentXP, 
+									 totalXPForLevel];
 }
 
 @end

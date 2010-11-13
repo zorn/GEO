@@ -5,13 +5,21 @@
 
 - (void)awakeFromInsert
 {
+	[super awakeFromInsert];
 	[self setLevel:1];
+	
+	// mirror the stuff from fetch
+	[self setStaminaRegenRate:3.0];
+	[self setSecondsLeftOfShields:0];
+	[self setStamina:0];
 }
 
 - (void)awakeFromFetch
 {
+	[super awakeFromFetch];
 	[self setStaminaRegenRate:3.0];
 	[self setSecondsLeftOfShields:0];
+	[self setStamina:0];
 }
 
 @dynamic name;
@@ -23,6 +31,7 @@
 @dynamic staminaAsNumber;
 @dynamic staminaRegenRateAsNumber;
 @dynamic secondsLeftOfShieldsAsNumber;
+@dynamic glovePowerAsNumber;
 
 - (NSInteger)currentHP {
     return [self.currentHPAsNumber integerValue];
@@ -109,6 +118,20 @@
 
 - (void)setSecondsLeftOfShields:(float)value {
 	[self setSecondsLeftOfShieldsAsNumber:[NSNumber numberWithFloat:value]];
+}
+
+- (NSInteger)glovePower {
+	return [self.glovePowerAsNumber integerValue];
+}
+
+- (void)setGlovePower:(NSInteger)value {
+	if (value >= 100) {
+		[self setGlovePowerAsNumber:[NSNumber numberWithInteger:100]];
+	} else if (value <= 0) {
+		[self setGlovePowerAsNumber:[NSNumber numberWithInteger:0]];
+	} else {
+		[self setGlovePowerAsNumber:[NSNumber numberWithInteger:value]];
+	}
 }
 
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType

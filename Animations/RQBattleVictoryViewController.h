@@ -8,27 +8,14 @@
 
 @interface RQBattleVictoryViewController : UIViewController
 {
-	UILabel *victoryTitle;
-	UILabel *battleXPLabel;
-	UILabel *battleXPCountLabel;
-	UILabel *heroXPLabel;
-	UILabel *heroXPCountLabel;
-	UILabel *newLevelBannerLabel;
-	UILabel *newLevelMessageLabel;
 	RQBattle *battle;
 	
 	NSTimer *xpCountTimer;
 	
 	NSInteger experienceGained;
+	NSInteger experienceCountByAmount;
 }
 
-@property (retain) IBOutlet UILabel *victoryTitle;
-@property (retain) IBOutlet UILabel *battleXPLabel;
-@property (retain) IBOutlet UILabel *battleXPCountLabel;
-@property (retain) IBOutlet UILabel *heroXPLabel;
-@property (retain) IBOutlet UILabel *heroXPCountLabel;
-@property (retain) IBOutlet UILabel *newLevelBannerLabel;
-@property (retain) IBOutlet UILabel *newLevelMessageLabel;
 @property (nonatomic, retain) IBOutlet RQBarView *xpBarView;
 @property (nonatomic, retain) IBOutlet UILabel *heroLevelLabel;
 @property (nonatomic, retain) IBOutlet UILabel *heroXPFractionLabel;
@@ -36,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UIView *moreInfoContainerView;
 @property (nonatomic, retain) IBOutlet UIImageView *silhouetteView;
 @property (nonatomic, retain) IBOutlet UIImageView *victoryText;
+@property (nonatomic, retain) IBOutlet UITextView *mentorMessageTextView;
+@property (nonatomic, retain) IBOutlet UIImageView *mentorAvatarImageView;
 @property (readwrite, retain) RQBattle *battle;
 
 @property (readwrite, assign) id <RQBattleVictoryViewControllerDelegate> delegate;

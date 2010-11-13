@@ -79,6 +79,20 @@
 
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
+	// create background image view
+	UIImage *backgroundImage = [UIImage imageNamed:@"new_battleview_bk.png"];
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+	[self.view addSubview:backgroundImageView];
+	
+	// create weapon shelf image view
+	UIImage *weaponShelfImage = [UIImage imageNamed:@"weapon_shelf.png"];
+	UIImageView *weaponShelfImageView = [[UIImageView alloc] initWithImage:weaponShelfImage];
+	[self.view addSubview:weaponShelfImageView];
+	CGRect newFrame = weaponShelfImageView.frame;
+	newFrame.origin.y = self.view.frame.size.height - weaponShelfImageView.frame.size.height;
+	newFrame.origin.x = (self.view.frame.size.width - weaponShelfImageView.frame.size.width)/2;
+	weaponShelfImageView.frame = newFrame;
+	
 	// Setup the textual hp meter
 	NSString *typicalHPReading = @"9999/9999";
 	UIFont *heroHeathLabelFont = [UIFont boldSystemFontOfSize:22];
@@ -88,10 +102,24 @@
 	heroHeathLabel.font = heroHeathLabelFont;
 	heroHeathLabel.textAlignment = UITextAlignmentRight;
 	heroHeathLabel.backgroundColor = [UIColor clearColor];
-	heroHeathLabel.textColor = [UIColor whiteColor];
+	heroHeathLabel.textColor = [UIColor redColor];
 	heroHeathLabel.shadowColor= [UIColor blackColor];
 	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
 	heroHeathLabel.text = typicalHPReading;
+	
+	// Setup the textual glove power meter
+	NSString *typicalGlovePowerReading = @"100/100";
+	UIFont *heroGlovePowerLabelFont = [UIFont boldSystemFontOfSize:22];
+	CGSize heroGlovePowerLabelSize = [typicalGlovePowerReading sizeWithFont:heroGlovePowerLabelFont];
+	heroGlovePowerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 110, self.view.frame.size.width/2, heroGlovePowerLabelSize.height)];
+	[self.view addSubview:heroGlovePowerLabel];
+	heroGlovePowerLabel.font = heroGlovePowerLabelFont;
+	heroGlovePowerLabel.textAlignment = UITextAlignmentLeft;
+	heroGlovePowerLabel.backgroundColor = [UIColor clearColor];
+	heroGlovePowerLabel.textColor = [UIColor blueColor];
+	heroGlovePowerLabel.shadowColor= [UIColor blackColor];
+	heroGlovePowerLabel.shadowOffset = CGSizeMake(1.0, 1.0);
+	heroGlovePowerLabel.text = typicalGlovePowerReading;
 	
 	// Setup the flick threshold visual
 	//UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
@@ -115,19 +143,19 @@
 		NSLog(@"building weapon: %@", weapon);
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
-				weaponImageName = @"fire_button";
+				weaponImageName = @"fire_weapon";
 				weaponType = RQElementalTypeFire;
 				break;
 			case RQElementalTypeWater:
-				weaponImageName = @"water_button";
+				weaponImageName = @"water_weapon";
 				weaponType = RQElementalTypeWater;
 				break;
 			case RQElementalTypeEarth:
-				weaponImageName = @"earth_button";
+				weaponImageName = @"earth_weapon";
 				weaponType = RQElementalTypeEarth;
 				break;
 			case RQElementalTypeAir:
-				weaponImageName = @"air_button";
+				weaponImageName = @"air_weapon";
 				weaponType = RQElementalTypeAir;
 				break;
 		}
@@ -297,9 +325,10 @@
 		}
 		
 		// Run ememy AI if they have not been hit
-        if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.95)) {
+        if (!self.enemyShotFired && (self.battle.enemy.stamina > 0.85)) {
             self.enemyShotFired = YES;
-            self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.width)] autorelease];
+            float shotWidth = self.view.frame.size.width; 
+			self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, shotWidth, shotWidth)] autorelease];
             self.enemyShotView.center = evilBoobsMonster.view.center;
             self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             self.enemyShotView.alpha = 0.6f;
@@ -339,6 +368,7 @@
 	
 	// Update the hero health meter
 	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
+	heroGlovePowerLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.glovePower, 100];
 	
 	// Update the weapons to help visualize the hero stamina
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
@@ -348,35 +378,36 @@
 		switch (weaponSprite.type) {
 			case RQElementalTypeFire:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"fire_button";
+					weaponImageName = @"fire_weapon";
 				} else {
-					weaponImageName = @"fire_button_desaturated";
+					weaponImageName = @"fire_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeWater:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"water_button";
+					weaponImageName = @"water_weapon";
 				} else {
-					weaponImageName = @"water_button_desaturated";
+					weaponImageName = @"water_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeEarth:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"earth_button";
+					weaponImageName = @"earth_weapon";
 				} else {
-					weaponImageName = @"earth_button_desaturated";
+					weaponImageName = @"earth_weapon_desaturated";
 				}
 				break;
 			case RQElementalTypeAir:
 				if (self.battle.hero.stamina >= 1.0) {
-					weaponImageName = @"air_button";
+					weaponImageName = @"air_weapon";
 				} else {
-					weaponImageName = @"air_button_desaturated";
+					weaponImageName = @"air_weapon_desaturated";
 				}
 				break;
 		}
 		// sub in new image view
 		[(UIImageView *)weaponSprite.imageView setImage:[UIImage imageNamed:weaponImageName]];
+		
 		
 		// if we are at the last step of making the weapons enabled play a sound cue
 		if (previousOpacity < weaponSprite.view.layer.opacity && weaponSprite.view.layer.opacity >= 1.0) {
@@ -456,9 +487,11 @@
 			[self setActiveWeapon:nil];}]; }];
 		activeWeapon.velocity = CGPointZero;
 		
+		
 	} else {
 		// Only play the launch sounds when the weapon will be moving
 		[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
+		self.battle.hero.glovePower = self.battle.hero.glovePower - 5;
 	}
 }
 
