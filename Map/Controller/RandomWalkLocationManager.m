@@ -29,8 +29,11 @@
 }
 
 - (void)dealloc {
+	self.delegate = nil;
 	[_manager release];
+	[timer invalidate];
 	[timer release];
+	timer = nil;
 	[destination release];
 	[randomWalkLocation release];
 	[super dealloc];

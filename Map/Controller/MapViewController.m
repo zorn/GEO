@@ -26,14 +26,24 @@
 #endif
 
 #define METERS_PER_DEGREE 111000
-#define ENEMY_GENERATION_BOUNDS_X .01f
-#define ENEMY_GENERATION_BOUNDS_Y .01f
+
+#define MIN_ENEMY_DISTANCE .005f
+
+#define ENEMY_GENERATION_BOUNDS_X .05f
+#define ENEMY_GENERATION_BOUNDS_Y .05f
+
+#define DEFAULT_ZOOM_BOUNDS_X .01f
+#define DEFAULT_ZOOM_BOUNDS_Y .01f
+
 #define ENEMY_GENERATION_BOUNDS_X_METERS ENEMY_GENERATION_BOUNDS_X * METERS_PER_DEGREE
 #define ENEMY_GENERATION_BOUNDS_Y_METERS ENEMY_GENERATION_BOUNDS_Y * METERS_PER_DEGREE
+
 #define ENEMY_GENERATION_MIN_DISTANCE .001f
 #define ENEMY_SPEED_VARIANCE 2.0f
+
 #define SLOWEST_ENEMY_SPEED 10.0f
-#define ENEMIES_TO_GENERATE 5
+#define ENEMIES_TO_GENERATE 75
+
 #define ENEMY_GENERATION_RADIUS 10
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
@@ -91,7 +101,9 @@
 }
 
 - (void)dealloc {
+	locationManager.delegate = nil;
 	[locationManager release];
+	locationManager = nil;
 	[trek release];
 	[displayLink release];
 	[mapView release];
@@ -149,18 +161,17 @@
 #pragma mark Timer Fire Methods
 
 - (void)displayLinkDidFire:(CADisplayLink *)sender {
-		
+	
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0:
-			
+			[self startGeneratingEnemies];
 			break;
 		case 1:
 			[self launchBattlePressed:self];
 			break;
-
 		default:
 			break;
 	}
@@ -186,17 +197,26 @@
 	
 	@synchronized (_enemyViews ) {
 		NSSet *safeIterableCopy = [_enemyViews copy];
+		BOOL didEncounterEnemy = NO;
 		for ( EnemyAnnotationView* enemyView in safeIterableCopy ) {
 			EnemyMapSpawn *enemy = enemyView.annotation;
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
+			[_sonar lockForReading];
 			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
-			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint);
-			if ( metersToHero < _sonar.range )
+			CLLocationDistance sonarRange = _sonar.range;
+			//CLLocation *heroLocation = [[CLLocation alloc] initWithLatitude:_sonar.coordinate.latitude longitude:_sonar.coordinate.longitude];
+			[_sonar unlockForReading];
+			//CLLocation *enemyLocation = [[CLLocation alloc] initWithLatitude:enemy.coordinate.latitude longitude:enemy.coordinate.longitude];
+			
+			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint)*2.0f;
+			
+			//[heroLocation distanceFromLocation:enemyLocation];//
+			if ( metersToHero < sonarRange )
 				enemy.speed = locationManager.location.speed + ENEMY_SPEED_ADVANTAGE;
 			else 
 				enemy.speed = 0;
 			
-
+			
 			if ( enemy.speed ) {
 				double mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(enemy.coordinate.latitude);
 				double enemyStepSize =  enemy.speed*timeSinceLastUpdate;
@@ -220,7 +240,8 @@
 					enemy.coordinate = newCoordinate;
 					
 				}
-				else {
+				else if (!didEncounterEnemy) {
+					didEncounterEnemy = YES;
 					enemy.coordinate = _sonar.coordinate;
 					AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
 					[self removeEnemyView:enemyView];
@@ -231,27 +252,27 @@
 			else {
 				[enemyView stopPulsing];
 			}
-
+			
 			
 		}
 		[safeIterableCopy release];
 	}
 	[_lastEnemyUpdate release];
-		_lastEnemyUpdate = [[NSDate date] retain];
+	_lastEnemyUpdate = [[NSDate date] retain];
 }
 
 - (void)startUpdatingLocation {
-	if ( !self.displayLink ) {
-		self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkDidFire:)];
-		[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-	}
-	
+	//if ( !self.displayLink ) {
+	//		self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkDidFire:)];
+	//		[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+	//	}
+	//	
 	[self.locationManager startUpdatingLocation];
 }
 
 - (void)stopUpdatingLocation {
 	//[self.displayLink invalidate];
-//	self.displayLink = nil;
+	//	self.displayLink = nil;
 	[self.locationManager stopUpdatingLocation];
 }
 
@@ -288,7 +309,7 @@
 - (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	CLLocationDirection course = location.course;
-
+	
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
 	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
@@ -322,8 +343,8 @@
 	}
 #ifdef TESTING
 	//EnemyMapSpawn *lastEnemy = [_enemies anyObject];
-//	CLLocation *destination = [[CLLocation alloc] initWithCoordinate:lastEnemy.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
-//	[(RandomWalkLocationManager *)locationManager setDestination:destination];
+	//	CLLocation *destination = [[CLLocation alloc] initWithCoordinate:lastEnemy.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
+	//	[(RandomWalkLocationManager *)locationManager setDestination:destination];
 #endif
 }
 
@@ -337,7 +358,7 @@
 	
 	if ( newLocation && newLocation.horizontalAccuracy < LOCATION_ACCURACY_THRESHOLD) {
 		if ( !firstZoomDidOccur ) {
-			MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_Y, ENEMY_GENERATION_BOUNDS_X);
+			MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_X);
 			[self.mapView setRegion:MKCoordinateRegionMake(newLocation.coordinate, span) animated:YES];
 			firstZoomDidOccur = YES;
 			[self loadEnemiesAroundLocation:locationManager.location];
@@ -427,15 +448,15 @@
 	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[self presentModalViewController:self.battleViewController animated:YES];
-//	self.battleViewController.view.frame = CGRectMake(0, -1.0f*self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-//	[self.view.superview addSubview:self.battleViewController.view];
-//	self.modalViewController = self.battleViewController;
-//	[self.battleViewController.view animateWithDuration:1.0f animations:^{self.battleViewController.view.frame = self.view.frame; } completion:^(BOOL finished){ [self.view removeFromSuperview]; self.modalViewController = self.battleViewController;}];
+	//	self.battleViewController.view.frame = CGRectMake(0, -1.0f*self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+	//	[self.view.superview addSubview:self.battleViewController.view];
+	//	self.modalViewController = self.battleViewController;
+	//	[self.battleViewController.view animateWithDuration:1.0f animations:^{self.battleViewController.view.frame = self.view.frame; } completion:^(BOOL finished){ [self.view removeFromSuperview]; self.modalViewController = self.battleViewController;}];
 }
 
 - (IBAction)centerMapOnLocation:(id)sender {
 	if ( self.locationManager.location ) {
-		MKCoordinateSpan span = MKCoordinateSpanMake(ENEMY_GENERATION_BOUNDS_X, ENEMY_GENERATION_BOUNDS_Y);
+		MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_Y);
 		MKCoordinateRegion region = MKCoordinateRegionMake(self.locationManager.location.coordinate, span);
 		[self.mapView setRegion:region animated:YES];
 	}
@@ -480,7 +501,7 @@
 	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
 	[self startGeneratingEnemies];
 }
-	
+
 - (void)stopTrek {
 	[self.trek stop];
 	startButton.title = @"Start";
