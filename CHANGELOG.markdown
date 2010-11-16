@@ -1,6 +1,7 @@
 November 15, 2010
 
-* Replaced and removed a pair of #warnings in the RQModelController. They aren't really warnings as much as TODO items. 
+* Adding some code from Joe via email to avoid a complier warning when using something less than iOS 4.2.
+* Replaced and removed a pair of #warnings in the M3CoreDataManager They aren't really warnings as much as TODO items. 
 
 November 11, 2010
 
