@@ -1,3 +1,7 @@
+November 15, 2010
+
+* Replaced and removed a pair of #warnings in the RQModelController. They aren't really warnings as much as TODO items. 
+
 November 11, 2010
 
 * Started to implement the mentor messages in the victory screen. They are defined in a plist for easy editing. They currently aren't very suitable for the failure screen.
