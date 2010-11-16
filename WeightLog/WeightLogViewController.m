@@ -204,7 +204,7 @@
 }
 
 #pragma mark -
-#pragma mark WeightLogEventEditViewControllerDelegate methods
+#pragma mark Core Plot methods
 
 -(NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot; 
 {

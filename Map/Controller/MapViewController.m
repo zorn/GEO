@@ -18,6 +18,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SimpleAudioEngine.h"
 #import "RQModelController.h"
+#import "RQWeightLogEntry.h"
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "RQBattle.h"
@@ -496,10 +497,21 @@
 }
 
 - (void)startTrek {
-	[self.trek startWithLocation:locationManager.location];
-	startButton.title = @"Stop";
-	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
-	[self startGeneratingEnemies];
+	
+	// if the newest weight log entry is less than 72 hours old, ask for a new one.
+	RQWeightLogEntry *entry = [[RQModelController defaultModelController] newestWeightLogEntry];
+	if (entry == nil || [entry.dateTaken compare:[NSDate dateWithTimeIntervalSinceNow:-60*60*72]] == NSOrderedAscending) {
+		WeightLogEventEditViewController *controller = [[WeightLogEventEditViewController alloc] init];
+		[controller setEditMode:NO]; // make a new object when they save
+		[controller setDelegate:self];
+		[self presentModalViewController:controller animated:YES];
+		[controller release];
+	} else {
+		[self.trek startWithLocation:locationManager.location];
+		startButton.title = @"Stop";
+		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
+		[self startGeneratingEnemies];
+	}
 }
 
 - (void)stopTrek {
@@ -534,6 +546,16 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
 	[delegate mapViewControllerDidEnd:self];
+}
+						 
+#pragma mark -
+#pragma mark WeightLogEventEditViewControllerDelegate methods
+						 
+- (void)weightLogEventEditViewControllerDidEnd:(WeightLogEventEditViewController *)controller
+{
+	[self dismissModalViewControllerAnimated:YES];
+	// resume starting the workout
+	[self startTrek];
 }
 
 @end

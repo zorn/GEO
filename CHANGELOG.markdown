@@ -1,3 +1,8 @@
+November 16, 2010
+
+* Implemented the new shield orbs and look. 
+* When a user starts a new workout we now ask for their weight if it has not been logged in the last 72 hours.
+
 November 15, 2010
 
 * Adding some code from Joe via email to avoid a complier warning when using something less than iOS 4.2.

@@ -13,13 +13,14 @@
 #import "Sonar.h"
 #import "SonarView.h"
 #import "RQBattleViewController.h"
+#import "WeightLogEventEditViewController.h"
 
 @class Trek;
 @class AppDelegate_Shared;
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate, WeightLogEventEditViewControllerDelegate> {
 	
 	id <MKOverlay> _pathOverlay;
 	
