@@ -77,14 +77,11 @@
 		self.layer.borderColor = color;		
 	}
 	
-	// only animate when the duration is greater than zero
-	if (duration > 0) {
-		CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"frame.size.width"];
-		anim.fromValue = [NSNumber numberWithFloat:self.percent];
-		anim.toValue = [NSNumber numberWithFloat:aPercent];
-		anim.duration = duration;
-		[self.percentLayer addAnimation:anim forKey:@"frame.size.width"];
-	}
+	CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"frame.size.width"];
+	anim.fromValue = [NSNumber numberWithFloat:self.percent];
+	anim.toValue = [NSNumber numberWithFloat:aPercent];
+	anim.duration = duration;
+	[self.percentLayer addAnimation:anim forKey:@"frame.size.width"];
 	self.percent = aPercent;
 }
 
