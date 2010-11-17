@@ -118,7 +118,8 @@
 
 - (void)dealloc 
 {
-	[locationManager stopUpdatingLocation];
+	NSLog(@"MapViewController -dealloc called...");
+	[self stopUpdatingLocation];
 	locationManager.delegate = nil;
 	[locationManager release];
 	locationManager = nil;
@@ -601,10 +602,12 @@
 
 - (IBAction)finishButtonPressed:(id)sender
 {
+	[self stopUpdatingLocation];
 	[delegate mapViewControllerDidEnd:self];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
+	[self stopUpdatingLocation];
 	[delegate mapViewControllerDidEnd:self];
 }
 

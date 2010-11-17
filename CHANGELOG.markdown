@@ -2,6 +2,11 @@ November 17, 2010
 
 * Implemented a Calorie Burn formula. It is slightly variable to show increase burn if you are walking or running (>5mph) rate. It only shows calories being burned by walking/running that are relevant to the activity. It does include the normal calories you burn even while standing still. This now also updates on the map view as you walk around.
 * FIXED: We no longer stop treks before starting a battle view.
+* FIXED: The MapView has a bug(see below) which can cause it to not be dealloc-ed. I have not fixed this problem, but added some code so that we make sure to turn off the GPS when the user hits cancel or finish in the map view. Previously we only did this in dealloc so there was a situation where the user would be on the main menu with the GPS still on which is very bad for battery life.
+
+https://indyhalllabs.basecamphq.com/projects/5521331/todo_lists/11518403
+
+
 
 November 16, 2010
 
