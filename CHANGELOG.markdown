@@ -4,6 +4,8 @@ November 16, 2010
 * When a user starts a new workout we now ask for their weight if it has not been logged in the last 72 hours.
 * Started implementing my vision for the workflow on mapview. Some labels are still static. Hope to get them working soon.
 * Added a new preference in the dev toolbox that will override the location button in the mapview to launch a demo battle (useful for testing.)
+* FIXED: You can now cancel a weight entry when starting a new workout.
+* FIXED: Made the MapView a little taller to help hide the Google Watermark, which was slightly viewable under the transparent toolbar at the bottom.
 
 November 15, 2010
 

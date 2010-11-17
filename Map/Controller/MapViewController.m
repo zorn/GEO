@@ -526,6 +526,10 @@
 		[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
 		[self movePauseWorkoutToolbarOffScreenShouldAnimate:YES];
 		
+		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
+		self.trek = newTrek;
+		[newTrek release];
+		
 		[self.trek startWithLocation:locationManager.location];
 		startButton.title = @"Pause Workout";
 		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
@@ -550,9 +554,6 @@
 - (IBAction)startStopPressed:(id)sender
 {
 	if ( !self.trek ) {
-		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
-		self.trek = newTrek;
-		[newTrek release];
 		[self startTrek];
 	} else if ( self.trek.isStopped ) {
 		[self startTrek];
@@ -709,8 +710,10 @@
 - (void)weightLogEventEditViewControllerDidEnd:(WeightLogEventEditViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
-	// resume starting the workout
-	[self startTrek];
+	if ([controller wasCanceled] == NO) {
+		// resume starting the workout
+		[self startTrek];
+	}
 }
 
 

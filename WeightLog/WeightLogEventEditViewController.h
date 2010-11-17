@@ -12,6 +12,7 @@
 	NSDecimalNumber *tempWeight;
 	RQWeightLogEntry *weightLogEntry;
 	BOOL editMode; // YES for when we are passed in an exsisting object to edit, NO for when we are to create a new object on save.
+	BOOL wasCanceled;
 	
 	// outlets
 	UIBarButtonItem *saveButton;
@@ -29,6 +30,7 @@
 @property (readwrite, retain) NSDecimalNumber *tempWeight;
 @property (readwrite, retain) RQWeightLogEntry *weightLogEntry;
 @property (readwrite, assign) BOOL editMode;
+@property (readwrite, assign) BOOL wasCanceled;
 
 // outlets
 @property (retain) IBOutlet UIBarButtonItem *saveButton;

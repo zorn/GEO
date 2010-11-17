@@ -14,6 +14,7 @@
 	if (self = [super initWithNibName:@"WeightLogEventEditView" bundle:nil]) {
 		[[self navigationItem] setTitle:@"Edit Weight"];
 		editMode = YES;
+		wasCanceled = NO;
 	}
 	return self;
 }
@@ -42,6 +43,7 @@
 @synthesize tempWeight;
 @synthesize weightLogEntry;
 @synthesize editMode;
+@synthesize wasCanceled;
 
 @synthesize saveButton;
 @synthesize tableView;
@@ -96,6 +98,7 @@
 		[[RQModelController defaultModelController] save];
 	} else {
 		// cancel
+		self.wasCanceled = YES;
 	}
 	[self.delegate weightLogEventEditViewControllerDidEnd:self]; 
 }
