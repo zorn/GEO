@@ -7,6 +7,7 @@ November 16, 2010
 * FIXED: You can now cancel a weight entry when starting a new workout.
 * FIXED: Made the MapView a little taller to help hide the Google Watermark, which was slightly viewable under the transparent toolbar at the bottom.
 * FIXED: I introduced a bug that would create new treks when resuming, this is now fixed.
+* ADDED: Updated the distance label on the map view to update as you walk. Currently shows in miles, might need to add a preference toggle to show meters in the future.
 
 November 15, 2010
 

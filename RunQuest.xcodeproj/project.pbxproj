@@ -135,7 +135,6 @@
 		1A6E334B124E603C0054949B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		1A6E3364124E60CD0054949B /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
 		1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
-		1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B38511252DDA0007F0497 /* StoryViewController.m */; };
 		1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B38531252DDB8007F0497 /* StoryView.xib */; };
@@ -183,6 +182,7 @@
 		1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */; };
 		1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
+		1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
@@ -1404,7 +1404,6 @@
 				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
 				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
-				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
 				1AC3B2CE1250449600416564 /* You lose.m4a in Resources */,
 				D8AF2281124FA792008AB638 /* TrekListView.xib in Resources */,
 				D832041E12511DFA00B2F944 /* TrekView.xib in Resources */,
@@ -1559,6 +1558,7 @@
 				1A95FDA41292DFAA00F1AA3A /* shield_orb_right@2x.png in Resources */,
 				1A95FDD71292E94200F1AA3A /* shield_lightning.png in Resources */,
 				1A95FDD81292E94200F1AA3A /* shield_lightning@2x.png in Resources */,
+				1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

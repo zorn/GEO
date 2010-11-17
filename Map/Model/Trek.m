@@ -47,12 +47,18 @@
 
 - (NSTimeInterval)duration
 {	
-	NSTimeInterval total = 0;
-	for (Segment *s in self.segments) {
-		total = total + s.duration;
-	}
-	return total;
-	//return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
+	return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
+}
+
+- (double)distance
+{	
+	return [[self.segments valueForKeyPath:@"@sum.distance"] doubleValue];
+}
+
+- (double)distanceInMiles
+{
+	// 1 meter = 0.000621371192 miles
+	return [self distance] * 0.000621371192;
 }
 
 - (void)addNewSegmentWithLocation:(CLLocation *)location {

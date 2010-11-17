@@ -66,7 +66,7 @@
 @end
 
 @implementation MapViewController
-@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, locationManager, battleViewController;
+@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, trek, locationManager, battleViewController;
 
 @synthesize newWorkoutNavigationBar;
 @synthesize workoutStatCollectionView;
@@ -95,9 +95,15 @@
 		
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
+		
 		_timerFormatter = [[NSDateFormatter alloc] init];
 		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		[_timerFormatter setDateFormat:@"H:mm:ss"];
+		
+		_distanceFormatter = [[NSNumberFormatter alloc] init];
+		[_distanceFormatter setMinimumFractionDigits:1];
+		[_distanceFormatter setMinimumIntegerDigits:1];
+		
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
@@ -123,12 +129,14 @@
 	[hudView release];
 	[overlayLabel release];
 	[timerLabel release];
+	[distanceLabel release];
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
 	[_enemyViews release];
 	[_timerFormatter release];
+	[_distanceFormatter release];
 	[_timers release];
 	[super dealloc];
 }
@@ -368,7 +376,14 @@
 }
 
 - (void)updateTimerLabel {
-	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];
+	//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+	
+	// update distance label, convert to miles
+	NSString *newDistance = [NSString stringWithFormat:@"%@ mi", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distanceInMiles]]]];
+	//NSLog(@"newDistance %@", newDistance);
+	self.distanceLabel.text = newDistance;
+	
 }
 
 #pragma mark CLLocationManagerDelegate

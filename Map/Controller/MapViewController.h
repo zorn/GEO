@@ -35,6 +35,7 @@
 	NSDate *_lastEnemyUpdate;
 	
 	NSDateFormatter *_timerFormatter;
+	NSNumberFormatter *_distanceFormatter;
 	
 	NSMutableDictionary *_timers;
 	
@@ -49,6 +50,7 @@
 @property (nonatomic, retain) IBOutlet UIView *hudView;
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
 @property (nonatomic, retain) IBOutlet UILabel *timerLabel;
+@property (nonatomic, retain) IBOutlet UILabel *distanceLabel;
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *startButton;
