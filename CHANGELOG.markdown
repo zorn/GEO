@@ -2,6 +2,8 @@ November 16, 2010
 
 * Implemented the new shield orbs and look. 
 * When a user starts a new workout we now ask for their weight if it has not been logged in the last 72 hours.
+* Started implementing my vision for the workflow on mapview. Some labels are still static. Hope to get them working soon.
+* Added a new preference in the dev toolbox that will override the location button in the mapview to launch a demo battle (useful for testing.)
 
 November 15, 2010
 

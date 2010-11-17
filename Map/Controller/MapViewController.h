@@ -52,13 +52,31 @@
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *startButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *locationButton;
+@property (nonatomic, retain) IBOutlet UINavigationBar *newWorkoutNavigationBar;
+@property (nonatomic, retain) IBOutlet UIView *workoutStatCollectionView;
+@property (nonatomic, retain) IBOutlet UIToolbar *startToolbar;
+@property (nonatomic, retain) IBOutlet UIToolbar *pauseToolbar;
 
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;
+- (IBAction)resumeButtonPressed:(id)sender;
+- (IBAction)finishButtonPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
 - (IBAction)centerMapOnLocation:(id)sender;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
+
+#pragma mark -
+#pragma mark Methods to adjust the UI for the current state of the workout
+- (void)moveNewWorkoutNavigationBarOffScreenShouldAnimate:(BOOL)animate;
+- (void)moveNewWorkoutNavigationBarOnScreenShouldAnimate:(BOOL)animate;
+- (void)moveWorkoutStatCollectionViewOffScreenShouldAnimate:(BOOL)animate;
+- (void)moveWorkoutStatCollectionViewOnScreenShouldAnimate:(BOOL)animate;
+- (void)moveStartWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate;
+- (void)moveStartWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate;
+- (void)movePauseWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate;
+- (void)movePauseWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate;
 
 @end
 

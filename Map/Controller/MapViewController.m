@@ -66,7 +66,12 @@
 @end
 
 @implementation MapViewController
-@synthesize delegate, startButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, locationManager, battleViewController;
+@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, locationManager, battleViewController;
+
+@synthesize newWorkoutNavigationBar;
+@synthesize workoutStatCollectionView;
+@synthesize startToolbar;
+@synthesize pauseToolbar;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -92,7 +97,7 @@
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_timerFormatter = [[NSDateFormatter alloc] init];
 		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		[_timerFormatter setDateFormat:@"HH:mm:ss"];
+		[_timerFormatter setDateFormat:@"H:mm:ss"];
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
@@ -105,6 +110,13 @@
 	locationManager.delegate = nil;
 	[locationManager release];
 	locationManager = nil;
+	
+	[startToolbar release];
+	[pauseToolbar release];
+	
+	[locationButton release];
+	[workoutStatCollectionView release];
+	[newWorkoutNavigationBar release];
 	[trek release];
 	[displayLink release];
 	[mapView release];
@@ -132,6 +144,12 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	self.mapView.showsUserLocation = NO;
+	
+	[self moveWorkoutStatCollectionViewOffScreenShouldAnimate:NO];
+	[self moveNewWorkoutNavigationBarOnScreenShouldAnimate:NO];
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:NO];
+	[self movePauseWorkoutToolbarOffScreenShouldAnimate:NO];
+	
 	[self showHUD];
 	[self startUpdatingLocation];
     [super viewDidLoad];
@@ -379,16 +397,6 @@
 	}
 }
 
-#pragma mark Loading Overlay
-
-- (void)showHUD { 
-	hudView.hidden = NO;
-}
-
-- (void)hideHUD {
-	hudView.hidden = YES;
-}
-
 #pragma mark MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -456,11 +464,15 @@
 }
 
 - (IBAction)centerMapOnLocation:(id)sender {
-	if ( self.locationManager.location ) {
-		MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_Y);
-		MKCoordinateRegion region = MKCoordinateRegionMake(self.locationManager.location.coordinate, span);
-		[self.mapView setRegion:region animated:YES];
-	}
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQMapBattleDemoOverride"] boolValue] == YES) {
+		[self launchBattlePressed:self];
+	} else {
+		if ( self.locationManager.location ) {
+			MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_Y);
+			MKCoordinateRegion region = MKCoordinateRegionMake(self.locationManager.location.coordinate, span);
+			[self.mapView setRegion:region animated:YES];
+		}
+	}	
 }
 
 
@@ -507,8 +519,15 @@
 		[self presentModalViewController:controller animated:YES];
 		[controller release];
 	} else {
+		
+		[self moveWorkoutStatCollectionViewOnScreenShouldAnimate:YES];
+		[self moveNewWorkoutNavigationBarOffScreenShouldAnimate:YES];
+		
+		[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
+		[self movePauseWorkoutToolbarOffScreenShouldAnimate:YES];
+		
 		[self.trek startWithLocation:locationManager.location];
-		startButton.title = @"Stop";
+		startButton.title = @"Pause Workout";
 		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
 		[self startGeneratingEnemies];
 	}
@@ -516,38 +535,174 @@
 
 - (void)stopTrek {
 	[self.trek stop];
-	startButton.title = @"Start";
+	//startButton.title = @"Start Workout";
 	[self removeTimerNamed:@"Tick"];
 	NSError *error = nil;
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
 		NSLog(@"%@", error);
 	[self stopGeneratingEnemies];
+	
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
+	[self movePauseWorkoutToolbarOnScreenShouldAnimate:YES];
 }
 
-- (IBAction)startStopPressed:(id)sender { 
-	UIButton *button = nil;
-	if ( [sender isKindOfClass:[UIButton class]] )
-		button = sender;
-	
+- (IBAction)startStopPressed:(id)sender
+{
 	if ( !self.trek ) {
 		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
 		self.trek = newTrek;
 		[newTrek release];
 		[self startTrek];
-	}	
-	else if ( self.trek.isStopped ) {
+	} else if ( self.trek.isStopped ) {
 		[self startTrek];
-	}
-	else {
+	} else {
 		[self stopTrek];
 	}
+}
+
+- (IBAction)resumeButtonPressed:(id)sender
+{
+	[self startTrek];
+}
+
+- (IBAction)finishButtonPressed:(id)sender
+{
+	[delegate mapViewControllerDidEnd:self];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
 	[delegate mapViewControllerDidEnd:self];
 }
-						 
+
+#pragma mark -
+#pragma mark Methods to adjust the UI for the current state of the workout
+
+- (void)moveNewWorkoutNavigationBarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.newWorkoutNavigationBar.frame;
+	newFrame.origin.y = 0 - self.newWorkoutNavigationBar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"NewWorkoutNavigationBarViewOuttro" context:NULL];
+		self.newWorkoutNavigationBar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.newWorkoutNavigationBar.frame = newFrame;
+	}
+}
+
+- (void)moveNewWorkoutNavigationBarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.newWorkoutNavigationBar.frame;
+	newFrame.origin.y = 0 + 20;
+	
+	if (animate) {
+		[UIView beginAnimations:@"NewWorkoutNavigationBarViewIntro" context:NULL];
+		self.newWorkoutNavigationBar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.newWorkoutNavigationBar.frame = newFrame;
+	}
+}
+
+- (void)moveWorkoutStatCollectionViewOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.workoutStatCollectionView.frame;
+	newFrame.origin.y = 0 - self.workoutStatCollectionView.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"WorkoutStatCollectionViewOuttro" context:NULL];
+		self.workoutStatCollectionView.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.workoutStatCollectionView.frame = newFrame;
+	}
+	
+}
+
+- (void)moveWorkoutStatCollectionViewOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.workoutStatCollectionView.frame;
+	newFrame.origin.y = 0 + 20;
+	
+	if (animate) {
+		[UIView beginAnimations:@"WorkoutStatCollectionViewIntro" context:NULL];
+		self.workoutStatCollectionView.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.workoutStatCollectionView.frame = newFrame;
+	}
+}
+
+- (void)moveStartWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.startToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height + self.startToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"StartWorkoutToolbarOuttro" context:NULL];
+		self.startToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.startToolbar.frame = newFrame;
+	}
+	
+}
+
+- (void)moveStartWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.startToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height - self.startToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"StartWorkoutToolbarIntro" context:NULL];
+		self.startToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.startToolbar.frame = newFrame;
+	}
+}
+
+- (void)movePauseWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.pauseToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height + self.pauseToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"PauseWorkoutToolbarOuttro" context:NULL];
+		self.pauseToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.pauseToolbar.frame = newFrame;
+	}
+	
+}
+
+- (void)movePauseWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.pauseToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height - self.pauseToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"PauseWorkoutToolbarIntro" context:NULL];
+		self.pauseToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.pauseToolbar.frame = newFrame;
+	}
+}
+
+- (void)showHUD { 
+	hudView.hidden = NO;
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
+}
+
+- (void)hideHUD {
+	hudView.hidden = YES;
+	[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
+}
+
 #pragma mark -
 #pragma mark WeightLogEventEditViewControllerDelegate methods
 						 
@@ -557,5 +712,7 @@
 	// resume starting the workout
 	[self startTrek];
 }
+
+
 
 @end

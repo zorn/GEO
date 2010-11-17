@@ -13,14 +13,20 @@
 
 @interface DeveloperToolboxViewController : UIViewController <StoryViewControllerDelegate>
 {
-
+	UISwitch *mapBattleDemoOverride;
 }
 
 @property (readwrite, assign) id <DeveloperToolboxViewControllerDelegate> delegate;
 
+@property (retain) IBOutlet UISwitch *mapBattleDemoOverride;
+
+
 - (IBAction)loadCorePlotDemoOne:(id)sender;
 - (IBAction)watchStory:(id)sender;
 - (IBAction)editHero:(id)sender;
+
+- (IBAction)mapBattleDemoModeValueChanged:(id)sender;
+
 
 @end
 

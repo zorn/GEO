@@ -95,6 +95,7 @@
     [regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeMusic"];
 	[regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeEffects"];
 	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQSoundMuteIPod"];
+	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQMapBattleDemoOverride"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:regDictionary];
 }
 
