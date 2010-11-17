@@ -6,6 +6,7 @@ November 16, 2010
 * Added a new preference in the dev toolbox that will override the location button in the mapview to launch a demo battle (useful for testing.)
 * FIXED: You can now cancel a weight entry when starting a new workout.
 * FIXED: Made the MapView a little taller to help hide the Google Watermark, which was slightly viewable under the transparent toolbar at the bottom.
+* FIXED: I introduced a bug that would create new treks when resuming, this is now fixed.
 
 November 15, 2010
 

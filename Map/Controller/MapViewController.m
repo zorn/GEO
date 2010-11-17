@@ -526,9 +526,11 @@
 		[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
 		[self movePauseWorkoutToolbarOffScreenShouldAnimate:YES];
 		
-		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
-		self.trek = newTrek;
-		[newTrek release];
+		if (!self.trek) {
+			Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
+			self.trek = newTrek;
+			[newTrek release];
+		}
 		
 		[self.trek startWithLocation:locationManager.location];
 		startButton.title = @"Pause Workout";
@@ -560,6 +562,7 @@
 	} else {
 		[self stopTrek];
 	}
+	NSLog(@"self.trek %@", self.trek);
 }
 
 - (IBAction)resumeButtonPressed:(id)sender

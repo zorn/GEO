@@ -45,8 +45,14 @@
 	return self.newestSegment.isStopped;
 }
 
-- (NSTimeInterval)duration {
-	return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
+- (NSTimeInterval)duration
+{	
+	NSTimeInterval total = 0;
+	for (Segment *s in self.segments) {
+		total = total + s.duration;
+	}
+	return total;
+	//return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
 }
 
 - (void)addNewSegmentWithLocation:(CLLocation *)location {
