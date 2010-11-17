@@ -27,5 +27,6 @@
 - (id)initWithLocation:(CLLocation *)location inManagedObjectContext:(NSManagedObjectContext *)moc;
 - (void)addLocation:(CLLocation *)location;
 - (void)stop;
+- (double)distanceInMiles;
 
 @end

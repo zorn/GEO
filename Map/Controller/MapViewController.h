@@ -36,7 +36,8 @@
 	
 	NSDateFormatter *_timerFormatter;
 	NSNumberFormatter *_distanceFormatter;
-	
+	NSNumberFormatter *_calorieFormatter;
+
 	NSMutableDictionary *_timers;
 	
 	BOOL firstZoomDidOccur;
@@ -51,6 +52,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
 @property (nonatomic, retain) IBOutlet UILabel *timerLabel;
 @property (nonatomic, retain) IBOutlet UILabel *distanceLabel;
+@property (nonatomic, retain) IBOutlet UILabel *calorieBurnLabel;
 @property (nonatomic, retain) Trek *trek;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *startButton;

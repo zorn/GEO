@@ -66,7 +66,7 @@
 @end
 
 @implementation MapViewController
-@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, trek, locationManager, battleViewController;
+@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
 
 @synthesize newWorkoutNavigationBar;
 @synthesize workoutStatCollectionView;
@@ -104,6 +104,10 @@
 		[_distanceFormatter setMinimumFractionDigits:1];
 		[_distanceFormatter setMinimumIntegerDigits:1];
 		
+		_calorieFormatter = [[NSNumberFormatter alloc] init];
+		[_calorieFormatter setMinimumFractionDigits:0];
+		[_calorieFormatter setMinimumIntegerDigits:1];
+		
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
@@ -112,7 +116,9 @@
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
+	[locationManager stopUpdatingLocation];
 	locationManager.delegate = nil;
 	[locationManager release];
 	locationManager = nil;
@@ -130,6 +136,7 @@
 	[overlayLabel release];
 	[timerLabel release];
 	[distanceLabel release];
+	[calorieBurnLabel release];
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
@@ -137,6 +144,7 @@
 	[_enemyViews release];
 	[_timerFormatter release];
 	[_distanceFormatter release];
+	[_calorieFormatter release];
 	[_timers release];
 	[super dealloc];
 }
@@ -384,6 +392,9 @@
 	//NSLog(@"newDistance %@", newDistance);
 	self.distanceLabel.text = newDistance;
 	
+	NSString *newCalBurn = [NSString stringWithFormat:@"%@ cal", [_calorieFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek caloriesBurned]]]];
+	self.calorieBurnLabel.text = newCalBurn;
+	
 }
 
 #pragma mark CLLocationManagerDelegate
@@ -456,8 +467,11 @@
 #pragma mark Action
 
 - (IBAction)launchBattlePressed:(id)sender {
-	[self.trek stop];
-    self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
+	
+	// Commenting this out. I don't belive we should stop tracking the user while they fight.
+	// [self.trek stop];
+    
+	self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
 	RQHero *hero = [[RQModelController defaultModelController] hero];
 	self.battleViewController.battle.hero = hero;

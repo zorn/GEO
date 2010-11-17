@@ -61,6 +61,11 @@
 	return [self distance] * 0.000621371192;
 }
 
+- (double)caloriesBurned
+{	
+	return [[self.segments valueForKeyPath:@"@sum.caloriesBurned"] doubleValue];
+}
+
 - (void)addNewSegmentWithLocation:(CLLocation *)location {
 	Segment *segment = [[Segment alloc] initWithLocation:location inManagedObjectContext:[self managedObjectContext]];
 	[self addSegmentsObject:segment];
