@@ -184,8 +184,21 @@
 		[self.view addSubview:rightShield];
 		[rightShield setFrame:newRightFrame];
 		
-		UIImage *shieldLightningImage = [UIImage imageNamed:@"shield_lightning.png"];
-		shieldLightning = [[UIImageView alloc] initWithImage:shieldLightningImage];
+		UIImage *firstLightningImage = [UIImage imageNamed:@"shield_lightning1.png"];
+		NSArray *shieldImages = [[NSArray alloc] initWithObjects:firstLightningImage, 
+								 [UIImage imageNamed:@"shield_lightning2.png"], 
+								 [UIImage imageNamed:@"shield_lightning3.png"], 
+								 [UIImage imageNamed:@"shield_lightning4.png"], 
+								 nil];
+		shieldLightning = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 
+																		0.0, 
+																		firstLightningImage.size.width, 
+																		firstLightningImage.size.height)];
+		shieldLightning.animationImages = shieldImages;
+		shieldLightning.animationDuration = 0.25;
+		shieldLightning.animationRepeatCount = 0;
+		[shieldLightning startAnimating];
+		
 		CGRect newShieldLightningFrame = shieldLightning.frame;
 		newShieldLightningFrame.origin.x = newLeftFrame.size.width - 12 - 15;
 		newShieldLightningFrame.origin.y = self.view.frame.size.height - 160 - newLeftFrame.size.height/2 + 10;
