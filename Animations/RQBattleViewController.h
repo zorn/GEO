@@ -39,8 +39,6 @@
 	
 	RQWeaponSprite *activeWeapon;
 	RQBarView *heroHealthBar;
-	UILabel *heroHeathLabel;
-	UILabel *heroGlovePowerLabel;
 	RQBarView *heroGlovePowerBar;
 	RQPassthroughView *frontFlashView;
 	
