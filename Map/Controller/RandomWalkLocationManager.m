@@ -61,7 +61,7 @@
 		}
 		else {
 			double deltaDirection = DIRECTION_VARIANCE*rand()/RAND_MAX - DIRECTION_VARIANCE/2.0f;
-			if ( deltaDirection + _direction < 359.9 && deltaDirection + _direction > 0.0f ) {
+			if ( deltaDirection + _direction < M_PI*2 && deltaDirection + _direction > 0.0f ) {
 				_direction = _direction + deltaDirection;
 			}
 			else {
@@ -69,12 +69,18 @@
 			}
 		}
 		
-		CLLocationDistance deltaY = STEP_SIZE*sin(_direction)/METERS_PER_DEGREE;
-		CLLocationDistance deltaX = STEP_SIZE*cos(_direction)/METERS_PER_DEGREE;
+
+		CLLocationDistance deltaY = STEP_SIZE*cos(_direction)/METERS_PER_DEGREE;
+		CLLocationDistance deltaX = STEP_SIZE*sin(_direction)/METERS_PER_DEGREE;
+		CLLocationCoordinate2D newCoordinate = CLLocationCoordinate2DMake(self.randomWalkLocation.coordinate.latitude + deltaY, self.randomWalkLocation.coordinate.longitude + deltaX);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_2
+		CLLocation *newLocation = [[CLLocation alloc] initWithCoordinate:newCoordinate
+																altitude:0
+													  horizontalAccuracy:1 
+														verticalAccuracy:1  
+															   timestamp:[NSDate date]];
 		
-		CLLocationCoordinate2D newCoordinate = CLLocationCoordinate2DMake(self.randomWalkLocation.coordinate.latitude + deltaX, self.randomWalkLocation.coordinate.longitude + deltaY);
-		
-#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_4_1
+#else
 		CLLocation *newLocation = [[CLLocation alloc] initWithCoordinate:newCoordinate 
 																altitude:0
 													  horizontalAccuracy:1 
@@ -82,12 +88,7 @@
 																  course:_direction*DEGREES_PER_RADIAN
 																   speed:RANDOM_WALK_UPDATE_SPEED
 															   timestamp:[NSDate date]];
-#else
-		CLLocation *newLocation = [[CLLocation alloc] initWithCoordinate:newCoordinate
-																altitude:0
-													  horizontalAccuracy:1 
-														verticalAccuracy:1  
-															   timestamp:[NSDate date]];
+		
 #endif
 		CLLocation *oldLocation = [self.randomWalkLocation copy];
 

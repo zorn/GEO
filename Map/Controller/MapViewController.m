@@ -22,6 +22,10 @@
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "RQBattle.h"
+#import "Treasure.h"
+#import "TreasureAnnotationView.h"
+#import "CLLocation+RQAdditions.h"
+
 #ifdef TESTING
 #import "RandomWalkLocationManager.h"
 #endif
@@ -45,10 +49,13 @@
 #define SLOWEST_ENEMY_SPEED 10.0f
 #define ENEMIES_TO_GENERATE 75
 
-#define ENEMY_GENERATION_RADIUS 10
+#define MAX_TREASURES 2
+
+#define ENEMY_GENERATION_RADIUS 500
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
+#define TREASURE_SPAWN_EVERY 60 //seconds
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
@@ -61,8 +68,8 @@
 - (void)hideHUD;
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy;
-- (void)startGeneratingEnemies;
-- (void)stopGeneratingEnemies;
+- (void)startGameMechanics;
+- (void)pauseGameMechanics;
 @end
 
 @implementation MapViewController
@@ -92,8 +99,9 @@
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		self.locationManager.distanceFilter = CORE_LOCATION_DISTANCE_FILTER; //Distance in meters
 		self.locationManager.delegate = self;
-		
+		_treasureViews = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
+		_treasures = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		
 		_timerFormatter = [[NSDateFormatter alloc] init];
@@ -116,8 +124,9 @@
     return self;
 }
 
-- (void)dealloc 
-{
+- (void)dealloc {
+	[_treasures release];
+	[_treasureViews release];
 	NSLog(@"MapViewController -dealloc called...");
 	[self stopUpdatingLocation];
 	locationManager.delegate = nil;
@@ -203,7 +212,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0:
-			[self startGeneratingEnemies];
+			[self startGameMechanics];
 			break;
 		case 1:
 			[self launchBattlePressed:self];
@@ -214,7 +223,7 @@
 }
 
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy {
-	[self stopGeneratingEnemies];
+	[self pauseGameMechanics];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
 														message:NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy") 
 													   delegate:self 
@@ -323,6 +332,35 @@
 	}
 }
 
+- (void)removeTreasureView:(TreasureAnnotationView *)treasureView {
+	@synchronized (_treasureViews ) {
+		if ( treasureView )
+			[_treasureViews	removeObject:treasureView];
+	}
+}
+
+- (void)addTreasureView:(TreasureAnnotationView *)treasureView {
+	@synchronized (_treasureViews ) {
+		if ( treasureView )
+			[_treasureViews	addObject:treasureView];
+	}
+}
+
+- (void)removeTreasure:(Treasure *)treasure {
+	@synchronized (_treasures) {
+		[self.mapView removeAnnotation:treasure];
+		[_treasures removeObject:treasure];
+	}
+}
+
+- (void)addTreasure:(Treasure *)treasure {
+	@synchronized (_treasures ) {
+		[self.mapView addAnnotation:treasure];
+		[_treasures addObject:treasure];
+	}
+	
+}
+
 - (void)addEnemyView:(EnemyAnnotationView *)enemyView {
 	@synchronized (_enemyViews ) {
 		if ( enemyView )
@@ -345,11 +383,11 @@
 - (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	CLLocationDirection course = location.course;
-	
+	course = course*RADIANS_PER_DEGREE;
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
-	CLLocationDistance deltaY = ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
@@ -365,6 +403,23 @@
 	[self generateEnemyForHeroAtLocation:locationManager.location];
 }
 
+- (void)spawnTreasure {
+	CLLocation *location = locationManager.location;
+	CLLocationCoordinate2D coordinate = location.coordinate;
+	CLLocationDirection course = location.course;
+	course = course*RADIANS_PER_DEGREE;
+	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
+	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
+	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
+	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
+	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
+	
+	Treasure *treasure = [[Treasure alloc] init];
+	treasure.coordinate = enemyCoordinate;
+	[self.mapView addAnnotation:treasure];
+	[treasure release];
+}
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
@@ -428,8 +483,12 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	if ( [annotation isKindOfClass:[EnemyMapSpawn class]] ) {
-		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
+		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"enemy"];
 		[self addEnemyView:view];
+		return [view autorelease];
+	} else if ( [annotation isKindOfClass:[Treasure class]] ) {
+		TreasureAnnotationView *view = [[TreasureAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"tresure"];
+		[self addTreasureView:view];
 		return [view autorelease];
 	}
 	else
@@ -443,6 +502,7 @@
 			_sonarView = [[SonarView alloc] initWithOverlay:_sonar];
 		overlayView = _sonarView;
 	}
+
 	
 	return overlayView;
 }
@@ -459,7 +519,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 	[self setBattleViewController:nil];
 	if ( self.trek )
-		[self startGeneratingEnemies];
+		[self startGameMechanics];
 	[[[RQModelController defaultModelController] coreDataManager] save];
 }
 
@@ -513,8 +573,11 @@
 }
 
 - (void)addTimerNamed:(NSString *)name withInterval:(NSTimeInterval)interval selector:(SEL)selector fireDate:(NSDate *)fireDate {
+	[self removeTimerNamed:name];
+	
 	NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:selector	userInfo:nil repeats:YES];
 	[_timers setObject:timer forKey:name];
+	
 	if ( fireDate )
 		[timer setFireDate:fireDate];
 	else
@@ -523,14 +586,14 @@
 
 
 
-- (void)startGeneratingEnemies {
-	//[self addTimerNamed:@"EnemySpawn" withInterval:ENEMY_SPAWN_EVERY selector:@selector(spawnEnemy) fireDate:[NSDate dateWithTimeIntervalSinceNow:ENEMY_SPAWN_EVERY]];
+- (void)startGameMechanics {
+	[self addTimerNamed:@"TreasureSpawn" withInterval:TREASURE_SPAWN_EVERY selector:@selector(spawnTreasure) fireDate:[NSDate dateWithTimeIntervalSinceNow:TREASURE_SPAWN_EVERY]];
 	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
 }
 
-- (void)stopGeneratingEnemies {
-	//[self removeTimerNamed:@"EnemySpawn"];
+- (void)pauseGameMechanics {
 	[self removeTimerNamed:@"EnemyPulse"];
+	[self removeTimerNamed:@"TreasureSpawn"];
 	for ( EnemyAnnotationView *enemyView in _enemyViews ) {
 		EnemyMapSpawn *spawn = enemyView.annotation;
 		spawn.speed = 0;
@@ -565,7 +628,7 @@
 		[self.trek startWithLocation:locationManager.location];
 		startButton.title = @"Pause Workout";
 		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
-		[self startGeneratingEnemies];
+		[self startGameMechanics];
 	}
 }
 
@@ -577,7 +640,7 @@
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
 		NSLog(@"%@", error);
-	[self stopGeneratingEnemies];
+	[self pauseGameMechanics];
 	
 	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
 	[self movePauseWorkoutToolbarOnScreenShouldAnimate:YES];

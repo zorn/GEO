@@ -6,8 +6,6 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#define DEGREES_PER_RADIAN 57.2957795f
-
 #import "CLLocation+RQAdditions.h"
 
 double AngleBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate) {

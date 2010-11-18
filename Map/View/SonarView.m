@@ -9,7 +9,6 @@
 #import "SonarView.h"
 #import "Sonar.h"
 #import <QuartzCore/QuartzCore.h>
-#import "SonarLayer.h"
 
 @implementation SonarView
 

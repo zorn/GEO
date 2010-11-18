@@ -275,8 +275,6 @@
 		D8C86C701245103C007E44AF /* CrumbPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6B1245103C007E44AF /* CrumbPathView.m */; };
 		D8C86C711245103C007E44AF /* EnemyAnnotationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */; };
 		D8C86C721245103C007E44AF /* EnemyAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */; };
-		D8C86C791245104A007E44AF /* SonarAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C741245104A007E44AF /* SonarAnnotationView.m */; };
-		D8C86C7A1245104A007E44AF /* SonarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C761245104A007E44AF /* SonarLayer.m */; };
 		D8C86C7B1245104A007E44AF /* SonarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C781245104A007E44AF /* SonarView.m */; };
 		D8C86C8212451082007E44AF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C8012451082007E44AF /* MapViewController.m */; };
 		D8C86C8312451082007E44AF /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C86C8112451082007E44AF /* MapViewController.xib */; };
@@ -287,6 +285,8 @@
 		D8C86C92124510A4007E44AF /* EnemyMapSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C91124510A4007E44AF /* EnemyMapSpawn.m */; };
 		D8C86C95124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */; };
 		D8CDDC9A123CFDFF005C9784 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */; };
+		D8E3023D1291F85700824EC4 /* TreasureAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E3023C1291F85700824EC4 /* TreasureAnnotationView.m */; };
+		D8E302401292143000824EC4 /* Treasure.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E3023F1292143000824EC4 /* Treasure.m */; };
 		D8E5FDEF128B565400B6373E /* RandomWalkLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */; };
 		D8E5FEBE128C8DF500B6373E /* CLLocation+RQAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */; };
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
@@ -620,10 +620,6 @@
 		D8C86C6D1245103C007E44AF /* EnemyAnnotationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationLayer.m; sourceTree = "<group>"; };
 		D8C86C6E1245103C007E44AF /* EnemyAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAnnotationView.h; sourceTree = "<group>"; };
 		D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAnnotationView.m; sourceTree = "<group>"; };
-		D8C86C731245104A007E44AF /* SonarAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarAnnotationView.h; sourceTree = "<group>"; };
-		D8C86C741245104A007E44AF /* SonarAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarAnnotationView.m; sourceTree = "<group>"; };
-		D8C86C751245104A007E44AF /* SonarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarLayer.h; sourceTree = "<group>"; };
-		D8C86C761245104A007E44AF /* SonarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarLayer.m; sourceTree = "<group>"; };
 		D8C86C771245104A007E44AF /* SonarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonarView.h; sourceTree = "<group>"; };
 		D8C86C781245104A007E44AF /* SonarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonarView.m; sourceTree = "<group>"; };
 		D8C86C7F12451082007E44AF /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -642,6 +638,10 @@
 		D8C86C93124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
 		D8C86C94124510C4007E44AF /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		D8CDDC99123CFDFF005C9784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D8E3023B1291F85700824EC4 /* TreasureAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureAnnotationView.h; sourceTree = "<group>"; };
+		D8E3023C1291F85700824EC4 /* TreasureAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureAnnotationView.m; sourceTree = "<group>"; };
+		D8E3023E1292143000824EC4 /* Treasure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Treasure.h; sourceTree = "<group>"; };
+		D8E3023F1292143000824EC4 /* Treasure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Treasure.m; sourceTree = "<group>"; };
 		D8E5FDED128B565400B6373E /* RandomWalkLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomWalkLocationManager.h; sourceTree = "<group>"; };
 		D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomWalkLocationManager.m; sourceTree = "<group>"; };
 		D8E5FEBC128C8DF500B6373E /* CLLocation+RQAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+RQAdditions.h"; sourceTree = "<group>"; };
@@ -1126,6 +1126,8 @@
 				D8C86C8B12451095007E44AF /* Segment.m */,
 				D82F2382125406C3003F66BA /* Trek.h */,
 				D82F2383125406C3003F66BA /* Trek.m */,
+				D8E3023E1292143000824EC4 /* Treasure.h */,
+				D8E3023F1292143000824EC4 /* Treasure.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1257,10 +1259,6 @@
 		D8C86C6312450F44007E44AF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D8C86C731245104A007E44AF /* SonarAnnotationView.h */,
-				D8C86C741245104A007E44AF /* SonarAnnotationView.m */,
-				D8C86C751245104A007E44AF /* SonarLayer.h */,
-				D8C86C761245104A007E44AF /* SonarLayer.m */,
 				D8C86C771245104A007E44AF /* SonarView.h */,
 				D8C86C781245104A007E44AF /* SonarView.m */,
 				D8C86C6A1245103C007E44AF /* CrumbPathView.h */,
@@ -1271,6 +1269,8 @@
 				D8C86C6F1245103C007E44AF /* EnemyAnnotationView.m */,
 				D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */,
 				D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */,
+				D8E3023B1291F85700824EC4 /* TreasureAnnotationView.h */,
+				D8E3023C1291F85700824EC4 /* TreasureAnnotationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1637,8 +1637,6 @@
 				D8C86C701245103C007E44AF /* CrumbPathView.m in Sources */,
 				D8C86C711245103C007E44AF /* EnemyAnnotationLayer.m in Sources */,
 				D8C86C721245103C007E44AF /* EnemyAnnotationView.m in Sources */,
-				D8C86C791245104A007E44AF /* SonarAnnotationView.m in Sources */,
-				D8C86C7A1245104A007E44AF /* SonarLayer.m in Sources */,
 				D8C86C7B1245104A007E44AF /* SonarView.m in Sources */,
 				D8C86C8212451082007E44AF /* MapViewController.m in Sources */,
 				D8C86C8C12451095007E44AF /* CrumbPath.m in Sources */,
@@ -1689,6 +1687,8 @@
 				D8E5FEBE128C8DF500B6373E /* CLLocation+RQAdditions.m in Sources */,
 				1A65B1F21288607C0028BBBC /* RQMonsterTemplate.m in Sources */,
 				1AA3E265128C51A0001F99A1 /* RQMentorMessageTemplate.m in Sources */,
+				D8E3023D1291F85700824EC4 /* TreasureAnnotationView.m in Sources */,
+				D8E302401292143000824EC4 /* Treasure.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1809,7 +1809,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1825,7 +1825,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1842,7 +1842,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Debug-Testing";
