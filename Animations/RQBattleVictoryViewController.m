@@ -74,6 +74,7 @@
 	NSLog(@"RQBattleVictoryViewController -viewDidLoad");
 	
 	xpBarView.barColor = [UIColor whiteColor];
+	xpBarView.outlineColor = [UIColor colorWithWhite:0.6 alpha:1.0];
 	self.heroXPReceivedLabel.alpha = 0.0f;
 	self.heroXPReceivedLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
 	self.moreInfoContainerView.layer.cornerRadius = 6.0;
@@ -156,6 +157,7 @@
 			anim.duration = 0.5;
 			anim.autoreverses = YES;
 			[self.heroLevelLabel.layer addAnimation:anim forKey:@"transform"];
+			[self.xpBarView setPercent:0.0 duration:0.0];
 		}
 	}
 	[self updateStats];
