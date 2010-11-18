@@ -228,7 +228,7 @@
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
-		<string>ved</string>
+		<string>Ved</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
@@ -238,7 +238,7 @@
 		<key>type</key>
 		<string>air</string>
 		<key>image_file</key>
-		<string>ved2</string>
+		<string>Ved2</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>

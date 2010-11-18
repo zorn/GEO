@@ -12,9 +12,10 @@
 
 @interface RQBarView : UIView {
 	float percent;
+	BOOL vertical;
 }
-@property (nonatomic, assign) float percent;
 @property (nonatomic, retain) UIColor *barColor;
+@property (nonatomic, retain) UIColor *outlineColor;
 - (id)initWithFrame:(CGRect)frame;
 - (void)setPercent:(float)aPercent duration:(CFTimeInterval)duration;
 @end

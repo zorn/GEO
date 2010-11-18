@@ -19,6 +19,7 @@
 @class AVCaptureSession;
 @class AVCaptureVideoPreviewLayer;
 @class ShieldDrawLineView;
+@class RQBarView;
 
 #define RQBattleViewFlickThreshold 280.0
 #define RQMaxSecondsOfShields 10.0
@@ -37,8 +38,8 @@
 	BOOL didPauseIPod;
 	
 	RQWeaponSprite *activeWeapon;
-	UILabel *heroHeathLabel;
-	UILabel *heroGlovePowerLabel;
+	RQBarView *heroHealthBar;
+	RQBarView *heroGlovePowerBar;
 	RQPassthroughView *frontFlashView;
 	
 	UIImageView *leftShield;

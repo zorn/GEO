@@ -25,6 +25,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "AppDelegate_iPhone.h"
 #import "RQEnemyWeaponView.h"
+#import "RQBarView.h"
 
 // view
 #import "ShieldDrawLineView.h"
@@ -58,7 +59,7 @@
 	[rightShield release], rightShield = nil;
 	[leftShield release], leftShield = nil;
 	[frontFlashView release], frontFlashView = nil;
-	[heroHeathLabel release]; heroHeathLabel = nil;
+	[heroGlovePowerBar release];
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
 	[battle release]; battle = nil;
@@ -95,33 +96,15 @@
 	newFrame.origin.x = (self.view.frame.size.width - weaponShelfImageView.frame.size.width)/2;
 	weaponShelfImageView.frame = newFrame;
 	
-	// Setup the textual hp meter
-	NSString *typicalHPReading = @"9999/9999";
-	UIFont *heroHeathLabelFont = [UIFont boldSystemFontOfSize:22];
-	CGSize heroHeathLabelSize = [typicalHPReading sizeWithFont:heroHeathLabelFont];
-	heroHeathLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height - 110, self.view.frame.size.width/2, heroHeathLabelSize.height)];
-	[self.view addSubview:heroHeathLabel];
-	heroHeathLabel.font = heroHeathLabelFont;
-	heroHeathLabel.textAlignment = UITextAlignmentRight;
-	heroHeathLabel.backgroundColor = [UIColor clearColor];
-	heroHeathLabel.textColor = [UIColor redColor];
-	heroHeathLabel.shadowColor= [UIColor blackColor];
-	heroHeathLabel.shadowOffset = CGSizeMake(1.0, 1.0);
-	heroHeathLabel.text = typicalHPReading;
+	// Setup hp meter
+	heroGlovePowerBar = [[RQBarView alloc] initWithFrame:CGRectMake(5.0, 25.0, 10.0, 245.0)];
+	heroGlovePowerBar.barColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
+	[self.view addSubview:heroGlovePowerBar];
 	
-	// Setup the textual glove power meter
-	NSString *typicalGlovePowerReading = @"100/100";
-	UIFont *heroGlovePowerLabelFont = [UIFont boldSystemFontOfSize:22];
-	CGSize heroGlovePowerLabelSize = [typicalGlovePowerReading sizeWithFont:heroGlovePowerLabelFont];
-	heroGlovePowerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 110, self.view.frame.size.width/2, heroGlovePowerLabelSize.height)];
-	[self.view addSubview:heroGlovePowerLabel];
-	heroGlovePowerLabel.font = heroGlovePowerLabelFont;
-	heroGlovePowerLabel.textAlignment = UITextAlignmentLeft;
-	heroGlovePowerLabel.backgroundColor = [UIColor clearColor];
-	heroGlovePowerLabel.textColor = [UIColor blueColor];
-	heroGlovePowerLabel.shadowColor= [UIColor blackColor];
-	heroGlovePowerLabel.shadowOffset = CGSizeMake(1.0, 1.0);
-	heroGlovePowerLabel.text = typicalGlovePowerReading;
+	// Setup glove power meter
+	heroHealthBar = [[RQBarView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 15.0, 25.0, 10.0, 245.0)];
+	heroHealthBar.barColor = [UIColor colorWithRed:0.080 green:0.583 blue:1.0 alpha:0.7];
+	[self.view addSubview:heroHealthBar];
 	
 	// Setup the flick threshold visual
 	//UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
@@ -380,8 +363,8 @@
 	}
 	
 	// Update the hero health meter
-	heroHeathLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.currentHP, self.battle.hero.maxHP];
-	heroGlovePowerLabel.text = [NSString stringWithFormat:@"%d/%d", self.battle.hero.glovePower, 100];
+	[heroHealthBar setPercent:((float)self.battle.hero.currentHP / (float)self.battle.hero.maxHP) duration:0.3];
+	[heroGlovePowerBar setPercent:((float)self.battle.hero.glovePower / 100.0) duration:0.1];
 	
 	// Update the weapons to help visualize the hero stamina
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
