@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+#define DEGREES_PER_RADIAN 57.2957795f
+#define RADIANS_PER_DEGREE 0.0174532925f
+
 double AngleBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate);
 
 @interface CLLocation (RQAdditions)

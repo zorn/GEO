@@ -21,6 +21,10 @@
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "RQBattle.h"
+#import "Treasure.h"
+#import "TreasureAnnotationView.h"
+#import "CLLocation+RQAdditions.h"
+
 #ifdef TESTING
 #import "RandomWalkLocationManager.h"
 #endif
@@ -44,10 +48,13 @@
 #define SLOWEST_ENEMY_SPEED 10.0f
 #define ENEMIES_TO_GENERATE 75
 
-#define ENEMY_GENERATION_RADIUS 10
+#define MAX_TREASURES 2
+
+#define ENEMY_GENERATION_RADIUS 500
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
+#define TREASURE_SPAWN_EVERY 1 //seconds
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
@@ -86,8 +93,9 @@
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		self.locationManager.distanceFilter = CORE_LOCATION_DISTANCE_FILTER; //Distance in meters
 		self.locationManager.delegate = self;
-		
+		_treasureViews = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
+		_treasures = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_timerFormatter = [[NSDateFormatter alloc] init];
 		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -101,6 +109,8 @@
 }
 
 - (void)dealloc {
+	[_treasures release];
+	[_treasureViews release];
 	locationManager.delegate = nil;
 	[locationManager release];
 	locationManager = nil;
@@ -287,6 +297,35 @@
 	}
 }
 
+- (void)removeTreasureView:(TreasureAnnotationView *)treasureView {
+	@synchronized (_treasureViews ) {
+		if ( treasureView )
+			[_treasureViews	removeObject:treasureView];
+	}
+}
+
+- (void)addTreasureView:(TreasureAnnotationView *)treasureView {
+	@synchronized (_treasureViews ) {
+		if ( treasureView )
+			[_treasureViews	addObject:treasureView];
+	}
+}
+
+- (void)removeTreasure:(Treasure *)treasure {
+	@synchronized (_treasures) {
+		[self.mapView removeAnnotation:treasure];
+		[_treasures removeObject:treasure];
+	}
+}
+
+- (void)addTreasure:(Treasure *)treasure {
+	@synchronized (_treasures ) {
+		[self.mapView addAnnotation:treasure];
+		[_treasures addObject:treasure];
+	}
+	
+}
+
 - (void)addEnemyView:(EnemyAnnotationView *)enemyView {
 	@synchronized (_enemyViews ) {
 		if ( enemyView )
@@ -309,11 +348,11 @@
 - (void)generateEnemyForHeroAtLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
 	CLLocationDirection course = location.course;
-	
+	course = course*RADIANS_PER_DEGREE;
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
-	CLLocationDistance deltaY = ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = -1.0f*ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
@@ -329,6 +368,23 @@
 	[self generateEnemyForHeroAtLocation:locationManager.location];
 }
 
+- (void)spawnTreasure {
+	CLLocation *location = locationManager.location;
+	CLLocationCoordinate2D coordinate = location.coordinate;
+	CLLocationDirection course = location.course;
+	course = course*RADIANS_PER_DEGREE;
+	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
+	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
+	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
+	
+	Treasure *treasure = [[Treasure alloc] init];
+	treasure.coordinate = enemyCoordinate;
+	[self.mapView addAnnotation:treasure];
+	[treasure release];
+}
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
@@ -392,8 +448,12 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	if ( [annotation isKindOfClass:[EnemyMapSpawn class]] ) {
-		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"blah"];
+		EnemyAnnotationView *view = [[EnemyAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"enemy"];
 		[self addEnemyView:view];
+		return [view autorelease];
+	} else if ( [annotation isKindOfClass:[Treasure class]] ) {
+		TreasureAnnotationView *view = [[TreasureAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"tresure"];
+		[self addTreasureView:view];
 		return [view autorelease];
 	}
 	else
@@ -407,6 +467,7 @@
 			_sonarView = [[SonarView alloc] initWithOverlay:_sonar];
 		overlayView = _sonarView;
 	}
+
 	
 	return overlayView;
 }
@@ -481,13 +542,14 @@
 
 
 - (void)startGeneratingEnemies {
+	[self addTimerNamed:@"TreasureSpawn" withInterval:TREASURE_SPAWN_EVERY selector:@selector(spawnTreasure) fireDate:[NSDate dateWithTimeIntervalSinceNow:TREASURE_SPAWN_EVERY]];
 	//[self addTimerNamed:@"EnemySpawn" withInterval:ENEMY_SPAWN_EVERY selector:@selector(spawnEnemy) fireDate:[NSDate dateWithTimeIntervalSinceNow:ENEMY_SPAWN_EVERY]];
 	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
 }
 
 - (void)stopGeneratingEnemies {
 	//[self removeTimerNamed:@"EnemySpawn"];
-	[self removeTimerNamed:@"EnemyPulse"];
+	[self removeTimerNamed:@"TreasureSpawn"];
 	for ( EnemyAnnotationView *enemyView in _enemyViews ) {
 		EnemyMapSpawn *spawn = enemyView.annotation;
 		spawn.speed = 0;

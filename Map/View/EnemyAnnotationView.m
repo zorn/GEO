@@ -12,6 +12,7 @@
 
 #define NON_PULSING_RADIUS 12.0f
 #define PULSING_RADIUS 42.0f
+#define BASE_OPACITY .75f
 
 @implementation EnemyAnnotationView
 @synthesize pulsing;
@@ -27,21 +28,21 @@
 		self.bounds = CGRectMake(0, 0, NON_PULSING_RADIUS, NON_PULSING_RADIUS);
 		self.opaque = NO;
 		self.pulsing = NO;
-		self.layer.opacity = 1.0f;
+		self.layer.opacity = BASE_OPACITY;
 	} return self;
 }
 
 - (void)setPulsing:(BOOL)shouldPulse {
 	if ( !self.isPulsing && shouldPulse ) {
-		self.layer.opacity = 0;
+		self.layer.opacity = BASE_OPACITY;
 		CABasicAnimation* grow = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-		grow.fromValue = [NSNumber numberWithDouble:0];
-		grow.toValue = [NSNumber numberWithDouble:1];
+		grow.fromValue = [NSNumber numberWithDouble:1];
+		grow.toValue = [NSNumber numberWithDouble:2];
 		grow.duration = .75;
 		
 		CABasicAnimation* fade = [CABasicAnimation animationWithKeyPath:@"opacity"];
-		fade.fromValue = [NSNumber numberWithDouble:1];
-		fade.toValue = [NSNumber numberWithDouble:0];
+		fade.fromValue = [NSNumber numberWithDouble:BASE_OPACITY];
+		fade.toValue = [NSNumber numberWithDouble:1];
 		fade.duration = .75;
 		
 		CAMediaTimingFunction *timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
@@ -51,14 +52,15 @@
 		CAAnimationGroup *pulse = [CAAnimationGroup animation];
 		pulse.animations = [NSArray arrayWithObjects:grow, fade, nil];
 		pulse.repeatCount = CGFLOAT_MAX;
+		pulse.autoreverses = YES;
 		pulse.duration = 1.0;
 		
 		[self.layer addAnimation:pulse forKey:@"pulse"];
 	}
 	else if ( self.isPulsing && !shouldPulse ) {
 		[self.layer removeAllAnimations];
-		self.layer.opacity = 1;
-		self.layer.transform = CATransform3DMakeScale(.25,.25,1);
+		self.bounds = CGRectMake(0, 0, NON_PULSING_RADIUS, NON_PULSING_RADIUS);
+		self.layer.opacity = BASE_OPACITY;
 	}
 	
 	pulsing = shouldPulse;
@@ -91,7 +93,7 @@
 
 - (void)stopPulsing {
 	self.bounds = CGRectMake(0, 0, NON_PULSING_RADIUS, NON_PULSING_RADIUS);
-	self.layer.opacity = 1.0f;
+	self.layer.opacity = BASE_OPACITY;
 }
 
 - (void)drawRect:(CGRect)rect {

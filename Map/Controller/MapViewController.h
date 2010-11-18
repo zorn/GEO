@@ -31,6 +31,9 @@
 	NSMutableSet *_enemies;
 	NSMutableSet *_enemyViews;
 	
+	NSMutableSet *_treasures;
+	NSMutableSet *_treasureViews;
+	
 	NSDate *_lastEnemyUpdate;
 	
 	NSDateFormatter *_timerFormatter;

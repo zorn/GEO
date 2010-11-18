@@ -1,3 +1,9 @@
+November 13-14th 2010
+*Added fog of war to the map view - this is handled by the Sonar annotation and the SonarView which is a MKOverlayLayer.  The Other
+*Enemies are generated in a range (you can tweak the x/y range in the #defines in MapViewController)
+*Enemies only chase the hero when they are within the ENEMY_MAGNET_RADIUS.  They have a speed advantage of ENEMY_SPEED_ADVANTAGE.
+*Added a Debug-Testing build which adds the TESTING preprocessor macro.
+
 November 11, 2010
 
 * Started to implement the mentor messages in the victory screen. They are defined in a plist for easy editing. They currently aren't very suitable for the failure screen.
