@@ -150,15 +150,12 @@
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 			
 			self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
-			[UIView animateWithDuration:0.5 
-								  delay:0.0 
-								options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionAutoreverse 
-							 animations:^(void) {
-								 self.heroLevelLabel.transform = CGAffineTransformMakeScale(1.5, 1.5);
-							 } 
-							 completion:^(BOOL finished) {
-								 self.heroLevelLabel.transform = CGAffineTransformIdentity;
-							 }];
+			CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform"];
+			anim.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)];
+			anim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1.5)];
+			anim.duration = 0.5;
+			anim.autoreverses = YES;
+			[self.heroLevelLabel.layer addAnimation:anim forKey:@"transform"];
 		}
 	}
 	[self updateStats];

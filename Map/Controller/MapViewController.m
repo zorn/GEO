@@ -18,6 +18,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SimpleAudioEngine.h"
 #import "RQModelController.h"
+#import "RQWeightLogEntry.h"
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "RQBattle.h"
@@ -54,7 +55,7 @@
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
-#define TREASURE_SPAWN_EVERY 1 //seconds
+#define TREASURE_SPAWN_EVERY 60 //seconds
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
@@ -67,12 +68,17 @@
 - (void)hideHUD;
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy;
-- (void)startGeneratingEnemies;
-- (void)stopGeneratingEnemies;
+- (void)startGameMechanics;
+- (void)pauseGameMechanics;
 @end
 
 @implementation MapViewController
-@synthesize delegate, startButton, hudView, overlayLabel, mapView, displayLink, timerLabel, trek, locationManager, battleViewController;
+@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
+
+@synthesize newWorkoutNavigationBar;
+@synthesize workoutStatCollectionView;
+@synthesize startToolbar;
+@synthesize pauseToolbar;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -97,9 +103,19 @@
 		_enemyViews = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		_treasures = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
+		
 		_timerFormatter = [[NSDateFormatter alloc] init];
 		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		[_timerFormatter setDateFormat:@"HH:mm:ss"];
+		[_timerFormatter setDateFormat:@"H:mm:ss"];
+		
+		_distanceFormatter = [[NSNumberFormatter alloc] init];
+		[_distanceFormatter setMinimumFractionDigits:1];
+		[_distanceFormatter setMinimumIntegerDigits:1];
+		
+		_calorieFormatter = [[NSNumberFormatter alloc] init];
+		[_calorieFormatter setMinimumFractionDigits:0];
+		[_calorieFormatter setMinimumIntegerDigits:1];
+		
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"victory_song_002.m4a"];
@@ -111,21 +127,34 @@
 - (void)dealloc {
 	[_treasures release];
 	[_treasureViews release];
+	NSLog(@"MapViewController -dealloc called...");
+	[self stopUpdatingLocation];
 	locationManager.delegate = nil;
 	[locationManager release];
 	locationManager = nil;
+	
+	[startToolbar release];
+	[pauseToolbar release];
+	
+	[locationButton release];
+	[workoutStatCollectionView release];
+	[newWorkoutNavigationBar release];
 	[trek release];
 	[displayLink release];
 	[mapView release];
 	[hudView release];
 	[overlayLabel release];
 	[timerLabel release];
+	[distanceLabel release];
+	[calorieBurnLabel release];
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
 	[_enemies release];
 	[_enemyViews release];
 	[_timerFormatter release];
+	[_distanceFormatter release];
+	[_calorieFormatter release];
 	[_timers release];
 	[super dealloc];
 }
@@ -141,6 +170,12 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	self.mapView.showsUserLocation = NO;
+	
+	[self moveWorkoutStatCollectionViewOffScreenShouldAnimate:NO];
+	[self moveNewWorkoutNavigationBarOnScreenShouldAnimate:NO];
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:NO];
+	[self movePauseWorkoutToolbarOffScreenShouldAnimate:NO];
+	
 	[self showHUD];
 	[self startUpdatingLocation];
     [super viewDidLoad];
@@ -177,7 +212,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0:
-			[self startGeneratingEnemies];
+			[self startGameMechanics];
 			break;
 		case 1:
 			[self launchBattlePressed:self];
@@ -188,7 +223,7 @@
 }
 
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy {
-	[self stopGeneratingEnemies];
+	[self pauseGameMechanics];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
 														message:NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy") 
 													   delegate:self 
@@ -351,8 +386,8 @@
 	course = course*RADIANS_PER_DEGREE;
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-	CLLocationDistance deltaX = -1.0f*ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
-	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
@@ -375,8 +410,8 @@
 	course = course*RADIANS_PER_DEGREE;
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*cos(course)*mapPointsPerMeter;
-	CLLocationDistance deltaY = ENEMY_GENERATION_RADIUS*sin(course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
@@ -405,7 +440,17 @@
 }
 
 - (void)updateTimerLabel {
-	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+	self.timerLabel.text = [_timerFormatter stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:self.trek.duration]];
+	//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
+	
+	// update distance label, convert to miles
+	NSString *newDistance = [NSString stringWithFormat:@"%@ mi", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distanceInMiles]]]];
+	//NSLog(@"newDistance %@", newDistance);
+	self.distanceLabel.text = newDistance;
+	
+	NSString *newCalBurn = [NSString stringWithFormat:@"%@ cal", [_calorieFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek caloriesBurned]]]];
+	self.calorieBurnLabel.text = newCalBurn;
+	
 }
 
 #pragma mark CLLocationManagerDelegate
@@ -432,16 +477,6 @@
 		[_sonarView setNeedsDisplayInMapRect:[self.mapView visibleMapRect]];
 		[_sonarView setNeedsDisplayInMapRect:MKMapRectMake(sonarMapPoint.x, sonarMapPoint.y, dimension, dimension)];
 	}
-}
-
-#pragma mark Loading Overlay
-
-- (void)showHUD { 
-	hudView.hidden = NO;
-}
-
-- (void)hideHUD {
-	hudView.hidden = YES;
 }
 
 #pragma mark MKMapViewDelegate
@@ -484,7 +519,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 	[self setBattleViewController:nil];
 	if ( self.trek )
-		[self startGeneratingEnemies];
+		[self startGameMechanics];
 	[[[RQModelController defaultModelController] coreDataManager] save];
 }
 
@@ -493,8 +528,11 @@
 #pragma mark Action
 
 - (IBAction)launchBattlePressed:(id)sender {
-	[self.trek stop];
-    self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
+	
+	// Commenting this out. I don't belive we should stop tracking the user while they fight.
+	// [self.trek stop];
+    
+	self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
 	RQHero *hero = [[RQModelController defaultModelController] hero];
 	self.battleViewController.battle.hero = hero;
@@ -516,11 +554,15 @@
 }
 
 - (IBAction)centerMapOnLocation:(id)sender {
-	if ( self.locationManager.location ) {
-		MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_Y);
-		MKCoordinateRegion region = MKCoordinateRegionMake(self.locationManager.location.coordinate, span);
-		[self.mapView setRegion:region animated:YES];
-	}
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQMapBattleDemoOverride"] boolValue] == YES) {
+		[self launchBattlePressed:self];
+	} else {
+		if ( self.locationManager.location ) {
+			MKCoordinateSpan span = MKCoordinateSpanMake(DEFAULT_ZOOM_BOUNDS_X, DEFAULT_ZOOM_BOUNDS_Y);
+			MKCoordinateRegion region = MKCoordinateRegionMake(self.locationManager.location.coordinate, span);
+			[self.mapView setRegion:region animated:YES];
+		}
+	}	
 }
 
 
@@ -531,8 +573,11 @@
 }
 
 - (void)addTimerNamed:(NSString *)name withInterval:(NSTimeInterval)interval selector:(SEL)selector fireDate:(NSDate *)fireDate {
+	[self removeTimerNamed:name];
+	
 	NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:selector	userInfo:nil repeats:YES];
 	[_timers setObject:timer forKey:name];
+	
 	if ( fireDate )
 		[timer setFireDate:fireDate];
 	else
@@ -541,14 +586,13 @@
 
 
 
-- (void)startGeneratingEnemies {
+- (void)startGameMechanics {
 	[self addTimerNamed:@"TreasureSpawn" withInterval:TREASURE_SPAWN_EVERY selector:@selector(spawnTreasure) fireDate:[NSDate dateWithTimeIntervalSinceNow:TREASURE_SPAWN_EVERY]];
-	//[self addTimerNamed:@"EnemySpawn" withInterval:ENEMY_SPAWN_EVERY selector:@selector(spawnEnemy) fireDate:[NSDate dateWithTimeIntervalSinceNow:ENEMY_SPAWN_EVERY]];
 	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
 }
 
-- (void)stopGeneratingEnemies {
-	//[self removeTimerNamed:@"EnemySpawn"];
+- (void)pauseGameMechanics {
+	[self removeTimerNamed:@"EnemyPulse"];
 	[self removeTimerNamed:@"TreasureSpawn"];
 	for ( EnemyAnnotationView *enemyView in _enemyViews ) {
 		EnemyMapSpawn *spawn = enemyView.annotation;
@@ -558,44 +602,218 @@
 }
 
 - (void)startTrek {
-	[self.trek startWithLocation:locationManager.location];
-	startButton.title = @"Stop";
-	[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
-	[self startGeneratingEnemies];
+	
+	// if the newest weight log entry is less than 72 hours old, ask for a new one.
+	RQWeightLogEntry *entry = [[RQModelController defaultModelController] newestWeightLogEntry];
+	if (entry == nil || [entry.dateTaken compare:[NSDate dateWithTimeIntervalSinceNow:-60*60*72]] == NSOrderedAscending) {
+		WeightLogEventEditViewController *controller = [[WeightLogEventEditViewController alloc] init];
+		[controller setEditMode:NO]; // make a new object when they save
+		[controller setDelegate:self];
+		[self presentModalViewController:controller animated:YES];
+		[controller release];
+	} else {
+		
+		[self moveWorkoutStatCollectionViewOnScreenShouldAnimate:YES];
+		[self moveNewWorkoutNavigationBarOffScreenShouldAnimate:YES];
+		
+		[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
+		[self movePauseWorkoutToolbarOffScreenShouldAnimate:YES];
+		
+		if (!self.trek) {
+			Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
+			self.trek = newTrek;
+			[newTrek release];
+		}
+		
+		[self.trek startWithLocation:locationManager.location];
+		startButton.title = @"Pause Workout";
+		[self addTimerNamed:@"Tick" withInterval:1 selector:@selector(updateTimerLabel) fireDate:nil];
+		[self startGameMechanics];
+	}
 }
 
 - (void)stopTrek {
 	[self.trek stop];
-	startButton.title = @"Start";
+	//startButton.title = @"Start Workout";
 	[self removeTimerNamed:@"Tick"];
 	NSError *error = nil;
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
 		NSLog(@"%@", error);
-	[self stopGeneratingEnemies];
+	[self pauseGameMechanics];
+	
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
+	[self movePauseWorkoutToolbarOnScreenShouldAnimate:YES];
 }
 
-- (IBAction)startStopPressed:(id)sender { 
-	UIButton *button = nil;
-	if ( [sender isKindOfClass:[UIButton class]] )
-		button = sender;
-	
+- (IBAction)startStopPressed:(id)sender
+{
 	if ( !self.trek ) {
-		Trek *newTrek = [[Trek alloc] initWithLocation:locationManager.location inManagedObjectContext:[appDelegate managedObjectContext]];
-		self.trek = newTrek;
-		[newTrek release];
 		[self startTrek];
-	}	
-	else if ( self.trek.isStopped ) {
+	} else if ( self.trek.isStopped ) {
 		[self startTrek];
-	}
-	else {
+	} else {
 		[self stopTrek];
 	}
+	NSLog(@"self.trek %@", self.trek);
+}
+
+- (IBAction)resumeButtonPressed:(id)sender
+{
+	[self startTrek];
+}
+
+- (IBAction)finishButtonPressed:(id)sender
+{
+	[self stopUpdatingLocation];
+	[delegate mapViewControllerDidEnd:self];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
+	[self stopUpdatingLocation];
 	[delegate mapViewControllerDidEnd:self];
 }
+
+#pragma mark -
+#pragma mark Methods to adjust the UI for the current state of the workout
+
+- (void)moveNewWorkoutNavigationBarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.newWorkoutNavigationBar.frame;
+	newFrame.origin.y = 0 - self.newWorkoutNavigationBar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"NewWorkoutNavigationBarViewOuttro" context:NULL];
+		self.newWorkoutNavigationBar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.newWorkoutNavigationBar.frame = newFrame;
+	}
+}
+
+- (void)moveNewWorkoutNavigationBarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.newWorkoutNavigationBar.frame;
+	newFrame.origin.y = 0 + 20;
+	
+	if (animate) {
+		[UIView beginAnimations:@"NewWorkoutNavigationBarViewIntro" context:NULL];
+		self.newWorkoutNavigationBar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.newWorkoutNavigationBar.frame = newFrame;
+	}
+}
+
+- (void)moveWorkoutStatCollectionViewOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.workoutStatCollectionView.frame;
+	newFrame.origin.y = 0 - self.workoutStatCollectionView.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"WorkoutStatCollectionViewOuttro" context:NULL];
+		self.workoutStatCollectionView.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.workoutStatCollectionView.frame = newFrame;
+	}
+	
+}
+
+- (void)moveWorkoutStatCollectionViewOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.workoutStatCollectionView.frame;
+	newFrame.origin.y = 0 + 20;
+	
+	if (animate) {
+		[UIView beginAnimations:@"WorkoutStatCollectionViewIntro" context:NULL];
+		self.workoutStatCollectionView.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.workoutStatCollectionView.frame = newFrame;
+	}
+}
+
+- (void)moveStartWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.startToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height + self.startToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"StartWorkoutToolbarOuttro" context:NULL];
+		self.startToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.startToolbar.frame = newFrame;
+	}
+	
+}
+
+- (void)moveStartWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.startToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height - self.startToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"StartWorkoutToolbarIntro" context:NULL];
+		self.startToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.startToolbar.frame = newFrame;
+	}
+}
+
+- (void)movePauseWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.pauseToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height + self.pauseToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"PauseWorkoutToolbarOuttro" context:NULL];
+		self.pauseToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.pauseToolbar.frame = newFrame;
+	}
+	
+}
+
+- (void)movePauseWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
+{
+	CGRect newFrame = self.pauseToolbar.frame;
+	newFrame.origin.y = self.view.frame.size.height - self.pauseToolbar.frame.size.height;
+	
+	if (animate) {
+		[UIView beginAnimations:@"PauseWorkoutToolbarIntro" context:NULL];
+		self.pauseToolbar.frame = newFrame;
+		[UIView commitAnimations];
+	} else {
+		self.pauseToolbar.frame = newFrame;
+	}
+}
+
+- (void)showHUD { 
+	hudView.hidden = NO;
+	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
+}
+
+- (void)hideHUD {
+	hudView.hidden = YES;
+	[self moveStartWorkoutToolbarOnScreenShouldAnimate:YES];
+}
+
+#pragma mark -
+#pragma mark WeightLogEventEditViewControllerDelegate methods
+						 
+- (void)weightLogEventEditViewControllerDidEnd:(WeightLogEventEditViewController *)controller
+{
+	[self dismissModalViewControllerAnimated:YES];
+	if ([controller wasCanceled] == NO) {
+		// resume starting the workout
+		[self startTrek];
+	}
+}
+
+
 
 @end

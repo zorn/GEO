@@ -45,8 +45,25 @@
 	return self.newestSegment.isStopped;
 }
 
-- (NSTimeInterval)duration {
+- (NSTimeInterval)duration
+{	
 	return (NSTimeInterval)[[self.segments valueForKeyPath:@"@sum.duration"] doubleValue];
+}
+
+- (double)distance
+{	
+	return [[self.segments valueForKeyPath:@"@sum.distance"] doubleValue];
+}
+
+- (double)distanceInMiles
+{
+	// 1 meter = 0.000621371192 miles
+	return [self distance] * 0.000621371192;
+}
+
+- (double)caloriesBurned
+{	
+	return [[self.segments valueForKeyPath:@"@sum.caloriesBurned"] doubleValue];
 }
 
 - (void)addNewSegmentWithLocation:(CLLocation *)location {

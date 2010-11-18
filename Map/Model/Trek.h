@@ -27,7 +27,8 @@
 - (void)addLocation:(CLLocation *)location;
 - (void)startWithLocation:(CLLocation *)location;
 - (void)stop;
-
+- (double)distanceInMiles;
+- (double)caloriesBurned;
 @end
 
 @interface Trek (CoreDataGeneratedAccessors)

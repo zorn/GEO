@@ -21,6 +21,7 @@
 @class ShieldDrawLineView;
 
 #define RQBattleViewFlickThreshold 280.0
+#define RQMaxSecondsOfShields 10.0
 
 @protocol RQBattleViewControllerDelegate;
 @protocol RQBattleVictoryViewControllerDelegate;
@@ -42,6 +43,7 @@
 	
 	UIImageView *leftShield;
 	UIImageView *rightShield;
+	UIImageView *shieldLightning;
 	ShieldDrawLineView *shieldDrawLineView;
 	
 	NSMutableArray *weaponSprites;
@@ -68,6 +70,7 @@
 @property (nonatomic, retain) UIView *frontFlashView;
 @property (nonatomic, retain) UIImageView *leftShield;
 @property (nonatomic, retain) UIImageView *rightShield;
+@property (nonatomic, retain) UIImageView *shieldLightning;
 @property (nonatomic, retain) ShieldDrawLineView *shieldDrawLineView;
 
 - (void)tick;

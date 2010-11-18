@@ -135,12 +135,9 @@
 		1A6E334B124E603C0054949B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		1A6E3364124E60CD0054949B /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
 		1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
-		1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A7B38521252DDA0007F0497 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B38511252DDA0007F0497 /* StoryViewController.m */; };
 		1A7B38541252DDB8007F0497 /* StoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B38531252DDB8007F0497 /* StoryView.xib */; };
-		1A817C841280689D00B02D1E /* shields.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A817C821280689D00B02D1E /* shields.png */; };
-		1A817C851280689D00B02D1E /* shields@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A817C831280689D00B02D1E /* shields@2x.png */; };
 		1A817CBA1280705700B02D1E /* ShieldDrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A817CB91280705700B02D1E /* ShieldDrawLineView.m */; };
 		1A817CBD1280708F00B02D1E /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A817CBC1280708F00B02D1E /* Line.m */; };
 		1A8B918B1268EFED00D8E5F3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8B91881268EF9A00D8E5F3 /* libCorePlot-CocoaTouch.a */; };
@@ -152,6 +149,12 @@
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A945BD712540B8900CE44D8 /* SettingsView.xib */; };
 		1A945CEC12542CE200CE44D8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */; };
+		1A95FDA11292DFAA00F1AA3A /* shield_orb_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */; };
+		1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */; };
+		1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */; };
+		1A95FDA41292DFAA00F1AA3A /* shield_orb_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FDA01292DFAA00F1AA3A /* shield_orb_right@2x.png */; };
+		1A95FDD71292E94200F1AA3A /* shield_lightning.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FDD51292E94200F1AA3A /* shield_lightning.png */; };
+		1A95FDD81292E94200F1AA3A /* shield_lightning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FDD61292E94200F1AA3A /* shield_lightning@2x.png */; };
 		1AA3E265128C51A0001F99A1 /* RQMentorMessageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA3E264128C51A0001F99A1 /* RQMentorMessageTemplate.m */; };
 		1AA3E267128C54B0001F99A1 /* mentorMessageTemplates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E266128C54B0001F99A1 /* mentorMessageTemplates.plist */; };
 		1AA3E26B128C59C9001F99A1 /* mentor_message_avatar_calm.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E269128C59C9001F99A1 /* mentor_message_avatar_calm.png */; };
@@ -179,6 +182,7 @@
 		1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */; };
 		1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
+		1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
@@ -432,8 +436,6 @@
 		1A7B38501252DDA0007F0497 /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryViewController.h; path = Story/StoryViewController.h; sourceTree = "<group>"; };
 		1A7B38511252DDA0007F0497 /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryViewController.m; path = Story/StoryViewController.m; sourceTree = "<group>"; };
 		1A7B38531252DDB8007F0497 /* StoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryView.xib; sourceTree = "<group>"; };
-		1A817C821280689D00B02D1E /* shields.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shields.png; path = Assets/Mockups/shields.png; sourceTree = SOURCE_ROOT; };
-		1A817C831280689D00B02D1E /* shields@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shields@2x.png"; path = "Assets/Mockups/shields@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A817CB81280705700B02D1E /* ShieldDrawLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShieldDrawLineView.h; sourceTree = "<group>"; };
 		1A817CB91280705700B02D1E /* ShieldDrawLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShieldDrawLineView.m; sourceTree = "<group>"; };
 		1A817CBB1280708F00B02D1E /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
@@ -454,6 +456,12 @@
 		1A945BD512540B7800CE44D8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		1A945BD712540B8900CE44D8 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_left.png; path = ui/shield_orb_left.png; sourceTree = "<group>"; };
+		1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_orb_left@2x.png"; path = "ui/shield_orb_left@2x.png"; sourceTree = "<group>"; };
+		1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_right.png; path = ui/shield_orb_right.png; sourceTree = "<group>"; };
+		1A95FDA01292DFAA00F1AA3A /* shield_orb_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_orb_right@2x.png"; path = "ui/shield_orb_right@2x.png"; sourceTree = "<group>"; };
+		1A95FDD51292E94200F1AA3A /* shield_lightning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_lightning.png; path = ui/shield_lightning.png; sourceTree = "<group>"; };
+		1A95FDD61292E94200F1AA3A /* shield_lightning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_lightning@2x.png"; path = "ui/shield_lightning@2x.png"; sourceTree = "<group>"; };
 		1AA3E263128C51A0001F99A1 /* RQMentorMessageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMentorMessageTemplate.h; sourceTree = "<group>"; };
 		1AA3E264128C51A0001F99A1 /* RQMentorMessageTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMentorMessageTemplate.m; sourceTree = "<group>"; };
 		1AA3E266128C54B0001F99A1 /* mentorMessageTemplates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mentorMessageTemplates.plist; sourceTree = "<group>"; };
@@ -782,6 +790,12 @@
 		1AA3E2C6128C7336001F99A1 /* new_design */ = {
 			isa = PBXGroup;
 			children = (
+				1A95FDD51292E94200F1AA3A /* shield_lightning.png */,
+				1A95FDD61292E94200F1AA3A /* shield_lightning@2x.png */,
+				1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */,
+				1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */,
+				1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */,
+				1A95FDA01292DFAA00F1AA3A /* shield_orb_right@2x.png */,
 				1AA3E36E128C8177001F99A1 /* air_weapon_desaturated.png */,
 				1AA3E36F128C8177001F99A1 /* air_weapon_desaturated@2x.png */,
 				1AA3E370128C8177001F99A1 /* earth_weapon_desaturated.png */,
@@ -809,8 +823,6 @@
 		1AC92473124D75CF00E09F6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				1A817C821280689D00B02D1E /* shields.png */,
-				1A817C831280689D00B02D1E /* shields@2x.png */,
 				1A4B555E1273895200B313E1 /* 19-gear.png */,
 				1A4B555F1273895200B313E1 /* 19-gear@2x.png */,
 				1A4B55601273895200B313E1 /* 21-skull.png */,
@@ -1392,7 +1404,6 @@
 				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
 				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
-				1A6E3446124E7D010054949B /* CreateHeroView.xib in Resources */,
 				1AC3B2CE1250449600416564 /* You lose.m4a in Resources */,
 				D8AF2281124FA792008AB638 /* TrekListView.xib in Resources */,
 				D832041E12511DFA00B2F944 /* TrekView.xib in Resources */,
@@ -1446,8 +1457,6 @@
 				C937018D1280FDED00C2514F /* victorySilhouette@2x.png in Resources */,
 				C93701911281023800C2514F /* victoryText.png in Resources */,
 				C93701921281023800C2514F /* victoryText@2x.png in Resources */,
-				1A817C841280689D00B02D1E /* shields.png in Resources */,
-				1A817C851280689D00B02D1E /* shields@2x.png in Resources */,
 				C99B447C12818CC600D4E151 /* failureSilhouette.png in Resources */,
 				C99B447D12818CC600D4E151 /* failureSilhouette@2x.png in Resources */,
 				C99B447E12818CC600D4E151 /* failureText.png in Resources */,
@@ -1543,6 +1552,13 @@
 				1AA3E37B128C8177001F99A1 /* fire_weapon_desaturated@2x.png in Resources */,
 				1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */,
 				1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */,
+				1A95FDA11292DFAA00F1AA3A /* shield_orb_left.png in Resources */,
+				1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */,
+				1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */,
+				1A95FDA41292DFAA00F1AA3A /* shield_orb_right@2x.png in Resources */,
+				1A95FDD71292E94200F1AA3A /* shield_lightning.png in Resources */,
+				1A95FDD81292E94200F1AA3A /* shield_lightning@2x.png in Resources */,
+				1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

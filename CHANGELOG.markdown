@@ -1,8 +1,40 @@
+November 17 2010 - Joe
+* Added basic treasure spawn. They don't do anything currently, but they are spawned in your path.
+* Refactored some MapViewController methods to better communicate their intent.  start/stopGeneratingEnemies become start/pauseGameMechanics
+* FIXED: Stopped enemy persuit on Pause
+
+November 17, 2010
+
+* Implemented a Calorie Burn formula. It is slightly variable to show increase burn if you are walking or running (>5mph) rate. It only shows calories being burned by walking/running that are relevant to the activity. It does include the normal calories you burn even while standing still. This now also updates on the map view as you walk around.
+* FIXED: We no longer stop treks before starting a battle view.  // My bad, I thought that was what we wanted -Joe
+* FIXED: The MapView has a bug(see below) which can cause it to not be dealloc-ed. I have not fixed this problem, but added some code so that we make sure to turn off the GPS when the user hits cancel or finish in the map view. Previously we only did this in dealloc so there was a situation where the user would be on the main menu with the GPS still on which is very bad for battery life.
+
+https://indyhalllabs.basecamphq.com/projects/5521331/todo_lists/11518403
+
+
 November 13-14th 2010
 *Added fog of war to the map view - this is handled by the Sonar annotation and the SonarView which is a MKOverlayLayer.  The Other
 *Enemies are generated in a range (you can tweak the x/y range in the #defines in MapViewController)
 *Enemies only chase the hero when they are within the ENEMY_MAGNET_RADIUS.  They have a speed advantage of ENEMY_SPEED_ADVANTAGE.
 *Added a Debug-Testing build which adds the TESTING preprocessor macro.
+
+
+November 16, 2010
+
+* Implemented the new shield orbs and look. 
+* When a user starts a new workout we now ask for their weight if it has not been logged in the last 72 hours.
+* Started implementing my vision for the workflow on mapview. Some labels are still static. Hope to get them working soon.
+* Added a new preference in the dev toolbox that will override the location button in the mapview to launch a demo battle (useful for testing.)
+* FIXED: You can now cancel a weight entry when starting a new workout.
+* FIXED: Made the MapView a little taller to help hide the Google Watermark, which was slightly viewable under the transparent toolbar at the bottom.
+* FIXED: I introduced a bug that would create new treks when resuming, this is now fixed.
+* ADDED: Updated the distance label on the map view to update as you walk. Currently shows in miles, might need to add a preference toggle to show meters in the future.
+
+November 15, 2010
+
+* Adding some code from Joe via email to avoid a complier warning when using something less than iOS 4.2.
+* Replaced and removed a pair of #warnings in the M3CoreDataManager They aren't really warnings as much as TODO items. 
+>>>>>>> 474d9f580dffc17c23270217faad36b7c1eaf9db
 
 November 11, 2010
 

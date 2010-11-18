@@ -42,26 +42,34 @@
     }
 }
 
-- (void)drawRect:(CGRect)rect {
-    
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	if (self.beingConnected) {
-		CGContextSetLineWidth(context, 10.0);
-	} else {
-		CGContextSetLineWidth(context, shieldPower);
-	}
-	
-	CGContextSetLineCap(context, kCGLineCapRound);
-	
-	if (self.beingConnected) {
+- (void)drawRect:(CGRect)rect
+{
+    if (self.beingConnected) {
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		CGContextSetLineWidth(context, 7.0);
 		[[UIColor whiteColor] set];
-	} else {
-		[[UIColor blueColor] set];
+		CGContextMoveToPoint(context, [self.shieldLine begin].x, [self.shieldLine begin].y);
+		CGContextAddLineToPoint(context, [self.shieldLine end].x, [self.shieldLine end].y);
+		CGContextStrokePath(context);
 	}
-	
-	CGContextMoveToPoint(context, [self.shieldLine begin].x, [self.shieldLine begin].y);
-	CGContextAddLineToPoint(context, [self.shieldLine end].x, [self.shieldLine end].y);
-	CGContextStrokePath(context);
+// OLD IMP	
+//	if (self.beingConnected) {
+//		CGContextSetLineWidth(context, 10.0);
+//	} else {
+//		CGContextSetLineWidth(context, shieldPower);
+//	}
+//	
+//	CGContextSetLineCap(context, kCGLineCapRound);
+//	
+//	if (self.beingConnected) {
+//		[[UIColor whiteColor] set];
+//	} else {
+//		[[UIColor blueColor] set];
+//	}
+//	
+//	CGContextMoveToPoint(context, [self.shieldLine begin].x, [self.shieldLine begin].y);
+//	CGContextAddLineToPoint(context, [self.shieldLine end].x, [self.shieldLine end].y);
+//	CGContextStrokePath(context);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -70,7 +78,12 @@
 		if ([self.delegate isTouchInsideShieldBase:t]) {
 			CGRect shieldFrame = [self.delegate frameOfTouchedShieldBase:t];
 			// generate a point from the center of the touched shield base
-			CGPoint loc = CGPointMake(shieldFrame.origin.x + shieldFrame.size.width/2, shieldFrame.origin.y + shieldFrame.size.height/2);
+			CGPoint loc;
+			if (shieldFrame.origin.x > 250) {
+				loc = CGPointMake((shieldFrame.origin.x + shieldFrame.size.width/2)+12, shieldFrame.origin.y + shieldFrame.size.height/2);
+			} else {
+				loc = CGPointMake((shieldFrame.origin.x + shieldFrame.size.width/2)-12, shieldFrame.origin.y + shieldFrame.size.height/2);
+			}
 			Line *newLine = [[Line alloc] init]; 
 			[newLine setBegin:loc];
 			[newLine setEnd:loc];
@@ -94,12 +107,11 @@
 				// end the connection
 				CGPoint loc = [t locationInView:self];
 				loc.y = self.shieldLine.begin.y;
-				if (self.shieldLine.begin.x == 0) {
-					loc.x = 320;
-				} else {
+				if (self.shieldLine.begin.x > 250) {
 					loc.x = 0;
+				} else {
+					loc.x = 320;
 				}
-				
 				[self.shieldLine setEnd:loc];
 				self.shieldLineTouch = nil;
 				self.beingConnected = NO;

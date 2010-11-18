@@ -54,12 +54,7 @@
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
-	
-	
-	
-	
-	
-#warning This code is hard coded for RunQuest atm
+//TODO: This code is hard coded for RunQuest atm
 	NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"RunQuest" ofType:@"momd"];
 	NSLog(@"modelPath is %@", modelPath);
     NSURL *modelUrl = [NSURL fileURLWithPath:modelPath];
@@ -141,7 +136,6 @@
     return managedObjectContext;
 }
 
-#warning Need to fix this to work on both platforms, not working atm not sure why.
 #ifdef TARGET_OS_IPHONE
 
 - (void)save

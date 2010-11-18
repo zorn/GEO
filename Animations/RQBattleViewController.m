@@ -54,6 +54,7 @@
 	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
 	[shieldDrawLineView release]; shieldDrawLineView = nil;
+	[shieldLightning release], shieldLightning = nil;
 	[rightShield release], rightShield = nil;
 	[leftShield release], leftShield = nil;
 	[frontFlashView release], frontFlashView = nil;
@@ -72,6 +73,7 @@
 @synthesize frontFlashView;
 @synthesize leftShield;
 @synthesize rightShield;
+@synthesize shieldLightning;
 @synthesize shieldDrawLineView;
 
 - (void)viewDidLoad {
@@ -183,20 +185,29 @@
 	
 	if (self.battle.hero.canUseShields) {
 		// make two shield sprites
-		UIImage *shieldImage = [UIImage imageNamed:@"shields.png"];
-		leftShield = [[UIImageView alloc] initWithImage:shieldImage];
+		UIImage *shieldImageLeft = [UIImage imageNamed:@"shield_orb_left.png"];
+		UIImage *shieldImageRight = [UIImage imageNamed:@"shield_orb_right.png"];
+		leftShield = [[UIImageView alloc] initWithImage:shieldImageLeft];
 		CGRect newLeftFrame = leftShield.frame;
-		newLeftFrame.origin.x = 0 - newLeftFrame.size.width/2;
+		newLeftFrame.origin.x = 0 - 12; // 12 is defined via the design of the image
 		newLeftFrame.origin.y = self.view.frame.size.height - 160;
 		[self.view addSubview:leftShield];
 		[leftShield setFrame:newLeftFrame];
 		
-		rightShield = [[UIImageView alloc] initWithImage:shieldImage];
+		rightShield = [[UIImageView alloc] initWithImage:shieldImageRight];
 		CGRect newRightFrame = leftShield.frame;
-		newRightFrame.origin.x = self.view.frame.size.width - newLeftFrame.size.width/2;
+		newRightFrame.origin.x = self.view.frame.size.width - newRightFrame.size.width + 12;  // 12 is defined via the design of the image
 		newRightFrame.origin.y = self.view.frame.size.height - 160;
 		[self.view addSubview:rightShield];
 		[rightShield setFrame:newRightFrame];
+		
+		UIImage *shieldLightningImage = [UIImage imageNamed:@"shield_lightning.png"];
+		shieldLightning = [[UIImageView alloc] initWithImage:shieldLightningImage];
+		CGRect newShieldLightningFrame = shieldLightning.frame;
+		newShieldLightningFrame.origin.x = newLeftFrame.size.width - 12 - 15;
+		newShieldLightningFrame.origin.y = self.view.frame.size.height - 160 - newLeftFrame.size.height/2 + 10;
+		[self.view addSubview:shieldLightning];
+		[shieldLightning setFrame:newShieldLightningFrame];
 		
 		shieldDrawLineView = [[ShieldDrawLineView alloc] initWithFrame:self.view.frame];
 		[shieldDrawLineView setBackgroundColor:[UIColor clearColor]];
@@ -273,8 +284,10 @@
 	
 	
 	// update the shield line for major incriments
-	if (self.shieldDrawLineView.shieldPower - self.battle.hero.secondsLeftOfShields > 1.0 || self.battle.hero.secondsLeftOfShields == 10.0 || self.battle.hero.secondsLeftOfShields == 0.0) {
+	if (self.shieldDrawLineView.shieldPower - self.battle.hero.secondsLeftOfShields > 1.0 || self.battle.hero.secondsLeftOfShields == RQMaxSecondsOfShields || self.battle.hero.secondsLeftOfShields == 0.0) {
 		[self.shieldDrawLineView setShieldPower:[[self.battle hero] secondsLeftOfShields]];
+		shieldLightning.layer.opacity = [[self.battle hero] secondsLeftOfShields] / RQMaxSecondsOfShields;
+		
 	}
 	[self.battle updateHeroShieldsBasedOnTimeDelta:deltaTime];
 	
@@ -677,7 +690,7 @@
 - (void)shieldsUp
 {
 	// give the hero 10 seconds of shields
-	[self.battle.hero setSecondsLeftOfShields:10.0];
+	[self.battle.hero setSecondsLeftOfShields:RQMaxSecondsOfShields];
 	[[SimpleAudioEngine sharedEngine] playEffect:@"Shields_up.caf"];
 }
 

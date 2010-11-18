@@ -31,10 +31,21 @@
 
 - (void)dealloc
 {
+	[mapBattleDemoOverride release];
 	[super dealloc];
 }
 
 @synthesize delegate;
+@synthesize mapBattleDemoOverride;
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	// update the view to honor the current defaults
+	self.mapBattleDemoOverride.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQMapBattleDemoOverride"] boolValue];
+}
+
 
 - (IBAction)loadCorePlotDemoOne:(id)sender
 {
@@ -58,6 +69,11 @@
 	HeroEditViewController *controller = [[HeroEditViewController alloc] init];
 	[self.navigationController pushViewController:controller animated:YES];
 	[controller release];
+}
+
+- (IBAction)mapBattleDemoModeValueChanged:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.mapBattleDemoOverride.on] forKey:@"RQMapBattleDemoOverride"];
 }
 
 - (void)returnToMainMenu
