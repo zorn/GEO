@@ -5,7 +5,8 @@ November 17 2010 - Joe
 
 November 17, 2010
 
-*Implemented Health and Glove Power bars in the battle view and updated their appearance to match Johnny's mockup
+* Lightning animation - Matt
+* Implemented Health and Glove Power bars in the battle view and updated their appearance to match Johnny's mockup - Matt
 
 * Implemented a Calorie Burn formula. It is slightly variable to show increase burn if you are walking or running (>5mph) rate. It only shows calories being burned by walking/running that are relevant to the activity. It does include the normal calories you burn even while standing still. This now also updates on the map view as you walk around.
 * FIXED: We no longer stop treks before starting a battle view.  // My bad, I thought that was what we wanted -Joe
