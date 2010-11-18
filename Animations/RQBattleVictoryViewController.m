@@ -163,7 +163,7 @@
 			self.xpBarView = newXPBar;
 			[newXPBar release];
 			[self.xpBarView setPercent:0.0 duration:0.0];
-			self.xpBarView.barColor = [UIColor greenColor];
+			self.xpBarView.barColor = [UIColor whiteColor];
 			self.xpBarView.outlineColor = [UIColor colorWithWhite:0.6 alpha:1.0];
 			[self.view addSubview:self.xpBarView];
 		}
