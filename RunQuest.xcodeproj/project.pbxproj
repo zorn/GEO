@@ -407,6 +407,7 @@
 		1A65B2F312889F5F0028BBBC /* Ved@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Ved@2x.png"; path = "monsters/Ved@2x.png"; sourceTree = "<group>"; };
 		1A65B2F412889F5F0028BBBC /* Ved2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ved2.png; path = monsters/Ved2.png; sourceTree = "<group>"; };
 		1A65B2F512889F5F0028BBBC /* Ved2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Ved2@2x.png"; path = "monsters/Ved2@2x.png"; sourceTree = "<group>"; };
+		1A6AFDE21296EBF600847752 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		1A6BF4941255668E00934DD3 /* Panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel1.png; path = story/Panel1.png; sourceTree = "<group>"; };
 		1A6BF4951255668E00934DD3 /* Panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel2.png; path = story/Panel2.png; sourceTree = "<group>"; };
 		1A6BF4961255668E00934DD3 /* Panel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel3.png; path = story/Panel3.png; sourceTree = "<group>"; };
@@ -956,6 +957,7 @@
 				28EEC0491118E28000187D67 /* AppDelegate_Shared.h */,
 				28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */,
 				8D1107310486CEB800E47090 /* RunQuest-Info.plist */,
+				1A6AFDE21296EBF600847752 /* Entitlements.plist */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1713,6 +1715,72 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1A6AFDDD1296EB4900847752 /* BetaRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = BetaRelease;
+		};
+		1A6AFDDE1296EB4900847752 /* BetaRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
+				HEADER_SEARCH_PATHS = "ThirdPartyStuff/core-plot/Source/framework/**";
+				INFOPLIST_FILE = "RunQuest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = GEO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = BetaRelease;
+		};
+		1A6AFDDF1296EB4900847752 /* BetaRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = BetaRelease;
+		};
 		1A6E32E0124E59DD0054949B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1775,6 +1843,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1794,6 +1863,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
@@ -1861,6 +1931,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1914,6 +1985,7 @@
 				1A6E32E0124E59DD0054949B /* Debug */,
 				D8E5FE31128B6EB600B6373E /* Debug-Testing */,
 				1A6E32E1124E59DD0054949B /* Release */,
+				1A6AFDDF1296EB4900847752 /* BetaRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1924,6 +1996,7 @@
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				D8E5FE30128B6EB600B6373E /* Debug-Testing */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				1A6AFDDE1296EB4900847752 /* BetaRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1934,6 +2007,7 @@
 				C01FCF4F08A954540054247B /* Debug */,
 				D8E5FE2F128B6EB600B6373E /* Debug-Testing */,
 				C01FCF5008A954540054247B /* Release */,
+				1A6AFDDD1296EB4900847752 /* BetaRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
