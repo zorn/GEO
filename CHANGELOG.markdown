@@ -1,3 +1,7 @@
+November 18, 2010
+
+* Added a new trek log view. This view groups treks by week and shows them some summary stats. It is my intention to eventually add totals in the section footers and also graphs that will let people browse their calorie burn, distance traveled and time played. For now, this is a good start and better than what we had before. 
+
 November 17 2010 - Joe
 * Added basic treasure spawn. They don't do anything currently, but they are spawned in your path.
 * Refactored some MapViewController methods to better communicate their intent.  start/stopGeneratingEnemies become start/pauseGameMechanics
@@ -37,7 +41,6 @@ November 15, 2010
 
 * Adding some code from Joe via email to avoid a complier warning when using something less than iOS 4.2.
 * Replaced and removed a pair of #warnings in the M3CoreDataManager They aren't really warnings as much as TODO items. 
->>>>>>> 474d9f580dffc17c23270217faad36b7c1eaf9db
 
 November 11, 2010
 

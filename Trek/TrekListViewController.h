@@ -1,18 +1,14 @@
-//
-//  TrekListViewController.h
-//  RunQuest
-//
-//  Created by Joe Walsh on 9/26/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
-@class NSFetchedResultsController;
+
+@class TrekListCell;
 
 @interface TrekListViewController : UITableViewController {
 	NSDateFormatter *_formatter;
+	NSMutableArray *weekGroups;
+	
 }
 
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+- (void)buildWeeklyGroups;
+- (void)configureCell:(TrekListCell*)cell atIndexPath:(NSIndexPath*)indexPath;
 
 @end

@@ -7,6 +7,9 @@
 @class RQWeightLogEntry;
 @class RQMentorMessageTemplate;
 @class RQBattle;
+@class Trek;
+
+@class CLLocation;
 
 @interface RQModelController : NSObject {
 	M3CoreDataManager *coreDataManager;
@@ -14,6 +17,10 @@
 	
 	NSMutableArray *_monsterTemplates;
 	NSMutableArray *_mentorMessageTemplates;
+	
+	NSDateFormatter *_timerFormatter;
+	NSNumberFormatter *_distanceFormatter;
+	NSNumberFormatter *_calorieFormatter;
 }
 
 + (RQModelController *)defaultModelController;
@@ -43,8 +50,19 @@
 - (NSArray *)monsterTemplates;
 - (NSArray *)mentorMessageTemplates;
 
+- (Trek *)oldestTrek;
+- (Trek *)newestTrek;
+- (NSArray *)allTreksFromWeekStartingOnSundayDate:(NSDate *)date;
+
+- (NSDateFormatter *)timeLengthFormatter;
+- (NSDateFormatter *)timeLengthFormatterNoSeconds;
+- (NSNumberFormatter *)distanceFormatter;
+- (NSNumberFormatter *)calorieFormatter;
+
 - (BOOL)shouldInsertInitialContents;
 - (void)insertInitialContent;
+- (CLLocation *)randomLocationFromLocation:(CLLocation *)location;
+- (void)createSampleDataForTrekLogBookTesting;
 
 - (RQHero *)hero;
 - (RQMentorMessageTemplate *)randomMentorMessageBasedOnBattle:(RQBattle *)battle;

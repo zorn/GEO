@@ -90,14 +90,6 @@
 	//[delegate mainMenuViewControllerTreksButtonPressed:self];
 	// BUILD Trek Log
 	TrekListViewController *trekListVC = [[TrekListViewController alloc] init];
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	NSManagedObjectContext *moc = [[[RQModelController defaultModelController] simpleCoreData] managedObjectContext];
-	[request setEntity:[NSEntityDescription entityForName:@"Trek" inManagedObjectContext:moc]];
-	[request setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO], nil]];
-	NSFetchedResultsController *resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:@"Treks"];
-	[request release];
-	trekListVC.fetchedResultsController = resultsController;
-	[resultsController release];
 	UINavigationController *trekNavController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
 	[trekListVC release];
 	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBrowsingLogBook:)];

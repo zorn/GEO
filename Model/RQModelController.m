@@ -1,4 +1,5 @@
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
 #import "M3SimpleCoreData.h"
@@ -9,6 +10,8 @@
 #import "RQWeightLogEntry.h"
 #import "RQMonsterTemplate.h"
 #import "RQMentorMessageTemplate.h"
+#import "Trek.h"
+#import "Segment.h"
 
 static RQModelController *defaultModelController = nil;
 
@@ -281,10 +284,7 @@ static RQModelController *defaultModelController = nil;
 	}
 }
 
-- (BOOL)shouldInsertInitialContents
-{
-	return ![self heroExists] && [[self weightLogEntries] count] <= 0;
-}
+
 
 - (NSArray *)monsterTemplates
 {
@@ -352,14 +352,100 @@ static RQModelController *defaultModelController = nil;
 	return [NSArray arrayWithArray:_mentorMessageTemplates];
 }
 
+- (Trek *)oldestTrek
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"Trek" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [entries objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+- (Trek *)newestTrek
+{
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO selector:@selector(compare:)];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"Trek" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return [entries objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+- (NSArray *)allTreksFromWeekStartingOnSundayDate:(NSDate *)date
+{
+	// given some sunday, return an array of all the treks that took place that week
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES selector:@selector(compare:)];
+	NSDate *lastDayOfTheWeek = [date dateByAddingTimeInterval:60*60*24*7];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date >= %@ && date <= %@", date, lastDayOfTheWeek];
+	NSArray *entries = [simpleCoreData objectsInEntityWithName:@"Trek" predicate:predicate sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	[sortDescriptor release];
+	if ([entries count] >= 1) {
+		return entries;
+	} else {
+		return nil;
+	}
+}
+
+- (NSDateFormatter *)timeLengthFormatter
+{
+	if (!_timerFormatter) {
+		_timerFormatter = [[NSDateFormatter alloc] init];
+		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		[_timerFormatter setDateFormat:@"H:mm:ss"];
+	}
+	return _timerFormatter;
+}
+
+- (NSDateFormatter *)timeLengthFormatterNoSeconds
+{
+	if (!_timerFormatter) {
+		_timerFormatter = [[NSDateFormatter alloc] init];
+		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		[_timerFormatter setDateFormat:@"H:mm"];
+	}
+	return _timerFormatter;
+}
+
+- (NSNumberFormatter *)distanceFormatter
+{
+	if (!_distanceFormatter) {
+		_distanceFormatter = [[NSNumberFormatter alloc] init];
+		[_distanceFormatter setMinimumFractionDigits:1];
+		[_distanceFormatter setMinimumIntegerDigits:1];
+	}
+	return _distanceFormatter;
+}
+
+- (NSNumberFormatter *)calorieFormatter
+{
+	if (!_calorieFormatter) {
+		_calorieFormatter = [[NSNumberFormatter alloc] init];
+		[_calorieFormatter setMinimumFractionDigits:0];
+		[_calorieFormatter setMinimumIntegerDigits:1];
+	}
+	return _calorieFormatter;
+}
+
+- (BOOL)shouldInsertInitialContents
+{
+	//return ![self heroExists] && [[self weightLogEntries] count] <= 0;
+	// yes, if we have no treks
+	return [self oldestTrek] == nil;
+}
+
 - (void)insertInitialContent
 {
 	// SAMPLE DATE FOR WEIGHT LOG VIEWS 
 	// create two months worth of random weight-in data, assuming they enter in a weight ~3 days and the delta +0.5 -2.5 pounds.
 	/*
 	int totalDays = 0;
-	int daysToGenerate = 2;
-	float currentWeight = 200.0;
+	int daysToGenerate = 70;
+	float currentWeight = 375.0;
 	while (totalDays <= daysToGenerate) {
 		
 		int numberOfDays = (random() % 3) + 1; // 1, 2 or 3
@@ -375,9 +461,59 @@ static RQModelController *defaultModelController = nil;
 		
 		totalDays = totalDays + numberOfDays;
 	}
+	[self createSampleDataForTrekLogBookTesting];
+	[self save];
 	*/
 }
 
+- (void)createSampleDataForTrekLogBookTesting
+{
+	
+	int totalDays = 0;
+	int daysToGenerate = 60;
+	CLLocation *startLocation = [[[CLLocation alloc] initWithLatitude:39.950756827139195 longitude:-75.14529347419739] autorelease];
+	CLLocation *endLocation;
+	NSManagedObjectContext *moc = [[self coreDataManager] managedObjectContext]; 
+	while (totalDays <= daysToGenerate) {
+		
+		int numberOfDays = (random() % 3) + 1; // 1, 2 or 3
+		int entryDate = daysToGenerate - totalDays - numberOfDays;
+		
+		
+		NSDate *trekDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24* -1 * entryDate];
+		Trek *newTrek = [[Trek alloc] initWithLocation:startLocation inManagedObjectContext:moc];
+		[newTrek setDate:trekDate];
+		// add a random number of checkins
+		int numberOfRandomLocation = (arc4random() % 25) + 1;
+		for (int i = 0; i < numberOfRandomLocation; i++) {
+			endLocation = [self randomLocationFromLocation:startLocation];
+			[newTrek addLocation:endLocation];
+			startLocation = endLocation;
+		}
+		
+		// fake out the seqment dates
+		int minutes = (arc4random() % 30) + 40;
+		NSDate *endTrekDate = [trekDate dateByAddingTimeInterval:60*minutes];
+		Segment *newestSegment = [newTrek newestSegment];
+		newestSegment.startDate = trekDate;
+		newestSegment.stopDate = endTrekDate;
+		
+		[newTrek release];
+		
+		totalDays = totalDays + numberOfDays;
+	}
+}
 
+- (CLLocation *)randomLocationFromLocation:(CLLocation *)location
+{
+	// Take the given location and move randomly from it
+	double latDelta = (arc4random() % 50)/10000.0;
+	double lonDelta = (arc4random() % 50)/10000.0;
+	
+	CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:(location.coordinate.latitude + latDelta) longitude:(location.coordinate.longitude + lonDelta)];
+	NSLog(@"newLocation %@", newLocation);
+	[newLocation autorelease];
+	return newLocation;
+}
 
 @end

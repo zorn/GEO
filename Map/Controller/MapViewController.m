@@ -104,17 +104,9 @@
 		_treasures = [[NSMutableSet alloc] initWithCapacity:MAX_TREASURES];
 		_enemies = [[NSMutableSet alloc] initWithCapacity:ENEMIES_TO_GENERATE];
 		
-		_timerFormatter = [[NSDateFormatter alloc] init];
-		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		[_timerFormatter setDateFormat:@"H:mm:ss"];
-		
-		_distanceFormatter = [[NSNumberFormatter alloc] init];
-		[_distanceFormatter setMinimumFractionDigits:1];
-		[_distanceFormatter setMinimumIntegerDigits:1];
-		
-		_calorieFormatter = [[NSNumberFormatter alloc] init];
-		[_calorieFormatter setMinimumFractionDigits:0];
-		[_calorieFormatter setMinimumIntegerDigits:1];
+		_timerFormatter = [[[RQModelController defaultModelController] timeLengthFormatter] retain];
+		_distanceFormatter = [[[RQModelController defaultModelController] distanceFormatter] retain];
+		_calorieFormatter = [[[RQModelController defaultModelController] calorieFormatter] retain];
 		
 		_timers = [[NSMutableDictionary alloc] initWithCapacity:2];
         [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"RQ_Battle_Song.m4a"];
