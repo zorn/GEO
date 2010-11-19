@@ -50,9 +50,12 @@
 - (void)buildWeeklyGroups
 {
 	weekGroups = [[NSMutableArray alloc] init];
-	// Find the oldest trek
 	Trek *oldestTrek = [[RQModelController defaultModelController] oldestTrek];
 	Trek *newestTrek = [[RQModelController defaultModelController] newestTrek];
+	
+	if (!oldestTrek) {
+		return; // bail
+ 	}
 	
 	// Get the components of it's date
 	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSWeekdayCalendarUnit;

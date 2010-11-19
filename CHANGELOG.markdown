@@ -1,6 +1,7 @@
 November 18, 2010
 
 * Added a new trek log view. This view groups treks by week and shows them some summary stats. It is my intention to eventually add totals in the section footers and also graphs that will let people browse their calorie burn, distance traveled and time played. For now, this is a good start and better than what we had before. 
+* FIXED: LogView will now load when there are zero treks in the system.
 
 November 17 2010 - Joe
 * Added basic treasure spawn. They don't do anything currently, but they are spawned in your path.
