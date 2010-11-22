@@ -8,6 +8,7 @@
 
 // views
 #import "TrekListCell.h"
+#import "TrekListHeaderCell.h"
 
 @implementation TrekListViewController
 
@@ -29,7 +30,9 @@
 }
 
 - (void)dealloc 
-{		
+{	
+	[tableView release];
+	
 	[_formatter release];
 	_formatter = nil;
 	
@@ -37,14 +40,27 @@
     [super dealloc];
 }
 
+@synthesize tableView;
+
 #pragma mark -
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self.tableView setSeparatorColor:[UIColor colorWithRed:0.204 green:0.212 blue:0.222 alpha:1.000]]; 
+	
+	// YOU MUST DO THIS IN CODE, TRYING TO DO THIS IN IB VIA COLOR PICKER WILL RESULT IN BLACK CORNERS AROUND THE GROUPS
+	self.tableView.backgroundColor = [UIColor clearColor];
+	
 	_formatter = [[NSDateFormatter alloc] init];
 	[_formatter setDateStyle:NSDateFormatterShortStyle];
 	[self buildWeeklyGroups];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 - (void)buildWeeklyGroups
@@ -105,7 +121,7 @@
     if (cell == nil) {
         UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"TrekListCell" bundle:nil];
         cell = (TrekListCell *)temporaryController.view;
-        [temporaryController release];
+		[temporaryController release];
     }
     
 	[self configureCell:cell atIndexPath:indexPath];
@@ -114,12 +130,14 @@
 
 - (void)configureCell:(TrekListCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
+	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
+	
 	NSDictionary *group = [weekGroups objectAtIndex:indexPath.section];
 	NSArray *list = [group objectForKey:@"list"];
 	Trek *trek = [list objectAtIndex:indexPath.row];
 	
 	[cell.dateLabel setText:[_formatter stringForObjectValue:[trek date]]];
-	
+	 
 	NSDateFormatter *timeLengthFormatterNoSeconds = [[RQModelController defaultModelController] timeLengthFormatterNoSeconds];
 	[cell.timeLabel	setText:[timeLengthFormatterNoSeconds stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:trek.duration]]];
 	
@@ -142,6 +160,42 @@
 	//trekViewController.trek = 
 	[self.navigationController pushViewController:trekViewController animated:YES];
 	[trekViewController release];
+}
+
+- (UIView *)tableView:(UITableView *)aTableView viewForHeaderInSection:(NSInteger)section
+{
+	UIView *containerView =	[[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 35)] autorelease];
+    //containerView.backgroundColor = [UIColor orangeColor];
+	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(25, 10, 300, 20)] autorelease];
+    headerLabel.text = [self tableView:aTableView titleForHeaderInSection:section];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.shadowColor = [UIColor blackColor];
+    headerLabel.shadowOffset = CGSizeMake(0, 1);
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    [containerView addSubview:headerLabel];
+	return containerView;
+	
+	//TrekListHeaderCell *cell = (TrekListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"TrekListHeaderCell"];
+//    if (cell == nil) {
+//        UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"TrekListHeaderCell" bundle:nil];
+//        cell = (TrekListHeaderCell *)temporaryController.view;
+//        [temporaryController release];
+//    }
+//	[cell.headerText setText:[self tableView:aTableView titleForHeaderInSection:section]];
+//	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+	//TrekListHeaderCell *cell = (TrekListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"TrekListHeaderCell"];
+//    if (cell == nil) {
+//        UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"TrekListHeaderCell" bundle:nil];
+//        cell = (TrekListHeaderCell *)temporaryController.view;
+//        [temporaryController release];
+//    }
+//	return cell.frame.size.height;
+	return 35;
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

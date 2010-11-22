@@ -92,6 +92,7 @@
 	TrekListViewController *trekListVC = [[TrekListViewController alloc] init];
 	UINavigationController *trekNavController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
 	[trekListVC release];
+	trekNavController.navigationBar.barStyle = UIBarStyleBlack;
 	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBrowsingLogBook:)];
 	trekNavController.navigationBar.topItem.rightBarButtonItem = doneItem;
 	
@@ -99,6 +100,8 @@
 	WeightLogViewController *weightVC = [[WeightLogViewController alloc] init];
 	UINavigationController *weightNavController = [[UINavigationController alloc] initWithRootViewController:weightVC];
 	weightNavController.navigationBar.topItem.rightBarButtonItem = doneItem;
+	weightNavController.navigationBar.barStyle = UIBarStyleBlack;
+
 	[weightVC release];
 	
 	[doneItem release];

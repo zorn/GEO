@@ -1,17 +1,19 @@
----
-
 Unreleased 1.0b2 Changes
+
+November 22, 2010
+
+* Started to implemented style cues from Johnny's table view mock up. Some things easier to impliment than others. Feedback very welcome. 
+* FIXED: A previous push has the load sample code and TESTING define uncommented.
 
 November 19, 2010
 
 * Fixed a time format issue for the logbook view.
 
-
-
 --- 
 November 19, 2010 
+Shipped 1.0b1 to a few testers!
 
-* Shipped 1.0b1 to a few testers!
+--- 
 
 November 18, 2010
 
@@ -22,9 +24,10 @@ November 18, 2010
 
 
 November 17 2010 - Joe
+
 * Added basic treasure spawn. They don't do anything currently, but they are spawned in your path.
 * Refactored some MapViewController methods to better communicate their intent.  start/stopGeneratingEnemies become start/pauseGameMechanics
-* FIXED: Stopped enemy persuit on Pause
+* FIXED: Stopped enemy pursuit on Pause
 
 November 17, 2010
 
@@ -37,13 +40,11 @@ November 17, 2010
 
 https://indyhalllabs.basecamphq.com/projects/5521331/todo_lists/11518403
 
-
 November 13-14th 2010
 *Added fog of war to the map view - this is handled by the Sonar annotation and the SonarView which is a MKOverlayLayer.  The Other
 *Enemies are generated in a range (you can tweak the x/y range in the #defines in MapViewController)
 *Enemies only chase the hero when they are within the ENEMY_MAGNET_RADIUS.  They have a speed advantage of ENEMY_SPEED_ADVANTAGE.
 *Added a Debug-Testing build which adds the TESTING preprocessor macro.
-
 
 November 16, 2010
 

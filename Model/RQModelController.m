@@ -447,7 +447,7 @@ static RQModelController *defaultModelController = nil;
 {
 	// SAMPLE DATE FOR WEIGHT LOG VIEWS 
 	// create two months worth of random weight-in data, assuming they enter in a weight ~3 days and the delta +0.5 -2.5 pounds.
-	
+	/*
 	int totalDays = 0;
 	int daysToGenerate = 70;
 	float currentWeight = 375.0;
@@ -468,6 +468,7 @@ static RQModelController *defaultModelController = nil;
 	}
 	[self createSampleDataForTrekLogBookTesting];
 	[self save];
+	*/
 }
 
 - (void)createSampleDataForTrekLogBookTesting
