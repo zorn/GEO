@@ -1,3 +1,18 @@
+---
+
+Unreleased 1.0b2 Changes
+
+November 19, 2010
+
+* Fixed a time format issue for the logbook view.
+
+
+
+--- 
+November 19, 2010 
+
+* Shipped 1.0b1 to a few testers!
+
 November 18, 2010
 
 * Added a new trek log view. This view groups treks by week and shows them some summary stats. It is my intention to eventually add totals in the section footers and also graphs that will let people browse their calorie burn, distance traveled and time played. For now, this is a good start and better than what we had before. 

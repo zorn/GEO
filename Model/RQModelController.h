@@ -19,6 +19,7 @@
 	NSMutableArray *_mentorMessageTemplates;
 	
 	NSDateFormatter *_timerFormatter;
+	NSDateFormatter *_timerFormatterNoSeconds;
 	NSNumberFormatter *_distanceFormatter;
 	NSNumberFormatter *_calorieFormatter;
 }

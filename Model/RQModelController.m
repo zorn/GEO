@@ -61,6 +61,11 @@ static RQModelController *defaultModelController = nil;
 
 - (void)dealloc
 {
+	[_timerFormatter release];
+	[_timerFormatterNoSeconds release];
+	[_distanceFormatter release];
+	[_calorieFormatter release];
+	
 	[coreDataManager release]; coreDataManager = nil;
 	[simpleCoreData release]; simpleCoreData = nil;
 	[_monsterTemplates release]; _monsterTemplates = nil;
@@ -403,12 +408,12 @@ static RQModelController *defaultModelController = nil;
 
 - (NSDateFormatter *)timeLengthFormatterNoSeconds
 {
-	if (!_timerFormatter) {
-		_timerFormatter = [[NSDateFormatter alloc] init];
-		[_timerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		[_timerFormatter setDateFormat:@"H:mm"];
+	if (!_timerFormatterNoSeconds) {
+		_timerFormatterNoSeconds = [[NSDateFormatter alloc] init];
+		[_timerFormatterNoSeconds setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		[_timerFormatterNoSeconds setDateFormat:@"H:mm"];
 	}
-	return _timerFormatter;
+	return _timerFormatterNoSeconds;
 }
 
 - (NSNumberFormatter *)distanceFormatter
@@ -442,7 +447,7 @@ static RQModelController *defaultModelController = nil;
 {
 	// SAMPLE DATE FOR WEIGHT LOG VIEWS 
 	// create two months worth of random weight-in data, assuming they enter in a weight ~3 days and the delta +0.5 -2.5 pounds.
-	/*
+	
 	int totalDays = 0;
 	int daysToGenerate = 70;
 	float currentWeight = 375.0;
@@ -463,7 +468,6 @@ static RQModelController *defaultModelController = nil;
 	}
 	[self createSampleDataForTrekLogBookTesting];
 	[self save];
-	*/
 }
 
 - (void)createSampleDataForTrekLogBookTesting

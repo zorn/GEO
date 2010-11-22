@@ -26,6 +26,8 @@
 #import "TreasureAnnotationView.h"
 #import "CLLocation+RQAdditions.h"
 
+#define TESTING
+
 #ifdef TESTING
 #import "RandomWalkLocationManager.h"
 #endif
