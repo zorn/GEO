@@ -269,6 +269,14 @@
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
 		C9ECBCB61252BFF0000D4C4A /* RQAudioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ECBCB51252BFF0000D4C4A /* RQAudioUtil.m */; };
 		D82F2384125406C3003F66BA /* Trek.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F2383125406C3003F66BA /* Trek.m */; };
+		D82FBDC0129E9CA9007D22A1 /* frog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDBE129E9CA9007D22A1 /* frog@2x.png */; };
+		D82FBDC1129E9CA9007D22A1 /* frog.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDBF129E9CA9007D22A1 /* frog.png */; };
+		D82FBDC4129E9D1B007D22A1 /* frog2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC2129E9D1B007D22A1 /* frog2@2x.png */; };
+		D82FBDC5129E9D1B007D22A1 /* frog2.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC3129E9D1B007D22A1 /* frog2.png */; };
+		D82FBDCA129EA715007D22A1 /* capey2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC6129EA715007D22A1 /* capey2@2x.png */; };
+		D82FBDCB129EA715007D22A1 /* capey2.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC7129EA715007D22A1 /* capey2.png */; };
+		D82FBDCC129EA715007D22A1 /* capey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC8129EA715007D22A1 /* capey@2x.png */; };
+		D82FBDCD129EA715007D22A1 /* capey.png in Resources */ = {isa = PBXBuildFile; fileRef = D82FBDC9129EA715007D22A1 /* capey.png */; };
 		D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D832041B12511DFA00B2F944 /* TrekViewController.m */; };
 		D832041E12511DFA00B2F944 /* TrekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D832041C12511DFA00B2F944 /* TrekView.xib */; };
 		D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */; };
@@ -618,6 +626,15 @@
 		C9ECBCB51252BFF0000D4C4A /* RQAudioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQAudioUtil.m; sourceTree = "<group>"; };
 		D82F2382125406C3003F66BA /* Trek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trek.h; sourceTree = "<group>"; };
 		D82F2383125406C3003F66BA /* Trek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trek.m; sourceTree = "<group>"; };
+		D82FBD75129E9250007D22A1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		D82FBDBE129E9CA9007D22A1 /* frog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frog@2x.png"; sourceTree = "<group>"; };
+		D82FBDBF129E9CA9007D22A1 /* frog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog.png; sourceTree = "<group>"; };
+		D82FBDC2129E9D1B007D22A1 /* frog2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frog2@2x.png"; sourceTree = "<group>"; };
+		D82FBDC3129E9D1B007D22A1 /* frog2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog2.png; sourceTree = "<group>"; };
+		D82FBDC6129EA715007D22A1 /* capey2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capey2@2x.png"; sourceTree = "<group>"; };
+		D82FBDC7129EA715007D22A1 /* capey2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capey2.png; sourceTree = "<group>"; };
+		D82FBDC8129EA715007D22A1 /* capey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capey@2x.png"; sourceTree = "<group>"; };
+		D82FBDC9129EA715007D22A1 /* capey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capey.png; sourceTree = "<group>"; };
 		D832041A12511DFA00B2F944 /* TrekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrekViewController.h; sourceTree = "<group>"; };
 		D832041B12511DFA00B2F944 /* TrekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrekViewController.m; sourceTree = "<group>"; };
 		D832041C12511DFA00B2F944 /* TrekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrekView.xib; sourceTree = "<group>"; };
@@ -898,6 +915,10 @@
 				1A65B2C212889F5F0028BBBC /* cheeks@2x.png */,
 				1A65B2C312889F5F0028BBBC /* cheeks2.png */,
 				1A65B2C412889F5F0028BBBC /* cheeks2@2x.png */,
+				D82FBDC6129EA715007D22A1 /* capey2@2x.png */,
+				D82FBDC7129EA715007D22A1 /* capey2.png */,
+				D82FBDC8129EA715007D22A1 /* capey@2x.png */,
+				D82FBDC9129EA715007D22A1 /* capey.png */,
 				1A65B2C512889F5F0028BBBC /* face.png */,
 				1A65B2C612889F5F0028BBBC /* face@2x.png */,
 				1A65B2C712889F5F0028BBBC /* face2.png */,
@@ -945,7 +966,11 @@
 				1A65B2F112889F5F0028BBBC /* sam2@2x.png */,
 				1A65B2F212889F5F0028BBBC /* Ved.png */,
 				1A65B2F312889F5F0028BBBC /* Ved@2x.png */,
+				D82FBDC2129E9D1B007D22A1 /* frog2@2x.png */,
+				D82FBDC3129E9D1B007D22A1 /* frog2.png */,
 				1A65B2F412889F5F0028BBBC /* Ved2.png */,
+				D82FBDBE129E9CA9007D22A1 /* frog@2x.png */,
+				D82FBDBF129E9CA9007D22A1 /* frog.png */,
 				1A65B2F512889F5F0028BBBC /* Ved2@2x.png */,
 			);
 			name = "monster sprites";
@@ -994,6 +1019,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				1A6E32DF124E59DD0054949B /* LogicTests-Info.plist */,
+				D82FBD75129E9250007D22A1 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1611,6 +1637,14 @@
 				1A964007129ACD010000E954 /* mesh_background.png in Resources */,
 				1A964008129ACD010000E954 /* mesh_background@2x.png in Resources */,
 				1A964097129AD7770000E954 /* TrekListHeaderCell.xib in Resources */,
+				D82FBDC0129E9CA9007D22A1 /* frog@2x.png in Resources */,
+				D82FBDC1129E9CA9007D22A1 /* frog.png in Resources */,
+				D82FBDC4129E9D1B007D22A1 /* frog2@2x.png in Resources */,
+				D82FBDC5129E9D1B007D22A1 /* frog2.png in Resources */,
+				D82FBDCA129EA715007D22A1 /* capey2@2x.png in Resources */,
+				D82FBDCB129EA715007D22A1 /* capey2.png in Resources */,
+				D82FBDCC129EA715007D22A1 /* capey@2x.png in Resources */,
+				D82FBDCD129EA715007D22A1 /* capey.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,7 +1789,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "~/Source/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
@@ -1861,7 +1895,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "~/Source/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1881,7 +1915,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "~/Source/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RunQuest_Prefix.pch;
@@ -1907,7 +1941,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1949,7 +1983,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/runquest/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "~/Source/runquest/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

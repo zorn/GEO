@@ -7,10 +7,15 @@
 //
 
 #import "TreasureAnnotationView.h"
+#import "Treasure.h"
 
-#define WIDTH 22.0f
-#define HEIGHT 22.0f
-#define OPACITY .75f
+#define WIDTH 24.0f
+#define HEIGHT 24.0f
+#define OPACITY .94f
+#define RED 0.1f
+#define GREEN 0.1f
+#define BLUE 1.0f
+
 @implementation TreasureAnnotationView
 
 
@@ -25,8 +30,30 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-	[[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:OPACITY] set];
-	[[UIBezierPath bezierPathWithRoundedRect:[self bounds] cornerRadius:WIDTH/3.0f] fill];
+	
+	Treasure *annotation_ = self.annotation;
+	CGFloat percentage = 1.0f*annotation_.remaining/annotation_.lifetime;
+	CGFloat radians = 3*M_PI/2 - percentage*M_PI*2;
+	
+	CGFloat lineWidth = 3.0f;
+	CGRect bounds_ = CGRectInset(self.bounds, lineWidth, lineWidth);
+	
+	[[UIColor colorWithRed:RED green:GREEN blue:BLUE alpha:OPACITY/2.0f] set];
+	[[UIBezierPath  bezierPathWithOvalInRect:bounds_] fill];
+	
+	CGFloat midX = CGRectGetMidX(bounds_);
+	CGFloat	midY = CGRectGetMidY(bounds_);
+	CGPoint centerPoint = CGPointMake(midX, midY);
+	
+	UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:bounds_.size.width/2.0f startAngle:3*M_PI/2 endAngle:radians clockwise:NO];
+	[path addLineToPoint:centerPoint];
+
+	[path closePath];
+	path.lineWidth = lineWidth;
+	[[UIColor whiteColor] set];
+	[path stroke];
+	[[UIColor colorWithRed:RED green:GREEN blue:BLUE alpha:OPACITY] set];
+	[path fill];
 	[super drawRect:rect];
 }
 

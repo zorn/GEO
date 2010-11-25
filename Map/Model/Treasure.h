@@ -13,6 +13,12 @@
 
 }
 
+@property (readwrite) NSTimeInterval lifetime;
+@property (readwrite) NSTimeInterval remaining;
+
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+
+
+- (id)initWithLifetime:(NSTimeInterval)lifetime_ coordinate:(CLLocationCoordinate2D)coordinate_;
 
 @end

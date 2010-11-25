@@ -68,7 +68,7 @@
 		<key>type</key>
 		<string>earth</string>
 		<key>image_file</key>
-		<string>face</string>
+		<string>capey</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
@@ -78,7 +78,7 @@
 		<key>type</key>
 		<string>water</string>
 		<key>image_file</key>
-		<string>face2</string>
+		<string>capey2</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
@@ -108,7 +108,7 @@
 		<key>type</key>
 		<string>earth</string>
 		<key>image_file</key>
-		<string>hole</string>
+		<string>frog</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
@@ -118,7 +118,7 @@
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
-		<string>hole2</string>
+		<string>frog2</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
