@@ -1,5 +1,6 @@
 #import "StoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SimpleAudioEngine.h"
 
 @implementation StoryViewController
 
@@ -46,6 +47,8 @@
 {
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[super viewWillAppear:animated];
+	
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"storyboard_song.m4a" loop:YES];
 }
 
 - (void)viewDidLoad

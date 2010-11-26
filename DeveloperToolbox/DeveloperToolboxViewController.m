@@ -8,6 +8,7 @@
 
 #import "DeveloperToolboxViewController.h"
 #import "AppDelegate_iPhone.h"
+#import "SimpleAudioEngine.h"
 
 // Controllers
 #import "HeroEditViewController.h"
@@ -95,6 +96,8 @@
 - (void)storyViewControllerDidEnd:(StoryViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
+	// resume main menu music
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
 }
 
 @end

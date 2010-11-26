@@ -194,6 +194,7 @@
 		1ACC9523127F984E004E5073 /* HeroEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACC9522127F984E004E5073 /* HeroEditView.xib */; };
 		1ADB7C3C12A04DA8001D90E7 /* menu_music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */; };
 		1ADB7C3D12A04DA8001D90E7 /* storyboard_song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */; };
+		1ADB7C8C12A05A64001D90E7 /* mapview_run_theme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1ADB7C8B12A05A64001D90E7 /* mapview_run_theme.m4a */; };
 		1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */; };
 		1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */; };
 		1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */; };
@@ -251,15 +252,8 @@
 		C99A91DF124A7F47005BAECF /* Servo_Movement_01.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C3124A7F47005BAECF /* Servo_Movement_01.caf */; };
 		C99A91E0124A7F47005BAECF /* Shields_up.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C4124A7F47005BAECF /* Shields_up.caf */; };
 		C99A91E1124A7F47005BAECF /* Wack_001.caf in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C5124A7F47005BAECF /* Wack_001.caf */; };
-		C99A91E2124A7F47005BAECF /* menu battle song 002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */; };
 		C99A91E3124A7F47005BAECF /* RQ_Battle_Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */; };
-		C99A91E4124A7F47005BAECF /* RQ_MenuSong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */; };
-		C99A91E5124A7F47005BAECF /* Victory song_nintendo_style.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */; };
-		C99A91E6124A7F47005BAECF /* victory_003.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CB124A7F47005BAECF /* victory_003.m4a */; };
-		C99A91E7124A7F47005BAECF /* victory_lite.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CC124A7F47005BAECF /* victory_lite.m4a */; };
-		C99A91E8124A7F47005BAECF /* victory_long.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CD124A7F47005BAECF /* victory_long.m4a */; };
 		C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CE124A7F47005BAECF /* victory_song_002.m4a */; };
-		C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */; };
 		C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99A91F8124A7F9C005BAECF /* OpenAL.framework */; };
 		C99B447C12818CC600D4E151 /* failureSilhouette.png in Resources */ = {isa = PBXBuildFile; fileRef = C99B447812818CC600D4E151 /* failureSilhouette.png */; };
 		C99B447D12818CC600D4E151 /* failureSilhouette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C99B447912818CC600D4E151 /* failureSilhouette@2x.png */; };
@@ -530,6 +524,7 @@
 		1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu_music.m4a; sourceTree = "<group>"; };
 		1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = storyboard_song.m4a; sourceTree = "<group>"; };
+		1ADB7C8B12A05A64001D90E7 /* mapview_run_theme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = mapview_run_theme.m4a; sourceTree = "<group>"; };
 		1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "workout_log_tab_icon@2x.png"; path = "Assets/Mockups/workout_log_tab_icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		1ADD6BBC1274FE8600E8C76A /* WeightLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogViewController.h; path = WeightLog/WeightLogViewController.h; sourceTree = SOURCE_ROOT; };
 		1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogViewController.m; path = WeightLog/WeightLogViewController.m; sourceTree = SOURCE_ROOT; };
@@ -605,15 +600,8 @@
 		C99A91C3124A7F47005BAECF /* Servo_Movement_01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Servo_Movement_01.caf; sourceTree = "<group>"; };
 		C99A91C4124A7F47005BAECF /* Shields_up.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shields_up.caf; sourceTree = "<group>"; };
 		C99A91C5124A7F47005BAECF /* Wack_001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wack_001.caf; sourceTree = "<group>"; };
-		C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "menu battle song 002.m4a"; sourceTree = "<group>"; };
 		C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RQ_Battle_Song.m4a; sourceTree = "<group>"; };
-		C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RQ_MenuSong.m4a; sourceTree = "<group>"; };
-		C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victory song_nintendo_style.m4a"; sourceTree = "<group>"; };
-		C99A91CB124A7F47005BAECF /* victory_003.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_003.m4a; sourceTree = "<group>"; };
-		C99A91CC124A7F47005BAECF /* victory_lite.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_lite.m4a; sourceTree = "<group>"; };
-		C99A91CD124A7F47005BAECF /* victory_long.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_long.m4a; sourceTree = "<group>"; };
 		C99A91CE124A7F47005BAECF /* victory_song_002.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = victory_song_002.m4a; sourceTree = "<group>"; };
-		C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = VictorySoundPlaceholder.m4a; sourceTree = "<group>"; };
 		C99A91F8124A7F9C005BAECF /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		C99B447812818CC600D4E151 /* failureSilhouette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failureSilhouette.png; sourceTree = "<group>"; };
 		C99B447912818CC600D4E151 /* failureSilhouette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failureSilhouette@2x.png"; sourceTree = "<group>"; };
@@ -1138,17 +1126,11 @@
 		C99A91C6124A7F47005BAECF /* music */ = {
 			isa = PBXGroup;
 			children = (
+				1ADB7C8B12A05A64001D90E7 /* mapview_run_theme.m4a */,
 				1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */,
 				1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */,
-				C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */,
 				C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */,
-				C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */,
-				C99A91CA124A7F47005BAECF /* Victory song_nintendo_style.m4a */,
-				C99A91CB124A7F47005BAECF /* victory_003.m4a */,
-				C99A91CC124A7F47005BAECF /* victory_lite.m4a */,
-				C99A91CD124A7F47005BAECF /* victory_long.m4a */,
 				C99A91CE124A7F47005BAECF /* victory_song_002.m4a */,
-				C99A91CF124A7F47005BAECF /* VictorySoundPlaceholder.m4a */,
 				1AC3B2CD1250449600416564 /* You lose.m4a */,
 			);
 			path = music;
@@ -1467,15 +1449,8 @@
 				C99A91DF124A7F47005BAECF /* Servo_Movement_01.caf in Resources */,
 				C99A91E0124A7F47005BAECF /* Shields_up.caf in Resources */,
 				C99A91E1124A7F47005BAECF /* Wack_001.caf in Resources */,
-				C99A91E2124A7F47005BAECF /* menu battle song 002.m4a in Resources */,
 				C99A91E3124A7F47005BAECF /* RQ_Battle_Song.m4a in Resources */,
-				C99A91E4124A7F47005BAECF /* RQ_MenuSong.m4a in Resources */,
-				C99A91E5124A7F47005BAECF /* Victory song_nintendo_style.m4a in Resources */,
-				C99A91E6124A7F47005BAECF /* victory_003.m4a in Resources */,
-				C99A91E7124A7F47005BAECF /* victory_lite.m4a in Resources */,
-				C99A91E8124A7F47005BAECF /* victory_long.m4a in Resources */,
 				C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */,
-				C99A91EA124A7F47005BAECF /* VictorySoundPlaceholder.m4a in Resources */,
 				1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */,
 				1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */,
 				1AC3B2CE1250449600416564 /* You lose.m4a in Resources */,
@@ -1653,6 +1628,7 @@
 				D82FBDCD129EA715007D22A1 /* capey.png in Resources */,
 				1ADB7C3C12A04DA8001D90E7 /* menu_music.m4a in Resources */,
 				1ADB7C3D12A04DA8001D90E7 /* storyboard_song.m4a in Resources */,
+				1ADB7C8C12A05A64001D90E7 /* mapview_run_theme.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

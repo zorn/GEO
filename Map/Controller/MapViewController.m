@@ -181,6 +181,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"mapview_run_theme.m4a" loop:YES];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -698,11 +701,13 @@
 - (IBAction)finishButtonPressed:(id)sender
 {
 	[self stopUpdatingLocation];
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	[delegate mapViewControllerDidEnd:self];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
 	[self stopUpdatingLocation];
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	[delegate mapViewControllerDidEnd:self];
 }
 
