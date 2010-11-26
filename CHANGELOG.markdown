@@ -1,5 +1,10 @@
 Unreleased 1.0b2 Changes
 
+November 25, 2010
+
+* Added new monsters to temporarily replace ones of questionable obscenity.  
+* Added treasure countdown animation.  They still do nothing when encountered.
+
 November 22, 2010
 
 * Started to implemented style cues from Johnny's table view mock up. Some things easier to implement than others. Feedback very welcome. 

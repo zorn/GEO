@@ -11,6 +11,14 @@
 
 @implementation Treasure
 
-@synthesize coordinate;
+@synthesize coordinate, lifetime, remaining;
+
+- (id)initWithLifetime:(NSTimeInterval)lifetime_ coordinate:(CLLocationCoordinate2D)coordinate_ {
+	if (( self = [super init] )) {
+		self.coordinate = coordinate_;
+		self.lifetime = lifetime_;
+		self.remaining = lifetime_;
+	} return self;
+}
 
 @end
