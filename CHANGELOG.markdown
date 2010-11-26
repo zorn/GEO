@@ -6,6 +6,7 @@ November 26, 2010
 * The storyboard view now plays music.
 * The Map view now plays music.
 * Unused songs have been de-referenced from the main project and should help make the bundle smaller.
+* Added first rev of app icon to the project. Feedback welcome.
 
 November 25, 2010
 
