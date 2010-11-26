@@ -2,7 +2,7 @@ Unreleased 1.0b2 Changes
 
 November 22, 2010
 
-* Started to implemented style cues from Johnny's table view mock up. Some things easier to impliment than others. Feedback very welcome. 
+* Started to implemented style cues from Johnny's table view mock up. Some things easier to implement than others. Feedback very welcome. 
 * FIXED: A previous push has the load sample code and TESTING define uncommented.
 
 November 19, 2010
