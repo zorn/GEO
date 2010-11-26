@@ -12,6 +12,7 @@
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
 #import "CreateHeroViewController.h"
+#import "SimpleAudioEngine.h"
 
 // controllers
 #import "TrekListViewController.h"
@@ -47,6 +48,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated

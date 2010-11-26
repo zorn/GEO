@@ -187,6 +187,10 @@
 }
 
 - (void)mainMenuViewControllerPlayButtonPressed:(MainMenuViewController *)controller {
+	
+	// before we go into the map view pause any background music
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	
 	MapViewController *mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
 	self.mapViewController = mapVC;
 	self.mapViewController.delegate = self;

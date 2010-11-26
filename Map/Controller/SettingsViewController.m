@@ -1,5 +1,6 @@
 #import "SettingsViewController.h"
 #import "AppDelegate_iPhone.h"
+#import "SimpleAudioEngine.h"
 
 @implementation SettingsViewController
 
@@ -37,6 +38,13 @@
 
 - (IBAction)doneButtonAction:(id)sender
 {
+	[self updateDefautsBasedOnUI];
+	
+	[delegate settingsViewControllerDidEnd:self];
+}
+
+- (IBAction)updateDefautsBasedOnUI
+{
 	// take the values of the UI and store them in the defaults
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.pauseIPodSwitch.on] forKey:@"RQSoundMuteIPod"];
 	float backgroundMusic = [self.backgroundMusicVolumeSlider value];
@@ -46,8 +54,11 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] updateAudioSystemVolumeSettings];
-	
-	[delegate settingsViewControllerDidEnd:self];
+}
+
+- (IBAction)playSampleSoundEffect
+{
+	[[SimpleAudioEngine sharedEngine] playEffect:@"Laser.caf"];
 }
 
 @end

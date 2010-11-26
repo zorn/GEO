@@ -192,6 +192,8 @@
 		1AC92475124D75DA00E09F6A /* menu_bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92474124D75DA00E09F6A /* menu_bk.png */; };
 		1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC9520127F982F004E5073 /* HeroEditViewController.m */; };
 		1ACC9523127F984E004E5073 /* HeroEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACC9522127F984E004E5073 /* HeroEditView.xib */; };
+		1ADB7C3C12A04DA8001D90E7 /* menu_music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */; };
+		1ADB7C3D12A04DA8001D90E7 /* storyboard_song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */; };
 		1ADD6BA41274FDA700E8C76A /* workout_log_tab_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */; };
 		1ADD6BBE1274FE8600E8C76A /* WeightLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */; };
 		1ADD6BC11274FEC600E8C76A /* WeightLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6BC01274FEC600E8C76A /* WeightLogView.xib */; };
@@ -526,6 +528,8 @@
 		1ACC9520127F982F004E5073 /* HeroEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroEditViewController.m; path = DeveloperToolbox/HeroEditViewController.m; sourceTree = SOURCE_ROOT; };
 		1ACC9522127F984E004E5073 /* HeroEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HeroEditView.xib; path = DeveloperToolbox/HeroEditView.xib; sourceTree = SOURCE_ROOT; };
 		1AD4DCE8124BCA47008EBDF5 /* CHANGELOG.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.markdown; sourceTree = "<group>"; };
+		1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu_music.m4a; sourceTree = "<group>"; };
+		1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = storyboard_song.m4a; sourceTree = "<group>"; };
 		1ADD6BA31274FDA700E8C76A /* workout_log_tab_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "workout_log_tab_icon@2x.png"; path = "Assets/Mockups/workout_log_tab_icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		1ADD6BBC1274FE8600E8C76A /* WeightLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightLogViewController.h; path = WeightLog/WeightLogViewController.h; sourceTree = SOURCE_ROOT; };
 		1ADD6BBD1274FE8600E8C76A /* WeightLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightLogViewController.m; path = WeightLog/WeightLogViewController.m; sourceTree = SOURCE_ROOT; };
@@ -1134,6 +1138,8 @@
 		C99A91C6124A7F47005BAECF /* music */ = {
 			isa = PBXGroup;
 			children = (
+				1ADB7C3A12A04DA8001D90E7 /* menu_music.m4a */,
+				1ADB7C3B12A04DA8001D90E7 /* storyboard_song.m4a */,
 				C99A91C7124A7F47005BAECF /* menu battle song 002.m4a */,
 				C99A91C8124A7F47005BAECF /* RQ_Battle_Song.m4a */,
 				C99A91C9124A7F47005BAECF /* RQ_MenuSong.m4a */,
@@ -1645,6 +1651,8 @@
 				D82FBDCB129EA715007D22A1 /* capey2.png in Resources */,
 				D82FBDCC129EA715007D22A1 /* capey@2x.png in Resources */,
 				D82FBDCD129EA715007D22A1 /* capey.png in Resources */,
+				1ADB7C3C12A04DA8001D90E7 /* menu_music.m4a in Resources */,
+				1ADB7C3D12A04DA8001D90E7 /* storyboard_song.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

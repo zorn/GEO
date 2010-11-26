@@ -1,6 +1,8 @@
 November 26, 2010
 
 * Added new developer pref to optionally use simulated GPS on the device. This works, though does seem to cause more drawing artifacts. On the simulator it will now always use simulated GPS.
+* The Main Menu now plays music. It will stop as you jump into the map view.
+* The Settings view now live update the volume settings as you drag the slider, so you instantly hear the music volume change. Additionally you will also hear a sound effect sample as you move it's slider.
 
 November 25, 2010
 

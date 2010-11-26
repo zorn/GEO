@@ -25,6 +25,8 @@
 
 
 - (IBAction)doneButtonAction:(id)sender;
+- (IBAction)updateDefautsBasedOnUI;
+- (IBAction)playSampleSoundEffect;
 
 @end
 
