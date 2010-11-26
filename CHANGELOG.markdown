@@ -1,9 +1,15 @@
-Unreleased 1.0b2 Changes
+November 26, 2010
+
+* Added new developer pref to optionally use simulated GPS on the device. This works, though does seem to cause more drawing artifacts. On the simulator it will now always use simulated GPS.
 
 November 25, 2010
 
 * Added new monsters to temporarily replace ones of questionable obscenity.  
 * Added treasure countdown animation.  They still do nothing when encountered.
+
+--- 
+November 22, 2010 
+Shipped 1.0b2 to a few testers!
 
 November 22, 2010
 
@@ -17,8 +23,6 @@ November 19, 2010
 --- 
 November 19, 2010 
 Shipped 1.0b1 to a few testers!
-
---- 
 
 November 18, 2010
 

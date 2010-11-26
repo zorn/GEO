@@ -14,11 +14,13 @@
 @interface DeveloperToolboxViewController : UIViewController <StoryViewControllerDelegate>
 {
 	UISwitch *mapBattleDemoOverride;
+	UISwitch *simulateGPSSwitch;
 }
 
 @property (readwrite, assign) id <DeveloperToolboxViewControllerDelegate> delegate;
 
 @property (retain) IBOutlet UISwitch *mapBattleDemoOverride;
+@property (retain) IBOutlet UISwitch *simulateGPSSwitch;
 
 
 - (IBAction)loadCorePlotDemoOne:(id)sender;
@@ -26,6 +28,7 @@
 - (IBAction)editHero:(id)sender;
 
 - (IBAction)mapBattleDemoModeValueChanged:(id)sender;
+- (IBAction)simulateGPSValueChanged:(id)sender;
 
 
 @end

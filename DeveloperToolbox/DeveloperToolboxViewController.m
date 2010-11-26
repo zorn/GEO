@@ -31,12 +31,14 @@
 
 - (void)dealloc
 {
+	[simulateGPSSwitch release];
 	[mapBattleDemoOverride release];
 	[super dealloc];
 }
 
 @synthesize delegate;
 @synthesize mapBattleDemoOverride;
+@synthesize simulateGPSSwitch;
 
 - (void)viewDidLoad
 {
@@ -44,6 +46,7 @@
 	
 	// update the view to honor the current defaults
 	self.mapBattleDemoOverride.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQMapBattleDemoOverride"] boolValue];
+	self.simulateGPSSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSimulateGPS"] boolValue];
 }
 
 
@@ -74,6 +77,11 @@
 - (IBAction)mapBattleDemoModeValueChanged:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.mapBattleDemoOverride.on] forKey:@"RQMapBattleDemoOverride"];
+}
+
+- (IBAction)simulateGPSValueChanged:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.simulateGPSSwitch.on] forKey:@"RQSimulateGPS"];
 }
 
 - (void)returnToMainMenu

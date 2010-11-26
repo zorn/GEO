@@ -26,10 +26,7 @@
 #import "Treasure.h"
 #import "TreasureAnnotationView.h"
 #import "CLLocation+RQAdditions.h"
-
-#ifdef TESTING
 #import "RandomWalkLocationManager.h"
-#endif
 
 #define METERS_PER_DEGREE 111000
 
@@ -91,11 +88,17 @@
 		appDelegate = [[UIApplication sharedApplication] delegate];
 		CLLocationManager *manager = nil;
 		
-#ifdef TESTING 
+#if (TARGET_IPHONE_SIMULATOR)
 		manager = [[RandomWalkLocationManager alloc] init];
-#else	
-		manager = [[CLLocationManager alloc] init];
+#else
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSimulateGPS"] boolValue] == YES) {
+			manager = [[RandomWalkLocationManager alloc] init];
+		} else {
+			manager = [[CLLocationManager alloc] init];
+		}
 #endif
+		NSLog(@"Using Location manager class: %@", [manager class]);
+			  
 		self.locationManager = manager;
 		[manager release];
 		self.locationManager.purpose = NSLocalizedString(@"To track your progress around the RunQuest world.", @"Explain what we're using core location for");
@@ -454,11 +457,12 @@
 		[self addEnemy:enemy];
 		[enemy release];
 	}
-#ifdef TESTING
-	//EnemyMapSpawn *lastEnemy = [_enemies anyObject];
-	//	CLLocation *destination = [[CLLocation alloc] initWithCoordinate:lastEnemy.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
-	//	[(RandomWalkLocationManager *)locationManager setDestination:destination];
-#endif
+	
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSimulateGPS"] boolValue] == YES) {
+		//EnemyMapSpawn *lastEnemy = [_enemies anyObject];
+		//	CLLocation *destination = [[CLLocation alloc] initWithCoordinate:lastEnemy.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
+		//	[(RandomWalkLocationManager *)locationManager setDestination:destination];
+	}
 }
 
 - (void)updateTimerLabel {
