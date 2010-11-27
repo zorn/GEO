@@ -58,6 +58,7 @@
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
 #define ENEMY_SPEED_ADVANTAGE .5f
+#define DISTANCE_CONVERSION_FACTOR 1.8f
 
 @interface MapViewController ()
 @property (nonatomic, retain) RQBattleViewController *battleViewController;
@@ -69,11 +70,12 @@
 - (void)removeTreasure:(Treasure *)treasure;
 - (void)removeTreasureView:(TreasureAnnotationView *)treasureView;
 - (void)startGameMechanics;
-- (void)pauseGameMechanics;
+- (void)pauseGameMechanicsAndRemoveTreasures:(BOOL)removeTreasures;
+- (void)updateHPAndGP;
 @end
 
 @implementation MapViewController
-@synthesize delegate, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
+@synthesize delegate, hero, startButton, hpView, gpView, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
 
 @synthesize newWorkoutNavigationBar;
 @synthesize workoutStatCollectionView;
@@ -87,7 +89,6 @@
 		srand([[NSDate date] timeIntervalSince1970]);
 		appDelegate = [[UIApplication sharedApplication] delegate];
 		CLLocationManager *manager = nil;
-		
 #if (TARGET_IPHONE_SIMULATOR)
 		manager = [[RandomWalkLocationManager alloc] init];
 #else
@@ -164,10 +165,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark View Life Cycle
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	self.mapView.showsUserLocation = NO;
+	
+	[self updateHPAndGP];
 	
 	[self moveWorkoutStatCollectionViewOffScreenShouldAnimate:NO];
 	[self moveNewWorkoutNavigationBarOnScreenShouldAnimate:NO];
@@ -196,12 +200,42 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-	[self.displayLink invalidate];
-	self.displayLink = nil;
+	
 	self.mapView = nil;
 	self.hudView = nil;
 	self.overlayLabel = nil;
+	self.timerLabel = nil;
+	self.distanceLabel = nil;
+	self.calorieBurnLabel = nil;
 	self.startButton = nil;
+	self.locationButton = nil;
+	self.newWorkoutNavigationBar = nil;
+	self.workoutStatCollectionView = nil;
+	self.startToolbar = nil;
+	self.pauseToolbar = nil;
+	self.hpView = nil;
+	self.gpView = nil;
+	
+	[self.displayLink invalidate];
+	self.displayLink = nil;
+}
+#pragma mark -
+#pragma mark View Updating
+- (void)updateHPAndGP {
+	hpView.progress = 1.0f*self.hero.currentHP/self.hero.maxHP;
+	gpView.progress = self.hero.glovePower/100.0f;
+}
+
+
+#pragma mark -
+#pragma mark Properties
+
+- (RQHero *)hero {
+	RQHero *hero_ = [[RQModelController defaultModelController] hero];
+	if ( hero !=  hero_) {
+		hero = hero_;
+	}
+	return hero;
 }
 
 #pragma mark Timer Fire Methods
@@ -223,8 +257,13 @@
 	}
 }
 
+- (void)encounterTreasure:(Treasure *)treasure {
+	[hero setCurrentHP:[hero currentHP] + [hero maxHP]/5];
+	[self removeTreasure:treasure];
+}
+
 - (void)encounterEnemy:(EnemyMapSpawn *)enemy {
-	[self pauseGameMechanics];
+	[self pauseGameMechanicsAndRemoveTreasures:NO];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
 														message:NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy") 
 													   delegate:self 
@@ -236,10 +275,13 @@
 }
 
 - (void)pulseEnemies {
+	[self updateHPAndGP];
 	NSTimeInterval timeSinceLastUpdate = 0;
 	if ( _lastEnemyUpdate )
 		timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:_lastEnemyUpdate];
 	
+	MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
+	CLLocationDistance sonarRange = _sonar.range;
 	
 	@synchronized (_enemyViews ) {
 		NSSet *safeIterableCopy = [_enemyViews copy];
@@ -248,13 +290,13 @@
 			EnemyMapSpawn *enemy = enemyView.annotation;
 			MKMapPoint enemyPoint = MKMapPointForCoordinate(enemy.coordinate);
 			[_sonar lockForReading];
-			MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
-			CLLocationDistance sonarRange = _sonar.range;
+			
+			
 			//CLLocation *heroLocation = [[CLLocation alloc] initWithLatitude:_sonar.coordinate.latitude longitude:_sonar.coordinate.longitude];
 			[_sonar unlockForReading];
 			//CLLocation *enemyLocation = [[CLLocation alloc] initWithLatitude:enemy.coordinate.latitude longitude:enemy.coordinate.longitude];
 			
-			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint)*2.0f;
+			CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyPoint, heroPoint)*DISTANCE_CONVERSION_FACTOR;
 			
 			//[heroLocation distanceFromLocation:enemyLocation];//
 			if ( metersToHero < sonarRange )
@@ -308,13 +350,21 @@
 		NSSet *safeIterableCopy = [_treasureViews copy];
 		for ( TreasureAnnotationView *treasureView in safeIterableCopy ) {
 			Treasure *treasure = [treasureView annotation];
-			if ( treasure.remaining > timeSinceLastUpdate ) {
-				treasure.remaining = treasure.remaining - timeSinceLastUpdate;
-				[treasureView setNeedsDisplay];
+			MKMapPoint treasurePoint = MKMapPointForCoordinate(treasure.coordinate);
+			CLLocationDistance distance = MKMetersBetweenMapPoints(treasurePoint, heroPoint)*DISTANCE_CONVERSION_FACTOR;
+			if ( distance > sonarRange ) {
+				if ( treasure.remaining > timeSinceLastUpdate ) {
+					treasure.remaining = treasure.remaining - timeSinceLastUpdate;
+					[treasureView setNeedsDisplay];
+				} else {
+					[self removeTreasureView:treasureView];
+					[self removeTreasure:treasure];
+				}
 			} else {
 				[self removeTreasureView:treasureView];
-				[self removeTreasure:treasure];
+				[self encounterTreasure:treasure];
 			}
+
 		}
 		[safeIterableCopy release];
 	}
@@ -442,10 +492,23 @@
 		MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 		CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 		MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
-		CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyMapPoint, heroPoint)*2.0f;
-		Treasure *treasure = [[Treasure alloc] initWithLifetime:(metersToHero - _sonar.range)/(speed + 1.0f) coordinate:enemyCoordinate];
-		[self addTreasure:treasure];
-		[treasure release];
+		CLLocationDistance metersToHero = MKMetersBetweenMapPoints(enemyMapPoint, heroPoint)*DISTANCE_CONVERSION_FACTOR;
+		
+		BOOL add = YES;
+		
+		for ( Treasure *treasure_ in _treasures ) {
+			MKMapPoint point = MKMapPointForCoordinate(treasure_.coordinate);
+			if ( MKMetersBetweenMapPoints(point, enemyMapPoint)*DISTANCE_CONVERSION_FACTOR < ENEMY_GENERATION_RADIUS ) {
+				add = NO;
+				break;
+			}
+		}
+		
+		if ( add ) {
+			Treasure *treasure = [[Treasure alloc] initWithLifetime:(metersToHero - _sonar.range)/(speed + 1.0f) coordinate:enemyCoordinate];
+			[self addTreasure:treasure];
+			[treasure release];
+		}
 	}
 }
 
@@ -545,6 +608,7 @@
 }
 
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller {
+	[self updateHPAndGP];
 	[self dismissModalViewControllerAnimated:YES];
 	[self setBattleViewController:nil];
 	if ( self.trek )
@@ -563,8 +627,7 @@
     
 	self.battleViewController = [[[RQBattleViewController alloc] init] autorelease];
 	self.battleViewController.delegate = self;
-	RQHero *hero = [[RQModelController defaultModelController] hero];
-	self.battleViewController.battle.hero = hero;
+	self.battleViewController.battle.hero = self.hero;
 	
 	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
 	[hero setCurrentHP:hero.maxHP];
@@ -620,12 +683,15 @@
 	[self addTimerNamed:@"EnemyPulse" withInterval:ENEMY_PULSE_EVERY selector:@selector(pulseEnemies) fireDate:nil];
 }
 
-- (void)pauseGameMechanics {
+- (void)pauseGameMechanicsAndRemoveTreasures:(BOOL)removeTreasures {
 	_lastEnemyUpdate = nil;
-	NSSet *treasureCopy = [_treasureViews copy];
-	for ( TreasureAnnotationView *tv in treasureCopy ) {
-		[self removeTreasureView:tv];
-		[self removeTreasure:tv.annotation];
+	if ( removeTreasures ) {
+		NSSet *treasureCopy = [_treasureViews copy];
+		for ( TreasureAnnotationView *tv in treasureCopy ) {
+			[self removeTreasureView:tv];
+			[self removeTreasure:tv.annotation];
+		}
+		[treasureCopy release];
 	}
 	[self removeTimerNamed:@"EnemyPulse"];
 	[self removeTimerNamed:@"TreasureSpawn"];
@@ -675,7 +741,7 @@
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
 		NSLog(@"%@", error);
-	[self pauseGameMechanics];
+	[self pauseGameMechanicsAndRemoveTreasures:YES];
 	
 	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
 	[self movePauseWorkoutToolbarOnScreenShouldAnimate:YES];

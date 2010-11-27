@@ -16,6 +16,7 @@
 #import "WeightLogEventEditViewController.h"
 
 @class Trek;
+@class RQHero;
 @class AppDelegate_Shared;
 
 @protocol MapViewControllerDelegate;
@@ -43,13 +44,15 @@
 
 	NSMutableDictionary *_timers;
 	
+	RQHero *hero;
+	
 	BOOL firstZoomDidOccur;
 }
 
 @property (nonatomic, assign) id <MapViewControllerDelegate> delegate;
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
-
+@property (nonatomic, readonly) RQHero *hero;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIView *hudView;
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
@@ -64,6 +67,8 @@
 @property (nonatomic, retain) IBOutlet UIView *workoutStatCollectionView;
 @property (nonatomic, retain) IBOutlet UIToolbar *startToolbar;
 @property (nonatomic, retain) IBOutlet UIToolbar *pauseToolbar;
+@property (nonatomic, retain) IBOutlet UIProgressView *hpView;
+@property (nonatomic, retain) IBOutlet UIProgressView *gpView;
 
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;

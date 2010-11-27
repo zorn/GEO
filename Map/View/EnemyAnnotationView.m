@@ -10,16 +10,16 @@
 #import "EnemyAnnotationLayer.h"
 #import "EnemyMapSpawn.h";
 
-#define NON_PULSING_RADIUS 12.0f
+#define NON_PULSING_RADIUS 22.0f
 #define PULSING_RADIUS 42.0f
 #define BASE_OPACITY .75f
 
 @implementation EnemyAnnotationView
 @synthesize pulsing;
 
-+ (Class)layerClass { 
-	return [EnemyAnnotationLayer class];
-}
+//+ (Class)layerClass { 
+//	return [EnemyAnnotationLayer class];
+//}
 
 - (id)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (( self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier] )) {
@@ -97,8 +97,16 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	//CGContextRef context = UIGraphicsGetCurrentContext();
-	//[self.layer drawInContext:context];
+	CGFloat stroke = 2.0f;
+	CGRect bounds_ = CGRectInset(self.bounds, stroke, stroke);
+	[[UIColor colorWithRed:1 green:.1 blue:.1 alpha:.8f] set];
+	UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:bounds_];
+	[path fill];
+	if ( !self.isPulsing ) {
+		[[UIColor whiteColor] set];
+		path.lineWidth = stroke;
+		[path stroke];
+	}
 	[super drawRect:rect];
 }
 

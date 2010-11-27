@@ -1,3 +1,8 @@
+November 27, 2010
+*HP & GP meters are updated in the MapView
+*Boost of MaxHP/5 when you encounter a treasure
+*White outline around enemies so they stand out a bit more against the fog
+
 November 26, 2010
 
 * Added new developer pref to optionally use simulated GPS on the device. This works, though does seem to cause more drawing artifacts. On the simulator it will now always use simulated GPS.
