@@ -13,4 +13,6 @@
 
 }
 
+- (void)animateEncounterWithDelegate:(id)delegate;
+
 @end

@@ -1,4 +1,10 @@
 November 27, 2010
+
+* Added new main menu background.
+* Added Default.png to help load visual. (It's suppose to fade but I think the Core Animation I added is interfering with the "currentViewController" stuff.)
+* Background mesh for log view is now a little darker.
+
+November 27, 2010
 *HP & GP meters are updated in the MapView
 *Boost of MaxHP/5 when you encounter a treasure
 *White outline around enemies so they stand out a bit more against the fog

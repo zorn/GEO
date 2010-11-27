@@ -55,7 +55,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 	[super viewWillAppear:animated];
 }
 
@@ -83,6 +83,7 @@
 
 - (IBAction)optionsButtonPressed:(id)sender
 {
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
 	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
 	[settingsVC setDelegate:self];
 	[self presentModalViewController:settingsVC animated:YES];
@@ -91,6 +92,8 @@
 
 - (IBAction)logButtonPressed:(id)sender
 {
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+	
 	//[delegate mainMenuViewControllerTreksButtonPressed:self];
 	// BUILD Trek Log
 	TrekListViewController *trekListVC = [[TrekListViewController alloc] init];
@@ -145,6 +148,7 @@
 
 - (IBAction)doneBrowsingLogBook:(id)sender
 {	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -158,6 +162,7 @@
 
 - (void)settingsViewControllerDidEnd:(SettingsViewController *)controller;
 {
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
 	[self dismissModalViewControllerAnimated:YES];
 }
 

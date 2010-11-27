@@ -24,11 +24,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     // Override point for customization after application launch.
-	[self updateAudioSystemVolumeSettings];
 	
+	// TODO: This fade doesn't happen
+	splashView = [[UIImageView alloc] initWithFrame:CGRectMake(0,20, 320, 460)];
+	splashView.image = [UIImage imageNamed:@"Default.png"];
+	[self.window addSubview:splashView];
+	[self.window bringSubviewToFront:splashView];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self.window cache:YES];
+	[UIView setAnimationDelegate:self]; 
+	[UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+	splashView.alpha = 0.0;
+	//splashView.frame = CGRectMake(-60, -60, 440, 600);
+	[UIView commitAnimations];
+	
+	[self updateAudioSystemVolumeSettings];
 	[self setCurrentViewController:[self mainMenuViewController] animated:NO];
 	
-	[self.window addSubview:self.currentViewController.view];	
+	//[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
 	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
 	
@@ -37,7 +51,7 @@
     [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotif) {
         NSLog(@"Recieved Notification %@",localNotif);
-    }
+    }	
 	
 	return YES;
 }
@@ -154,6 +168,12 @@
 	
 	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:backgroundMusic];
 	[[SimpleAudioEngine sharedEngine] setEffectsVolume:soundEffects];
+}
+
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+	[splashView removeFromSuperview];
+	[splashView release];
 }
 
 #pragma mark -

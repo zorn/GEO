@@ -23,6 +23,7 @@
 @class MapViewController;
 
 @interface AppDelegate_iPhone : AppDelegate_Shared <MainMenuViewControllerDelegate, MapViewControllerDelegate, StoryViewControllerDelegate, SettingsViewControllerDelegate> {
+	UIImageView *splashView;
 	
 }
 @property (nonatomic, retain) UINavigationController *developerToolboxNavigationController;
@@ -34,6 +35,7 @@
 
 - (void)setCurrentViewController:(UIViewController *)to animated:(BOOL)animate;
 - (void)updateAudioSystemVolumeSettings;
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 
 @end
 
