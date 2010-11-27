@@ -31,6 +31,14 @@
 	[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
 	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
+	
+	// Handle launching from a notification
+    UILocalNotification *localNotif =
+    [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+        NSLog(@"Recieved Notification %@",localNotif);
+    }
+	
 	return YES;
 }
 
@@ -201,6 +209,20 @@
 - (void)mainMenuViewControllerStoryButtonPressed:(MainMenuViewController *)controller
 {
 	[self presentStory:nil];
+}
+
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+	if (app.applicationState == UIApplicationStateActive) {
+		//if app is active, we never saw the notification
+		[self.mapViewController encounterEnemyShouldConfirm:YES];
+	}
+	else {
+		//else we already said we wanted to fight
+		[self.mapViewController encounterEnemyShouldConfirm:NO];
+	}
+
+   
 }
 
 @end

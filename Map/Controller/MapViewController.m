@@ -45,7 +45,7 @@
 #define ENEMY_SPEED_VARIANCE 2.0f
 
 #define SLOWEST_ENEMY_SPEED 3.0f
-#define ENEMIES_TO_GENERATE 75
+#define ENEMIES_TO_GENERATE 150
 
 #define MAX_TREASURES 2
 
@@ -57,7 +57,7 @@
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
-#define ENEMY_SPEED_ADVANTAGE .5f
+#define ENEMY_SPEED_ADVANTAGE 10.0f
 #define DISTANCE_CONVERSION_FACTOR 1.8f
 
 @interface MapViewController ()
@@ -66,12 +66,12 @@
 - (void)showHUD;
 - (void)hideHUD;
 - (void)removeEnemyView:(EnemyAnnotationView *)enemyView;
-- (void)encounterEnemy:(EnemyMapSpawn *)enemy;
 - (void)removeTreasure:(Treasure *)treasure;
 - (void)removeTreasureView:(TreasureAnnotationView *)treasureView;
 - (void)startGameMechanics;
 - (void)pauseGameMechanicsAndRemoveTreasures:(BOOL)removeTreasures;
 - (void)updateHPAndGP;
+- (void)encounterEnemy;
 @end
 
 @implementation MapViewController
@@ -260,18 +260,40 @@
 - (void)encounterTreasure:(Treasure *)treasure {
 	[hero setCurrentHP:[hero currentHP] + [hero maxHP]/5];
 	[self removeTreasure:treasure];
+	[self updateHPAndGP];
 }
 
-- (void)encounterEnemy:(EnemyMapSpawn *)enemy {
-	[self pauseGameMechanicsAndRemoveTreasures:NO];
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
-														message:NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy") 
-													   delegate:self 
-											  cancelButtonTitle:NSLocalizedString(@"No", @"No") 
-											  otherButtonTitles:NSLocalizedString(@"Yes", @"Yes"), nil];
+- (void)encounterEnemy {
+	NSString *alertBody = NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy");
+	UILocalNotification *localNote = [[UILocalNotification alloc] init];
+	localNote.fireDate = [NSDate date];
+	localNote.repeatInterval = 0;
+	localNote.alertBody = alertBody;
+	localNote.alertAction = NSLocalizedString(@"Fight", @"Fight");
+	localNote.soundName = @"Computer_Data_001.caf";
+	localNote.userInfo = [NSDictionary dictionaryWithObject:@"fight" forKey:@"type"];
 	
-	[alertView show];
-	[alertView release];
+	[[UIApplication sharedApplication] scheduleLocalNotification:localNote];
+    [localNote release];
+}
+
+- (void)encounterEnemyShouldConfirm:(BOOL)shouldConfirm {
+	if ( shouldConfirm ) {
+		[self pauseGameMechanicsAndRemoveTreasures:NO];
+		NSString *alertBody = NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy");
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
+														message:alertBody 
+													   delegate:self 
+											  cancelButtonTitle:NSLocalizedString(@"Keep Walking", @"Keep Walking") 
+											  otherButtonTitles:NSLocalizedString(@"Fight", @"Fight"), nil];
+		
+		[alertView show];
+		[alertView release];
+	}
+	else {
+		[self launchBattlePressed:self];
+	}
+
 }
 
 - (void)pulseEnemies {
@@ -333,7 +355,7 @@
 					enemy.coordinate = _sonar.coordinate;
 					AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
 					[self removeEnemyView:enemyView];
-					[self encounterEnemy:enemyView.annotation];
+					[self encounterEnemy];
 				}
 				[enemyView pulse];
 			}

@@ -79,6 +79,8 @@
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
 
+- (void)encounterEnemyShouldConfirm:(BOOL)shouldConfirm;
+
 #pragma mark -
 #pragma mark Methods to adjust the UI for the current state of the workout
 - (void)moveNewWorkoutNavigationBarOffScreenShouldAnimate:(BOOL)animate;
