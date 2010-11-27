@@ -8,6 +8,12 @@
 
 #import "CLLocation+RQAdditions.h"
 
+CLLocationDistance CLLocationDistanceBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate) {
+	double deltaX = startCoordinate.longitude - endCoordinate.longitude;
+	double deltaY = startCoordinate.latitude - endCoordinate.latitude;
+	return sqrt(deltaX*deltaX + deltaY*deltaY);
+}
+
 double AngleBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate) {
 	double deltaX = startCoordinate.longitude - endCoordinate.longitude;
 	double deltaY = startCoordinate.latitude - endCoordinate.latitude;

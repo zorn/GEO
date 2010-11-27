@@ -14,6 +14,8 @@
 
 double AngleBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate);
 
+CLLocationDistance CLLocationDistanceBetweenCoordinates(CLLocationCoordinate2D startCoordinate, CLLocationCoordinate2D endCoordinate);
+
 @interface CLLocation (RQAdditions)
 
 - (double)angleToLocation:(CLLocation *)location;

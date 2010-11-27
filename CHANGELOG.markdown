@@ -5,6 +5,7 @@ November 27, 2010
 *Local notifications for encountering enemies while in the background w/ custom sound
 *Added sound, animation on treasure encounter
 *Added sound on Enemy encounter while in-app
+*New enemy generation code for more even distribution of enemies
 
 November 26, 2010
 

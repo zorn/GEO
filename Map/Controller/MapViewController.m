@@ -30,33 +30,32 @@
 
 #define METERS_PER_DEGREE 111000
 
-#define MIN_ENEMY_DISTANCE .005f
+#define ENEMY_GENERATION_BOUNDS .05f
 
-#define ENEMY_GENERATION_BOUNDS_X .05f
-#define ENEMY_GENERATION_BOUNDS_Y .05f
+#define ENEMY_SPAWN_RADIUS 500.0f
 
 #define DEFAULT_ZOOM_BOUNDS_X .01f
 #define DEFAULT_ZOOM_BOUNDS_Y .01f
 
-#define ENEMY_GENERATION_BOUNDS_X_METERS ENEMY_GENERATION_BOUNDS_X * METERS_PER_DEGREE
-#define ENEMY_GENERATION_BOUNDS_Y_METERS ENEMY_GENERATION_BOUNDS_Y * METERS_PER_DEGREE
+#define ENEMY_MAGNET_RADIUS 500.0f //meters
+#define ENEMY_MIN_DISTANCE ENEMY_MAGNET_RADIUS/(1.5f*METERS_PER_DEGREE)
 
 #define ENEMY_GENERATION_MIN_DISTANCE .001f
 #define ENEMY_SPEED_VARIANCE 2.0f
 
-#define SLOWEST_ENEMY_SPEED 3.0f
-#define ENEMIES_TO_GENERATE 150
+#define SLOWEST_ENEMY_SPEED 4.0f
+#define ENEMIES_TO_GENERATE 300
 
 #define MAX_TREASURES 2
 #define TREASURE_SPAWN_EVERY 30 //seconds
 
-#define ENEMY_GENERATION_RADIUS 500.0f
+
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
 
 #define ENEMY_PULSE_EVERY 1 //second
-#define ENEMY_MAGNET_RADIUS 500.0f //meters
+
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
 #define ENEMY_SPEED_ADVANTAGE 10.0f
 #define DISTANCE_CONVERSION_FACTOR 1.8f
@@ -486,8 +485,8 @@
 	course = course*RADIANS_PER_DEGREE;
 	MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 	CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-	CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
-	CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaY = -1.0f*ENEMY_SPAWN_RADIUS*cos((double)course)*mapPointsPerMeter;
+	CLLocationDistance deltaX = ENEMY_SPAWN_RADIUS*sin((double)course)*mapPointsPerMeter;
 	MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 	CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 	
@@ -520,8 +519,8 @@
 		course = course*RADIANS_PER_DEGREE;
 		MKMapPoint heroMapPoint = MKMapPointForCoordinate(coordinate);
 		CLLocationDistance mapPointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-		CLLocationDistance deltaY = -1.0f*ENEMY_GENERATION_RADIUS*cos((double)course)*mapPointsPerMeter;
-		CLLocationDistance deltaX = ENEMY_GENERATION_RADIUS*sin((double)course)*mapPointsPerMeter;
+		CLLocationDistance deltaY = -1.0f*ENEMY_SPAWN_RADIUS*cos((double)course)*mapPointsPerMeter;
+		CLLocationDistance deltaX = ENEMY_SPAWN_RADIUS*sin((double)course)*mapPointsPerMeter;
 		MKMapPoint enemyMapPoint = MKMapPointMake(heroMapPoint.x + deltaX, heroMapPoint.y + deltaY);
 		CLLocationCoordinate2D enemyCoordinate = MKCoordinateForMapPoint(enemyMapPoint);
 		MKMapPoint heroPoint = MKMapPointForCoordinate(_sonar.coordinate);
@@ -531,7 +530,7 @@
 		
 		for ( Treasure *treasure_ in _treasures ) {
 			MKMapPoint point = MKMapPointForCoordinate(treasure_.coordinate);
-			if ( MKMetersBetweenMapPoints(point, enemyMapPoint)*DISTANCE_CONVERSION_FACTOR < ENEMY_GENERATION_RADIUS ) {
+			if ( MKMetersBetweenMapPoints(point, enemyMapPoint)*DISTANCE_CONVERSION_FACTOR < _sonar.range ) {
 				add = NO;
 				break;
 			}
@@ -547,14 +546,30 @@
 
 - (void)loadEnemiesAroundLocation:(CLLocation *)location {
 	CLLocationCoordinate2D coordinate = location.coordinate;
+	CLLocationDistance minDistanceBetweenEnemies = 10.0f/ENEMIES_TO_GENERATE*ENEMY_GENERATION_BOUNDS;
+	CLLocationCoordinate2D lastCoordinate = coordinate;
 	for ( NSUInteger i = 1; i <= ENEMIES_TO_GENERATE; i++ ) {
-		double randX = ENEMY_GENERATION_BOUNDS_X*rand()/RAND_MAX;
-		double randY = ENEMY_GENERATION_BOUNDS_Y*rand()/RAND_MAX;
-		EnemyMapSpawn *enemy = [[EnemyMapSpawn alloc] initWithCoordinate:CLLocationCoordinate2DMake(coordinate.latitude + randY - ENEMY_GENERATION_BOUNDS_Y/2.0f, coordinate.longitude + randX - ENEMY_GENERATION_BOUNDS_X/2.0f) inManagedObjectContext:[appDelegate managedObjectContext]];
+		double distance = 1.0f*i/ENEMIES_TO_GENERATE*ENEMY_GENERATION_BOUNDS + ENEMY_MIN_DISTANCE;
+		
+		CLLocationDistance distanceFromLast = 0;
+		CLLocationCoordinate2D enemySpawnCoordinate = lastCoordinate;
+		uint8_t tries = 0;
+		while ( distanceFromLast < minDistanceBetweenEnemies && tries < 5) {
+			double radians = 2*M_PI*rand()/RAND_MAX;
+			double randX = -1.0f*distance*cos(radians);
+			double randY = distance*sin(radians);
+			enemySpawnCoordinate = CLLocationCoordinate2DMake(coordinate.latitude + randY, coordinate.longitude + randX);
+			distanceFromLast = CLLocationDistanceBetweenCoordinates(enemySpawnCoordinate, lastCoordinate);
+			tries++;
+		}
+		
+		EnemyMapSpawn *enemy = [[EnemyMapSpawn alloc] initWithCoordinate:enemySpawnCoordinate inManagedObjectContext:[appDelegate managedObjectContext]];
 		enemy.speed = 0; //SLOWEST_ENEMY_SPEED + ENEMY_SPEED_VARIANCE*rand()/RAND_MAX;
 		enemy.heading = 0;
+		
 		[self addEnemy:enemy];
 		[enemy release];
+		lastCoordinate = enemySpawnCoordinate;
 	}
 	
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSimulateGPS"] boolValue] == YES) {
