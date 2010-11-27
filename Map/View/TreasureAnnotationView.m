@@ -8,6 +8,7 @@
 
 #import "TreasureAnnotationView.h"
 #import "Treasure.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define WIDTH 24.0f
 #define HEIGHT 24.0f
@@ -26,6 +27,30 @@
 		self.bounds = CGRectMake(0, 0, WIDTH, HEIGHT);
 		[self setOpaque:NO];
 	} return self;
+}
+
+- (void)animateEncounterWithDelegate:(id)delegate {
+	[self.layer setOpacity:0];
+	CABasicAnimation* grow = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+	grow.fromValue = [NSNumber numberWithDouble:1];
+	grow.toValue = [NSNumber numberWithDouble:5];
+	grow.duration = .5;
+	
+	CABasicAnimation* fade = [CABasicAnimation animationWithKeyPath:@"opacity"];
+	fade.fromValue = [NSNumber numberWithDouble:OPACITY];
+	fade.toValue = [NSNumber numberWithDouble:0];
+	fade.duration = .5;
+	
+	CAMediaTimingFunction *timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	fade.timingFunction = timingFunction;
+	grow.timingFunction = timingFunction;
+	
+	CAAnimationGroup *pulse = [CAAnimationGroup animation];
+	pulse.animations = [NSArray arrayWithObjects:grow, fade, nil];
+	pulse.duration = .5;
+	pulse.delegate = delegate;
+	
+	[self.layer addAnimation:pulse forKey:@"pulse"];
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

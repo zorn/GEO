@@ -3,6 +3,8 @@ November 27, 2010
 *Boost of MaxHP/5 when you encounter a treasure
 *White outline around enemies so they stand out a bit more against the fog
 *Local notifications for encountering enemies while in the background w/ custom sound
+*Added sound, animation on treasure encounter
+*Added sound on Enemy encounter while in-app
 
 November 26, 2010
 

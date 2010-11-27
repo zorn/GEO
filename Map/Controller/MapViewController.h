@@ -18,6 +18,7 @@
 @class Trek;
 @class RQHero;
 @class AppDelegate_Shared;
+@class Treasure;
 
 @protocol MapViewControllerDelegate;
 
@@ -47,6 +48,8 @@
 	RQHero *hero;
 	
 	BOOL firstZoomDidOccur;
+	
+	Treasure *_encounteredTreasure;
 }
 
 @property (nonatomic, assign) id <MapViewControllerDelegate> delegate;

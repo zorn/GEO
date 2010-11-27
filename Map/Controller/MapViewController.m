@@ -48,12 +48,13 @@
 #define ENEMIES_TO_GENERATE 150
 
 #define MAX_TREASURES 2
+#define TREASURE_SPAWN_EVERY 30 //seconds
 
 #define ENEMY_GENERATION_RADIUS 500.0f
 #define LOCATION_ACCURACY_THRESHOLD 100
 #define PRINT_TREKS 0
 #define ENEMY_SPAWN_EVERY 20 //seconds
-#define TREASURE_SPAWN_EVERY 30 //seconds
+
 #define ENEMY_PULSE_EVERY 1 //second
 #define ENEMY_MAGNET_RADIUS 500.0f //meters
 #define CORE_LOCATION_DISTANCE_FILTER 3.0f
@@ -259,7 +260,6 @@
 
 - (void)encounterTreasure:(Treasure *)treasure {
 	[hero setCurrentHP:[hero currentHP] + [hero maxHP]/5];
-	[self removeTreasure:treasure];
 	[self updateHPAndGP];
 }
 
@@ -280,6 +280,7 @@
 - (void)encounterEnemyShouldConfirm:(BOOL)shouldConfirm {
 	if ( shouldConfirm ) {
 		[self pauseGameMechanicsAndRemoveTreasures:NO];
+		[[SimpleAudioEngine sharedEngine] playEffect:@"Computer_Data_001.caf"];
 		NSString *alertBody = NSLocalizedString(@"You have encountered an enemy.  Do you want to fight?", @"ask the user if they want to fight the enemy");
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENEMY ENCOUNTERED", @"enemy encountered") 
 														message:alertBody 
@@ -294,6 +295,13 @@
 		[self launchBattlePressed:self];
 	}
 
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+	if ( _encounteredTreasure ) {
+		[self removeTreasure:_encounteredTreasure];
+		_encounteredTreasure = nil;
+	}
 }
 
 - (void)pulseEnemies {
@@ -383,8 +391,11 @@
 					[self removeTreasure:treasure];
 				}
 			} else {
+				[treasureView animateEncounterWithDelegate:self];
+				[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 				[self removeTreasureView:treasureView];
 				[self encounterTreasure:treasure];
+				_encounteredTreasure = treasure;
 			}
 
 		}
