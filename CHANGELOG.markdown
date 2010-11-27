@@ -2,7 +2,7 @@ November 27, 2010
 *HP & GP meters are updated in the MapView
 *Boost of MaxHP/5 when you encounter a treasure
 *White outline around enemies so they stand out a bit more against the fog
-*Local notifications for encountering enemies while in the background
+*Local notifications for encountering enemies while in the background w/ custom sound
 
 November 26, 2010
 
