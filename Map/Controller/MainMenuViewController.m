@@ -100,6 +100,7 @@
 	UINavigationController *trekNavController = [[UINavigationController alloc] initWithRootViewController:trekListVC];
 	[trekListVC release];
 	trekNavController.navigationBar.barStyle = UIBarStyleBlack;
+	
 	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBrowsingLogBook:)];
 	trekNavController.navigationBar.topItem.rightBarButtonItem = doneItem;
 	

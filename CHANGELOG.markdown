@@ -3,6 +3,7 @@ November 27, 2010
 * Added new main menu background.
 * Added Default.png to help load visual. (It's suppose to fade but I think the Core Animation I added is interfering with the "currentViewController" stuff.)
 * Background mesh for log view is now a little darker.
+* Settings section is now themed.
 
 November 27, 2010
 *HP & GP meters are updated in the MapView
