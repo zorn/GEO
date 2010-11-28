@@ -4,6 +4,8 @@ November 27, 2010
 * Added Default.png to help load visual. (It's suppose to fade but I think the Core Animation I added is interfering with the "currentViewController" stuff.)
 * Background mesh for log view is now a little darker.
 * Settings section is now themed.
+* You can no longer select a trek row in the log book.
+* More of the log book has been styled. The previous weigh-ins section has been left "white" since I had trouble getting it styled w/o other issues. Will look into in the future.
 
 November 27, 2010
 *HP & GP meters are updated in the MapView

@@ -26,6 +26,7 @@
 - (void)dealloc
 {
 	[weightLostToDateLabel release]; weightLostToDateLabel = nil;
+	[newWeightButton release]; newWeightButton = nil;
 	[listViewButton release]; listViewButton = nil;
 	[graphDisplayView release]; graphDisplayView = nil;
 	
@@ -33,6 +34,7 @@
 }
 
 @synthesize weightLostToDateLabel;
+@synthesize newWeightButton;
 @synthesize listViewButton;
 @synthesize graphDisplayView;
 
@@ -57,14 +59,25 @@
 	graph.paddingTop = 0.0;
 	graph.paddingRight = 0.0;
 	graph.paddingBottom = 0.0;
+
+	// BLUE APPLE LOOK
+//	CPGradient *stocksBackgroundGradient = [[[CPGradient alloc] init] autorelease];
+//    stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.21569 green:0.28627 blue:0.44706 alpha:1.0] atPosition:0.0];
+//	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.09412 green:0.17255 blue:0.36078 alpha:1.0] atPosition:0.5];
+//	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:0.5];
+//	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:1.0];
+//    stocksBackgroundGradient.angle = 270.0;
+//	graph.plotAreaFrame.fill = [CPFill fillWithGradient:stocksBackgroundGradient];
 	
+	// gray
 	CPGradient *stocksBackgroundGradient = [[[CPGradient alloc] init] autorelease];
-    stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.21569 green:0.28627 blue:0.44706 alpha:1.0] atPosition:0.0];
-	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.09412 green:0.17255 blue:0.36078 alpha:1.0] atPosition:0.5];
-	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:0.5];
-	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.05882 green:0.13333 blue:0.33333 alpha:1.0] atPosition:1.0];
+    stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.166 green:0.166 blue:0.164 alpha:1.000] atPosition:0.0];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.105 green:0.105 blue:0.105 alpha:1.000] atPosition:0.5];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.0 green:0.0 blue:0.0 alpha:1.000] atPosition:0.5];
+	stocksBackgroundGradient = [stocksBackgroundGradient addColorStop:[CPColor colorWithComponentRed:0.0 green:0.0 blue:0.0 alpha:1.000] atPosition:1.0];
     stocksBackgroundGradient.angle = 270.0;
 	graph.plotAreaFrame.fill = [CPFill fillWithGradient:stocksBackgroundGradient];
+	
 	
 	CPLineStyle *borderLineStyle = [CPLineStyle lineStyle];
 	borderLineStyle.lineColor = [CPColor colorWithGenericGray:0.2];
@@ -73,6 +86,21 @@
 	graph.plotAreaFrame.borderLineStyle = borderLineStyle;
 	graph.plotAreaFrame.cornerRadius = 14.0;
 	
+	
+	// style buttons
+	[[self.newWeightButton layer] setCornerRadius:8.0f];
+	[[self.newWeightButton layer] setMasksToBounds:YES];
+	[[self.newWeightButton layer] setBorderWidth:1.0f];
+	[[self.newWeightButton layer] setBackgroundColor:[[UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000] CGColor]];
+	[[self.newWeightButton layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+	[self.newWeightButton setTitleColor:[UIColor colorWithRed:0.629 green:0.799 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
+	
+	[[self.listViewButton layer] setCornerRadius:8.0f];
+	[[self.listViewButton layer] setMasksToBounds:YES];
+	[[self.listViewButton layer] setBorderWidth:1.0f];
+	[[self.listViewButton layer] setBackgroundColor:[[UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000] CGColor]];
+	[[self.listViewButton layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+	[self.listViewButton setTitleColor:[UIColor colorWithRed:0.629 green:0.799 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated

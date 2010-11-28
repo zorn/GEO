@@ -8,12 +8,14 @@
 	
 	// outlets
 	UILabel *weightLostToDateLabel;
+	UIButton *newWeightButton;
 	UIButton *listViewButton;
 	CPLayerHostingView *graphDisplayView;
 }
 
 // outlets
 @property (retain) IBOutlet UILabel *weightLostToDateLabel;
+@property (retain) IBOutlet UIButton *newWeightButton;
 @property (retain) IBOutlet UIButton *listViewButton;
 @property (retain) IBOutlet CPLayerHostingView *graphDisplayView;
 

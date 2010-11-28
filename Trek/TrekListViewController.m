@@ -52,6 +52,8 @@
 	// YOU MUST DO THIS IN CODE, TRYING TO DO THIS IN IB VIA COLOR PICKER WILL RESULT IN BLACK CORNERS AROUND THE GROUPS
 	self.tableView.backgroundColor = [UIColor clearColor];
 	
+	self.tableView.allowsSelection = NO;
+	
 	_formatter = [[NSDateFormatter alloc] init];
 	[_formatter setDateStyle:NSDateFormatterShortStyle];
 	[self buildWeeklyGroups];
@@ -207,6 +209,12 @@
 //{
 //	return self.footerView.frame.size.height; 
 //}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return nil;
+}
+
 
 @end
 

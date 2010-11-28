@@ -60,6 +60,10 @@
 { 
 	[super viewDidLoad];
 	
+	[self.tableView setSeparatorColor:[UIColor colorWithRed:0.204 green:0.212 blue:0.222 alpha:1.000]];
+	// YOU MUST DO THIS IN CODE, TRYING TO DO THIS IN IB VIA COLOR PICKER WILL RESULT IN BLACK CORNERS AROUND THE GROUPS
+	self.tableView.backgroundColor = [UIColor clearColor];
+	
 	[self moveDatePickerViewOffScreen];
 	
 	_formatter = [[NSDateFormatter alloc] init];
@@ -195,6 +199,7 @@
 	} else {
 		cell = self.weightCell;
 	}
+	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
     return cell;
 }
 
@@ -219,6 +224,26 @@
 	} else {
 		
 	}
+}
+
+- (UIView *)tableView:(UITableView *)aTableView viewForHeaderInSection:(NSInteger)section
+{
+	UIView *containerView =	[[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 35)] autorelease];
+    //containerView.backgroundColor = [UIColor orangeColor];
+	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(25, 10, 300, 20)] autorelease];
+    headerLabel.text = [self tableView:aTableView titleForHeaderInSection:section];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.shadowColor = [UIColor blackColor];
+    headerLabel.shadowOffset = CGSizeMake(0, 1);
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    [containerView addSubview:headerLabel];
+	return containerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+	return 35;
 }
 
 #pragma mark -

@@ -64,6 +64,7 @@
 	[self.fetchedResultsController performFetch:&error];
 	if ( error )
 		NSLog(@"%@", error);  // TODO: care
+	
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,7 +98,6 @@
     }
     
 	[self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
 

@@ -42,6 +42,8 @@
 	[self.view setFrame:CGRectMake(0,0,320,480)];
 	
 	[self.tableView setSeparatorColor:[UIColor colorWithRed:0.204 green:0.212 blue:0.222 alpha:1.000]]; 
+	// YOU MUST DO THIS IN CODE, TRYING TO DO THIS IN IB VIA COLOR PICKER WILL RESULT IN BLACK CORNERS AROUND THE GROUPS
+	self.tableView.backgroundColor = [UIColor clearColor];
 	
 	// update the view to honor the current defaults
 	self.pauseIPodSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue];
