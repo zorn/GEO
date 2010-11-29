@@ -97,14 +97,29 @@
 	weaponShelfImageView.frame = newFrame;
 	
 	// Setup hp meter
-	heroGlovePowerBar = [[RQBarView alloc] initWithFrame:CGRectMake(5.0, 25.0, 10.0, 245.0)];
-	heroGlovePowerBar.barColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
+	heroGlovePowerBar = [[RQBarView alloc] initWithFrame:CGRectMake(8.0, 25.0, 10.0, 245.0)];
+	heroGlovePowerBar.barColor = [UIColor colorWithRed:0.080 green:0.583 blue:1.0 alpha:0.7];
 	[self.view addSubview:heroGlovePowerBar];
 	
+	UIImageView *gloveImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glove_label"]];
+	CGRect gloveImageLabelFrame = gloveImageLabel.frame;
+	gloveImageLabelFrame.origin.y = 275.0;
+	gloveImageLabel.frame = gloveImageLabelFrame;
+	[self.view addSubview:gloveImageLabel];
+	[gloveImageLabel release];
+	
 	// Setup glove power meter
-	heroHealthBar = [[RQBarView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 15.0, 25.0, 10.0, 245.0)];
-	heroHealthBar.barColor = [UIColor colorWithRed:0.080 green:0.583 blue:1.0 alpha:0.7];
+	heroHealthBar = [[RQBarView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 18.0, 25.0, 10.0, 245.0)];
+	heroHealthBar.barColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
 	[self.view addSubview:heroHealthBar];
+	
+	UIImageView *hpImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hp_label"]];
+	CGRect hpImageLabelFrame = hpImageLabel.frame;
+	hpImageLabelFrame.origin.y = 275.0;
+	hpImageLabelFrame.origin.x = (self.view.frame.size.width - hpImageLabelFrame.size.width) + 2.0;
+	hpImageLabel.frame = hpImageLabelFrame;
+	[self.view addSubview:hpImageLabel];
+	[hpImageLabel release];
 	
 	// Setup the flick threshold visual
 	//UIView *flickThresholdLine = [[UIView alloc] initWithFrame:CGRectMake(0, RQBattleViewFlickThreshold, self.view.frame.size.width, 2.0)];
