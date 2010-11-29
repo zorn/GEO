@@ -1,3 +1,9 @@
+November 28, 2010
+
+* Swapped HP and Glove Power colors
+* Added labels for HP and Glove Power
+* Changed map view to use the same bars as Battle View
+
 November 27, 2010
 
 * Added new main menu background.
