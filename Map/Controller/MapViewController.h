@@ -19,6 +19,7 @@
 @class RQHero;
 @class AppDelegate_Shared;
 @class Treasure;
+@class RQBarView;
 
 @protocol MapViewControllerDelegate;
 
@@ -70,8 +71,8 @@
 @property (nonatomic, retain) IBOutlet UIView *workoutStatCollectionView;
 @property (nonatomic, retain) IBOutlet UIToolbar *startToolbar;
 @property (nonatomic, retain) IBOutlet UIToolbar *pauseToolbar;
-@property (nonatomic, retain) IBOutlet UIProgressView *hpView;
-@property (nonatomic, retain) IBOutlet UIProgressView *gpView;
+@property (nonatomic, retain) IBOutlet RQBarView *hpBarView;
+@property (nonatomic, retain) IBOutlet RQBarView *gpBarView;
 
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;

@@ -27,6 +27,7 @@
 #import "TreasureAnnotationView.h"
 #import "CLLocation+RQAdditions.h"
 #import "RandomWalkLocationManager.h"
+#import "RQBarView.h"
 
 #define METERS_PER_DEGREE 111000
 
@@ -75,12 +76,14 @@
 @end
 
 @implementation MapViewController
-@synthesize delegate, hero, startButton, hpView, gpView, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
+@synthesize delegate, hero, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
 
 @synthesize newWorkoutNavigationBar;
 @synthesize workoutStatCollectionView;
 @synthesize startToolbar;
 @synthesize pauseToolbar;
+@synthesize hpBarView;
+@synthesize gpBarView;
 
 #pragma mark Object Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -146,6 +149,10 @@
 	[timerLabel release];
 	[distanceLabel release];
 	[calorieBurnLabel release];
+	
+	[hpBarView release];
+	[gpBarView release];
+	
 	[_lastEnemyUpdate release];
 	[_sonarView release];
 	[_sonar release];
@@ -172,6 +179,8 @@
 	self.mapView.showsUserLocation = NO;
 	
 	[self updateHPAndGP];
+	self.hpBarView.barColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
+	self.gpBarView.barColor = [UIColor colorWithRed:0.080 green:0.583 blue:1.0 alpha:0.7];
 	
 	[self moveWorkoutStatCollectionViewOffScreenShouldAnimate:NO];
 	[self moveNewWorkoutNavigationBarOnScreenShouldAnimate:NO];
@@ -213,8 +222,8 @@
 	self.workoutStatCollectionView = nil;
 	self.startToolbar = nil;
 	self.pauseToolbar = nil;
-	self.hpView = nil;
-	self.gpView = nil;
+	self.hpBarView = nil;
+	self.gpBarView = nil;
 	
 	[self.displayLink invalidate];
 	self.displayLink = nil;
@@ -222,8 +231,8 @@
 #pragma mark -
 #pragma mark View Updating
 - (void)updateHPAndGP {
-	hpView.progress = 1.0f*self.hero.currentHP/self.hero.maxHP;
-	gpView.progress = self.hero.glovePower/100.0f;
+	[self.hpBarView setPercent:(1.0f * self.hero.currentHP / self.hero.maxHP) duration:0.0];
+	[self.gpBarView setPercent:(self.hero.glovePower / 100.0) duration:0.0];
 }
 
 
