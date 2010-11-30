@@ -693,7 +693,9 @@
 	[hero setGlovePower:hero.glovePower+15];
 	
 	// TODO: EnemyMapSpawn in the future should dictate the enemy the hero is fighting, but for now let's make a random enemy:
-	self.battleViewController.battle.enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+	RQEnemy *enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+	self.battleViewController.battle.enemy = enemy;
+	
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[self presentModalViewController:self.battleViewController animated:YES];
 	//	self.battleViewController.view.frame = CGRectMake(0, -1.0f*self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);

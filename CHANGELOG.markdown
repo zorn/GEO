@@ -1,3 +1,7 @@
+November 30, 2010
+
+* FIXED: Meanie enemy sprite so he is not as tall in the battle view.
+
 November 28, 2010
 
 * Swapped HP and Glove Power colors
