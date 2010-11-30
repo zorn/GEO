@@ -1,6 +1,7 @@
 November 30, 2010
 
 * FIXED: Meanie enemy sprite so he is not as tall in the battle view.
+* CHANGED: Right aligned HP/GLOVE labels on map view.
 
 November 28, 2010
 
