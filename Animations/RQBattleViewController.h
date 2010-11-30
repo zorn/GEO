@@ -46,6 +46,7 @@
 	UIImageView *rightShield;
 	UIImageView *shieldLightning;
 	ShieldDrawLineView *shieldDrawLineView;
+	UIImageView *backgroundImageView;
 	
 	NSMutableArray *weaponSprites;
 	
@@ -72,6 +73,7 @@
 @property (nonatomic, retain) UIImageView *leftShield;
 @property (nonatomic, retain) UIImageView *rightShield;
 @property (nonatomic, retain) UIImageView *shieldLightning;
+@property (nonatomic, retain) UIImageView *backgroundImageView;
 @property (nonatomic, retain) ShieldDrawLineView *shieldDrawLineView;
 
 - (void)tick;

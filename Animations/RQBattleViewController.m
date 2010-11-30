@@ -55,6 +55,7 @@
 	NSLog(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
 	[shieldDrawLineView release]; shieldDrawLineView = nil;
+	[backgroundImageView release], backgroundImageView = nil;
 	[shieldLightning release], shieldLightning = nil;
 	[rightShield release], rightShield = nil;
 	[leftShield release], leftShield = nil;
@@ -75,6 +76,7 @@
 @synthesize leftShield;
 @synthesize rightShield;
 @synthesize shieldLightning;
+@synthesize backgroundImageView;
 @synthesize shieldDrawLineView;
 
 - (void)viewDidLoad {
@@ -83,9 +85,11 @@
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
 	// create background image view
-	UIImage *backgroundImage = [UIImage imageNamed:@"new_battleview_bk.png"];
-	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
-	[self.view addSubview:backgroundImageView];
+	UIImage *backgroundImage = [UIImage imageNamed:@"cloud_backdrop.png"];
+	UIImageView *temp = [[UIImageView alloc] initWithImage:backgroundImage];
+	self.backgroundImageView = temp;
+	[temp release];
+	[self.view addSubview:self.backgroundImageView];
 	
 	// create weapon shelf image view
 	UIImage *weaponShelfImage = [UIImage imageNamed:@"weapon_shelf.png"];
@@ -309,6 +313,19 @@
 	evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
+	
+	// move the bk
+	if (self.backgroundImageView.frame.origin.x > -960.0) {
+		CGRect newBackgroundFrame = self.backgroundImageView.frame;
+		newBackgroundFrame.origin.x = newBackgroundFrame.origin.x - (deltaTime * (960/60));
+		self.backgroundImageView.frame = newBackgroundFrame;
+	} else {
+		CGRect newBackgroundFrame = self.backgroundImageView.frame;
+		newBackgroundFrame.origin.x = 0;
+		newBackgroundFrame.origin.x = newBackgroundFrame.origin.x - (deltaTime * (960/60));
+		self.backgroundImageView.frame = newBackgroundFrame;
+	}
+	
 	
 	// Figure out if the monster has been hit
 	BOOL monsterHit = NO;
