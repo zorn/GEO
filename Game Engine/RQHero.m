@@ -81,4 +81,13 @@
 	return [NSArray arrayWithArray:result];
 }
 
+- (BOOL)isLevelCapped
+{
+	if (self.level >= 50) {
+		return YES;
+	} else {
+		return NO;
+	}
+}
+
 @end

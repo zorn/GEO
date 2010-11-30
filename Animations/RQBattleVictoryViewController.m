@@ -135,12 +135,17 @@
 
 - (void)animateXPGainsJumpToLast:(BOOL)jumpToLastFrame
 {
+	if (self.battle.hero.isLevelCapped) {
+		experienceGained = 0;
+		[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
+		return; // bail
+	}
+	
 	if (experienceGained > 0) {
 		if (jumpToLastFrame == YES) {
 			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + experienceGained;
 			experienceGained = 0;
 		} else {
-			
 			experienceGained = experienceGained - experienceCountByAmount;
 			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + experienceCountByAmount;
 		}
@@ -169,6 +174,7 @@
 		}
 	}
 	[self updateStats];
+	
 	if (experienceGained <= 0) {
 		[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
 	}

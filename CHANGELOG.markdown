@@ -2,6 +2,7 @@ November 30, 2010
 
 * FIXED: Meanie enemy sprite so he is not as tall in the battle view.
 * CHANGED: Right aligned HP/GLOVE labels on map view.
+* ADDED: Battle view will no longer add XP to hero when hero has reached level cap.
 
 November 28, 2010
 

@@ -21,4 +21,6 @@
 
 - (NSArray *)weapons;
 
+- (BOOL)isLevelCapped;
+
 @end
