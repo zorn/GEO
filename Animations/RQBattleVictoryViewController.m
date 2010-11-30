@@ -150,7 +150,7 @@
 			self.battle.hero.experiencePoints = self.battle.hero.experiencePoints + experienceCountByAmount;
 		}
 		
-		[[SimpleAudioEngine sharedEngine] playEffect:@"Coin.wav"];
+		[[SimpleAudioEngine sharedEngine] playEffect:@"xp_tick.m4a"];
 		if ([self.battle.hero increaseLevelIfNeeded]) {
 			NSLog(@"newLevel: %d", self.battle.hero.level);
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];

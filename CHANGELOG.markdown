@@ -4,6 +4,7 @@ November 30, 2010
 * CHANGED: Right aligned HP/GLOVE labels on map view.
 * ADDED: Battle view will no longer add XP to hero when hero has reached level cap.
 * FIXED: We now use a high res icon for location on the map view.
+* ADDED: New XP tick sounds to victory view. (Not sure it fits in though.)
 
 November 28, 2010
 
