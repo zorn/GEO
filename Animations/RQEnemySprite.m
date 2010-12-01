@@ -101,6 +101,16 @@
 	[self.view.layer addAnimation:moveUpAnimation forKey:@"transform"];
 }
 
+
+- (void)strongHitAnimation {
+	CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform"];
+	move.fromValue = [NSValue valueWithCATransform3D:self.imageView.layer.transform];
+	move.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0.0, 0.0, 1.0)];
+	move.duration = 0.20;
+	[self.imageView.layer addAnimation:move forKey:@"transform"];
+}
+
+
 - (void)runDeathAnimation
 {
 	CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -109,7 +119,7 @@
 	move.autoreverses = YES;
 	move.repeatCount = HUGE_VALF;
 	move.duration = 0.25;
-	[self.imageView.layer addAnimation:move forKey:@"position.x"];
+	[self.imageView.layer addAnimation:move forKey:@"transform"];
 }
 
 

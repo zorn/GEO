@@ -326,6 +326,7 @@
 			
 			if ( [[result objectForKey:@"attackWasStrong"] boolValue] == YES ) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_002.caf"];
+				[evilBoobsMonster strongHitAnimation];
 				NSLog(@"stong attack");
 			} else {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];

@@ -17,6 +17,7 @@
 }
 
 - (void)hitWithText:(NSString *)hitText;
+- (void)strongHitAnimation;
 - (void)runDeathAnimation;
 - (void)setPercent:(CGFloat)percent duration:(CGFloat)duration;
 

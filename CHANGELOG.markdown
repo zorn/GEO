@@ -5,6 +5,7 @@ November 30, 2010
 * ADDED: Battle view will no longer add XP to hero when hero has reached level cap.
 * FIXED: We now use a high res icon for location on the map view.
 * CHANGED: Using new victory and failure background
+* ADDED: Strong Hit Animation
 
 November 28, 2010
 
