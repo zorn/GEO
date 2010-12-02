@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>Boob</string>
+		<string>Water Blob</string>
 		<key>type</key>
 		<string>water</string>
 		<key>image_file</key>
@@ -14,7 +14,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Boob</string>
+		<string>Dirt Blob</string>
 		<key>type</key>
 		<string>earth</string>
 		<key>image_file</key>
@@ -24,7 +24,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Buggy</string>
+		<string>Fire Buzzer</string>
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
@@ -34,9 +34,9 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Buggy</string>
+		<string>Burrow Buzzer</string>
 		<key>type</key>
-		<string>air</string>
+		<string>earth</string>
 		<key>image_file</key>
 		<string>buggy2</string>
 		<key>movement_type</key>
@@ -44,17 +44,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Cheeks</string>
-		<key>type</key>
-		<string>earth</string>
-		<key>image_file</key>
-		<string>cheeks2</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Cheeks</string>
+		<string>Flying Javels</string>
 		<key>type</key>
 		<string>air</string>
 		<key>image_file</key>
@@ -64,29 +54,19 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Face</string>
+		<string>Sand Javels</string>
 		<key>type</key>
 		<string>earth</string>
 		<key>image_file</key>
-		<string>capey</string>
+		<string>cheeks2</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Face</string>
+		<string>Water Pranzer</string>
 		<key>type</key>
 		<string>water</string>
-		<key>image_file</key>
-		<string>capey2</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Fishy</string>
-		<key>type</key>
-		<string>fire</string>
 		<key>image_file</key>
 		<string>fishy</string>
 		<key>movement_type</key>
@@ -94,9 +74,9 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Fishy</string>
+		<string>Sand Pranzer</string>
 		<key>type</key>
-		<string>water</string>
+		<string>earth</string>
 		<key>image_file</key>
 		<string>fishy2</string>
 		<key>movement_type</key>
@@ -104,59 +84,39 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Hole</string>
-		<key>type</key>
-		<string>earth</string>
-		<key>image_file</key>
-		<string>frog</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Hole</string>
-		<key>type</key>
-		<string>fire</string>
-		<key>image_file</key>
-		<string>frog2</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Man-Tuss</string>
-		<key>type</key>
-		<string>fire</string>
-		<key>image_file</key>
-		<string>man-tuss_red</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Man-Tuss</string>
-		<key>type</key>
-		<string>air</string>
-		<key>image_file</key>
-		<string>man-tuss_purple</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Meanie</string>
+		<string>Water Mantis</string>
 		<key>type</key>
 		<string>water</string>
 		<key>image_file</key>
-		<string>newmeanie</string>
+		<string>man-tuss_blue</string>
 		<key>movement_type</key>
 		<string>flying</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Meanie</string>
+		<string>Forest Mantis</string>
 		<key>type</key>
 		<string>air</string>
+		<key>image_file</key>
+		<string>man-tuss</string>
+		<key>movement_type</key>
+		<string>flying</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Fire Mage</string>
+		<key>type</key>
+		<string>fire</string>
+		<key>image_file</key>
+		<string>newmeanie4</string>
+		<key>movement_type</key>
+		<string>flying</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Earth Mage</string>
+		<key>type</key>
+		<string>earth</string>
 		<key>image_file</key>
 		<string>newmeanie3</string>
 		<key>movement_type</key>
@@ -164,17 +124,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Boob</string>
-		<key>type</key>
-		<string>water</string>
-		<key>image_file</key>
-		<string>boob3</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Piggy</string>
+		<string>Lava Hogward</string>
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
@@ -184,7 +134,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Piggy</string>
+		<string>Gas Hogward</string>
 		<key>type</key>
 		<string>air</string>
 		<key>image_file</key>
@@ -194,17 +144,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Boob</string>
-		<key>type</key>
-		<string>water</string>
-		<key>image_file</key>
-		<string>boob3</string>
-		<key>movement_type</key>
-		<string>flying</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Sam</string>
+		<string>Fire Oni</string>
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
@@ -214,9 +154,9 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Sam</string>
+		<string>Ghost Oni</string>
 		<key>type</key>
-		<string>water</string>
+		<string>air</string>
 		<key>image_file</key>
 		<string>sam2</string>
 		<key>movement_type</key>
@@ -224,7 +164,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Ved</string>
+		<string>Lava Pigan</string>
 		<key>type</key>
 		<string>fire</string>
 		<key>image_file</key>
@@ -234,7 +174,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Ved</string>
+		<string>Ghost Pigan</string>
 		<key>type</key>
 		<string>air</string>
 		<key>image_file</key>

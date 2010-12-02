@@ -5,6 +5,10 @@ December 2, 2010
 * CHANGED: We no longer make the hero's HP 100% before each battle.
 * ADDED: The hero now regains 1% of max HP per 2 meters traveled. Feedback welcome.
 * ADDED: The hero now regains 30% of max HP after losing a fight.
+* REMOVED: Face and Hole (aka Dick and Asshole) have been removed from the monster list.
+* CHANGED: Added new monster names to monsters.plist. (not used in game yet)
+* FIXED: Previous sprite fix for meanie/wizard was to old sprite files. Reapplied resize fix to "newmeanie" sprite family.
+* CHANGED: Removed unused sprites from project so they are no longer included in bundle.
 
 November 30, 2010
 
