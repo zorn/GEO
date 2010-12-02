@@ -29,11 +29,10 @@
 @synthesize heroXPFractionLabel;
 @synthesize heroXPReceivedLabel;
 @synthesize moreInfoContainerView;
-@synthesize silhouetteView;
 @synthesize victoryText;
 @synthesize mentorMessageTextView;
 @synthesize mentorAvatarImageView;
-
+@synthesize backgroundImageView;
 
 - (id)init
 {
@@ -53,10 +52,10 @@
 	[heroXPFractionLabel release];
 	[heroXPReceivedLabel release];
 	[moreInfoContainerView release];
-	[silhouetteView release];
 	[victoryText release];
 	[mentorMessageTextView release];
 	[mentorAvatarImageView release];
+	[backgroundImageView release];
 	
 	[battle release]; battle = nil;
 	[super dealloc];
@@ -86,21 +85,14 @@
 	[self.mentorAvatarImageView setImage:mentorImage];
 	[self.mentorMessageTextView setText:mentorMessage.message];
 	
-	CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-	gradientLayer.frame = self.view.frame;
 	if (self.battle.didHeroWin) {
-		gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:0.086 green:0.080 blue:0.563 alpha:1.000].CGColor, 
-								(id)[UIColor colorWithRed:0.339 green:0.085 blue:0.563 alpha:1.000].CGColor, nil];
-		self.silhouetteView.image = [UIImage imageNamed:@"victorySilhouette"];
+		self.backgroundImageView.image = [UIImage imageNamed:@"battle_victory_background"];
 		self.victoryText.image = [UIImage imageNamed:@"victoryText"];
 	}
 	else {
-		gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, 
-								(id)[UIColor colorWithRed:0.502 green:0.000 blue:0.000 alpha:1.000].CGColor, nil];
-		self.silhouetteView.image = [UIImage imageNamed:@"failureSilhouette"];
+		self.backgroundImageView.image = [UIImage imageNamed:@"battle_failure_background"];
 		self.victoryText.image = [UIImage imageNamed:@"failureText"];
 	}
-	[self.view.layer insertSublayer:gradientLayer atIndex:0];
 
 	UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
 	[recognizer setNumberOfTapsRequired:2];
