@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A07090A12A8114B00C2636B /* battle_failure_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A07090612A8114B00C2636B /* battle_failure_background.png */; };
+		1A07090B12A8114B00C2636B /* battle_failure_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A07090712A8114B00C2636B /* battle_failure_background@2x.png */; };
+		1A07090C12A8114B00C2636B /* battle_victory_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A07090812A8114B00C2636B /* battle_victory_background.png */; };
+		1A07090D12A8114B00C2636B /* battle_victory_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A07090912A8114B00C2636B /* battle_victory_background@2x.png */; };
 		1A132550125574900088A751 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A945BD512540B7800CE44D8 /* SettingsViewController.m */; };
 		1A1C94181247B8D700F5D0FE /* RQMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B236A1246AD46000F9449 /* RQMob.m */; };
 		1A1C948F1247F8F700F5D0FE /* RQWeaponSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */; };
@@ -333,6 +337,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A07090612A8114B00C2636B /* battle_failure_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battle_failure_background.png; sourceTree = "<group>"; };
+		1A07090712A8114B00C2636B /* battle_failure_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battle_failure_background@2x.png"; sourceTree = "<group>"; };
+		1A07090812A8114B00C2636B /* battle_victory_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battle_victory_background.png; sourceTree = "<group>"; };
+		1A07090912A8114B00C2636B /* battle_victory_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battle_victory_background@2x.png"; sourceTree = "<group>"; };
 		1A1C948D1247F8F700F5D0FE /* RQWeaponSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQWeaponSprite.h; sourceTree = "<group>"; };
 		1A1C948E1247F8F700F5D0FE /* RQWeaponSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQWeaponSprite.m; sourceTree = "<group>"; };
 		1A1F91FD126685A00078C733 /* wieght_log_tab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wieght_log_tab_icon.png; path = Assets/Mockups/wieght_log_tab_icon.png; sourceTree = SOURCE_ROOT; };
@@ -1123,6 +1131,10 @@
 		C93701891280FDED00C2514F /* victory */ = {
 			isa = PBXGroup;
 			children = (
+				1A07090612A8114B00C2636B /* battle_failure_background.png */,
+				1A07090712A8114B00C2636B /* battle_failure_background@2x.png */,
+				1A07090812A8114B00C2636B /* battle_victory_background.png */,
+				1A07090912A8114B00C2636B /* battle_victory_background@2x.png */,
 				C99B447A12818CC600D4E151 /* failureText.png */,
 				C99B447B12818CC600D4E151 /* failureText@2x.png */,
 				C937018F1281023800C2514F /* victoryText.png */,
@@ -1689,6 +1701,10 @@
 				1A4E046B12A5B58600DDA627 /* portal_background@2x.png in Resources */,
 				1A4E047012A5B88A00DDA627 /* cloud_backdrop.png in Resources */,
 				1A4E047112A5B88A00DDA627 /* cloud_backdrop@2x.png in Resources */,
+				1A07090A12A8114B00C2636B /* battle_failure_background.png in Resources */,
+				1A07090B12A8114B00C2636B /* battle_failure_background@2x.png in Resources */,
+				1A07090C12A8114B00C2636B /* battle_victory_background.png in Resources */,
+				1A07090D12A8114B00C2636B /* battle_victory_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
