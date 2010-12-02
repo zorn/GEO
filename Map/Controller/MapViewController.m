@@ -76,7 +76,7 @@
 @end
 
 @implementation MapViewController
-@synthesize delegate, hero, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
+@synthesize delegate, hero, distanceTraveledSinceLastHPGain, startButton, locationButton, hudView, overlayLabel, mapView, displayLink, timerLabel, distanceLabel, calorieBurnLabel, trek, locationManager, battleViewController;
 
 @synthesize newWorkoutNavigationBar;
 @synthesize workoutStatCollectionView;
@@ -625,6 +625,12 @@
 		double dimension = _sonar.range*mapPointsPerMeter + 100.0f;
 		[_sonarView setNeedsDisplayInMapRect:[self.mapView visibleMapRect]];
 		[_sonarView setNeedsDisplayInMapRect:MKMapRectMake(sonarMapPoint.x, sonarMapPoint.y, dimension, dimension)];
+		
+		self.distanceTraveledSinceLastHPGain = self.distanceTraveledSinceLastHPGain + [[self trek] distance];
+		if (self.distanceTraveledSinceLastHPGain > 2.0) {
+			self.hero.currentHP = self.hero.currentHP + lroundf(self.hero.maxHP * 0.01);;
+			self.distanceTraveledSinceLastHPGain = 0;
+		} 
 	}
 }
 
@@ -686,22 +692,11 @@
 	self.battleViewController.delegate = self;
 	self.battleViewController.battle.hero = self.hero;
 	
-	// TODO: Typically the hero will regen health as they walk but for the purposes of this demo version we will give him full hp before each fight
-	[hero setCurrentHP:hero.maxHP];
-	
-	// TODO: Typically the hero will regen glove power as they walk, for now lets add 15 before each fight
-	[hero setGlovePower:hero.glovePower+15];
-	
-	// TODO: EnemyMapSpawn in the future should dictate the enemy the hero is fighting, but for now let's make a random enemy:
 	RQEnemy *enemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
 	self.battleViewController.battle.enemy = enemy;
 	
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[self presentModalViewController:self.battleViewController animated:YES];
-	//	self.battleViewController.view.frame = CGRectMake(0, -1.0f*self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-	//	[self.view.superview addSubview:self.battleViewController.view];
-	//	self.modalViewController = self.battleViewController;
-	//	[self.battleViewController.view animateWithDuration:1.0f animations:^{self.battleViewController.view.frame = self.view.frame; } completion:^(BOOL finished){ [self.view removeFromSuperview]; self.modalViewController = self.battleViewController;}];
 }
 
 - (IBAction)centerMapOnLocation:(id)sender {
@@ -784,6 +779,8 @@
 			self.trek = newTrek;
 			[newTrek release];
 		}
+		
+		distanceTraveledSinceLastHPGain = 0;
 		
 		[self.trek startWithLocation:locationManager.location];
 		startButton.title = @"Pause Workout";

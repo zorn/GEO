@@ -1,6 +1,10 @@
 December 2, 2010
 
 * CHANGED: Swapped in new battle view background from Kut.
+* CHANGED: We no longer award +15 to glove power before each battle. This reward will be moved to treasures.
+* CHANGED: We no longer make the hero's HP 100% before each battle.
+* ADDED: The hero now regains 1% of max HP per 2 meters traveled. Feedback welcome.
+* ADDED: The hero now regains 30% of max HP after losing a fight.
 
 November 30, 2010
 

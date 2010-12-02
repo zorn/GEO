@@ -27,6 +27,7 @@
 - (void)addLocation:(CLLocation *)location;
 - (void)startWithLocation:(CLLocation *)location;
 - (void)stop;
+- (double)distance;
 - (double)distanceInMiles;
 - (double)caloriesBurned;
 @end

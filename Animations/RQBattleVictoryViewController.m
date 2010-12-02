@@ -112,6 +112,11 @@
 						 } 
 						 completion:NULL];		
 	}
+	
+	// If the hero lost throw him a bone and give him some HP
+	if (!self.battle.didHeroWin) {
+		self.battle.hero.currentHP = lroundf(self.battle.hero.maxHP * 0.3);
+	}
 }
 
 - (void)startXPAnimation

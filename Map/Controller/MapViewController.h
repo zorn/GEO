@@ -47,8 +47,10 @@
 	NSMutableDictionary *_timers;
 	
 	RQHero *hero;
+	double distanceTraveledSinceLastHPGain;
 	
 	BOOL firstZoomDidOccur;
+	
 	
 	Treasure *_encounteredTreasure;
 }
@@ -57,6 +59,8 @@
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, readonly) RQHero *hero;
+@property (nonatomic, assign) double distanceTraveledSinceLastHPGain;
+
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIView *hudView;
 @property (nonatomic, retain) IBOutlet UILabel *overlayLabel;
