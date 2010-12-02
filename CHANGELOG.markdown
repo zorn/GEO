@@ -1,3 +1,7 @@
+December 2, 2010
+
+* CHANGED: Swapped in new battle view background from Kut.
+
 November 30, 2010
 
 * FIXED: Meanie enemy sprite so he is not as tall in the battle view.
