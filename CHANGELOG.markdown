@@ -1,3 +1,7 @@
+December 6, 2010
+
+* FIXED: monsters.plist was missing from project file. re-added.
+
 December 2, 2010
 
 * CHANGED: Swapped in new battle view background from Kut.

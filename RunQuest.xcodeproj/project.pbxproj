@@ -133,6 +133,7 @@
 		1A8EA908124A4EFB0006A220 /* BattleVictoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8EA907124A4EFB0006A220 /* BattleVictoryView.xib */; };
 		1A945BD812540B8900CE44D8 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A945BD712540B8900CE44D8 /* SettingsView.xib */; };
 		1A945CEC12542CE200CE44D8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */; };
+		1A94F68512AD684200FBED9A /* monsters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F68412AD684200FBED9A /* monsters.plist */; };
 		1A95FDA11292DFAA00F1AA3A /* shield_orb_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */; };
 		1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */; };
 		1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */; };
@@ -436,6 +437,7 @@
 		1A945BD512540B7800CE44D8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		1A945BD712540B8900CE44D8 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		1A945CEB12542CE200CE44D8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1A94F68412AD684200FBED9A /* monsters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = monsters.plist; path = monsters/monsters.plist; sourceTree = "<group>"; };
 		1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_left.png; path = ui/shield_orb_left.png; sourceTree = "<group>"; };
 		1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_orb_left@2x.png"; path = "ui/shield_orb_left@2x.png"; sourceTree = "<group>"; };
 		1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_right.png; path = ui/shield_orb_right.png; sourceTree = "<group>"; };
@@ -1117,6 +1119,7 @@
 				1AA3E266128C54B0001F99A1 /* mentorMessageTemplates.plist */,
 				C93701891280FDED00C2514F /* victory */,
 				1A29A5C41256746C00AD75DB /* story images */,
+				1A94F68412AD684200FBED9A /* monsters.plist */,
 				1AD6FC75125132D400D98CF3 /* monster sprites */,
 				1AC92473124D75CF00E09F6A /* ui */,
 				C99A91B2124A7F47005BAECF /* sounds */,
@@ -1549,6 +1552,7 @@
 				1A070A0612A846CA00C2636B /* Ved@2x.png in Resources */,
 				1A070A0712A846CA00C2636B /* Ved2.png in Resources */,
 				1A070A0812A846CA00C2636B /* Ved2@2x.png in Resources */,
+				1A94F68512AD684200FBED9A /* monsters.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
