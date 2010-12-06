@@ -35,6 +35,8 @@
 @synthesize iPodSettingTableViewCell;
 @synthesize musicSettingTableViewCell;
 @synthesize effectSoundSettingTableViewCell;
+@synthesize emailFeedbackCell;
+
 
 - (void)viewDidLoad
 {
@@ -80,7 +82,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -90,6 +92,8 @@
 		return @"Music Volume";
 	} else if (section == 2) {
 		return @"Sound Effect Volume";
+	} else if ( section == 3 ) {
+		return NSLocalizedString(@"Feedback", @"Feedback");
 	} else {
 		return @"Unknown Title";
 	}
@@ -108,7 +112,10 @@
 		cell = self.musicSettingTableViewCell;
 	} else if (indexPath.section == 2) {
 		cell = self.effectSoundSettingTableViewCell;
+	} else if (indexPath.section == 3 ) {
+		cell = self.emailFeedbackCell;
 	}
+
 	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
 	return cell;
 }
@@ -118,8 +125,18 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return nil;
+	if ( indexPath.section == 3 )
+		return indexPath;
+	else
+		return nil;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+	if ( indexPath.section == 3 )
+		[self showContactUsMail:self];
+}
+	
 
 - (UIView *)tableView:(UITableView *)aTableView viewForHeaderInSection:(NSInteger)section
 {
@@ -140,5 +157,34 @@
 {
 	return 35;
 }
+
+
+- (IBAction)showContactUsMail:(id)sender{
+	MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] initWithRootViewController:nil];
+	[mailViewController setToRecipients:[NSArray arrayWithObject:@"throw_mail@shipitsociety.com"]];
+	[mailViewController setSubject:NSLocalizedString(@"GEO Feedback", @"Subject for the feedback e-mail")];
+	[mailViewController setMessageBody:NSLocalizedString(@"Let us know what you think!  Be honest, we can handle it.", @"Instructions for the feedback e-mail.") isHTML:NO];
+	mailViewController.mailComposeDelegate = self;
+	[self presentModalViewController:mailViewController animated:YES];
+	[mailViewController release];
+	
+}
+
+#pragma mark Mail View Controller Delegate Methods
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+	NSUInteger indexes[2];
+	indexes[0] = 3;
+	indexes[1] = 0;
+	[self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathWithIndexes:indexes length:2] animated:YES];
+	[self dismissModalViewControllerAnimated:YES];
+	if (result == MFMailComposeResultFailed) {
+		UIAlertView *someError = [[UIAlertView alloc] initWithTitle: @"E-mail Error" message: @"Unable to send mail.  Check your account settings" delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+		
+		[someError show];
+		[someError release];
+	}
+}
+
 
 @end
