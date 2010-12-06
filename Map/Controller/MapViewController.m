@@ -267,7 +267,7 @@
 }
 
 - (void)encounterTreasure:(Treasure *)treasure {
-	[hero setCurrentHP:[hero currentHP] + [hero maxHP]/5];
+	[hero setGlovePower:hero.glovePower + 15];
 	[self updateHPAndGP];
 }
 
