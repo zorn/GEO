@@ -628,7 +628,11 @@
 		
 		self.distanceTraveledSinceLastHPGain = self.distanceTraveledSinceLastHPGain + [[self trek] distance];
 		if (self.distanceTraveledSinceLastHPGain > 2.0) {
-			self.hero.currentHP = self.hero.currentHP + lroundf(self.hero.maxHP * 0.01);;
+			self.hero.currentHP = self.hero.currentHP + lroundf(self.hero.maxHP * 0.01);
+			// adjustment to make low level easier
+			if (self.hero.level < 10) {
+				self.hero.currentHP = self.hero.currentHP + 1;
+			} 
 			self.distanceTraveledSinceLastHPGain = 0;
 		} 
 	}

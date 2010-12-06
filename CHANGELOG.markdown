@@ -1,6 +1,8 @@
 December 6, 2010
 
 * FIXED: monsters.plist was missing from project file. re-added.
+* CHANGED: made the map view fit the bounds of the frame so that the "Google" watermark shows through. Not showing this is a reject-able offense.
+* CHANGE: the speed of the fake GPS walker is a little slower.
 
 December 2, 2010
 
