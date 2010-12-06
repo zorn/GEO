@@ -4,6 +4,8 @@ December 6, 2010
 * CHANGED: made the map view fit the bounds of the frame so that the "Google" watermark shows through. Not showing this is a reject-able offense.
 * CHANGE: the speed of the fake GPS walker is a little slower.
 * CHANGED: swapped in new xp tick sound 'spaceBeat.m4a' and it works well i think.
+* CHANGED: added in new version of victory/failure title images
+* ADDED: new button in victory view to continue workout.
 
 December 2, 2010
 

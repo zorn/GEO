@@ -24,6 +24,8 @@
 
 
 @implementation RQBattleVictoryViewController
+
+@synthesize continueWorkoutButton;
 @synthesize xpBarView;
 @synthesize heroLevelLabel;
 @synthesize heroXPFractionLabel;
@@ -47,6 +49,7 @@
 	NSLog(@"RQBattleVictoryViewController -dealloc called...");
 	[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
 	
+	[continueWorkoutButton release];
 	[xpBarView release];
 	[heroLevelLabel release];
 	[heroXPFractionLabel release];
@@ -83,15 +86,20 @@
 	RQMentorMessageTemplate *mentorMessage = [[RQModelController defaultModelController] randomMentorMessageBasedOnBattle:self.battle];
 	UIImage *mentorImage = [UIImage imageNamed:@"mentor_message_avatar_calm.png"];
 	[self.mentorAvatarImageView setImage:mentorImage];
-	[self.mentorMessageTextView setText:mentorMessage.message];
+	
+	if (self.battle.didHeroWin) {
+		[self.mentorMessageTextView setText:mentorMessage.message];
+	} else {
+		[self.mentorMessageTextView setText:@"That was a pretty poor fight. Perhaps you aren't the ranger for this job. I'll heal you up a bit. Keep moving to regenerate more health."];
+	}
 	
 	if (self.battle.didHeroWin) {
 		self.backgroundImageView.image = [UIImage imageNamed:@"battle_victory_background"];
-		self.victoryText.image = [UIImage imageNamed:@"victoryText"];
+		self.victoryText.image = [UIImage imageNamed:@"victory_view_test_victory.png"];
 	}
 	else {
 		self.backgroundImageView.image = [UIImage imageNamed:@"battle_failure_background"];
-		self.victoryText.image = [UIImage imageNamed:@"failureText"];
+		self.victoryText.image = [UIImage imageNamed:@"victory_view_test_failure.png"];
 	}
 
 	UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
@@ -111,12 +119,25 @@
 							 self.heroXPReceivedLabel.transform = CGAffineTransformIdentity;
 						 } 
 						 completion:NULL];		
+	} else {
+		self.heroXPReceivedLabel.hidden = YES;
+		self.heroLevelLabel.hidden = YES;
+		self.xpBarView.hidden = YES;
+		self.heroXPFractionLabel.hidden = YES;
 	}
 	
 	// If the hero lost throw him a bone and give him some HP
 	if (!self.battle.didHeroWin) {
 		self.battle.hero.currentHP = lroundf(self.battle.hero.maxHP * 0.3);
 	}
+	
+	//style the continue workout button
+	[[self.continueWorkoutButton layer] setCornerRadius:8.0f];
+	[[self.continueWorkoutButton layer] setMasksToBounds:YES];
+	[[self.continueWorkoutButton layer] setBorderWidth:1.0f];
+	[[self.continueWorkoutButton layer] setBackgroundColor:[[UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000] CGColor]];
+	[[self.continueWorkoutButton layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+	[self.continueWorkoutButton setTitleColor:[UIColor colorWithRed:0.629 green:0.799 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
 }
 
 - (void)startXPAnimation
@@ -190,6 +211,10 @@
 	}
 }
 
+- (IBAction)continueWorkout
+{
+	[self tapRecognized:nil];
+}
 
 - (void)updateStats
 {

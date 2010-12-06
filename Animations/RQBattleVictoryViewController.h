@@ -16,6 +16,8 @@
 	NSInteger experienceCountByAmount;
 }
 
+@property (nonatomic, retain) IBOutlet UIButton *continueWorkoutButton;
+
 @property (nonatomic, retain) IBOutlet RQBarView *xpBarView;
 @property (nonatomic, retain) IBOutlet UILabel *heroLevelLabel;
 @property (nonatomic, retain) IBOutlet UILabel *heroXPFractionLabel;
@@ -31,6 +33,8 @@
 
 - (void)animateXPGains;
 - (void)animateXPGainsJumpToLast:(BOOL)jumpToLastFrame;
+
+- (IBAction)continueWorkout;
 
 @end
 

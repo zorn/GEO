@@ -672,6 +672,7 @@
 
 - (void)battleVictoryControllerDidEnd:(RQBattleVictoryViewController *)controller;
 {
+	//NSLog(@"battleVictoryControllerDidEnd");
 	[self.battleVictoryViewController.view removeFromSuperview];
 	[self setBattleVictoryViewController:nil];
 	[[[RQModelController defaultModelController] coreDataManager] save];
