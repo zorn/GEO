@@ -218,7 +218,7 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">2</int>
 					</object>
-					<object class="IBUIButton" id="749810800">
+					<object class="IBUIButton" id="536925724">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 428}, {280, 37}}</string>
@@ -241,6 +241,18 @@
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+					</object>
+					<object class="IBUIImageView" id="670397574">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{0, 109}, {320, 96}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">victory_view_test_max_level.png</string>
 						</object>
 					</object>
 				</object>
@@ -339,7 +351,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">continueWorkout</string>
-						<reference key="source" ref="749810800"/>
+						<reference key="source" ref="536925724"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -349,9 +361,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">continueWorkoutButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="749810800"/>
+						<reference key="destination" ref="536925724"/>
 					</object>
 					<int key="connectionID">27</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">maxLevelTitleImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="670397574"/>
+					</object>
+					<int key="connectionID">29</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -375,7 +395,8 @@
 							<reference ref="806138330"/>
 							<reference ref="210888469"/>
 							<reference ref="163993851"/>
-							<reference ref="749810800"/>
+							<reference ref="536925724"/>
+							<reference ref="670397574"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -442,7 +463,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">24</int>
-						<reference key="object" ref="749810800"/>
+						<reference key="object" ref="536925724"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">28</int>
+						<reference key="object" ref="670397574"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -466,6 +492,8 @@
 					<string>20.IBViewBoundsToFrameTransform</string>
 					<string>24.IBPluginDependency</string>
 					<string>24.IBViewBoundsToFrameTransform</string>
+					<string>28.IBPluginDependency</string>
+					<string>28.IBViewBoundsToFrameTransform</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBViewBoundsToFrameTransform</string>
 					<string>5.IBPluginDependency</string>
@@ -500,6 +528,10 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwyEAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAABCIAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -526,7 +558,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -562,6 +594,7 @@
 							<string>heroLevelLabel</string>
 							<string>heroXPFractionLabel</string>
 							<string>heroXPReceivedLabel</string>
+							<string>maxLevelTitleImage</string>
 							<string>mentorAvatarImageView</string>
 							<string>mentorMessageTextView</string>
 							<string>moreInfoContainerView</string>
@@ -575,6 +608,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UITextView</string>
 							<string>UIView</string>
@@ -591,6 +625,7 @@
 							<string>heroLevelLabel</string>
 							<string>heroXPFractionLabel</string>
 							<string>heroXPReceivedLabel</string>
+							<string>maxLevelTitleImage</string>
 							<string>mentorAvatarImageView</string>
 							<string>mentorMessageTextView</string>
 							<string>moreInfoContainerView</string>
@@ -618,6 +653,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">heroXPReceivedLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maxLevelTitleImage</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">mentorAvatarImageView</string>
@@ -909,12 +948,14 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>battle_victory_background.png</string>
 				<string>mentor_message_avatar_calm.png</string>
+				<string>victory_view_test_max_level.png</string>
 				<string>victory_view_test_victory.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{320, 480}</string>
 				<string>{80, 80}</string>
+				<string>{320, 96}</string>
 				<string>{320, 110}</string>
 			</object>
 		</object>

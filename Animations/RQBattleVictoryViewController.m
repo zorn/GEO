@@ -19,6 +19,7 @@
 #import "RQMentorMessageTemplate.h"
 
 @interface RQBattleVictoryViewController ()
+- (void)updateViewToShowMaxLevel;
 - (void)updateStats;
 @end
 
@@ -32,6 +33,7 @@
 @synthesize heroXPReceivedLabel;
 @synthesize moreInfoContainerView;
 @synthesize victoryText;
+@synthesize maxLevelTitleImage;
 @synthesize mentorMessageTextView;
 @synthesize mentorAvatarImageView;
 @synthesize backgroundImageView;
@@ -55,6 +57,7 @@
 	[heroXPFractionLabel release];
 	[heroXPReceivedLabel release];
 	[moreInfoContainerView release];
+	[maxLevelTitleImage release];
 	[victoryText release];
 	[mentorMessageTextView release];
 	[mentorAvatarImageView release];
@@ -131,6 +134,8 @@
 		self.battle.hero.currentHP = lroundf(self.battle.hero.maxHP * 0.3);
 	}
 	
+	[self updateViewToShowMaxLevel];
+	
 	//style the continue workout button
 	[[self.continueWorkoutButton layer] setCornerRadius:8.0f];
 	[[self.continueWorkoutButton layer] setMasksToBounds:YES];
@@ -138,6 +143,21 @@
 	[[self.continueWorkoutButton layer] setBackgroundColor:[[UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000] CGColor]];
 	[[self.continueWorkoutButton layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
 	[self.continueWorkoutButton setTitleColor:[UIColor colorWithRed:0.629 green:0.799 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
+}
+
+- (void)updateViewToShowMaxLevel
+{
+	if (self.battle.didHeroWin && [self.battle.hero isLevelCapped]) {
+		self.heroXPReceivedLabel.hidden = YES;
+		self.heroLevelLabel.hidden = YES;
+		self.xpBarView.hidden = YES;
+		self.heroXPFractionLabel.hidden = YES;
+		self.victoryText.hidden = YES;
+		
+		self.maxLevelTitleImage.hidden = NO;
+		self.backgroundImageView.image = [UIImage imageNamed:@"battle_max_level_background.png"];
+
+	}
 }
 
 - (void)startXPAnimation
@@ -189,6 +209,13 @@
 			self.xpBarView.barColor = [UIColor whiteColor];
 			self.xpBarView.outlineColor = [UIColor colorWithWhite:0.6 alpha:1.0];
 			[self.view addSubview:self.xpBarView];
+			
+			// if they are leveling up to 50, show alert congratulating them on max level and to look for new button on home screen
+			if (self.battle.hero.level == 50) {
+				UIAlertView *levelCapMessage = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:@"After much hard work it seems you have finally fully re-powered your glove. Please see me after you are done your workout." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				[levelCapMessage show];
+				[levelCapMessage autorelease];
+			}
 		}
 	}
 	[self updateStats];

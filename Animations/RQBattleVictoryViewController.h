@@ -24,6 +24,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *heroXPReceivedLabel;
 @property (nonatomic, retain) IBOutlet UIView *moreInfoContainerView;
 @property (nonatomic, retain) IBOutlet UIImageView *victoryText;
+@property (nonatomic, retain) IBOutlet UIImageView *maxLevelTitleImage;
+
 @property (nonatomic, retain) IBOutlet UITextView *mentorMessageTextView;
 @property (nonatomic, retain) IBOutlet UIImageView *mentorAvatarImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;

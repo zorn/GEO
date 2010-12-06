@@ -6,6 +6,8 @@ December 6, 2010
 * CHANGED: swapped in new xp tick sound 'spaceBeat.m4a' and it works well i think.
 * CHANGED: added in new version of victory/failure title images
 * ADDED: new button in victory view to continue workout.
+* ADDED: victory view now uses a new background and title when you are at max level.
+* ADDED: when you reach level 50 we now display a short messages of congratulations telling you to visit the doctor after you are done your workout.
 
 December 2, 2010
 

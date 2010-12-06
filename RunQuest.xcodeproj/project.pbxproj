@@ -139,6 +139,8 @@
 		1A94F6C512AD781B00FBED9A /* victory_view_test_max_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F6BF12AD781B00FBED9A /* victory_view_test_max_level@2x.png */; };
 		1A94F6C612AD781B00FBED9A /* victory_view_test_victory.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F6C012AD781B00FBED9A /* victory_view_test_victory.png */; };
 		1A94F6C712AD781B00FBED9A /* victory_view_test_victory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F6C112AD781B00FBED9A /* victory_view_test_victory@2x.png */; };
+		1A94F70312AD8B8700FBED9A /* battle_max_level_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F70112AD8B8700FBED9A /* battle_max_level_background.png */; };
+		1A94F70412AD8B8700FBED9A /* battle_max_level_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F70212AD8B8700FBED9A /* battle_max_level_background@2x.png */; };
 		1A95FDA11292DFAA00F1AA3A /* shield_orb_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */; };
 		1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */; };
 		1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */; };
@@ -444,6 +446,8 @@
 		1A94F6BF12AD781B00FBED9A /* victory_view_test_max_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "victory_view_test_max_level@2x.png"; path = "Resources/ui/victory_view_test_max_level@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A94F6C012AD781B00FBED9A /* victory_view_test_victory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = victory_view_test_victory.png; path = Resources/ui/victory_view_test_victory.png; sourceTree = SOURCE_ROOT; };
 		1A94F6C112AD781B00FBED9A /* victory_view_test_victory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "victory_view_test_victory@2x.png"; path = "Resources/ui/victory_view_test_victory@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A94F70112AD8B8700FBED9A /* battle_max_level_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battle_max_level_background.png; sourceTree = "<group>"; };
+		1A94F70212AD8B8700FBED9A /* battle_max_level_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battle_max_level_background@2x.png"; sourceTree = "<group>"; };
 		1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_left.png; path = ui/shield_orb_left.png; sourceTree = "<group>"; };
 		1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_orb_left@2x.png"; path = "ui/shield_orb_left@2x.png"; sourceTree = "<group>"; };
 		1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_right.png; path = ui/shield_orb_right.png; sourceTree = "<group>"; };
@@ -1018,6 +1022,8 @@
 		C93701891280FDED00C2514F /* victory */ = {
 			isa = PBXGroup;
 			children = (
+				1A94F70112AD8B8700FBED9A /* battle_max_level_background.png */,
+				1A94F70212AD8B8700FBED9A /* battle_max_level_background@2x.png */,
 				1A94F6BC12AD781B00FBED9A /* victory_view_test_failure.png */,
 				1A94F6BD12AD781B00FBED9A /* victory_view_test_failure@2x.png */,
 				1A94F6BE12AD781B00FBED9A /* victory_view_test_max_level.png */,
@@ -1557,6 +1563,8 @@
 				1A94F6C512AD781B00FBED9A /* victory_view_test_max_level@2x.png in Resources */,
 				1A94F6C612AD781B00FBED9A /* victory_view_test_victory.png in Resources */,
 				1A94F6C712AD781B00FBED9A /* victory_view_test_victory@2x.png in Resources */,
+				1A94F70312AD8B8700FBED9A /* battle_max_level_background.png in Resources */,
+				1A94F70412AD8B8700FBED9A /* battle_max_level_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
