@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @protocol SettingsViewControllerDelegate;
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <MFMailComposeViewControllerDelegate>
 {
 	UITableView *tableView;
 	UISwitch *pauseIPodSwitch;
@@ -32,10 +33,12 @@
 @property (retain) IBOutlet UITableViewCell *iPodSettingTableViewCell;
 @property (retain) IBOutlet UITableViewCell *musicSettingTableViewCell;
 @property (retain) IBOutlet UITableViewCell *effectSoundSettingTableViewCell;
+@property (retain) IBOutlet UITableViewCell *emailFeedbackCell;
 
 - (IBAction)doneButtonAction:(id)sender;
 - (IBAction)updateDefautsBasedOnUI;
 - (IBAction)playSampleSoundEffect;
+- (IBAction)showContactUsMail:(id)sender;
 
 @end
 

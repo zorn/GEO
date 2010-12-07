@@ -280,8 +280,8 @@
 	localNote.alertAction = NSLocalizedString(@"Fight", @"Fight");
 	localNote.soundName = @"Computer_Data_001.caf";
 	localNote.userInfo = [NSDictionary dictionaryWithObject:@"fight" forKey:@"type"];
-	
-	[[UIApplication sharedApplication] scheduleLocalNotification:localNote];
+	[[UIApplication sharedApplication] cancelAllLocalNotifications];
+	[[UIApplication sharedApplication] presentLocalNotificationNow:localNote];
     [localNote release];
 }
 
