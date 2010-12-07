@@ -1,3 +1,7 @@
+December 7, 2010
+
+* CHANGED: Refactored StoryController to be more generic. Will use for final boss story soon.
+
 December 6, 2010
 
 * FIXED: monsters.plist was missing from project file. re-added.

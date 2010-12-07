@@ -4,30 +4,27 @@
 
 @interface StoryViewController : UIViewController
 {
-	UIImageView *storyImageView1;
-	UIImageView *storyImageView2;
-	UIImageView *storyImageView3;
-	UIImageView *storyImageView3b;
-	UIImageView *storyImageView3c;
-	UIImageView *storyImageView4;
-	UIImageView *storyImageView5;
-	UIImageView *storyImageView6;
+	UIImageView *currentStoryImageView;
+	UITextView *currentStoryTextView;
 	
-	UITextView *storyTextView1;
-	UITextView *storyTextView2;
-	UITextView *storyTextView3;
-	UITextView *storyTextView3b;
-	UITextView *storyTextView3c;
-	UITextView *storyTextView4;
-	UITextView *storyTextView5;
-	UITextView *storyTextView6;
+	CGRect textViewFrame;
+	UIColor *textViewBGColor;
+	UIColor *textViewTextColor;
+	UIFont *textViewFont;
 	
 	NSInteger currentFrame;
 	
 	BOOL transitioning;
+	
+	NSMutableArray *introStory;
 }
 
 @property (readwrite, assign) id <StoryViewControllerDelegate> delegate;
+@property (nonatomic, assign) CGRect textViewFrame;
+@property (nonatomic, retain) UIColor *textViewBGColor;
+@property (nonatomic, retain) UIColor *textViewTextColor;
+@property (nonatomic, retain) UIFont *textViewFont;
+
 
 -(void)performImageViewTransition;
 

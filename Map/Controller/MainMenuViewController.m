@@ -73,7 +73,7 @@
 	NSLog(@"playButtonPressed");
 	
 	RQModelController *modelController = [RQModelController defaultModelController];
-	if (![modelController heroExists]) {
+	if ([modelController newestTrek] == nil) {
 		
 		// Used to have a window to ask for hero name .. taking it out for now
 		RQHero *hero = [modelController hero];
