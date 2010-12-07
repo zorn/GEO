@@ -19,9 +19,11 @@
 
 @property (readwrite, assign) id <MainMenuViewControllerDelegate> delegate;
 
+@property (nonatomic, retain) IBOutlet UIButton *visitDrGordonButton;
 
 - (IBAction)playButtonPressed:(id)sender;
 - (IBAction)optionsButtonPressed:(id)sender;
+- (IBAction)visitDrGordon:(id)sender;
 - (IBAction)logButtonPressed:(id)sender;
 - (IBAction)developerToolboxButtonPressed:(id)sender;
 - (IBAction)storyButtonPressed:(id)sender;

@@ -23,6 +23,7 @@
 @implementation MainMenuViewController
 
 @synthesize delegate;
+@synthesize visitDrGordonButton;
 
 #pragma mark -
 #pragma mark Initialization
@@ -38,6 +39,7 @@
 - (void)dealloc 
 {
 	// ..
+	[visitDrGordonButton release];
 	[super dealloc];
 }
 
@@ -50,6 +52,13 @@
 	[super viewDidAppear:animated];
 	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) {
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
+	}
+	
+	RQHero *hero = [[RQModelController defaultModelController] hero];
+	if ([hero isLevelCapped]) {
+		self.visitDrGordonButton.hidden = NO;
+	} else {
+		self.visitDrGordonButton.hidden = YES;
 	}
 }
 
@@ -88,6 +97,12 @@
 	[settingsVC setDelegate:self];
 	[self presentModalViewController:settingsVC animated:YES];
 	[settingsVC release];
+}
+
+- (IBAction)visitDrGordon:(id)sender
+{
+	// start up story and last battle
+	NSLog(@"visitDrGordon: called ...");
 }
 
 - (IBAction)logButtonPressed:(id)sender

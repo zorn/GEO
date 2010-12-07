@@ -141,6 +141,8 @@
 		1A94F6C712AD781B00FBED9A /* victory_view_test_victory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F6C112AD781B00FBED9A /* victory_view_test_victory@2x.png */; };
 		1A94F70312AD8B8700FBED9A /* battle_max_level_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F70112AD8B8700FBED9A /* battle_max_level_background.png */; };
 		1A94F70412AD8B8700FBED9A /* battle_max_level_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F70212AD8B8700FBED9A /* battle_max_level_background@2x.png */; };
+		1A94F72612AD962F00FBED9A /* gordon_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F72412AD962F00FBED9A /* gordon_button.png */; };
+		1A94F72712AD962F00FBED9A /* gordon_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A94F72512AD962F00FBED9A /* gordon_button@2x.png */; };
 		1A95FDA11292DFAA00F1AA3A /* shield_orb_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */; };
 		1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */; };
 		1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */; };
@@ -448,6 +450,8 @@
 		1A94F6C112AD781B00FBED9A /* victory_view_test_victory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "victory_view_test_victory@2x.png"; path = "Resources/ui/victory_view_test_victory@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A94F70112AD8B8700FBED9A /* battle_max_level_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battle_max_level_background.png; sourceTree = "<group>"; };
 		1A94F70212AD8B8700FBED9A /* battle_max_level_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battle_max_level_background@2x.png"; sourceTree = "<group>"; };
+		1A94F72412AD962F00FBED9A /* gordon_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gordon_button.png; path = Assets/Mockups/gordon_button.png; sourceTree = SOURCE_ROOT; };
+		1A94F72512AD962F00FBED9A /* gordon_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gordon_button@2x.png"; path = "Assets/Mockups/gordon_button@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A95FD9D1292DFAA00F1AA3A /* shield_orb_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_left.png; path = ui/shield_orb_left.png; sourceTree = "<group>"; };
 		1A95FD9E1292DFAA00F1AA3A /* shield_orb_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_orb_left@2x.png"; path = "ui/shield_orb_left@2x.png"; sourceTree = "<group>"; };
 		1A95FD9F1292DFAA00F1AA3A /* shield_orb_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_orb_right.png; path = ui/shield_orb_right.png; sourceTree = "<group>"; };
@@ -849,6 +853,8 @@
 				1A4B555F1273895200B313E1 /* 19-gear@2x.png */,
 				1A4B55601273895200B313E1 /* 21-skull.png */,
 				1A4B55611273895200B313E1 /* 21-skull@2x.png */,
+				1A94F72412AD962F00FBED9A /* gordon_button.png */,
+				1A94F72512AD962F00FBED9A /* gordon_button@2x.png */,
 				1A4B55561273880A00B313E1 /* log_book_button.png */,
 				1A4B55571273880A00B313E1 /* log_book_button@2x.png */,
 				1A4B55581273880A00B313E1 /* new_workout_button.png */,
@@ -1565,6 +1571,8 @@
 				1A94F6C712AD781B00FBED9A /* victory_view_test_victory@2x.png in Resources */,
 				1A94F70312AD8B8700FBED9A /* battle_max_level_background.png in Resources */,
 				1A94F70412AD8B8700FBED9A /* battle_max_level_background@2x.png in Resources */,
+				1A94F72612AD962F00FBED9A /* gordon_button.png in Resources */,
+				1A94F72712AD962F00FBED9A /* gordon_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
