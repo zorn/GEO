@@ -62,6 +62,8 @@
 {
 	//[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] presentStory:nil];
 	StoryViewController *storyVC = [[StoryViewController alloc] init];
+	[storyVC setStoryToShow:@"intro"];
+	[storyVC loadFirstStoryFrame];
 	[storyVC setDelegate:self];
 	[self presentModalViewController:storyVC animated:YES];
 	[storyVC release];
@@ -98,6 +100,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 	// resume main menu music
 	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 @end

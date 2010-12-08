@@ -1,6 +1,8 @@
 December 7, 2010
 
 * CHANGED: Refactored StoryController to be more generic. Will use for final boss story soon.
+* ADDED: We now show story for Dr. Gordon button on main menu.
+* FIXED: some status bar disappearing issues. Still cause an issue for viewing a story in the dev tools.
 
 December 6, 2010
 

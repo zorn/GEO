@@ -208,6 +208,8 @@
 - (void)presentStory:(MainMenuViewController *)controller
 {
 	StoryViewController *storyVC = [[StoryViewController alloc] init];
+	[storyVC setStoryToShow:@"intro"];
+	[storyVC loadFirstStoryFrame];
 	[storyVC setDelegate:self];
 	self.storyViewController = storyVC;
 	[storyVC release];

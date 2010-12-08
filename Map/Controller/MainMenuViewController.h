@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SettingsViewController.h"
 #import "DeveloperToolboxViewController.h"
+#import "StoryViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 
-@interface MainMenuViewController : UIViewController <SettingsViewControllerDelegate, DeveloperToolboxViewControllerDelegate>
+@interface MainMenuViewController : UIViewController <StoryViewControllerDelegate, SettingsViewControllerDelegate, DeveloperToolboxViewControllerDelegate>
 {
 	
 }

@@ -103,6 +103,13 @@
 {
 	// start up story and last battle
 	NSLog(@"visitDrGordon: called ...");
+	
+	StoryViewController *storyVC = [[StoryViewController alloc] init];
+	[storyVC setStoryToShow:@"finalBattleStory"];
+	[storyVC loadFirstStoryFrame];
+	[storyVC setDelegate:self];
+	[self presentModalViewController:storyVC animated:YES];
+	[storyVC release];
 }
 
 - (IBAction)logButtonPressed:(id)sender
@@ -188,6 +195,18 @@
 - (void)developerToolboxViewControllerDidEnd:(DeveloperToolboxViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark StoryViewControllerDelegate methods
+
+- (void)storyViewControllerDidEnd:(StoryViewController *)controller
+{
+	[self dismissModalViewControllerAnimated:YES];
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
+
 }
 
 @end
