@@ -1,3 +1,7 @@
+December 8, 2010
+
+* Moved repo to GitHub.
+
 December 7, 2010
 
 * CHANGED: Refactored StoryController to be more generic. Will use for final boss story soon.
