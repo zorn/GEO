@@ -63,6 +63,8 @@
     NSInteger animationFrameInterval;
     id displayLink;
     NSTimer *animationTimer;
+	
+	BOOL useBossFightMechanics;
 }
 
 @property (readwrite, retain) RQBattleVictoryViewController *battleVictoryViewController;
@@ -75,6 +77,7 @@
 @property (nonatomic, retain) UIImageView *shieldLightning;
 @property (nonatomic, retain) UIImageView *backgroundImageView;
 @property (nonatomic, retain) ShieldDrawLineView *shieldDrawLineView;
+@property (nonatomic, assign) BOOL useBossFightMechanics;
 
 - (void)tick;
 - (void)setupGameLoop;

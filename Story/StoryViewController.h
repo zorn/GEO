@@ -1,8 +1,10 @@
 #import <UIKit/UIKit.h>
 
+#import "RQBattleViewController.h"
+
 @protocol StoryViewControllerDelegate;
 
-@interface StoryViewController : UIViewController
+@interface StoryViewController : UIViewController <RQBattleViewControllerDelegate>
 {
 	UIImageView *currentStoryImageView;
 	UITextView *currentStoryTextView;

@@ -46,6 +46,8 @@
 	if (self = [super initWithNibName:@"BattleView" bundle:nil]) {
 		weaponSprites = [[NSMutableArray alloc] init];
 		battle = [[RQBattle alloc] init];
+		
+		useBossFightMechanics = NO;
 	}
 	return self;
 }
@@ -78,6 +80,7 @@
 @synthesize shieldLightning;
 @synthesize backgroundImageView;
 @synthesize shieldDrawLineView;
+@synthesize useBossFightMechanics;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -628,6 +631,11 @@
 		 
 - (void)presentVictoryScreen
 {
+	if (self.useBossFightMechanics) {
+		[self returnToMapView];
+		return;
+	} 
+	
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	if (self.battle.hero.currentHP > 0) {
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];

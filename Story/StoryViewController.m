@@ -2,6 +2,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SimpleAudioEngine.h"
 
+#import "RQModelController.h"
+#import "RQBattleViewController.h"
+#import "RQBattle.h"
+#import "RQHero.h"
+#import "RQEnemy.h"
+
 @implementation StoryViewController
 
 - (id)init
@@ -262,7 +268,33 @@
 		}
 		
 		if (currentFrame >= maxFrame) {
-			[delegate storyViewControllerDidEnd:self];
+			
+			if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
+				RQHero *hero = [[RQModelController defaultModelController] hero];
+				RQBattleViewController *battleViewController = [[RQBattleViewController alloc] init];
+				battleViewController.delegate = self;
+				battleViewController.battle.hero = hero;
+				
+				[hero setCurrentHP:[hero maxHP]];
+				[hero setGlovePower:100];
+				
+				RQEnemy *newEnemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+				[newEnemy setName:@"Dr. Gordon"];
+				[newEnemy setType:RQElementalTypeFire];
+				[newEnemy setSpriteImageName:@"gordon"];
+				[newEnemy setLevel:50];
+				[newEnemy setCurrentHP:[hero maxHP]];
+				[newEnemy setStamina:0];
+				[newEnemy setStaminaRegenRate:4.0];
+				
+				battleViewController.battle.enemy = newEnemy;
+				
+				battleViewController.useBossFightMechanics = YES;
+				[self presentModalViewController:battleViewController animated:YES];
+				[battleViewController autorelease];
+			} else {
+				[delegate storyViewControllerDidEnd:self];
+			}
 		} else {
 			[self performImageViewTransition];
 		}
@@ -272,6 +304,17 @@
 - (void)tapRecognized:(UIGestureRecognizer *)recognizer
 {
 	[self nextTransition:self];
+}
+
+#pragma mark -
+#pragma mark RQBattleViewControllerDelegate methods
+
+- (void)battleViewControllerDidEnd:(RQBattleViewController *)controller
+{
+	NSLog(@"StoryViewController -battleViewControllerDidEnd");
+	[self dismissModalViewControllerAnimated:YES];
+	//[delegate performSelector:@selector(storyViewControllerDidEnd:) withObject:self afterDelay:0.0];
+	[delegate storyViewControllerDidEnd:self];
 }
 
 @end

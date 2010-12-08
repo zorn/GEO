@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "DeveloperToolboxViewController.h"
 #import "StoryViewController.h"
+#import "RQBattleViewController.h"
 
 @protocol MainMenuViewControllerDelegate;
 

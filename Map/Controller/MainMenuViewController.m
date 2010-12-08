@@ -19,6 +19,10 @@
 #import "WeightLogViewController.h"
 #import "SettingsViewController.h"
 #import "DeveloperToolboxViewController.h"
+#import "RQBattleViewController.h"
+
+// models
+#import "RQBattle.h"
 
 @implementation MainMenuViewController
 
@@ -203,10 +207,6 @@
 - (void)storyViewControllerDidEnd:(StoryViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
-	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-
-
 }
 
 @end
