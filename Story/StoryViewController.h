@@ -20,6 +20,7 @@
 	
 	NSMutableArray *introStory;
 	NSMutableArray *finalBattleStory;
+	NSMutableArray *thankYouStory;
 	NSString *storyToShow;
 }
 

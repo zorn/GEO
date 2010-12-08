@@ -207,6 +207,7 @@
 - (void)storyViewControllerDidEnd:(StoryViewController *)controller
 {
 	[self dismissModalViewControllerAnimated:YES];
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
 }
 
 @end

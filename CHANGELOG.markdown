@@ -1,6 +1,7 @@
 December 8, 2010
 
 * Moved repo to GitHub.
+* Boss sequence fixed.
 
 December 7, 2010
 

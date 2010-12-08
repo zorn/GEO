@@ -1170,8 +1170,7 @@
 				1A38D4C81295D8EF009EBBE6 /* TrekListCell.m */,
 				1A38D4CB1295D918009EBBE6 /* TrekListCell.xib */,
 			);
-			name = Trek;
-			path = ../runquest/Trek;
+			path = Trek;
 			sourceTree = "<group>";
 		};
 		D8C86C4D12450DA3007E44AF /* BattleView */ = {

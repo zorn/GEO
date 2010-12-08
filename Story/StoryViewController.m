@@ -127,6 +127,20 @@
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
+		thankYouStory = [[NSMutableArray alloc] init];
+		
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"You win this time." forKey:@"storyText"];
+		[thankYouStory addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"Panel1.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"Thanks for playing." forKey:@"storyText"];
+		[thankYouStory addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
 		// settings for textViews;
 		self.textViewFrame = CGRectMake(20, 480-20-130, 280, 130);
 		self.textViewBGColor = [UIColor colorWithWhite:0.000 alpha:0.650];
@@ -141,6 +155,8 @@
 {	
 	[introStory release];
 	[finalBattleStory release];
+	[thankYouStory release];
+	
 	[textViewBGColor release];
 	[textViewTextColor release];
 	[textViewFont release];
@@ -185,8 +201,10 @@
 	NSMutableDictionary *firstStoryFrame = nil;
 	if ([self.storyToShow isEqualToString:@"intro"]) {
 		firstStoryFrame = [introStory objectAtIndex:0];
-	} else {
+	} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 		firstStoryFrame = [finalBattleStory objectAtIndex:0];
+	} else {
+		firstStoryFrame = [thankYouStory objectAtIndex:0];
 	}
 	
 	UIImage *storyImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[firstStoryFrame objectForKey:@"imageName"] ofType:nil]];
@@ -202,6 +220,8 @@
 	[currentStoryTextView setBackgroundColor:self.textViewBGColor];
 	[currentStoryTextView setFrame:self.textViewFrame];
 	[currentStoryTextView setText:[firstStoryFrame objectForKey:@"storyText"]];
+	
+	currentFrame = 0;
 }
 
 -(void)performImageViewTransition
@@ -210,8 +230,10 @@
 	NSMutableDictionary *nextStoryFrame = nil;
 	if ([self.storyToShow isEqualToString:@"intro"]) {
 		nextStoryFrame = [introStory objectAtIndex:currentFrame+1];
-	} else {
+	} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 		nextStoryFrame = [finalBattleStory objectAtIndex:currentFrame+1];
+	} else {
+		nextStoryFrame = [thankYouStory objectAtIndex:currentFrame+1];
 	}
 	
 	UIImage *storyImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[nextStoryFrame objectForKey:@"imageName"] ofType:nil]];
@@ -263,8 +285,10 @@
 		int maxFrame = 0;
 		if ([self.storyToShow isEqualToString:@"intro"]) {
 			maxFrame = [introStory count] - 1;
-		} else {
+		} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 			maxFrame = [finalBattleStory count] - 1;
+		} else {
+			maxFrame = [thankYouStory count] - 1;
 		}
 		
 		if (currentFrame >= maxFrame) {
@@ -312,9 +336,11 @@
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller
 {
 	NSLog(@"StoryViewController -battleViewControllerDidEnd");
+	
+	self.storyToShow = @"thankYouStory";
+	[self loadFirstStoryFrame];
+	
 	[self dismissModalViewControllerAnimated:YES];
-	//[delegate performSelector:@selector(storyViewControllerDidEnd:) withObject:self afterDelay:0.0];
-	[delegate storyViewControllerDidEnd:self];
 }
 
 @end
