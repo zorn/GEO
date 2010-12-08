@@ -4,6 +4,8 @@ December 7, 2010
 * ADDED: We now show story for Dr. Gordon button on main menu.
 * FIXED: some status bar disappearing issues. Still cause an issue for viewing a story in the dev tools.
 
+testing
+
 December 6, 2010
 
 * FIXED: monsters.plist was missing from project file. re-added.
