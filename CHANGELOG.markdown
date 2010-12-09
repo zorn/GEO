@@ -2,6 +2,9 @@ December 9, 2010
 
 * CHANGED: Swapped in some new frames for final story battle before boss fight.
 * ADDED: Added failure state, graphics and sounds to the boss result.
+* CHANGED: Increased Dr Gordon HP.
+* CHANGED: Reduced the impact of glove power. Full glove power would double an attack, now increases it by 1.5 max.
+* CHANGED: We no longer randomly adjust attack power.
 
 December 8, 2010
 

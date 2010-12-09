@@ -38,8 +38,8 @@
 			attackWasStrong = YES;
 		}
 		// apply glove power to attackValue
-		NSLog(@"orig: attackValue %i", attackValue); 
-		attackValue = lroundf(attackValue * (1.0 + (self.hero.glovePower/100.0)));
+		NSLog(@"orig: attackValue %i", attackValue);
+		attackValue = lroundf(attackValue + (attackValue * (self.hero.glovePower/200.0)));
 		NSLog(@"new: attackValue %i", attackValue); 
 		NSLog(@"glovePower: %i", self.hero.glovePower); 
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];

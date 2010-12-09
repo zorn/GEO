@@ -137,7 +137,8 @@
 - (NSInteger)randomAttackValueAgainstMob:(RQMob *)mob withWeaponOfType:(RQElementalType)weaponType
 {
 	// baseAttack power * rand(.5 - 1.5) * stamina effect .. when stam is full it is 1.0
-	float randomAttackPower = self.baseAttackPower * ((((rand()%11)+5.0)/10.0));
+//	float randomAttackPower = self.baseAttackPower * ((((rand()%11)+5.0)/10.0));
+	float randomAttackPower = self.baseAttackPower; // no more random addtion
 	float staminaEffect = pow(self.stamina, 3.0);
 	float weaponEffect = 1.0;
 	if ([mob weakToType] == weaponType) {
