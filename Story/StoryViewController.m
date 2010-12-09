@@ -15,6 +15,7 @@
 	if (self = [super initWithNibName:@"StoryView" bundle:nil]) {
 		self.wantsFullScreenLayout = YES;
 		transitioning = NO;
+		showingBossResult = NO;
 		currentFrame = 0;
 		self.storyToShow = @"intro";
 		
@@ -131,15 +132,24 @@
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
 		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
-		[newStoryFrame setObject:@"You win this time." forKey:@"storyText"];
+		[newStoryFrame setObject:@"This defeat is only temporary. One day I will return for what is rightfully mine. Until then..." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"thanks.png" forKey:@"imageName"];
-		[newStoryFrame setObject:@"We hope you enjoyed GEO and that it helped get you off the couch and moving. Feel free to continue to use the workout mode or rebattle Dr.Gordon when ever you'd like. Again, thanks for playing!\n\n~ The GEO team." forKey:@"storyText"];
+		[newStoryFrame setObject:@"thanks_v2.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"We hope you enjoyed GEO and that it helped get you off the couch and moving. Feel free to continue to use the workout mode or re-battle Dr.Gordon when ever you'd like. Again, thanks for playing!\n\n~ The GEO team." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
+		
+		
+		failureStory = [[NSMutableArray	alloc] init];
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"End_Story_failure.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"You have lost to the great Dr. Gordon." forKey:@"storyText"];
+		[failureStory addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
 		
 		// settings for textViews;
 		self.textViewFrame = CGRectMake(20, 480-20-130, 280, 130);
@@ -156,6 +166,7 @@
 	[introStory release];
 	[finalBattleStory release];
 	[thankYouStory release];
+	[failureStory release];
 	
 	[textViewBGColor release];
 	[textViewTextColor release];
@@ -180,7 +191,10 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[super viewWillAppear:animated];
 	
-	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"storyboard_song.m4a" loop:YES];
+	if (showingBossResult == NO) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"storyboard_song.m4a" loop:YES];
+	}
+	
 }
 
 - (void)viewDidLoad
@@ -203,6 +217,8 @@
 		firstStoryFrame = [introStory objectAtIndex:0];
 	} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 		firstStoryFrame = [finalBattleStory objectAtIndex:0];
+	} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
+		firstStoryFrame = [failureStory objectAtIndex:0];
 	} else {
 		firstStoryFrame = [thankYouStory objectAtIndex:0];
 	}
@@ -232,6 +248,8 @@
 		nextStoryFrame = [introStory objectAtIndex:currentFrame+1];
 	} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 		nextStoryFrame = [finalBattleStory objectAtIndex:currentFrame+1];
+	} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
+		nextStoryFrame = [failureStory objectAtIndex:currentFrame+1];
 	} else {
 		nextStoryFrame = [thankYouStory objectAtIndex:currentFrame+1];
 	}
@@ -287,6 +305,8 @@
 			maxFrame = [introStory count] - 1;
 		} else if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
 			maxFrame = [finalBattleStory count] - 1;
+		} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
+			maxFrame = [failureStory count] - 1;
 		} else {
 			maxFrame = [thankYouStory count] - 1;
 		}
@@ -337,8 +357,16 @@
 {
 	NSLog(@"StoryViewController -battleViewControllerDidEnd");
 	
-	self.storyToShow = @"thankYouStory";
-	[self loadFirstStoryFrame];
+	showingBossResult = YES;
+	if (controller.battle.didHeroWin) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
+		self.storyToShow = @"thankYouStory";
+		[self loadFirstStoryFrame];
+	} else {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"You lose.m4a" loop:NO];
+		self.storyToShow = @"failureStory";
+		[self loadFirstStoryFrame];
+	}
 	
 	[self dismissModalViewControllerAnimated:YES];
 }

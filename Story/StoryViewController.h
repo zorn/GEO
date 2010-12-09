@@ -17,10 +17,12 @@
 	NSInteger currentFrame;
 	
 	BOOL transitioning;
+	BOOL showingBossResult;
 	
 	NSMutableArray *introStory;
 	NSMutableArray *finalBattleStory;
 	NSMutableArray *thankYouStory;
+	NSMutableArray *failureStory;
 	NSString *storyToShow;
 }
 

@@ -272,8 +272,12 @@
 		didPauseIPod = YES;
 	}
 #endif
-
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
+	
+	if (self.useBossFightMechanics) {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"FinalBossBattle.m4a" loop:YES];
+	} else {
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"RQ_Battle_Song.m4a" loop:YES];
+	}
 	
 	// Setup the run button
 	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

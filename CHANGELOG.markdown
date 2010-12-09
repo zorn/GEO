@@ -1,6 +1,7 @@
 December 9, 2010
 
 * CHANGED: Swapped in some new frames for final story battle before boss fight.
+* ADDED: Added failure state, graphics and sounds to the boss result.
 
 December 8, 2010
 
