@@ -327,7 +327,7 @@
 				[newEnemy setType:RQElementalTypeFire];
 				[newEnemy setSpriteImageName:@"gordon"];
 				[newEnemy setLevel:50];
-				[newEnemy setCurrentHP:([hero maxHP]*20)];
+				[newEnemy setCurrentHP:[newEnemy maxHP]];
 				[newEnemy setStamina:0];
 				[newEnemy setStaminaRegenRate:4.0];
 				

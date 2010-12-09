@@ -48,7 +48,11 @@
 }
 
 - (NSInteger)maxHP {
-    return ((4*self.level)+1)*4;
+	if ([self.name isEqualToString:@"Dr. Gordon"]) {
+		return ((4*self.level)+1)*4*5;
+	} else {
+		return ((4*self.level)+1)*4;
+	}
 }
 
 - (NSInteger)level {
@@ -200,7 +204,11 @@
 
 - (NSInteger)baseAttackPower
 {
-	return round(self.maxHP / 5);
+	if ([self.name isEqualToString:@"Dr. Gordon"]) {
+		return lroundf((self.maxHP/5) / 5);
+	} else {
+		return lroundf(self.maxHP / 5);
+	}	
 }
 
 
