@@ -74,55 +74,55 @@
 		finalBattleStory = [[NSMutableArray alloc] init];
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel1.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Ah you have returned? And I see the glove is at maximum charge. Excellent! Superb!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel1.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"You have done well, Ranger. But I need to remove you of this burden. The glove has grown too powerful for the likes of you to handle." forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel1.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"…" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"What?! I gave you that glove and now you refuse to return it to it’s rightful owner?! Outrageous!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Tell me, young one. Did you ever stop to consider the chances of it all? How convenient is was that I would show up just in the nick of time to help you of all people to save the world?" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Just like the previous rangers. Childish! Selfish! Ultimately foolish!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Give me that glove, it’s true power is destined for me!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"…" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Really? You would rather die? So be it! Your last battle begins now!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
@@ -130,14 +130,14 @@
 		thankYouStory = [[NSMutableArray alloc] init];
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel6.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"You win this time." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"Panel1.png" forKey:@"imageName"];
-		[newStoryFrame setObject:@"Thanks for playing." forKey:@"storyText"];
+		[newStoryFrame setObject:@"thanks.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"We hope you enjoyed GEO and that it helped get you off the couch and moving. Feel free to continue to use the workout mode or rebattle Dr.Gordon when ever you'd like. Again, thanks for playing!\n\n~ The GEO team." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		

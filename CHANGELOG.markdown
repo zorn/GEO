@@ -1,3 +1,7 @@
+December 9, 2010
+
+* CHANGED: Swapped in some new frames for final story battle before boss fight.
+
 December 8, 2010
 
 * Moved repo to GitHub.
