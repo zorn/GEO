@@ -2,11 +2,13 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SimpleAudioEngine.h"
 
+#import "RQConstants.h"
 #import "RQModelController.h"
 #import "RQBattleViewController.h"
 #import "RQBattle.h"
 #import "RQHero.h"
 #import "RQEnemy.h"
+#import "RQConstants.h"
 
 @implementation StoryViewController
 
@@ -201,7 +203,7 @@
 
 - (void)viewDidLoad
 {
-	NSLog(@"StoryViewController -viewDidLoad");
+	CCLOG(@"StoryViewController -viewDidLoad");
 	[super viewDidLoad];
 	
 	// add tap to view to progress story
@@ -357,7 +359,7 @@
 
 - (void)battleViewControllerDidEnd:(RQBattleViewController *)controller
 {
-	NSLog(@"StoryViewController -battleViewControllerDidEnd");
+	CCLOG(@"StoryViewController -battleViewControllerDidEnd");
 	
 	showingBossResult = YES;
 	if (controller.battle.didHeroWin) {

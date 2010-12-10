@@ -26,6 +26,7 @@
 #import "AppDelegate_iPhone.h"
 #import "RQEnemyWeaponView.h"
 #import "RQBarView.h"
+#import "RQConstants.h"
 
 // view
 #import "ShieldDrawLineView.h"
@@ -54,7 +55,7 @@
 
 - (void)dealloc
 {
-	NSLog(@"RQBattleViewController -dealloc called...");
+	CCLOG(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
 	[shieldDrawLineView release]; shieldDrawLineView = nil;
 	[backgroundImageView release], backgroundImageView = nil;
@@ -147,7 +148,7 @@
 		
 		weaponType = RQElementalTypeNone;
 		
-		NSLog(@"building weapon: %@", weapon);
+		CCLOG(@"building weapon: %@", weapon);
 		switch ([[weapon objectForKey:@"type"] integerValue]) {
 			case RQElementalTypeFire:
 				weaponImageName = @"fire_weapon";
@@ -177,7 +178,7 @@
 
 		xloc = xloc + spacerWidth;
 
-		NSLog(@"xloc: %f", xloc);
+		CCLOG(@"xloc: %f", xloc);
 		weaponSprite.position = CGPointMake(xloc, self.view.frame.size.height - 40);
 		weaponSprite.orininalPosition = weaponSprite.position;
 		
@@ -236,7 +237,7 @@
 	UIImage *monsterImage = [UIImage imageNamed:self.battle.enemy.spriteImageName];
 	
 	UIImageView *monsterView = [[UIImageView alloc] initWithImage:monsterImage];
-	//NSLog(@"w %f h %f s %f", monsterImage.size.width, monsterImage.size.height, monsterImage.scale);
+	//CCLOG(@"w %f h %f s %f", monsterImage.size.width, monsterImage.size.height, monsterImage.scale);
     monsterView.frame = CGRectMake(1.350, 8.5, monsterImage.size.width, monsterImage.size.height);
 	evilBoobsMonster = [[RQEnemySprite alloc] initWithView:monsterView];
 	[monsterView release];
@@ -276,7 +277,7 @@
 #if !(TARGET_IPHONE_SIMULATOR)
 	didPauseIPod = NO;
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && [[MPMusicPlayerController iPodMusicPlayer] playbackState] == MPMusicPlaybackStatePlaying ) {
-		NSLog(@"pauseing iPod");
+		CCLOG(@"pauseing iPod");
 		[[MPMusicPlayerController iPodMusicPlayer] pause];
 		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
 		didPauseIPod = YES;
@@ -308,7 +309,7 @@
 	NSTimeInterval deltaTime = currentTime - previousTickTime;
 	previousTickTime = currentTime;
 	
-	//NSLog(@"tick, battle status hero %@ and enemy %@", self.battle.hero, self.battle.enemy);
+	//CCLOG(@"tick, battle status hero %@ and enemy %@", self.battle.hero, self.battle.enemy);
 
 	
 	// game sim stuff
@@ -362,7 +363,7 @@
 			if ( [[result objectForKey:@"attackWasStrong"] boolValue] == YES ) {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Hit_002.caf"];
 				[evilBoobsMonster strongHitAnimation];
-				NSLog(@"stong attack");
+				CCLOG(@"stong attack");
 			} else {
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];
 			}
@@ -538,7 +539,7 @@
 - (void)releaseActiveWeapon {
 	// when touch is nil the game loop will begin to update it's position based on velocity
 	self.activeWeapon.touch = nil;
-	//NSLog(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
+	//CCLOG(@"self.activeWeapon.velocity x %f y %f", self.activeWeapon.velocity.x, self.activeWeapon.velocity.y);
 	
 	// if the velocity was too low do not "fire" the weapon but reset it
 	float min_velocity = 1000.0;
@@ -700,7 +701,7 @@
 	// If the user would like us to pause the iPod during battles to hear our own sweet music
 	// Only play the iPod if we previously paused it
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && didPauseIPod == YES) {
-		NSLog(@"playing iPod");
+		CCLOG(@"playing iPod");
 		[[MPMusicPlayerController iPodMusicPlayer] play];
 		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
 		
@@ -716,7 +717,7 @@
 
 - (void)battleVictoryControllerDidEnd:(RQBattleVictoryViewController *)controller;
 {
-	//NSLog(@"battleVictoryControllerDidEnd");
+	//CCLOG(@"battleVictoryControllerDidEnd");
 	[self.battleVictoryViewController.view removeFromSuperview];
 	[self setBattleVictoryViewController:nil];
 	[[[RQModelController defaultModelController] coreDataManager] save];

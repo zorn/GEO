@@ -1,3 +1,4 @@
+#import "RQConstants.h"
 #import "RQModelController.h"
 #import "RQBattle.h"
 #import "RQMob.h"
@@ -38,10 +39,10 @@
 			attackWasStrong = YES;
 		}
 		// apply glove power to attackValue
-		NSLog(@"orig: attackValue %i", attackValue);
+		CCLOG(@"orig: attackValue %i", attackValue);
 		attackValue = lroundf(attackValue + (attackValue * (self.hero.glovePower/200.0)));
-		NSLog(@"new: attackValue %i", attackValue); 
-		NSLog(@"glovePower: %i", self.hero.glovePower); 
+		CCLOG(@"new: attackValue %i", attackValue); 
+		CCLOG(@"glovePower: %i", self.hero.glovePower); 
 		[self.enemy setCurrentHP:self.enemy.currentHP - attackValue];
 		self.hero.stamina = 0.0;
 		[self appendToBattleLog:[NSString stringWithFormat:@"%@ hits %@ with a normal attack for %i.", self.hero.name, self.enemy.name, attackValue]];
@@ -50,9 +51,9 @@
 		attackValue = [self.enemy randomAttackValueAgainstMob:self.hero withWeaponOfType:weaponType];
 		// If hero has sheids half the attack
 		if (self.hero.secondsLeftOfShields > 0) {
-			NSLog(@"halving attack value from sheilds from: %i", attackValue);
+			CCLOG(@"halving attack value from sheilds from: %i", attackValue);
 			attackValue = round(attackValue / 2);
-			NSLog(@"new attack value: %i", attackValue);
+			CCLOG(@"new attack value: %i", attackValue);
 		}
 		[self.hero setCurrentHP:self.hero.currentHP - attackValue];
 		[self.enemy setStamina:0.0];
@@ -61,7 +62,7 @@
 	}
 	
 	// failure
-	NSLog(@"ERROR: issueAttackCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
+	CCLOG(@"ERROR: issueAttackCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
 	return [NSDictionary dictionaryWithObjectsAndKeys:@"error", @"status", [NSNumber numberWithInteger:0], @"attackValue", nil];
 }
 
@@ -70,13 +71,13 @@
 	if (mob == hero || mob == enemy) {
 		[mob setSecondsLeftOfShields:RQBattleShieldLengthInSeconds];
 	} else {
-		NSLog(@"ERROR: issuePhysicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
+		CCLOG(@"ERROR: issuePhysicalShieldCommandFrom mob but mob %@ is not in the battle %@.", mob, self);
 	}
 }
 
 - (void)updateCombatantStaminaBasedOnTimeDelta:(NSTimeInterval)timeDelta
 {
-	//NSLog(@"updateCombatantStaminaBasedOnTimeDelta");
+	//CCLOG(@"updateCombatantStaminaBasedOnTimeDelta");
 	float howMuchStaminaTheHeroWouldGainInAFullSecond = 1.0 / self.hero.staminaRegenRate;
 	float oneFrameWorthForTheHero = timeDelta * howMuchStaminaTheHeroWouldGainInAFullSecond;
 	[self.hero setStamina:self.hero.stamina + oneFrameWorthForTheHero];
@@ -100,7 +101,7 @@
 
 - (void)appendToBattleLog:(NSString *)logAddition
 {
-	NSLog(@"%@", logAddition);
+	CCLOG(@"%@", logAddition);
 	[self setBattleLog:[self.battleLog stringByAppendingFormat:@"%@\n",logAddition]]; 
 }
 

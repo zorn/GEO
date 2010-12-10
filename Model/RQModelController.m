@@ -5,6 +5,7 @@
 #import "M3SimpleCoreData.h"
 
 // models
+#import "RQConstants.h"
 #import "RQHero.h"
 #import "RQEnemy.h"
 #import "RQWeightLogEntry.h"
@@ -258,7 +259,7 @@ static RQModelController *defaultModelController = nil;
 	RQWeightLogEntry *oldest = [self oldestWeightLogEntry];
 	RQWeightLogEntry *newest = [self weightLogEntryFromDate:someDate];
 	if (oldest && newest) {
-		NSLog(@"oldest: %@, newest: %@", oldest.weightTaken, newest.weightTaken);
+		CCLOG(@"oldest: %@, newest: %@", oldest.weightTaken, newest.weightTaken);
 		return [oldest.weightTaken decimalNumberBySubtracting:newest.weightTaken];
 	} else {
 		return nil;
@@ -462,7 +463,7 @@ static RQModelController *defaultModelController = nil;
 		RQWeightLogEntry *newEntry = [self newWeightLogEntry];
 		[newEntry setDateTaken:weightinDate];
 		[newEntry setWeightTaken:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", currentWeight]]];
-		//NSLog(@"newEntry: %@", newEntry);
+		//CCLOG(@"newEntry: %@", newEntry);
 		
 		totalDays = totalDays + numberOfDays;
 	}
@@ -516,7 +517,7 @@ static RQModelController *defaultModelController = nil;
 	double lonDelta = (arc4random() % 50)/10000.0;
 	
 	CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:(location.coordinate.latitude + latDelta) longitude:(location.coordinate.longitude + lonDelta)];
-	NSLog(@"newLocation %@", newLocation);
+	CCLOG(@"newLocation %@", newLocation);
 	[newLocation autorelease];
 	return newLocation;
 }

@@ -9,6 +9,7 @@
 #import "SimpleAudioEngine.h"
 #import "RQBattleVictoryViewController.h"
 #import "RQBattleViewController.h"
+#import "RQConstants.h"
 #import "RQBattle.h"
 #import "RQHero.h"
 #import "RQEnemy.h"
@@ -48,7 +49,7 @@
 
 - (void)dealloc 
 {
-	NSLog(@"RQBattleVictoryViewController -dealloc called...");
+	CCLOG(@"RQBattleVictoryViewController -dealloc called...");
 	[xpCountTimer invalidate]; [xpCountTimer release]; xpCountTimer = nil;
 	
 	[continueWorkoutButton release];
@@ -76,7 +77,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSLog(@"RQBattleVictoryViewController -viewDidLoad");
+	CCLOG(@"RQBattleVictoryViewController -viewDidLoad");
 	
 	xpBarView.barColor = [UIColor whiteColor];
 	xpBarView.outlineColor = [UIColor colorWithWhite:0.6 alpha:1.0];
@@ -190,7 +191,7 @@
 		
 		[[SimpleAudioEngine sharedEngine] playEffect:@"spaceBeat.m4a"];
 		if ([self.battle.hero increaseLevelIfNeeded]) {
-			NSLog(@"newLevel: %d", self.battle.hero.level);
+			CCLOG(@"newLevel: %d", self.battle.hero.level);
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 			
 			self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];
@@ -256,7 +257,7 @@
 	}
 	
 	CGFloat xpPercent = ((CGFloat)heroCurrentXP / totalXPForLevel);
-	//NSLog(@"hero level %i, heroCurrentXP %i, totalXPForLevel %i, xpPercent %f", self.battle.hero.level, heroCurrentXP, totalXPForLevel, xpPercent);
+	//CCLOG(@"hero level %i, heroCurrentXP %i, totalXPForLevel %i, xpPercent %f", self.battle.hero.level, heroCurrentXP, totalXPForLevel, xpPercent);
 	
 	[self.xpBarView setPercent:xpPercent duration:0.0];
 	self.heroLevelLabel.text = [NSString stringWithFormat:@"Level %d", self.battle.hero.level];

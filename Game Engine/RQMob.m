@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h> // for UIColor
 #import "RQMob.h"
+#import "RQConstants.h"
 
 @implementation RQMob
 
@@ -151,7 +152,7 @@
 		weaponEffect = 0.5;
 	}
 	NSInteger result = lroundf(randomAttackPower * staminaEffect * weaponEffect);
-	NSLog(@"randomAttackPower %f * staminaEffect %f * weaponEffect %f = %d", randomAttackPower, staminaEffect, weaponEffect, result);
+	CCLOG(@"randomAttackPower %f * staminaEffect %f * weaponEffect %f = %d", randomAttackPower, staminaEffect, weaponEffect, result);
 	return result;
 }
 

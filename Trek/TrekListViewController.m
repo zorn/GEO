@@ -3,6 +3,7 @@
 #import <CoreData/CoreData.h>
 
 // models
+#import "RQConstants.h"
 #import "RQModelController.h"
 #import "Trek.h"
 
@@ -89,7 +90,7 @@
 	while (moreWeeksToShow) {
 		list = [[RQModelController defaultModelController] allTreksFromWeekStartingOnSundayDate:startingSunday];
 		[weekGroups addObject:[NSDictionary dictionaryWithObjectsAndKeys:list, @"list", startingSunday, @"date", nil]];
-		NSLog(@"list %@ for date %@", list, startingSunday);
+		CCLOG(@"list %@ for date %@", list, startingSunday);
 		
 		// advance one week
 		startingSunday = [startingSunday dateByAddingTimeInterval:60*60*24*7];

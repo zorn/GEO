@@ -4,6 +4,7 @@
 #import <CoreData/CoreData.h>
 
 // models
+#import "RQConstants.h"
 #import "RQModelController.h"
 #import "M3SimpleCoreData.h"
 #import "RQWeightLogEntry.h"
@@ -63,7 +64,7 @@
 	NSError *error = nil;
 	[self.fetchedResultsController performFetch:&error];
 	if ( error )
-		NSLog(@"%@", error);  // TODO: care
+		CCLOG(@"%@", error);  // TODO: care
 	
 }
 
@@ -110,7 +111,7 @@
 		[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];	
 	}
 	@catch (NSException * e) {
-		NSLog(@"%@",e);
+		CCLOG(@"%@",e);
 		[cell.weightLabel setText:@""];
 		[cell.weightLostLabel setText:@""];
 		[cell.dateLabel setText:@""];	
@@ -158,7 +159,7 @@
 #pragma mark NSFetchedResultsControllerDelegate methods
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    NSLog(@"controllerWillChangeContent");
+    CCLOG(@"controllerWillChangeContent");
 	[self.tableView beginUpdates];
 }
 
@@ -212,7 +213,7 @@
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    NSLog(@"controllerDidChangeContent");
+    CCLOG(@"controllerDidChangeContent");
     [self.tableView endUpdates];
 }
 

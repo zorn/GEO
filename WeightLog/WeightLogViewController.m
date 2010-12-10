@@ -2,6 +2,7 @@
 #import "WeightLogListViewController.h"
 
 // models
+#import "RQConstants.h"
 #import "RQModelController.h"
 #import "RQWeightLogEntry.h"
 
@@ -133,7 +134,7 @@
 	NSDecimalNumber *minWeight = [[RQModelController defaultModelController] minWeightLogged];
 	if (!minWeight) minWeight = [NSDecimalNumber zero];
 	
-	NSLog(@"max %@ min %@", maxWeight, minWeight);
+	CCLOG(@"max %@ min %@", maxWeight, minWeight);
 	
 	NSArray *entries = [[RQModelController defaultModelController] weightLogEntries];
 	
@@ -236,15 +237,15 @@
 
 -(NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot; 
 {
-	//NSLog(@"numberOfRecordsForPlot: %@", plot);
+	//CCLOG(@"numberOfRecordsForPlot: %@", plot);
 	NSArray *entries = [[RQModelController defaultModelController] weightLogEntriesSortedByDate];
-	//NSLog(@"returning %i", [entries count]);
+	//CCLOG(@"returning %i", [entries count]);
 	return [entries count];
 }
 
 -(NSNumber *)numberForPlot:(CPPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index;
 {
-	//NSLog(@"numberForPlot:%@ field:%i recordIndex:%i called...", plot, fieldEnum, index);
+	//CCLOG(@"numberForPlot:%@ field:%i recordIndex:%i called...", plot, fieldEnum, index);
 	switch (fieldEnum)
 	{
 		case CPScatterPlotFieldX: 
