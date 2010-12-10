@@ -1,4 +1,4 @@
-    //
+    //CCLOG
 //  MainMenuViewController.m
 //  RunQuest
 //
@@ -11,7 +11,6 @@
 #import "RQModelController.h"
 #import "M3CoreDataManager.h"
 #import "RQHero.h"
-#import "CreateHeroViewController.h"
 #import "SimpleAudioEngine.h"
 
 // controllers
@@ -22,6 +21,7 @@
 #import "RQBattleViewController.h"
 
 // models
+#import "RQConstants.h"
 #import "RQBattle.h"
 
 @implementation MainMenuViewController
@@ -74,7 +74,7 @@
 
 - (IBAction)playButtonPressed:(id)sender
 {
-	NSLog(@"playButtonPressed");
+	CCLOG(@"playButtonPressed");
 	
 	RQModelController *modelController = [RQModelController defaultModelController];
 	if ([modelController newestTrek] == nil) {
@@ -106,7 +106,7 @@
 - (IBAction)visitDrGordon:(id)sender
 {
 	// start up story and last battle
-	NSLog(@"visitDrGordon: called ...");
+	CCLOG(@"visitDrGordon: called ...");
 	
 	StoryViewController *storyVC = [[StoryViewController alloc] init];
 	[storyVC setStoryToShow:@"finalBattleStory"];

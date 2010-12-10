@@ -119,7 +119,6 @@
 		1A6E334B124E603C0054949B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
 		1A6E3364124E60CD0054949B /* RQBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B23681246AD46000F9449 /* RQBattle.m */; };
 		1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2870939E111907710040F596 /* RunQuest.xcdatamodel */; };
-		1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E3448124E7D590054949B /* CreateHeroViewController.m */; };
 		1A713B3112B12D2A006BCCDF /* End_Story_Panel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A713B2D12B12D2A006BCCDF /* End_Story_Panel1.png */; };
 		1A713B3212B12D2A006BCCDF /* End_Story_Panel1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A713B2E12B12D2A006BCCDF /* End_Story_Panel1@2x.png */; };
 		1A713B3312B12D2A006BCCDF /* End_Story_Panel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A713B2F12B12D2A006BCCDF /* End_Story_Panel2.png */; };
@@ -395,6 +394,7 @@
 		1A63C36912A1C8DF0036A687 /* speaker_mute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "speaker_mute@2x.png"; path = "ui/speaker_mute@2x.png"; sourceTree = "<group>"; };
 		1A65B1F01288607C0028BBBC /* RQMonsterTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQMonsterTemplate.h; sourceTree = "<group>"; };
 		1A65B1F11288607C0028BBBC /* RQMonsterTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQMonsterTemplate.m; sourceTree = "<group>"; };
+		1A683E0112B2D32C00789946 /* RQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQConstants.h; sourceTree = "<group>"; };
 		1A6AFDE21296EBF600847752 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		1A6BF4941255668E00934DD3 /* Panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel1.png; path = story/Panel1.png; sourceTree = "<group>"; };
 		1A6BF4951255668E00934DD3 /* Panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Panel2.png; path = story/Panel2.png; sourceTree = "<group>"; };
@@ -431,8 +431,6 @@
 		1A6E333D124E5FAA0054949B /* RQEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQEnemy.h; path = "../Game Engine/RQEnemy.h"; sourceTree = "<group>"; };
 		1A6E333E124E5FAA0054949B /* RQEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQEnemy.m; path = "../Game Engine/RQEnemy.m"; sourceTree = "<group>"; };
 		1A6E3445124E7D010054949B /* CreateHeroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateHeroView.xib; sourceTree = "<group>"; };
-		1A6E3447124E7D590054949B /* CreateHeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateHeroViewController.h; sourceTree = "<group>"; };
-		1A6E3448124E7D590054949B /* CreateHeroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateHeroViewController.m; sourceTree = "<group>"; };
 		1A713B2D12B12D2A006BCCDF /* End_Story_Panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = End_Story_Panel1.png; path = story/End_Story_Panel1.png; sourceTree = "<group>"; };
 		1A713B2E12B12D2A006BCCDF /* End_Story_Panel1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "End_Story_Panel1@2x.png"; path = "story/End_Story_Panel1@2x.png"; sourceTree = "<group>"; };
 		1A713B2F12B12D2A006BCCDF /* End_Story_Panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = End_Story_Panel2.png; path = story/End_Story_Panel2.png; sourceTree = "<group>"; };
@@ -1269,6 +1267,7 @@
 		D8C86C6112450EDF007E44AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A683E0112B2D32C00789946 /* RQConstants.h */,
 				1A6E32E3124E59F50054949B /* Tests */,
 				1A6E3282124E4E210054949B /* RQModelController.h */,
 				1A6E3283124E4E210054949B /* RQModelController.m */,
@@ -1324,8 +1323,6 @@
 				1AC92465124D755800E09F6A /* MainMenuViewController.h */,
 				1AC92466124D755800E09F6A /* MainMenuViewController.m */,
 				1AC92470124D75A000E09F6A /* MainMenuView.xib */,
-				1A6E3447124E7D590054949B /* CreateHeroViewController.h */,
-				1A6E3448124E7D590054949B /* CreateHeroViewController.m */,
 				1A6E3445124E7D010054949B /* CreateHeroView.xib */,
 				1A945BD412540B7800CE44D8 /* SettingsViewController.h */,
 				1A945BD512540B7800CE44D8 /* SettingsViewController.m */,
@@ -1707,7 +1704,6 @@
 				1A6E333B124E5F000054949B /* RQHero.m in Sources */,
 				1A6E333F124E5FAA0054949B /* RQEnemy.m in Sources */,
 				1A6E33D2124E66070054949B /* RunQuest.xcdatamodel in Sources */,
-				1A6E3449124E7D590054949B /* CreateHeroViewController.m in Sources */,
 				1A4B839E124EB0F800A1C689 /* MainMenuViewController.m in Sources */,
 				D8AF2280124FA792008AB638 /* TrekListViewController.m in Sources */,
 				D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */,

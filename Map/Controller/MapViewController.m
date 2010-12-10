@@ -1,4 +1,4 @@
-//
+//CCLOG
 //  RQMapViewController.m
 //  RunQuest
 //
@@ -28,6 +28,7 @@
 #import "CLLocation+RQAdditions.h"
 #import "RandomWalkLocationManager.h"
 #import "RQBarView.h"
+#import "RQConstants.h"
 
 #define METERS_PER_DEGREE 111000
 
@@ -101,7 +102,7 @@
 			manager = [[CLLocationManager alloc] init];
 		}
 #endif
-		NSLog(@"Using Location manager class: %@", [manager class]);
+		CCLOG(@"Using Location manager class: %@", [manager class]);
 			  
 		self.locationManager = manager;
 		[manager release];
@@ -129,7 +130,7 @@
 - (void)dealloc {
 	[_treasures release];
 	[_treasureViews release];
-	NSLog(@"MapViewController -dealloc called...");
+	CCLOG(@"MapViewController -dealloc called...");
 	[self stopUpdatingLocation];
 	locationManager.delegate = nil;
 	[locationManager release];
@@ -594,7 +595,7 @@
 	
 	// update distance label, convert to miles
 	NSString *newDistance = [NSString stringWithFormat:@"%@ mi", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distanceInMiles]]]];
-	//NSLog(@"newDistance %@", newDistance);
+	//CCLOG(@"newDistance %@", newDistance);
 	self.distanceLabel.text = newDistance;
 	
 	NSString *newCalBurn = [NSString stringWithFormat:@"%@ cal", [_calorieFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek caloriesBurned]]]];
@@ -800,7 +801,7 @@
 	NSError *error = nil;
 	[[appDelegate managedObjectContext] save:&error];
 	if ( error )
-		NSLog(@"%@", error);
+		CCLOG(@"%@", error);
 	[self pauseGameMechanicsAndRemoveTreasures:YES];
 	
 	[self moveStartWorkoutToolbarOffScreenShouldAnimate:YES];
@@ -816,7 +817,7 @@
 	} else {
 		[self stopTrek];
 	}
-	NSLog(@"self.trek %@", self.trek);
+	CCLOG(@"self.trek %@", self.trek);
 }
 
 - (IBAction)resumeButtonPressed:(id)sender
