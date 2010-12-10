@@ -1,3 +1,8 @@
+December 10, 2010
+
+* ADDED: New plus HP mechanic to final boss fight. Tap to gain 200 hp. They spawn every 10 seconds.
+* CHANGED: Increased the HP of Dr Gordon.
+
 December 9, 2010
 
 * CHANGED: Swapped in some new frames for final story battle before boss fight.

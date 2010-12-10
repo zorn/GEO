@@ -49,7 +49,7 @@
 
 - (NSInteger)maxHP {
 	if ([self.name isEqualToString:@"Dr. Gordon"]) {
-		return ((4*self.level)+1)*4*5;
+		return ((4*self.level)+1)*4*10;
 	} else {
 		return ((4*self.level)+1)*4;
 	}
@@ -205,7 +205,7 @@
 - (NSInteger)baseAttackPower
 {
 	if ([self.name isEqualToString:@"Dr. Gordon"]) {
-		return lroundf((self.maxHP/5) / 5);
+		return lroundf((self.maxHP/10) / 5);
 	} else {
 		return lroundf(self.maxHP / 5);
 	}	

@@ -46,7 +46,7 @@
 	if (self = [super initWithNibName:@"BattleView" bundle:nil]) {
 		weaponSprites = [[NSMutableArray alloc] init];
 		battle = [[RQBattle alloc] init];
-		
+		secondsSinceLastPlusHPSpawn = 0;
 		useBossFightMechanics = NO;
 	}
 	return self;
@@ -249,6 +249,16 @@
 	monsterCounter = 0;
 	lastCollisionTime = 0.0;
 	
+	// if this is the final boss fight add hp regen item
+	if (self.useBossFightMechanics) {
+		UIImage *plusHPImage = [UIImage imageNamed:@"plus_hp.png"];
+		UIImageView *plusHPImageView = [[UIImageView alloc] initWithImage:plusHPImage];
+		hpPlusSprite = [[RQSprite alloc] initWithView:plusHPImageView];
+		[self.view addSubview:hpPlusSprite.view];
+		hpPlusSprite.position = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - 200);
+		hpPlusSprite.view.layer.opacity = 0;
+	}
+	
 	// Setup the self hit visual
 	self.frontFlashView = [[[RQPassthroughView alloc] initWithFrame:self.view.frame] autorelease];
 	CGRect ffFrame = self.frontFlashView.frame;
@@ -320,6 +330,20 @@
 	evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
+	
+	//if (hpPlusSprite.view.layer.opacity > 0 && hpPlusSprite.view.layer.opacity < 1) {
+//		hpPlusSprite.view.layer.opacity += 0.1;
+//	}
+	
+	// spawn HP Plus token
+	secondsSinceLastPlusHPSpawn = secondsSinceLastPlusHPSpawn + deltaTime;
+	if (secondsSinceLastPlusHPSpawn > 10) {
+		CGRect newFrame = hpPlusSprite.view.frame;
+		newFrame.origin.x = (arc4random() % 240) - 40;
+		hpPlusSprite.view.frame = newFrame;
+		hpPlusSprite.view.layer.opacity = 1;
+		secondsSinceLastPlusHPSpawn = 0.0;
+	}
 	
 	// Figure out if the monster has been hit
 	BOOL monsterHit = NO;
@@ -484,9 +508,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	// If the user tries to active a weapon while the hero stamina is not full, say no
-	
-	
 	// When a touch begins we need to assign an active weapon (as long as there isn't a current active weapon)
 	if (!activeWeapon) {
 		UITouch *touch = [touches anyObject];
@@ -499,6 +520,17 @@
 				[self setActiveWeapon:weapon];
 				previousTouchTimestamp = touch.timestamp;
 			}
+		}
+	}
+	
+	// did the user touch the HP plus?
+	if (self.useBossFightMechanics) {
+		UITouch *touch = [touches anyObject];
+		CGPoint touchLocation = [touch locationInView:self.view];
+		if (CGRectContainsPoint(hpPlusSprite.view.frame, touchLocation) && hpPlusSprite.view.layer.opacity == 1) {
+			self.battle.hero.currentHP += 200;
+			hpPlusSprite.view.layer.opacity = 0;
+			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 		}
 	}
 }

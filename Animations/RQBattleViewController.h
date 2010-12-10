@@ -34,6 +34,7 @@
 	
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
+	float secondsSinceLastPlusHPSpawn;
 	
 	BOOL didPauseIPod;
 	
@@ -41,6 +42,7 @@
 	RQBarView *heroHealthBar;
 	RQBarView *heroGlovePowerBar;
 	RQPassthroughView *frontFlashView;
+	RQSprite *hpPlusSprite;
 	
 	UIImageView *leftShield;
 	UIImageView *rightShield;

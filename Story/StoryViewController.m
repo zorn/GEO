@@ -80,6 +80,7 @@
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
+		/*
 		newStoryFrame = [[NSMutableDictionary alloc] init];
 		[newStoryFrame setObject:@"End_Story_Panel1.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"You have done well, Ranger. But I need to remove you of this burden. The glove has grown too powerful for the likes of you to handle." forKey:@"storyText"];
@@ -127,7 +128,8 @@
 		[newStoryFrame setObject:@"Really? You would rather die? So be it! Your last battle begins now!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
-		
+		*/
+		 
 		thankYouStory = [[NSMutableArray alloc] init];
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
