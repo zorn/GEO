@@ -66,6 +66,8 @@
 	if ( error )
 		CCLOG(@"%@", error);  // TODO: care
 	
+	[self.tableView setBackgroundColor:[UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000]];
+	[self.tableView setSeparatorColor:[UIColor colorWithRed:0.204 green:0.212 blue:0.222 alpha:1.000]]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,7 +84,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return @"Weight         Date           Total Lost";
+	return @"Weight              Date                    Total Lost";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -104,11 +106,13 @@
 
 - (void)configureCell:(WeightLogListCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
+	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
 	@try {
 		id object = [fetchedResultsController objectAtIndexPath:indexPath];
 		[cell.weightLabel setText:[[object valueForKey:@"weightTaken"] stringValue]];
 		[cell.weightLostLabel setText:[[(RQWeightLogEntry *)object weightLostAsOfSelf] stringValue]];
-		[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];	
+		[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];
+		
 	}
 	@catch (NSException * e) {
 		CCLOG(@"%@",e);
@@ -119,6 +123,7 @@
 	@finally {
 		
 	}
+	
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
@@ -144,6 +149,26 @@
 	[controller setDelegate:self];
 	[self presentModalViewController:controller animated:YES];
 	[controller release];
+}
+
+- (UIView *)tableView:(UITableView *)aTableView viewForHeaderInSection:(NSInteger)section
+{
+	UIView *containerView =	[[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)] autorelease];
+    containerView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 310, 25)] autorelease];
+    headerLabel.text = [self tableView:aTableView titleForHeaderInSection:section];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.shadowColor = [UIColor blackColor];
+    headerLabel.shadowOffset = CGSizeMake(0, 1);
+    headerLabel.font = [UIFont boldSystemFontOfSize:15];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    [containerView addSubview:headerLabel];
+	return containerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+	return 25;
 }
 
 #pragma mark -

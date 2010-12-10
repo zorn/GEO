@@ -64,9 +64,9 @@
 									<double key="NSSize">17</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<object class="NSColor" key="IBUITextColor" id="651976743">
+								<object class="NSColor" key="IBUITextColor" id="979684035">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
 								</object>
 								<object class="NSColor" key="IBUIHighlightedColor" id="418063562">
 									<int key="NSColorSpace">3</int>
@@ -93,13 +93,8 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">6</int>
-									<string key="NSCatalogName">System</string>
-									<string key="NSColorName">alternateSelectedControlColor</string>
-									<object class="NSColor" key="NSColor">
-										<int key="NSColorSpace">1</int>
-										<bytes key="NSRGB">MCAwIDEAA</bytes>
-									</object>
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC42Mjc0NTA5ODA0IDAuOCAxAA</bytes>
 								</object>
 								<reference key="IBUIHighlightedColor" ref="418063562"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -119,7 +114,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">12/12/2010</string>
 								<reference key="IBUIFont" ref="9630048"/>
-								<reference key="IBUITextColor" ref="651976743"/>
+								<reference key="IBUITextColor" ref="979684035"/>
 								<reference key="IBUIHighlightedColor" ref="418063562"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -140,10 +135,7 @@
 				</object>
 				<string key="NSFrameSize">{320, 44}</string>
 				<reference key="NSSuperview"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MSAxIDEAA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="418063562"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
 				<reference key="IBUIContentView" ref="3294328"/>
@@ -255,7 +247,7 @@
 					<string>UIViewController</string>
 					<string>UIResponder</string>
 					<string>WeightLogListCell</string>
-					<string>{{426, 751}, {320, 44}}</string>
+					<string>{{527, 696}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
