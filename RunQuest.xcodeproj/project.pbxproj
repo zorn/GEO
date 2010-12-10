@@ -190,7 +190,6 @@
 		1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */; };
 		1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
-		1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6E3445124E7D010054949B /* CreateHeroView.xib */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
 		1ACC9521127F982F004E5073 /* HeroEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC9520127F982F004E5073 /* HeroEditViewController.m */; };
@@ -430,7 +429,6 @@
 		1A6E3339124E5F000054949B /* RQHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQHero.m; path = "../Game Engine/RQHero.m"; sourceTree = "<group>"; };
 		1A6E333D124E5FAA0054949B /* RQEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RQEnemy.h; path = "../Game Engine/RQEnemy.h"; sourceTree = "<group>"; };
 		1A6E333E124E5FAA0054949B /* RQEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RQEnemy.m; path = "../Game Engine/RQEnemy.m"; sourceTree = "<group>"; };
-		1A6E3445124E7D010054949B /* CreateHeroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateHeroView.xib; sourceTree = "<group>"; };
 		1A713B2D12B12D2A006BCCDF /* End_Story_Panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = End_Story_Panel1.png; path = story/End_Story_Panel1.png; sourceTree = "<group>"; };
 		1A713B2E12B12D2A006BCCDF /* End_Story_Panel1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "End_Story_Panel1@2x.png"; path = "story/End_Story_Panel1@2x.png"; sourceTree = "<group>"; };
 		1A713B2F12B12D2A006BCCDF /* End_Story_Panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = End_Story_Panel2.png; path = story/End_Story_Panel2.png; sourceTree = "<group>"; };
@@ -1323,7 +1321,6 @@
 				1AC92465124D755800E09F6A /* MainMenuViewController.h */,
 				1AC92466124D755800E09F6A /* MainMenuViewController.m */,
 				1AC92470124D75A000E09F6A /* MainMenuView.xib */,
-				1A6E3445124E7D010054949B /* CreateHeroView.xib */,
 				1A945BD412540B7800CE44D8 /* SettingsViewController.h */,
 				1A945BD512540B7800CE44D8 /* SettingsViewController.m */,
 				1A945BD712540B8900CE44D8 /* SettingsView.xib */,
@@ -1525,7 +1522,6 @@
 				1A95FDA21292DFAA00F1AA3A /* shield_orb_left@2x.png in Resources */,
 				1A95FDA31292DFAA00F1AA3A /* shield_orb_right.png in Resources */,
 				1A95FDA41292DFAA00F1AA3A /* shield_orb_right@2x.png in Resources */,
-				1AB757191293808F00112FD3 /* CreateHeroView.xib in Resources */,
 				C9905A4D1294BCB100AF5987 /* shield_lightning1.png in Resources */,
 				C9905A4E1294BCB100AF5987 /* shield_lightning1@2x.png in Resources */,
 				C9905A4F1294BCB100AF5987 /* shield_lightning2.png in Resources */,
