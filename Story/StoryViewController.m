@@ -18,6 +18,7 @@
 		self.wantsFullScreenLayout = YES;
 		transitioning = NO;
 		showingBossResult = NO;
+		hasDoneBossFightPhase1 = NO;
 		currentFrame = 0;
 		self.storyToShow = @"intro";
 		
@@ -82,7 +83,6 @@
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
-		/* SHORTER STORY FOR TESTING
 		newStoryFrame = [[NSMutableDictionary alloc] init];
 		[newStoryFrame setObject:@"End_Story_Panel1.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"You have done well, Ranger. But I need to remove you of this burden. The glove has grown too powerful for the likes of you to handle." forKey:@"storyText"];
@@ -114,28 +114,47 @@
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_gun.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Give me that glove, it’s true power is destined for me!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_gun.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"…" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_gun.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"Really? You would rather die? So be it! Your last battle begins now!" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
-		*/
-		 
+		
+		finalBattleStoryPhase2 = [[NSMutableArray alloc] init];
+		
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"End_Story_gun.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"You think you’re so powerful?! I have given many gloves to fools such as yourself. I’ve taken them all back!" forKey:@"storyText"];
+		[finalBattleStoryPhase2 addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"End_Story_transform.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"You think you’re the only Ranger out there?! I was once like you!" forKey:@"storyText"];
+		[finalBattleStoryPhase2 addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
+		newStoryFrame = [[NSMutableDictionary alloc] init];
+		[newStoryFrame setObject:@"End_Story_transform_final.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"Try beating a Ranger with TWO gloves! Prepare yourself!" forKey:@"storyText"];
+		[finalBattleStoryPhase2 addObject:newStoryFrame];
+		[newStoryFrame release]; newStoryFrame = nil;
+		
 		thankYouStory = [[NSMutableArray alloc] init];
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
-		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
+		[newStoryFrame setObject:@"End_Story_facepalm.png" forKey:@"imageName"];
 		[newStoryFrame setObject:@"This defeat is only temporary. One day I will return for what is rightfully mine. Until then..." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
@@ -145,7 +164,6 @@
 		[newStoryFrame setObject:@"We hope you enjoyed GEO and that it helped get you off the couch and moving. Feel free to continue to use the workout mode or re-battle Dr.Gordon when ever you'd like. Again, thanks for playing!\n\n~ The GEO team." forKey:@"storyText"];
 		[thankYouStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
-		
 		
 		failureStory = [[NSMutableArray	alloc] init];
 		newStoryFrame = [[NSMutableDictionary alloc] init];
@@ -169,6 +187,7 @@
 {	
 	[introStory release];
 	[finalBattleStory release];
+	[finalBattleStoryPhase2 release];
 	[thankYouStory release];
 	[failureStory release];
 	
@@ -223,6 +242,8 @@
 		firstStoryFrame = [finalBattleStory objectAtIndex:0];
 	} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
 		firstStoryFrame = [failureStory objectAtIndex:0];
+	} else if ([self.storyToShow isEqualToString:@"finalBattleStoryPhase2"]) {
+		firstStoryFrame = [finalBattleStoryPhase2 objectAtIndex:0];
 	} else {
 		firstStoryFrame = [thankYouStory objectAtIndex:0];
 	}
@@ -254,6 +275,8 @@
 		nextStoryFrame = [finalBattleStory objectAtIndex:currentFrame+1];
 	} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
 		nextStoryFrame = [failureStory objectAtIndex:currentFrame+1];
+	} else if ([self.storyToShow isEqualToString:@"finalBattleStoryPhase2"]) {
+		nextStoryFrame = [finalBattleStoryPhase2 objectAtIndex:currentFrame+1];
 	} else {
 		nextStoryFrame = [thankYouStory objectAtIndex:currentFrame+1];
 	}
@@ -311,33 +334,44 @@
 			maxFrame = [finalBattleStory count] - 1;
 		} else if ([self.storyToShow isEqualToString:@"failureStory"]) {
 			maxFrame = [failureStory count] - 1;
+		} else if ([self.storyToShow isEqualToString:@"finalBattleStoryPhase2"]) {
+			maxFrame = [finalBattleStoryPhase2 count] - 1;
 		} else {
 			maxFrame = [thankYouStory count] - 1;
 		}
 		
 		if (currentFrame >= maxFrame) {
 			
-			if ([self.storyToShow isEqualToString:@"finalBattleStory"]) {
+			if ([self.storyToShow isEqualToString:@"finalBattleStory"] || [self.storyToShow isEqualToString:@"finalBattleStoryPhase2"]) {
 				RQHero *hero = [[RQModelController defaultModelController] hero];
 				RQBattleViewController *battleViewController = [[RQBattleViewController alloc] init];
 				battleViewController.delegate = self;
 				battleViewController.battle.hero = hero;
-				
 				[hero setCurrentHP:[hero maxHP]];
 				[hero setGlovePower:100];
-				
-				RQEnemy *newEnemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
-				[newEnemy setName:@"Dr. Gordon"];
-				[newEnemy setType:RQElementalTypeFire];
-				[newEnemy setSpriteImageName:@"gordon"];
-				[newEnemy setLevel:50];
-				[newEnemy setCurrentHP:[newEnemy maxHP]];
-				[newEnemy setStamina:0];
-				[newEnemy setStaminaRegenRate:4.0];
-				
+				RQEnemy *newEnemy = nil;
+				if (hasDoneBossFightPhase1 == NO) {
+					newEnemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+					[newEnemy setName:@"Dr. Gordon Normal"]; // this name DOES NOT triggers special hp/attack power.
+					[newEnemy setType:RQElementalTypeNone];
+					[newEnemy setSpriteImageName:@"gordon.png"];
+					[newEnemy setLevel:50];
+					[newEnemy setCurrentHP:[newEnemy maxHP]];
+					[newEnemy setStamina:0];
+					[newEnemy setStaminaRegenRate:4.0];
+				} else {
+					newEnemy = [[RQModelController defaultModelController] randomEnemyBasedOnHero:hero];
+					[newEnemy setName:@"Dr. Gordon"]; // this name DOES triggers special hp/attack power.
+					[newEnemy setType:RQElementalTypeFire];
+					[newEnemy setSpriteImageName:@"gordon_phase_two.png"];
+					[newEnemy setLevel:50];
+					[newEnemy setCurrentHP:[newEnemy maxHP]];
+					[newEnemy setStamina:0];
+					[newEnemy setStaminaRegenRate:4.0];
+					
+					battleViewController.useBossFightMechanics = YES;
+				}
 				battleViewController.battle.enemy = newEnemy;
-				
-				battleViewController.useBossFightMechanics = YES;
 				[self presentModalViewController:battleViewController animated:YES];
 				[battleViewController autorelease];
 			} else {
@@ -363,9 +397,19 @@
 	
 	showingBossResult = YES;
 	if (controller.battle.didHeroWin) {
-		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
-		self.storyToShow = @"thankYouStory";
-		[self loadFirstStoryFrame];
+		
+		if (hasDoneBossFightPhase1 == NO) {
+			// start phase 2 story 
+			self.storyToShow = @"finalBattleStoryPhase2";
+			[self loadFirstStoryFrame];
+			hasDoneBossFightPhase1 = YES;
+		} else {
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"victory_song_002.m4a" loop:NO];
+			self.storyToShow = @"thankYouStory";
+			[self loadFirstStoryFrame];
+		}
+		
+		
 	} else {
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"You lose.m4a" loop:NO];
 		self.storyToShow = @"failureStory";

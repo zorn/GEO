@@ -18,9 +18,11 @@
 	
 	BOOL transitioning;
 	BOOL showingBossResult;
+	BOOL hasDoneBossFightPhase1;
 	
 	NSMutableArray *introStory;
 	NSMutableArray *finalBattleStory;
+	NSMutableArray *finalBattleStoryPhase2;
 	NSMutableArray *thankYouStory;
 	NSMutableArray *failureStory;
 	NSString *storyToShow;

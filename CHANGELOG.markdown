@@ -1,3 +1,8 @@
+December 11, 2010
+
+* ADDED: New story frames for final fight.
+* ADDED: Second phase of the Dr. Gordon Fight.
+
 December 10, 2010
 
 * ADDED: New plus HP mechanic to final boss fight. Tap to gain 200 hp. They spawn every 10 seconds.

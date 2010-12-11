@@ -668,7 +668,9 @@
 		 
 - (void)presentVictoryScreen
 {
-	if (self.useBossFightMechanics) {
+	if ([[[[self battle] enemy] name] isEqualToString:@"Dr. Gordon Normal"] || 
+		[[[[self battle] enemy] name] isEqualToString:@"Dr. Gordon"])
+	{
 		[self returnToMapView];
 		return;
 	} 
