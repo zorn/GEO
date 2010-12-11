@@ -48,6 +48,7 @@
 		weaponSprites = [[NSMutableArray alloc] init];
 		battle = [[RQBattle alloc] init];
 		secondsSinceLastPlusHPSpawn = 0;
+		secondsSinceLastElementShift = 0;
 		useBossFightMechanics = NO;
 	}
 	return self;
@@ -85,7 +86,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+	
+	self.battle.hero.secondsLeftOfShields = 0;
+	
 	self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 	
 	// create background image view
@@ -332,20 +335,43 @@
 	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
 	monsterCounter++;
 	
-	//if (hpPlusSprite.view.layer.opacity > 0 && hpPlusSprite.view.layer.opacity < 1) {
-//		hpPlusSprite.view.layer.opacity += 0.1;
-//	}
-	
-	// spawn HP Plus token
-	secondsSinceLastPlusHPSpawn = secondsSinceLastPlusHPSpawn + deltaTime;
-	if (secondsSinceLastPlusHPSpawn > 10) {
-		CGRect newFrame = hpPlusSprite.view.frame;
-		newFrame.origin.x = (arc4random() % 240) - 40;
-		hpPlusSprite.view.frame = newFrame;
-		hpPlusSprite.view.layer.opacity = 1;
-		secondsSinceLastPlusHPSpawn = 0.0;
+	if (self.useBossFightMechanics) {
+		// spawn HP Plus token
+		secondsSinceLastPlusHPSpawn = secondsSinceLastPlusHPSpawn + deltaTime;
+		if (secondsSinceLastPlusHPSpawn > 10) {
+			CGRect newFrame = hpPlusSprite.view.frame;
+			newFrame.origin.x = (arc4random() % 240) - 40;
+			hpPlusSprite.view.frame = newFrame;
+			hpPlusSprite.view.layer.opacity = 1;
+			secondsSinceLastPlusHPSpawn = 0.0;
+		}
+		
+		// change element type
+		secondsSinceLastElementShift = secondsSinceLastElementShift + deltaTime;
+		// DONT CHANGE THE BOSS TYPE IF THEY HAVE A STAMINA ABOVE .85 as that triggers the shot animation
+		// and you don't want to animate a fire attack when the boss is now water.
+		if (secondsSinceLastElementShift > 10 && (self.battle.enemy.stamina < 0.85)) {
+			// TODO: Add some animation for this
+			int newBossElementType = (arc4random() % 4);
+			NSLog(@"newBossElementType %i", newBossElementType);
+			if (newBossElementType == 0) {
+				self.battle.enemy.type = RQElementalTypeFire;
+				NSLog(@"weak to water");
+			} else if (newBossElementType == 1) {
+				self.battle.enemy.type = RQElementalTypeWater;
+				NSLog(@"weak to air");
+			} else if (newBossElementType == 2) {
+				self.battle.enemy.type = RQElementalTypeEarth;
+				NSLog(@"weak to fire");
+			} else if (newBossElementType == 3) {
+				self.battle.enemy.type = RQElementalTypeAir;
+				NSLog(@"weak to earth");
+			}
+			NSLog(@"new enemy type is %i", self.battle.enemy.type);
+			secondsSinceLastElementShift = 0;
+		}
 	}
-	
+
 	// Figure out if the monster has been hit
 	BOOL monsterHit = NO;
 	if (activeWeapon) {
@@ -390,6 +416,7 @@
             self.enemyShotFired = YES;
             float shotWidth = self.view.frame.size.width; 
 			self.enemyShotView = [[[RQEnemyWeaponView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, shotWidth, shotWidth)] autorelease];
+			self.enemyShotView.type = self.battle.enemy.type;
             self.enemyShotView.center = evilBoobsMonster.view.center;
             self.enemyShotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             self.enemyShotView.alpha = 0.6f;
@@ -408,7 +435,7 @@
             [self.enemyShotView removeFromSuperview];
             self.enemyShotView = nil;
             
-			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy  withWeaponOfType:RQElementalTypeNone];
+			NSDictionary *enemyAttackResult = [self.battle issueAttackCommandFrom:self.battle.enemy withWeaponOfType:RQElementalTypeNone];
 			if ([[enemyAttackResult objectForKey:@"status"] isEqualToString:@"hit"]) {
 				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 				[[SimpleAudioEngine sharedEngine] playEffect:@"Critical_Hit.caf"];

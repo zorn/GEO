@@ -1295,8 +1295,8 @@
 		D8C86C6112450EDF007E44AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A683E0112B2D32C00789946 /* RQConstants.h */,
 				1A6E32E3124E59F50054949B /* Tests */,
+				1A683E0112B2D32C00789946 /* RQConstants.h */,
 				1A6E3282124E4E210054949B /* RQModelController.h */,
 				1A6E3283124E4E210054949B /* RQModelController.m */,
 				1A6E3285124E4E830054949B /* M3CoreDataManager.h */,

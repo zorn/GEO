@@ -74,7 +74,7 @@
 			answer = RQElementalTypeWater;
 			break;
 		case RQElementalTypeEarth:
-			answer = RQElementalTypeWater;
+			answer = RQElementalTypeEarth;
 			break;
 		case RQElementalTypeAir:
 			answer = RQElementalTypeAir;

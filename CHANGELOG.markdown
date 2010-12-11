@@ -2,6 +2,10 @@ December 11, 2010
 
 * ADDED: New story frames for final fight.
 * ADDED: Second phase of the Dr. Gordon Fight.
+* ADDED: Elemental shift to Dr. Gordon second phase.
+* ADDED: Set up monster weapon effect color to match the base element of the monster throwing it.
+* FIXED: Small typo in story line.
+* FIXED: Bad Earth type in getter method.
 
 December 10, 2010
 
