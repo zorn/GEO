@@ -4,6 +4,7 @@ December 10, 2010
 * CHANGED: Increased the HP of Dr Gordon.
 * CHANGED: Replace our NSLogs with a CCLOG macro.
 * CHANGED: The list of previous weights in the log book is now themed.
+* ADDED: Now check of weights larger than 999 and prevent their entry.
 
 December 9, 2010
 

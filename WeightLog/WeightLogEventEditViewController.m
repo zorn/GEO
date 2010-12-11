@@ -87,10 +87,17 @@
 #pragma mark Actions
 
 - (IBAction)saveOrCancelButtonPressed:(id)sender
-{
-	[self.weightTextField resignFirstResponder];
+{	
 	if ([sender tag] == 1) {
 		// save
+		
+		// bail if wight text isn't valid
+		if ([self.weightTextField isFirstResponder]) {
+			if (![self.weightTextField resignFirstResponder]) {
+				return;
+			}
+		}
+		
 		if (self.editMode) {
 			[self.weightLogEntry setDateTaken:self.tempDate];
 			[self.weightLogEntry setWeightTaken:self.tempWeight];
@@ -100,11 +107,12 @@
 			[newEntry setWeightTaken:self.tempWeight];
 		}
 		[[RQModelController defaultModelController] save];
+		
 	} else {
 		// cancel
 		self.wasCanceled = YES;
 	}
-	[self.delegate weightLogEventEditViewControllerDidEnd:self]; 
+	[self.delegate weightLogEventEditViewControllerDidEnd:self];
 }
 
 - (IBAction)datePickerValueChanged:(id)sender
@@ -263,6 +271,18 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
 	
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+	if ([[textField text] length] >= 4) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Weight" message:@"Please type in a weight under 999." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
+		return NO;
+	} else {
+		return YES;
+	}
 }
 
 @end
