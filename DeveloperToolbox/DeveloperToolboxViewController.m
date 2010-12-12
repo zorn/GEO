@@ -25,6 +25,7 @@
 		[[self navigationItem] setTitle:@"Developer Toolbox"];
 		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(returnToMainMenu)];
 		[[self navigationItem] setRightBarButtonItem:newBackButton];
+		[newBackButton release];
 		self.wantsFullScreenLayout = YES;
 	}
 	return self;

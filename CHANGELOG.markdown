@@ -7,6 +7,8 @@ December 12, 2010
 * ADDED: New pref in setting to toggle weight as pounds or grams.
 * CHANGED: Updated WeightLog views to honor new pref.
 * ADDED: New prefs default to meters/grams. Check on first run to see if unit is running as "US". If so, switches to miles/pounds.
+* FIXED: Removed some garbage pointer initialization and a few memory leaks via Build and Analyze.
+* FIXED: StatusBar now shows back up after final battle sequence.
 
 December 11, 2010
 

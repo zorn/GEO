@@ -26,6 +26,7 @@
 		[[self navigationItem] setTitle:@"Workout Summary"];
 		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStyleBordered target:nil action:nil];
 		[[self navigationItem] setBackBarButtonItem:newBackButton];
+		[newBackButton release];
 	}
 	return self;
 }

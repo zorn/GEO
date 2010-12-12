@@ -154,7 +154,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    UITableViewCell *cell = nil;
 	if (indexPath.section == 0) {
 		cell = self.iPodSettingTableViewCell;
 	} else if (indexPath.section == 1) {
