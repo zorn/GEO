@@ -1,6 +1,7 @@
 December 12, 2010
 
 * CHANGED: Swapped in new Dr Gordon sprites for final battle.
+* CHANGED: The PlusHP bonus during the final battle now give a little glover power as well.
 
 December 11, 2010
 

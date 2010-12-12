@@ -557,6 +557,7 @@
 		CGPoint touchLocation = [touch locationInView:self.view];
 		if (CGRectContainsPoint(hpPlusSprite.view.frame, touchLocation) && hpPlusSprite.view.layer.opacity == 1) {
 			self.battle.hero.currentHP += 200;
+			self.battle.hero.glovePower += 10;
 			hpPlusSprite.view.layer.opacity = 0;
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 		}
