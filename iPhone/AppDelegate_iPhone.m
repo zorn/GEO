@@ -25,6 +25,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     // Override point for customization after application launch.
 	
+	// First lauch thing
+	// if they are in the US, use US measurement settings
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSetupUnitSettings"] boolValue] == NO) {
+		NSString *locale = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+		if ([locale isEqualToString:@"US"]) {
+			[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayDistanceAsMeters"];
+			[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayWeightAsGrams"];
+		}
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQSetupUnitSettings"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+		
+	}
+	
 	// TODO: This fade doesn't happen
 	splashView = [[UIImageView alloc] initWithFrame:CGRectMake(0,20, 320, 460)];
 	splashView.image = [UIImage imageNamed:@"Default.png"];
@@ -117,9 +130,11 @@
     [regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeMusic"];
 	[regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeEffects"];
 	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQSoundMuteIPod"];
-	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayDistanceAsMeters"];
+	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayDistanceAsMeters"];
+	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayWeightAsGrams"];
 	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQMapBattleDemoOverride"];
 	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQSimulateGPS"];
+	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQSetupUnitSettings"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:regDictionary];
 }
 

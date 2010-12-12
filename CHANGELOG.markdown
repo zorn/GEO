@@ -4,6 +4,9 @@ December 12, 2010
 * CHANGED: The PlusHP bonus during the final battle now give a little glover power as well.
 * ADDED: New pref in setting to toggle distance as miles or meters.
 * CHANGED: Updated MapView and TrekListView to honor new pref and show distance as kilometers if needed.
+* ADDED: New pref in setting to toggle weight as pounds or grams.
+* CHANGED: Updated WeightLog views to honor new pref.
+* ADDED: New prefs default to meters/grams. Check on first run to see if unit is running as "US". If so, switches to miles/pounds.
 
 December 11, 2010
 

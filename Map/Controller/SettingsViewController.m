@@ -25,6 +25,9 @@
 	[distanceSegmentControl release]; distanceSegmentControl = nil;
 	[distanceTableViewCell release]; distanceTableViewCell = nil;
 	
+	[weightSegmentControl release]; weightSegmentControl = nil;
+	[weightTableViewCell release]; weightTableViewCell = nil;
+	
 	[super dealloc];
 }
 
@@ -42,6 +45,9 @@
 
 @synthesize distanceSegmentControl;
 @synthesize distanceTableViewCell;
+
+@synthesize weightSegmentControl;
+@synthesize weightTableViewCell;
 
 - (void)viewDidLoad
 {
@@ -61,12 +67,20 @@
 	} else {
 		self.distanceSegmentControl.selectedSegmentIndex = 0;
 	}
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+		self.weightSegmentControl.selectedSegmentIndex = 1;
+	} else {
+		self.weightSegmentControl.selectedSegmentIndex = 0;
+	}
 	
-	
-	
-	CGRect newFrame = self.distanceSegmentControl.frame;
+	// Can't make segment controls shorter in IB, need to do it in code. :(
+	CGRect newFrame;
+	newFrame = self.distanceSegmentControl.frame;
 	newFrame.size.height = 27.0;
 	self.distanceSegmentControl.frame = newFrame;
+	newFrame = self.weightSegmentControl.frame;
+	newFrame.size.height = 27.0;
+	self.weightSegmentControl.frame = newFrame;
 	
 }
 
@@ -85,15 +99,20 @@
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:backgroundMusic] forKey:@"RQSoundVolumeMusic"];
 	float soundEffects = [self.effectSoundVolumeSlider value];
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:soundEffects] forKey:@"RQSoundVolumeEffects"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	
 	
 	if (self.distanceSegmentControl.selectedSegmentIndex == 1) {
 		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayDistanceAsMeters"];
 	} else {
 		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayDistanceAsMeters"];
 	}
+	if (self.weightSegmentControl.selectedSegmentIndex == 1) {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayWeightAsGrams"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayWeightAsGrams"];
+	}
 	
-	
+	[[NSUserDefaults standardUserDefaults] synchronize];
 	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] updateAudioSystemVolumeSettings];
 }
 
@@ -126,7 +145,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+	if (section == 4) {
+		return 2; // Measurements has two rows
+	} else {
+		return 1;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,7 +164,11 @@
 	} else if (indexPath.section == 3 ) {
 		cell = self.emailFeedbackCell;
 	} else if (indexPath.section == 4 ) {
-		cell = self.distanceTableViewCell;
+		if (indexPath.row == 0) {
+			 cell = self.distanceTableViewCell;
+		} else {
+			cell = self.weightTableViewCell;
+		}
 	}
 
 	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
