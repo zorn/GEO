@@ -2,6 +2,8 @@ December 12, 2010
 
 * CHANGED: Swapped in new Dr Gordon sprites for final battle.
 * CHANGED: The PlusHP bonus during the final battle now give a little glover power as well.
+* ADDED: New pref in setting to toggle distance as miles or meters.
+* CHANGED: Updated MapView and TrekListView to honor new pref and show distance as kilometers if needed.
 
 December 11, 2010
 

@@ -21,6 +21,9 @@
 	UITableViewCell *iPodSettingTableViewCell;
 	UITableViewCell *musicSettingTableViewCell;
 	UITableViewCell *effectSoundSettingTableViewCell;
+	
+	UISegmentedControl *distanceSegmentControl;
+	UITableViewCell *distanceTableViewCell;
 }
 
 @property (readwrite, assign) id <SettingsViewControllerDelegate> delegate;
@@ -34,6 +37,9 @@
 @property (retain) IBOutlet UITableViewCell *musicSettingTableViewCell;
 @property (retain) IBOutlet UITableViewCell *effectSoundSettingTableViewCell;
 @property (retain) IBOutlet UITableViewCell *emailFeedbackCell;
+
+@property (retain) IBOutlet UISegmentedControl *distanceSegmentControl;
+@property (retain) IBOutlet UITableViewCell *distanceTableViewCell;
 
 - (IBAction)doneButtonAction:(id)sender;
 - (IBAction)updateDefautsBasedOnUI;

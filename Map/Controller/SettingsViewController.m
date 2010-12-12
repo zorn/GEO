@@ -22,6 +22,9 @@
 	[musicSettingTableViewCell release]; musicSettingTableViewCell = nil;
 	[effectSoundSettingTableViewCell release]; effectSoundSettingTableViewCell = nil;
 	
+	[distanceSegmentControl release]; distanceSegmentControl = nil;
+	[distanceTableViewCell release]; distanceTableViewCell = nil;
+	
 	[super dealloc];
 }
 
@@ -37,6 +40,8 @@
 @synthesize effectSoundSettingTableViewCell;
 @synthesize emailFeedbackCell;
 
+@synthesize distanceSegmentControl;
+@synthesize distanceTableViewCell;
 
 - (void)viewDidLoad
 {
@@ -51,6 +56,18 @@
 	self.pauseIPodSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue];
 	[self.backgroundMusicVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeMusic"] floatValue] animated:NO];
 	[self.effectSoundVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeEffects"] floatValue] animated:NO];
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayDistanceAsMeters"] boolValue]) {
+		self.distanceSegmentControl.selectedSegmentIndex = 1;
+	} else {
+		self.distanceSegmentControl.selectedSegmentIndex = 0;
+	}
+	
+	
+	
+	CGRect newFrame = self.distanceSegmentControl.frame;
+	newFrame.size.height = 27.0;
+	self.distanceSegmentControl.frame = newFrame;
+	
 }
 
 - (IBAction)doneButtonAction:(id)sender
@@ -70,6 +87,13 @@
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:soundEffects] forKey:@"RQSoundVolumeEffects"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
+	if (self.distanceSegmentControl.selectedSegmentIndex == 1) {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayDistanceAsMeters"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayDistanceAsMeters"];
+	}
+	
+	
 	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] updateAudioSystemVolumeSettings];
 }
 
@@ -82,7 +106,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -94,7 +118,9 @@
 		return @"Sound Effect Volume";
 	} else if ( section == 3 ) {
 		return NSLocalizedString(@"Feedback", @"Feedback");
-	} else {
+	} else if ( section == 4 ) {
+		return NSLocalizedString(@"Measurements", @"Measurements");
+	}else {
 		return @"Unknown Title";
 	}
 }
@@ -114,6 +140,8 @@
 		cell = self.effectSoundSettingTableViewCell;
 	} else if (indexPath.section == 3 ) {
 		cell = self.emailFeedbackCell;
+	} else if (indexPath.section == 4 ) {
+		cell = self.distanceTableViewCell;
 	}
 
 	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
