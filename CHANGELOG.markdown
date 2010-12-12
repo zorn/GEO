@@ -1,3 +1,7 @@
+December 12, 2010
+
+* CHANGED: Swapped in new Dr Gordon sprites for final battle.
+
 December 11, 2010
 
 * ADDED: New story frames for final fight.
