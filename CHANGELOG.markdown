@@ -46,8 +46,6 @@ December 7, 2010
 * ADDED: We now show story for Dr. Gordon button on main menu.
 * FIXED: some status bar disappearing issues. Still cause an issue for viewing a story in the dev tools.
 
-testing
-
 December 6, 2010
 
 * FIXED: monsters.plist was missing from project file. re-added.
@@ -98,13 +96,14 @@ November 27, 2010
 * More of the log book has been styled. The previous weigh-ins section has been left "white" since I had trouble getting it styled w/o other issues. Will look into in the future.
 
 November 27, 2010
-*HP & GP meters are updated in the MapView
-*Boost of MaxHP/5 when you encounter a treasure
-*White outline around enemies so they stand out a bit more against the fog
-*Local notifications for encountering enemies while in the background w/ custom sound
-*Added sound, animation on treasure encounter
-*Added sound on Enemy encounter while in-app
-*New enemy generation code for more even distribution of enemies
+
+* HP & GP meters are updated in the MapView
+* Boost of MaxHP/5 when you encounter a treasure
+* White outline around enemies so they stand out a bit more against the fog
+* Local notifications for encountering enemies while in the background w/ custom sound
+* Added sound, animation on treasure encounter
+* Added sound on Enemy encounter while in-app
+* New enemy generation code for more even distribution of enemies
 
 November 26, 2010
 
@@ -121,10 +120,6 @@ November 25, 2010
 * Added new monsters to temporarily replace ones of questionable obscenity.  
 * Added treasure countdown animation.  They still do nothing when encountered.
 
---- 
-November 22, 2010 
-Shipped 1.0b2 to a few testers!
-
 November 22, 2010
 
 * Started to implemented style cues from Johnny's table view mock up. Some things easier to implement than others. Feedback very welcome. 
@@ -134,9 +129,9 @@ November 19, 2010
 
 * Fixed a time format issue for the logbook view.
 
---- 
 November 19, 2010 
-Shipped 1.0b1 to a few testers!
+
+* SHIPPED: 1.0b1 to a few testers!
 
 November 18, 2010
 
@@ -164,10 +159,11 @@ November 17, 2010
 https://indyhalllabs.basecamphq.com/projects/5521331/todo_lists/11518403
 
 November 13-14th 2010
-*Added fog of war to the map view - this is handled by the Sonar annotation and the SonarView which is a MKOverlayLayer.  The Other
-*Enemies are generated in a range (you can tweak the x/y range in the #defines in MapViewController)
-*Enemies only chase the hero when they are within the ENEMY_MAGNET_RADIUS.  They have a speed advantage of ENEMY_SPEED_ADVANTAGE.
-*Added a Debug-Testing build which adds the TESTING preprocessor macro.
+
+* Added fog of war to the map view - this is handled by the Sonar annotation and the SonarView which is a MKOverlayLayer.  The Other
+* Enemies are generated in a range (you can tweak the x/y range in the #defines in MapViewController)
+* Enemies only chase the hero when they are within the ENEMY_MAGNET_RADIUS.  They have a speed advantage of ENEMY_SPEED_ADVANTAGE.
+* Added a Debug-Testing build which adds the TESTING preprocessor macro.
 
 November 16, 2010
 
