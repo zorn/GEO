@@ -12,9 +12,16 @@
 @interface HelpViewController : RQViewController {
 	UIWebView *webView;
 	NSString *_path;
+	
+	UIToolbar *toolbar;
+	UIBarButtonItem *backButton;
+	UIBarButtonItem *forwardButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
 
 - (id)initWithHTMLFolder:(NSString *)path;
 - (IBAction)doneButtonPressed:(id)sender;
