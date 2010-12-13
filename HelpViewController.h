@@ -13,8 +13,6 @@
 	UIWebView *webView;
 	NSString *_path;
 	
-	BOOL userDidClickLink;
-	
 	UIToolbar *toolbar;
 	UIBarButtonItem *backButton;
 	UIBarButtonItem *forwardButton;
