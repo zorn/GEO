@@ -288,11 +288,12 @@
 	}
 	
 	// Setup the run button
-	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[runButton setTitle:@"Run" forState:UIControlStateNormal];
+	UIButton *runButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[runButton setImage:[UIImage imageNamed:@"run_text.png"] forState:UIControlStateNormal];
+	//[runButton setTitle:@"Run" forState:UIControlStateNormal];
 	[runButton addTarget:self action:@selector(runButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:runButton];
-	[runButton setFrame:CGRectMake(self.view.frame.size.width-44.0, 0.0, 44.0, 44.0)];
+	[runButton setFrame:CGRectMake(self.view.frame.size.width-100.0, 0.0, 100.0, 22.0)];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
