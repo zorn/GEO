@@ -333,9 +333,15 @@
 			newMonsterZ = 0.75f + (0.5f * sinf((float)monsterCounter * 0.008f));
 		}
 		else if (self.battle.enemy.movementType == RQMonsterMovementTypeSlowFlying) {
-			newMonsterX = 160.0f + (80.0f * cosf((float)monsterCounter / 15.0f));
-			newMonsterY = 100.0f + (30.0f * cosf((float)monsterCounter / 5.625f));
+			newMonsterX = 160.0f + (80.0f * cosf((float)monsterCounter / 45.0f));
+			newMonsterY = 100.0f + (30.0f * sinf((float)monsterCounter / 45.0f));
 			newMonsterZ = 0.75f + (0.5f * cosf((float)monsterCounter * 0.002f));			
+		}
+		else if (self.battle.enemy.movementType == RQMonsterMovementTypeCaffeine) {
+			newMonsterX = 160.0f + (80.0f * cosf((float)monsterCounter / 20.0f));
+			newMonsterY = 100.0f + (30.0f * sinf((float)monsterCounter / 30.0f));
+			newMonsterZ = 0.75f + (0.5f * cosf((float)monsterCounter * 0.05f));			
+			
 		}
 		evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 		evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);		

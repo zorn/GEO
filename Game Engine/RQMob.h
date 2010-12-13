@@ -15,6 +15,7 @@ enum {
     RQMonsterMovementTypeFlying = 1,
     RQMonsterMovementTypeWarp = 2,
 	RQMonsterMovementTypeSlowFlying = 3,
+	RQMonsterMovementTypeCaffeine = 4,
 };
 typedef NSUInteger RQMonsterMovementType;
 

@@ -327,6 +327,9 @@ static RQModelController *defaultModelController = nil;
 			else if ([[d objectForKey:@"movement_type"] isEqualToString:@"slow-flying"]) {
 				[newTemplate setMovementType:RQMonsterMovementTypeSlowFlying];
 			}
+			else if ([[d objectForKey:@"movement_type"] isEqualToString:@"caffeine"]) {
+				[newTemplate setMovementType:RQMonsterMovementTypeCaffeine];
+			}
 			[_monsterTemplates addObject:newTemplate];
 			[newTemplate release]; newTemplate = nil;
 		}
