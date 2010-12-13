@@ -1,3 +1,8 @@
+December 13, 2010
+
+* CHANGED: New images for health and glove power on the battle screen
+* CHANGED: Using text instead of images for health and glove power on the map view
+
 December 12, 2010
 
 * CHANGED: Swapped in new Dr Gordon sprites for final battle.
@@ -13,6 +18,8 @@ December 12, 2010
 * CHANGED: Updated app icon to latest version from KUT.
 * ADDED: New run text-based icon for run button in battle view.
 * CHANGED: Redid the about page HTML. Feedback welcome.
+* CHANGED: Battle Music now doesn't play when iPod is playing music
+* ADDED: New movement animations for Blob, Oni, and Mage
 
 December 11, 2010
 
