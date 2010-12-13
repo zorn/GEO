@@ -14,7 +14,7 @@
 @interface SettingsViewController : UIViewController <MFMailComposeViewControllerDelegate>
 {
 	UITableView *tableView;
-	UISwitch *pauseIPodSwitch;
+	UISwitch *prioritizeIPodSwitch;
 	UISlider *backgroundMusicVolumeSlider;
 	UISlider *effectSoundVolumeSlider;
 	
@@ -26,7 +26,7 @@
 @property (readwrite, assign) id <SettingsViewControllerDelegate> delegate;
 
 @property (retain) IBOutlet UITableView *tableView;
-@property (retain) IBOutlet UISwitch *pauseIPodSwitch;
+@property (retain) IBOutlet UISwitch *prioritizeIPodSwitch;
 @property (retain) IBOutlet UISlider *backgroundMusicVolumeSlider;
 @property (retain) IBOutlet UISlider *effectSoundVolumeSlider;
 

@@ -44,7 +44,15 @@
 	
 	//[self.window addSubview:self.currentViewController.view];	
     [self.window makeKeyAndVisible];
-	[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
+	
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundShouldPrioritizeIPod"] boolValue]) {
+		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
+	}
+	else {
+		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
+	}
+	
+	//[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
 	
 	// Handle launching from a notification
     UILocalNotification *localNotif =
@@ -116,7 +124,7 @@
     NSMutableDictionary *regDictionary = [NSMutableDictionary dictionary];
     [regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeMusic"];
 	[regDictionary setObject:[NSNumber numberWithFloat:1.0] forKey:@"RQSoundVolumeEffects"];
-	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQSoundMuteIPod"];
+	[regDictionary setObject:[NSNumber numberWithBool:YES] forKey:@"RQSoundShouldPrioritizeIPod"];
 	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQMapBattleDemoOverride"];
 	[regDictionary setObject:[NSNumber numberWithBool:NO] forKey:@"RQSimulateGPS"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:regDictionary];
