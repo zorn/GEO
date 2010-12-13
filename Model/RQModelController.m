@@ -143,6 +143,7 @@ static RQModelController *defaultModelController = nil;
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
 	[newEnemy setName:[monsterTemplate name]];
 	[newEnemy setType:[monsterTemplate type]];
+	newEnemy.movementType = monsterTemplate.movementType;
 	[newEnemy setSpriteImageName:[monsterTemplate imageFileName]];
 	[newEnemy setLevel:hero.level];
 	[newEnemy setCurrentHP:[newEnemy maxHP]];

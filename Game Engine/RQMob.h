@@ -10,6 +10,14 @@ enum {
 };
 typedef NSUInteger RQElementalType;
 
+
+enum {
+    RQMonsterMovementTypeFlying = 1,
+    RQMonsterMovementTypeWarp = 2,
+};
+typedef NSUInteger RQMonsterMovementType;
+
+
 @interface RQMob : NSManagedObject 
 {
 

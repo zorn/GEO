@@ -110,7 +110,7 @@
 		<key>image_file</key>
 		<string>newmeanie4</string>
 		<key>movement_type</key>
-		<string>flying</string>
+		<string>warp</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -120,7 +120,7 @@
 		<key>image_file</key>
 		<string>newmeanie3</string>
 		<key>movement_type</key>
-		<string>flying</string>
+		<string>warp</string>
 	</dict>
 	<dict>
 		<key>name</key>

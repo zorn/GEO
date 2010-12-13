@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RQMob.h" // for RQElementalType
 
-enum {
-    RQMonsterMovementTypeFlying = 1,
-    RQMonsterMovementTypeWarp = 2,
-};
-typedef NSUInteger RQMonsterMovementType;
-
 @interface RQMonsterTemplate : NSObject {
 	NSString *name;
 	RQElementalType type;
