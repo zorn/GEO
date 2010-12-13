@@ -35,7 +35,8 @@
 @interface RQBattleViewController ()
 @property (nonatomic, assign) BOOL enemyShotFired;
 @property (nonatomic, retain) RQEnemyWeaponView *enemyShotView;
-- (void)enemyTransport;
+- (void)enemyWarp;
+- (void)resetTimerAndPosition;
 @end
 
 
@@ -321,11 +322,13 @@
 	[self.battle updateHeroShieldsBasedOnTimeDelta:deltaTime];
 	
 	// Move the monster around
-	CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
-	CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
-	CGFloat newMonsterZ = 0.75 + (0.5 * sin((float)monsterCounter * 0.008));
-	evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
-	evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);
+	if (self.battle.enemy.movementType != RQMonsterMovementTypeWarp) {
+		CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
+		CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
+		CGFloat newMonsterZ = 0.75 + (0.5 * sin((float)monsterCounter * 0.008));
+		evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
+		evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);		
+	}
 	monsterCounter++;
 	
 	if (self.useBossFightMechanics) {
@@ -648,13 +651,9 @@
 }	
 
 - (void)startAnimation {
-	srand(time(NULL));
-	CGFloat when = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 12.0f) + 3.0f;
-	[NSTimer scheduledTimerWithTimeInterval:when 
-									 target:self 
-								   selector:@selector(enemyTransport) 
-								   userInfo:nil 
-									repeats:NO];											  
+	if (self.battle.enemy.movementType == RQMonsterMovementTypeWarp) {
+		[self resetTimerAndPosition];
+	}
 	
     previousTickTime = CACurrentMediaTime();
 	if (!animating) {
@@ -741,7 +740,7 @@
 }
 
 
-- (void)enemyTransport
+- (void)enemyWarp
 {
 	[UIView animateWithDuration:0.3 
 						  delay:0.0 
@@ -751,24 +750,34 @@
 						 evilBoobsMonster.invincible = YES;
 					 } 
 					 completion:^(BOOL finished) {
-						 srand(time(NULL));
-						 monsterCounter = rand() / ((RAND_MAX + 1.0f) * 500);
+						 [self resetTimerAndPosition];
 						 [UIView animateWithDuration:0.3 
-											   delay:((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 5.0f) 
+											   delay:((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 2.0f) 
 											 options:UIViewAnimationOptionAllowUserInteraction 
 										  animations:^(void) {
 											  evilBoobsMonster.view.alpha = 1.0f;
 										  } 
 										  completion:^(BOOL finished) {
-											  CGFloat when = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 10.0f) + 3.0f;
-											  [NSTimer scheduledTimerWithTimeInterval:when 
-																			   target:self 
-																			 selector:@selector(enemyTransport) 
-																			 userInfo:nil 
-																			  repeats:NO];
 											  evilBoobsMonster.invincible = NO;
 										  }];
 					 }];
+}
+
+
+- (void)resetTimerAndPosition
+{
+	srand(time(NULL));
+	monsterCounter = rand() / ((RAND_MAX + 1.0f) * 500);
+	CGFloat when = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 5.0f) + 1.0f;
+	[NSTimer scheduledTimerWithTimeInterval:when 
+									 target:self 
+								   selector:@selector(enemyWarp) 
+								   userInfo:nil 
+									repeats:NO];
+	
+	CGFloat xPos = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 160.0f) + 80.0f;
+	CGFloat yPos = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 60.0f) + 70.0f;
+	evilBoobsMonster.position = CGPointMake(xPos, yPos);	
 }
 
 #pragma mark -

@@ -10,5 +10,5 @@
 
 
 @implementation RQEnemy
-
+@synthesize movementType;
 @end

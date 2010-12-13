@@ -12,5 +12,5 @@
 @interface RQEnemy : RQMob {
 
 }
-
+@property (nonatomic, assign) RQMonsterMovementType movementType;
 @end
