@@ -35,6 +35,7 @@
 @interface RQBattleViewController ()
 @property (nonatomic, assign) BOOL enemyShotFired;
 @property (nonatomic, retain) RQEnemyWeaponView *enemyShotView;
+- (void)enemyTransport;
 @end
 
 
@@ -366,7 +367,7 @@
 
 	// Figure out if the monster has been hit
 	BOOL monsterHit = NO;
-	if (activeWeapon) {
+	if (!evilBoobsMonster.invincible && activeWeapon) {
 		monsterHit = [evilBoobsMonster isIntersectingRect:activeWeapon.view.frame];
 	}
 	
@@ -647,6 +648,14 @@
 }	
 
 - (void)startAnimation {
+	srand(time(NULL));
+	CGFloat when = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 12.0f) + 3.0f;
+	[NSTimer scheduledTimerWithTimeInterval:when 
+									 target:self 
+								   selector:@selector(enemyTransport) 
+								   userInfo:nil 
+									repeats:NO];											  
+	
     previousTickTime = CACurrentMediaTime();
 	if (!animating) {
         if (displayLinkSupported) {
@@ -729,6 +738,37 @@
 	[self setBattleVictoryViewController:nil];
 	[[[RQModelController defaultModelController] coreDataManager] save];
 	[self returnToMapView];
+}
+
+
+- (void)enemyTransport
+{
+	[UIView animateWithDuration:0.3 
+						  delay:0.0 
+						options:UIViewAnimationOptionAllowUserInteraction 
+					 animations:^(void) {
+						 evilBoobsMonster.view.alpha = 0.0f;
+						 evilBoobsMonster.invincible = YES;
+					 } 
+					 completion:^(BOOL finished) {
+						 srand(time(NULL));
+						 monsterCounter = rand() / ((RAND_MAX + 1.0f) * 500);
+						 [UIView animateWithDuration:0.3 
+											   delay:((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 5.0f) 
+											 options:UIViewAnimationOptionAllowUserInteraction 
+										  animations:^(void) {
+											  evilBoobsMonster.view.alpha = 1.0f;
+										  } 
+										  completion:^(BOOL finished) {
+											  CGFloat when = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 10.0f) + 3.0f;
+											  [NSTimer scheduledTimerWithTimeInterval:when 
+																			   target:self 
+																			 selector:@selector(enemyTransport) 
+																			 userInfo:nil 
+																			  repeats:NO];
+											  evilBoobsMonster.invincible = NO;
+										  }];
+					 }];
 }
 
 #pragma mark -
