@@ -324,6 +324,9 @@ static RQModelController *defaultModelController = nil;
 			} else if ([[d objectForKey:@"movement_type"] isEqualToString:@"warp"]) {
 				[newTemplate setMovementType:RQMonsterMovementTypeWarp];
 			}
+			else if ([[d objectForKey:@"movement_type"] isEqualToString:@"slow-flying"]) {
+				[newTemplate setMovementType:RQMonsterMovementTypeSlowFlying];
+			}
 			[_monsterTemplates addObject:newTemplate];
 			[newTemplate release]; newTemplate = nil;
 		}

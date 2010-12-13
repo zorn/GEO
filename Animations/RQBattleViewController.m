@@ -324,9 +324,19 @@
 	
 	// Move the monster around
 	if (self.battle.enemy.movementType != RQMonsterMovementTypeWarp) {
-		CGFloat newMonsterX = 160.0 + (80.0 * sin((float)monsterCounter / 30.0));
-		CGFloat newMonsterY = 100.0 + (30.0 * sin((float)monsterCounter / 15.0));
-		CGFloat newMonsterZ = 0.75 + (0.5 * sin((float)monsterCounter * 0.008));
+		CGFloat newMonsterX;
+		CGFloat newMonsterY;
+		CGFloat newMonsterZ;
+		if (self.battle.enemy.movementType == RQMonsterMovementTypeFlying) {
+			newMonsterX = 160.0f + (80.0f * sinf((float)monsterCounter / 30.0f));
+			newMonsterY = 100.0f + (30.0f * sinf((float)monsterCounter / 15.0f));
+			newMonsterZ = 0.75f + (0.5f * sinf((float)monsterCounter * 0.008f));
+		}
+		else if (self.battle.enemy.movementType == RQMonsterMovementTypeSlowFlying) {
+			newMonsterX = 160.0f + (80.0f * cosf((float)monsterCounter / 15.0f));
+			newMonsterY = 100.0f + (30.0f * cosf((float)monsterCounter / 5.625f));
+			newMonsterZ = 0.75f + (0.5f * cosf((float)monsterCounter * 0.002f));			
+		}
 		evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(newMonsterZ, newMonsterZ);
 		evilBoobsMonster.position = CGPointMake(newMonsterX, newMonsterY);		
 	}

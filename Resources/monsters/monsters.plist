@@ -10,7 +10,7 @@
 		<key>image_file</key>
 		<string>boob3</string>
 		<key>movement_type</key>
-		<string>flying</string>
+		<string>slow-flying</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -20,7 +20,7 @@
 		<key>image_file</key>
 		<string>boob1</string>
 		<key>movement_type</key>
-		<string>flying</string>
+		<string>slow-flying</string>
 	</dict>
 	<dict>
 		<key>name</key>
