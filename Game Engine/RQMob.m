@@ -65,7 +65,7 @@
 }
 
 - (RQElementalType)type {
-	RQElementalType answer;
+	RQElementalType answer = RQElementalTypeNone;
 	switch ([self.typeAsNumber integerValue]) {
 		case RQElementalTypeFire:
 			answer = RQElementalTypeFire;

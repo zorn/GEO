@@ -22,6 +22,12 @@
 	[musicSettingTableViewCell release]; musicSettingTableViewCell = nil;
 	[effectSoundSettingTableViewCell release]; effectSoundSettingTableViewCell = nil;
 	
+	[distanceSegmentControl release]; distanceSegmentControl = nil;
+	[distanceTableViewCell release]; distanceTableViewCell = nil;
+	
+	[weightSegmentControl release]; weightSegmentControl = nil;
+	[weightTableViewCell release]; weightTableViewCell = nil;
+	
 	[super dealloc];
 }
 
@@ -37,6 +43,11 @@
 @synthesize effectSoundSettingTableViewCell;
 @synthesize emailFeedbackCell;
 
+@synthesize distanceSegmentControl;
+@synthesize distanceTableViewCell;
+
+@synthesize weightSegmentControl;
+@synthesize weightTableViewCell;
 
 - (void)viewDidLoad
 {
@@ -51,6 +62,26 @@
 	self.pauseIPodSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue];
 	[self.backgroundMusicVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeMusic"] floatValue] animated:NO];
 	[self.effectSoundVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeEffects"] floatValue] animated:NO];
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayDistanceAsMeters"] boolValue]) {
+		self.distanceSegmentControl.selectedSegmentIndex = 1;
+	} else {
+		self.distanceSegmentControl.selectedSegmentIndex = 0;
+	}
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+		self.weightSegmentControl.selectedSegmentIndex = 1;
+	} else {
+		self.weightSegmentControl.selectedSegmentIndex = 0;
+	}
+	
+	// Can't make segment controls shorter in IB, need to do it in code. :(
+	CGRect newFrame;
+	newFrame = self.distanceSegmentControl.frame;
+	newFrame.size.height = 27.0;
+	self.distanceSegmentControl.frame = newFrame;
+	newFrame = self.weightSegmentControl.frame;
+	newFrame.size.height = 27.0;
+	self.weightSegmentControl.frame = newFrame;
+	
 }
 
 - (IBAction)doneButtonAction:(id)sender
@@ -68,8 +99,20 @@
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:backgroundMusic] forKey:@"RQSoundVolumeMusic"];
 	float soundEffects = [self.effectSoundVolumeSlider value];
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:soundEffects] forKey:@"RQSoundVolumeEffects"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 	
+	
+	if (self.distanceSegmentControl.selectedSegmentIndex == 1) {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayDistanceAsMeters"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayDistanceAsMeters"];
+	}
+	if (self.weightSegmentControl.selectedSegmentIndex == 1) {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"RQDisplayWeightAsGrams"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"RQDisplayWeightAsGrams"];
+	}
+	
+	[[NSUserDefaults standardUserDefaults] synchronize];
 	[(AppDelegate_iPhone *)[[UIApplication sharedApplication] delegate] updateAudioSystemVolumeSettings];
 }
 
@@ -82,7 +125,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -94,18 +137,24 @@
 		return @"Sound Effect Volume";
 	} else if ( section == 3 ) {
 		return NSLocalizedString(@"Feedback", @"Feedback");
-	} else {
+	} else if ( section == 4 ) {
+		return NSLocalizedString(@"Measurements", @"Measurements");
+	}else {
 		return @"Unknown Title";
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+	if (section == 4) {
+		return 2; // Measurements has two rows
+	} else {
+		return 1;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    UITableViewCell *cell = nil;
 	if (indexPath.section == 0) {
 		cell = self.iPodSettingTableViewCell;
 	} else if (indexPath.section == 1) {
@@ -114,6 +163,12 @@
 		cell = self.effectSoundSettingTableViewCell;
 	} else if (indexPath.section == 3 ) {
 		cell = self.emailFeedbackCell;
+	} else if (indexPath.section == 4 ) {
+		if (indexPath.row == 0) {
+			 cell = self.distanceTableViewCell;
+		} else {
+			cell = self.weightTableViewCell;
+		}
 	}
 
 	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];

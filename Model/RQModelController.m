@@ -138,6 +138,7 @@ static RQModelController *defaultModelController = nil;
 	
 	NSUInteger randomIndex = arc4random() % [monsterTemplates count];
 	RQMonsterTemplate *monsterTemplate = [[monsterTemplates allObjects] objectAtIndex:randomIndex];
+	[monsterTemplates autorelease];
 	
 	RQEnemy *newEnemy = (RQEnemy *)[simpleCoreData newObjectInEntityWithName:@"Enemy" values:nil];
 	[newEnemy setName:[monsterTemplate name]];
@@ -193,6 +194,7 @@ static RQModelController *defaultModelController = nil;
 - (NSArray *)weightLogEntriesSortedByDate
 {
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTaken" ascending:YES selector:@selector(compare:)];
+	[sortDescriptor autorelease];
 	return [simpleCoreData objectsInEntityWithName:@"WeightLogEntry" predicate:nil sortedWithDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 

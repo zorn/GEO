@@ -109,8 +109,29 @@
 	cell.backgroundColor = [UIColor colorWithRed:0.060 green:0.069 blue:0.079 alpha:1.000];
 	@try {
 		id object = [fetchedResultsController objectAtIndexPath:indexPath];
-		[cell.weightLabel setText:[[object valueForKey:@"weightTaken"] stringValue]];
-		[cell.weightLostLabel setText:[[(RQWeightLogEntry *)object weightLostAsOfSelf] stringValue]];
+		
+		NSString *weightString = nil;
+		NSDecimalNumber *weightAsPounds = [object valueForKey:@"weightTaken"];
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+			NSDecimalNumber *weightAsGrams = [weightAsPounds decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+			weightString = [[[RQModelController defaultModelController] calorieFormatter] stringFromNumber:weightAsGrams];
+		} else {
+			weightString = [[[RQModelController defaultModelController] calorieFormatter] stringFromNumber:weightAsPounds];
+		}
+		
+		[cell.weightLabel setText:weightString];
+		
+		
+		NSString *weightLostString = nil;
+		NSDecimalNumber *weightLostAsOfSelfAsPounds = [(RQWeightLogEntry *)object weightLostAsOfSelf];
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+			NSDecimalNumber *weightLostAsOfSelfAsGrams = [weightLostAsOfSelfAsPounds decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+			weightLostString = [[[RQModelController defaultModelController] calorieFormatter] stringFromNumber:weightLostAsOfSelfAsGrams];
+		} else {
+			weightLostString = [[[RQModelController defaultModelController] calorieFormatter] stringFromNumber:weightLostAsOfSelfAsPounds];
+		}
+		[cell.weightLostLabel setText:weightLostString];
+		
 		[cell.dateLabel setText:[_formatter stringForObjectValue:[object valueForKey:@"dateTaken"]]];
 		
 	}

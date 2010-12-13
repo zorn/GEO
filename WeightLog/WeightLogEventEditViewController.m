@@ -34,7 +34,8 @@
 	[dateLabel release]; dateLabel = nil;
 	[weightTextField release]; weightTextField = nil;
 	[datePicker release]; datePicker = nil;
-	
+	[weightUnitLabel release]; weightUnitLabel = nil;
+
 	[super dealloc];
 }
 
@@ -52,6 +53,7 @@
 @synthesize dateLabel;;
 @synthesize weightTextField;
 @synthesize datePicker;
+@synthesize weightUnitLabel;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -71,13 +73,27 @@
 	
 	if (self.editMode) {
 		self.tempDate = self.weightLogEntry.dateTaken;
-		self.tempWeight = self.weightLogEntry.weightTaken;
+		
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+			// convert from lbs (how we store weight) into kilograms
+			// lbs / 2.2 = kilograms
+			self.tempWeight = [self.weightLogEntry.weightTaken decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+		} else {
+			self.tempWeight = self.weightLogEntry.weightTaken;
+		}
+		
 	} else {
 		self.tempDate = [NSDate date];
 	}
 	
 	[self.dateLabel setText:[_formatter stringForObjectValue:self.tempDate]];
-	if (self.tempWeight) [self.weightTextField setText:[NSString stringWithFormat:@"%@", self.tempWeight]];
+	if (self.tempWeight) [self.weightTextField setText:[[[RQModelController defaultModelController] calorieFormatter] stringFromNumber:tempWeight]];
+	
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+		self.weightUnitLabel.text = @"kg";
+	} else {
+		self.weightUnitLabel.text = @"lbs";
+	}
 	
 	[self.weightTextField becomeFirstResponder];
 	[self updateUI];
@@ -100,11 +116,30 @@
 		
 		if (self.editMode) {
 			[self.weightLogEntry setDateTaken:self.tempDate];
-			[self.weightLogEntry setWeightTaken:self.tempWeight];
+			
+			NSDecimalNumber *savedWeight = nil;
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+				// convert from kilograms into pounds
+				// lbs / 2.2 = kilograms
+				savedWeight = [self.tempWeight decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+			} else {
+				savedWeight = self.tempWeight;
+			}
+			[self.weightLogEntry setWeightTaken:savedWeight];
+			
 		} else {
 			RQWeightLogEntry *newEntry = [[RQModelController defaultModelController] newWeightLogEntry];
 			[newEntry setDateTaken:self.tempDate];
-			[newEntry setWeightTaken:self.tempWeight];
+			
+			NSDecimalNumber *savedWeight = nil;
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+				// convert from kilograms into pounds
+				// lbs / 2.2 = kilograms
+				savedWeight = [self.tempWeight decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+			} else {
+				savedWeight = self.tempWeight;
+			}
+			[newEntry setWeightTaken:savedWeight];
 		}
 		[[RQModelController defaultModelController] save];
 		

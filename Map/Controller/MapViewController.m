@@ -594,7 +594,13 @@
 	//[NSString stringWithFormat:@"%lu:%lu", floor(trek.duration/60.0f), floor(remainder(trek.duration, 60.0f))];
 	
 	// update distance label, convert to miles
-	NSString *newDistance = [NSString stringWithFormat:@"%@ mi", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distanceInMiles]]]];
+	NSString *newDistance = @"";
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayDistanceAsMeters"] boolValue]) {
+		newDistance = [NSString stringWithFormat:@"%@ km", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distance]/1000]]];
+	} else {
+		newDistance = [NSString stringWithFormat:@"%@ mi", [_distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[self.trek distanceInMiles]]]];
+	}
+	
 	//CCLOG(@"newDistance %@", newDistance);
 	self.distanceLabel.text = newDistance;
 	

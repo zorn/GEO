@@ -20,6 +20,7 @@
 		[[self navigationItem] setTitle:@"Weight Summary"];
 		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStyleBordered target:nil action:nil];
 		[[self navigationItem] setBackBarButtonItem:newBackButton];
+		[newBackButton release];
 	}
 	return self;
 }
@@ -109,11 +110,21 @@
     // Update top label
 	NSDecimalNumber *weightLostToDate = [[RQModelController defaultModelController] weightLostToDate];
 	if (weightLostToDate) {
+		
+		NSString *weightLabelString = nil;
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+			weightLostToDate = [weightLostToDate decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+			weightLabelString = @"kilograms";
+		} else {
+			weightLabelString = @"pounds";
+		}
+		
 		// NSOrderedAscending if the value of decimalNumber is greater than the receiver; NSOrderedSame if they’re equal; and NSOrderedDescending if the value of decimalNumber is less than the receiver.
 		if ([[NSDecimalNumber zero] compare:weightLostToDate] != NSOrderedDescending) {
-			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have lost %@ pounds.", weightLostToDate]];
+			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have lost %@ %@.", weightLostToDate, weightLabelString]];
 		} else {
-			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have gained %@ pounds.", [weightLostToDate decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"-1"]]]];
+			weightLostToDate = [weightLostToDate decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"-1"]];
+			[self.weightLostToDateLabel setText:[NSString stringWithFormat:@"You have gained %@ %@.", weightLostToDate, weightLabelString]];
 		}
 		
 	} else {
@@ -133,6 +144,11 @@
 	if (!maxWeight) maxWeight = [NSDecimalNumber zero]; 
 	NSDecimalNumber *minWeight = [[RQModelController defaultModelController] minWeightLogged];
 	if (!minWeight) minWeight = [NSDecimalNumber zero];
+	
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+		maxWeight = [maxWeight decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+		minWeight = [minWeight decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+	}
 	
 	CCLOG(@"max %@ min %@", maxWeight, minWeight);
 	
@@ -255,7 +271,14 @@
 		case CPScatterPlotFieldY:
 		{
 			NSArray *entries = [[RQModelController defaultModelController] weightLogEntriesSortedByDate];
-			return [(RQWeightLogEntry *)[entries objectAtIndex:index] weightTaken];
+			NSDecimalNumber *weightAsPounds = [(RQWeightLogEntry *)[entries objectAtIndex:index] weightTaken];
+			
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayWeightAsGrams"] boolValue]) {
+				NSDecimalNumber *weightAsGrams = [weightAsPounds decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"2.2"]];
+				return weightAsGrams;
+			} else {
+				return weightAsPounds;
+			}
 		}
 	}
 	return nil;

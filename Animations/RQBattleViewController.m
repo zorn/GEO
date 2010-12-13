@@ -58,13 +58,13 @@
 {
 	CCLOG(@"RQBattleViewController -dealloc called...");
 	[self stopAnimation];
+	[hpPlusSprite release]; hpPlusSprite = nil;
 	[shieldDrawLineView release]; shieldDrawLineView = nil;
 	[backgroundImageView release], backgroundImageView = nil;
 	[shieldLightning release], shieldLightning = nil;
 	[rightShield release], rightShield = nil;
 	[leftShield release], leftShield = nil;
 	[frontFlashView release], frontFlashView = nil;
-	[heroGlovePowerBar release];
 	[weaponSprites release]; weaponSprites = nil;
 	[battleVictoryViewController release]; battleVictoryViewController = nil;
 	[battle release]; battle = nil;
@@ -102,6 +102,7 @@
 	UIImage *weaponShelfImage = [UIImage imageNamed:@"weapon_shelf.png"];
 	UIImageView *weaponShelfImageView = [[UIImageView alloc] initWithImage:weaponShelfImage];
 	[self.view addSubview:weaponShelfImageView];
+	[weaponShelfImageView release];
 	CGRect newFrame = weaponShelfImageView.frame;
 	newFrame.origin.y = self.view.frame.size.height - weaponShelfImageView.frame.size.height;
 	newFrame.origin.x = (self.view.frame.size.width - weaponShelfImageView.frame.size.width)/2;
@@ -111,6 +112,7 @@
 	heroGlovePowerBar = [[RQBarView alloc] initWithFrame:CGRectMake(8.0, 25.0, 10.0, 245.0)];
 	heroGlovePowerBar.barColor = [UIColor colorWithRed:0.080 green:0.583 blue:1.0 alpha:0.7];
 	[self.view addSubview:heroGlovePowerBar];
+	[heroGlovePowerBar release];
 	
 	UIImageView *gloveImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glove_label"]];
 	CGRect gloveImageLabelFrame = gloveImageLabel.frame;
@@ -139,7 +141,7 @@
 	
 	// setup weaponSprite Array
 	RQWeaponSprite *weaponSprite;
-	NSString *weaponImageName;
+	NSString *weaponImageName = nil;
 	RQElementalType weaponType;
 	UIImageView *weaponImageView;
 	
@@ -258,6 +260,7 @@
 		UIImage *plusHPImage = [UIImage imageNamed:@"plus_hp.png"];
 		UIImageView *plusHPImageView = [[UIImageView alloc] initWithImage:plusHPImage];
 		hpPlusSprite = [[RQSprite alloc] initWithView:plusHPImageView];
+		[plusHPImageView release];
 		[self.view addSubview:hpPlusSprite.view];
 		hpPlusSprite.position = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - 200);
 		hpPlusSprite.view.layer.opacity = 0;
@@ -462,7 +465,7 @@
 	for (RQWeaponSprite *weaponSprite in weaponSprites) {
 		float previousOpacity = weaponSprite.view.layer.opacity;
 		weaponSprite.view.layer.opacity = self.battle.hero.stamina;
-		NSString *weaponImageName;
+		NSString *weaponImageName = nil;
 		switch (weaponSprite.type) {
 			case RQElementalTypeFire:
 				if (self.battle.hero.stamina >= 1.0) {
@@ -557,6 +560,7 @@
 		CGPoint touchLocation = [touch locationInView:self.view];
 		if (CGRectContainsPoint(hpPlusSprite.view.frame, touchLocation) && hpPlusSprite.view.layer.opacity == 1) {
 			self.battle.hero.currentHP += 200;
+			self.battle.hero.glovePower += 10;
 			hpPlusSprite.view.layer.opacity = 0;
 			[[SimpleAudioEngine sharedEngine] playEffect:@"levelUp.m4a"];
 		}
