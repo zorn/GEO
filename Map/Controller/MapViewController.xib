@@ -12,8 +12,8 @@
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="6"/>
-			<integer value="1"/>
 			<integer value="120"/>
+			<integer value="140"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -623,6 +623,15 @@
 					</object>
 					<int key="connectionID">173</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">infoButtonPressed:</string>
+						<reference key="source" ref="803709254"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">174</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -864,7 +873,7 @@
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-1.CustomClassName">MapViewController</string>
 				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="1.IBEditorWindowLastContentRect">{{580, 236}, {320, 460}}</string>
+				<string key="1.IBEditorWindowLastContentRect">{{447, 27}, {320, 460}}</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="1.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+UAAA</bytes>
@@ -888,7 +897,7 @@
 					<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwbAAAA</bytes>
 				</object>
 				<string key="118.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="120.IBEditorWindowLastContentRect">{{0, 980}, {320, 165}}</string>
+				<string key="120.IBEditorWindowLastContentRect">{{40, 691}, {320, 165}}</string>
 				<string key="120.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="120.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">AQAAAABDk4AAA</bytes>
@@ -970,7 +979,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">173</int>
+			<int key="maxID">174</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -981,6 +990,7 @@
 						<string key="centerMapOnLocation:">id</string>
 						<string key="doneButtonPressed:">id</string>
 						<string key="finishButtonPressed:">id</string>
+						<string key="infoButtonPressed:">id</string>
 						<string key="launchBattlePressed:">id</string>
 						<string key="resumeButtonPressed:">id</string>
 						<string key="startStopPressed:">id</string>
@@ -996,6 +1006,10 @@
 						</object>
 						<object class="IBActionInfo" key="finishButtonPressed:">
 							<string key="name">finishButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="infoButtonPressed:">
+							<string key="name">infoButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="launchBattlePressed:">

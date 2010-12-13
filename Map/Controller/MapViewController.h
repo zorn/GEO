@@ -14,7 +14,7 @@
 #import "SonarView.h"
 #import "RQBattleViewController.h"
 #import "WeightLogEventEditViewController.h"
-
+#import "RQViewController.h"
 @class Trek;
 @class RQHero;
 @class AppDelegate_Shared;
@@ -23,7 +23,8 @@
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate, WeightLogEventEditViewControllerDelegate> {
+
+@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, RQBattleViewControllerDelegate, RQViewControllerDelegate, WeightLogEventEditViewControllerDelegate> {
 	
 	id <MKOverlay> _pathOverlay;
 	
@@ -78,6 +79,7 @@
 @property (nonatomic, retain) IBOutlet RQBarView *hpBarView;
 @property (nonatomic, retain) IBOutlet RQBarView *gpBarView;
 
+- (IBAction)infoButtonPressed:(id)sender;
 - (IBAction)launchBattlePressed:(id)sender;
 - (IBAction)startStopPressed:(id)sender;
 - (IBAction)resumeButtonPressed:(id)sender;
