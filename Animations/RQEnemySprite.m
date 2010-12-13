@@ -20,6 +20,7 @@
 @synthesize textLabel;
 @synthesize highlightLayer;
 @synthesize enemyHealthMeter;
+@synthesize invincible;
 
 - (id)initWithView:(UIView *)theView {
     if ((self = [super initWithView:theView])) {

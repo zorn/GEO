@@ -15,7 +15,7 @@
 @interface RQEnemySprite : RQSprite
 {
 }
-
+@property (nonatomic, assign) BOOL invincible;
 - (void)hitWithText:(NSString *)hitText;
 - (void)strongHitAnimation;
 - (void)runDeathAnimation;
