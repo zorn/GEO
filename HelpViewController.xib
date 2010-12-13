@@ -45,7 +45,7 @@
 					<object class="IBUIWebView" id="821830138">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 416}</string>
+						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -57,8 +57,8 @@
 					</object>
 					<object class="IBUIToolbar" id="113218417">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 416}, {320, 44}}</string>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -81,8 +81,8 @@
 					</object>
 					<object class="IBUIActivityIndicatorView" id="497271086">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483379</int>
-						<string key="NSFrame">{{164, 428}, {20, 20}}</string>
+						<int key="NSvFlags">-2147483359</int>
+						<string key="NSFrame">{{168, 12}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -296,11 +296,11 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUMkAABD1gAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDJAAAw98AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+UAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw3QAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
