@@ -11,6 +11,7 @@ December 12, 2010
 * FIXED: StatusBar now shows back up after final battle sequence.
 * ADDED: Icon-72.png to avoid release warning about iPad icon size missing.
 * CHANGED: Updated app icon to latest version from KUT.
+* ADDED: New run text-based icon for run button in battle view.
 
 December 11, 2010
 
