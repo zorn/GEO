@@ -65,7 +65,7 @@
 }
 
 - (RQElementalType)type {
-	RQElementalType answer;
+	RQElementalType answer = RQElementalTypeNone;
 	switch ([self.typeAsNumber integerValue]) {
 		case RQElementalTypeFire:
 			answer = RQElementalTypeFire;
@@ -74,7 +74,7 @@
 			answer = RQElementalTypeWater;
 			break;
 		case RQElementalTypeEarth:
-			answer = RQElementalTypeWater;
+			answer = RQElementalTypeEarth;
 			break;
 		case RQElementalTypeAir:
 			answer = RQElementalTypeAir;

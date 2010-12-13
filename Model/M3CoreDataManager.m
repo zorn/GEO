@@ -79,15 +79,13 @@
         return persistentStoreCoordinator;
     }
 	
-    NSFileManager *fileManager;
     NSURL *url;
     NSError *error;
-    
-    fileManager = [NSFileManager defaultManager];
-    
+        
 	#ifdef TARGET_OS_IPHONE
 	url = [NSURL fileURLWithPath:[[self applicationSupportFolder] stringByAppendingPathComponent:dataStoreName]];
 	#else
+	NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *applicationSupportFolder = [self applicationSupportFolder];
     if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
         [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];

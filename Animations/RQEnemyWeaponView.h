@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RQMob.h"
 
-
-@interface RQEnemyWeaponView : UIView {
-
+@interface RQEnemyWeaponView : UIView 
+{
+	
 }
+
+@property (readwrite, assign) RQElementalType type;
 
 @end

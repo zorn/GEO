@@ -22,6 +22,7 @@
 	UILabel *dateLabel;
 	UITextField *weightTextField;
 	UIDatePicker *datePicker;
+	UILabel *weightUnitLabel;
 }
 
 // ivars
@@ -40,6 +41,7 @@
 @property (retain) IBOutlet UILabel *dateLabel;
 @property (retain) IBOutlet UITextField *weightTextField;
 @property (retain) IBOutlet UIDatePicker *datePicker;
+@property (retain) IBOutlet UILabel *weightUnitLabel;
 
 #pragma mark -
 #pragma mark Actions

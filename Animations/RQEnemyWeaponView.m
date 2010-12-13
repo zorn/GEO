@@ -19,16 +19,33 @@
     return self;
 }
 
+@synthesize type;
+
 - (void)drawRect:(CGRect)rect {
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
+	// based on type use a different color
+	UIColor *typeColor = [UIColor orangeColor];
+	if (self.type == RQElementalTypeFire) {
+		NSLog(@"using red color");
+		typeColor = [UIColor redColor];
+	} else if (self.type == RQElementalTypeWater) {
+		NSLog(@"using blue color");
+		typeColor = [UIColor blueColor];
+	} else if (self.type == RQElementalTypeEarth) {
+		NSLog(@"using green color");
+		typeColor = [UIColor greenColor];
+	} else if (self.type == RQElementalTypeAir) {
+		NSLog(@"using gray color");
+		typeColor = [UIColor colorWithRed:0.720 green:0.889 blue:0.998 alpha:1.000];
+	}
+	
+	
     CGFloat locations[5] = {0.0, 0.4, 0.5, 0.6, 1.0};
     NSArray *colors = [[NSArray alloc] initWithObjects:(id)[UIColor clearColor].CGColor,
-                       (id)[UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.5].CGColor,
-                       (id)[UIColor greenColor].CGColor,
-                       (id)[UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.5].CGColor,
+                       (id)typeColor.CGColor,
                        (id)[UIColor clearColor].CGColor, nil];
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
     [colors release];

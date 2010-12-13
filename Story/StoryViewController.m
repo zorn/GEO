@@ -103,7 +103,7 @@
 		
 		newStoryFrame = [[NSMutableDictionary alloc] init];
 		[newStoryFrame setObject:@"End_Story_Panel2.png" forKey:@"imageName"];
-		[newStoryFrame setObject:@"Tell me, young one. Did you ever stop to consider the chances of it all? How convenient is was that I would show up just in the nick of time to help you of all people to save the world?" forKey:@"storyText"];
+		[newStoryFrame setObject:@"Tell me, young one. Did you ever stop to consider the chances of it all? How convenient it was that I would show up just in the nick of time to help you of all people to save the world?" forKey:@"storyText"];
 		[finalBattleStory addObject:newStoryFrame];
 		[newStoryFrame release]; newStoryFrame = nil;
 		

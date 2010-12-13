@@ -26,6 +26,7 @@
 		[[self navigationItem] setTitle:@"Workout Summary"];
 		UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStyleBordered target:nil action:nil];
 		[[self navigationItem] setBackBarButtonItem:newBackButton];
+		[newBackButton release];
 	}
 	return self;
 }
@@ -145,7 +146,13 @@
 	[cell.timeLabel	setText:[timeLengthFormatterNoSeconds stringForObjectValue:[NSDate dateWithTimeIntervalSinceReferenceDate:trek.duration]]];
 	
 	NSNumberFormatter *distanceFormatter = [[RQModelController defaultModelController] distanceFormatter];
-	NSString *distanceText = [NSString stringWithFormat:@"%@ mi", [distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[trek distanceInMiles]]]];
+	
+	NSString *distanceText = @"";
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayDistanceAsMeters"] boolValue]) {
+		distanceText = [NSString stringWithFormat:@"%@ km", [distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[trek distance]/1000]]];
+	} else {
+		distanceText = [NSString stringWithFormat:@"%@ mi", [distanceFormatter stringForObjectValue:[NSNumber numberWithDouble:[trek distanceInMiles]]]];
+	}
 	[cell.distanceLabel	setText:distanceText];
 	
 	NSNumberFormatter *calorieFormatter = [[RQModelController defaultModelController] calorieFormatter];

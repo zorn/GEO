@@ -35,6 +35,7 @@
 	RQEnemySprite *evilBoobsMonster;
 	int monsterCounter;
 	float secondsSinceLastPlusHPSpawn;
+	float secondsSinceLastElementShift;
 	
 	BOOL didPauseIPod;
 	

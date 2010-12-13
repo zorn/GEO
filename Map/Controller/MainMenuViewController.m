@@ -206,6 +206,8 @@
 
 - (void)storyViewControllerDidEnd:(StoryViewController *)controller
 {
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 	[self dismissModalViewControllerAnimated:YES];
 	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_music.m4a" loop:YES];
 }
