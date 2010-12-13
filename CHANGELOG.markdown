@@ -12,6 +12,7 @@ December 12, 2010
 * ADDED: Icon-72.png to avoid release warning about iPad icon size missing.
 * CHANGED: Updated app icon to latest version from KUT.
 * ADDED: New run text-based icon for run button in battle view.
+* CHANGED: Redid the about page HTML. Feedback welcome.
 
 December 11, 2010
 
