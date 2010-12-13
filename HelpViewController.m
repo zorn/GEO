@@ -11,7 +11,7 @@
 
 @implementation HelpViewController
 
-@synthesize webView;
+@synthesize webView, backButton, forwardButton, toolbar;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -40,6 +40,31 @@
 	[webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:_path]];
 }
 
+- (BOOL)webView:(UIWebView *)webView_ shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
+		NSArray *items = [toolbar items];
+		if ( ![items containsObject:backButton] ) {
+			NSMutableArray *mutableItems = [items mutableCopy];
+			[mutableItems insertObject:backButton atIndex:0];
+			[mutableItems insertObject:forwardButton atIndex:1];
+			[toolbar setItems:mutableItems animated:YES];
+			[mutableItems release];
+		}
+	}
+	return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView_ {
+	
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView_ {
+	
+}
+
+- (void)webView:(UIWebView *)webView_ didFailLoadWithError:(NSError *)error {
+	
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
