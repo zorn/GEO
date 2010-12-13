@@ -778,7 +778,9 @@
 	
 	CGFloat xPos = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 160.0f) + 80.0f;
 	CGFloat yPos = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f) * 60.0f) + 70.0f;
-	evilBoobsMonster.position = CGPointMake(xPos, yPos);	
+	CGFloat zPos = ((CGFloat)rand() / ((CGFloat)RAND_MAX + 1.0f)) + 0.25f;
+	evilBoobsMonster.position = CGPointMake(xPos, yPos);
+	evilBoobsMonster.imageView.transform = CGAffineTransformMakeScale(zPos, zPos);
 }
 
 #pragma mark -
