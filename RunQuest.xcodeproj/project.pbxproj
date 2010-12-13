@@ -281,6 +281,8 @@
 		D832041D12511DFA00B2F944 /* TrekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D832041B12511DFA00B2F944 /* TrekViewController.m */; };
 		D832041E12511DFA00B2F944 /* TrekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D832041C12511DFA00B2F944 /* TrekView.xib */; };
 		D8366F0D12465CE000A39CE9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */; };
+		D83FCC4D12B57964000FD972 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83FCC4B12B57964000FD972 /* HelpViewController.m */; };
+		D83FCC4E12B57964000FD972 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D83FCC4C12B57964000FD972 /* HelpViewController.xib */; };
 		D847926812ADA48400214D09 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D847926712ADA48400214D09 /* MessageUI.framework */; };
 		D8901A4B123EF33C004C5D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901A4A123EF33C004C5D27 /* QuartzCore.framework */; };
 		D8901CC1123F892D004C5D27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8901CC0123F892D004C5D27 /* UIKit.framework */; };
@@ -642,6 +644,9 @@
 		D832041B12511DFA00B2F944 /* TrekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrekViewController.m; sourceTree = "<group>"; };
 		D832041C12511DFA00B2F944 /* TrekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrekView.xib; sourceTree = "<group>"; };
 		D8366F0C12465CE000A39CE9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D83FCC4A12B57964000FD972 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		D83FCC4B12B57964000FD972 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		D83FCC4C12B57964000FD972 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		D847926712ADA48400214D09 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D8901A4A123EF33C004C5D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8901CC0123F892D004C5D27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1288,6 +1293,9 @@
 				2860E386111B897F00E27156 /* iPhone */,
 				29B97317FDCFA39411CA2CEA /* iPad */,
 				28EEBF621118D79A00187D67 /* Shared */,
+				D83FCC4A12B57964000FD972 /* HelpViewController.h */,
+				D83FCC4B12B57964000FD972 /* HelpViewController.m */,
+				D83FCC4C12B57964000FD972 /* HelpViewController.xib */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -1661,6 +1669,7 @@
 				1A538D9C12B3EA9500A04215 /* End_Story_transform_final@2x.png in Resources */,
 				1A538D9D12B3EA9500A04215 /* End_Story_transform.png in Resources */,
 				1A538D9E12B3EA9500A04215 /* End_Story_transform@2x.png in Resources */,
+				D83FCC4E12B57964000FD972 /* HelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1768,6 +1777,7 @@
 				D8E302401292143000824EC4 /* Treasure.m in Sources */,
 				1A38D4C91295D8EF009EBBE6 /* TrekListCell.m in Sources */,
 				1A964095129AD76C0000E954 /* TrekListHeaderCell.m in Sources */,
+				D83FCC4D12B57964000FD972 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
