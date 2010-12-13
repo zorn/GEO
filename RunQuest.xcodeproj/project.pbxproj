@@ -243,6 +243,10 @@
 		C90F10EE12455B81000E456A /* RQEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F10ED12455B81000E456A /* RQEnemySprite.m */; };
 		C9142D6B127DB88300412AFF /* RQEnemyWeaponView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9142D6A127DB88300412AFF /* RQEnemyWeaponView.m */; };
 		C93701561280F99200C2514F /* RQBattleVictoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93701551280F99200C2514F /* RQBattleVictoryViewController.xib */; };
+		C974F7AE12B64C840088659E /* glove_power.png in Resources */ = {isa = PBXBuildFile; fileRef = C974F7AA12B64C840088659E /* glove_power.png */; };
+		C974F7AF12B64C840088659E /* glove_power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C974F7AB12B64C840088659E /* glove_power@2x.png */; };
+		C974F7B012B64C840088659E /* health_power.png in Resources */ = {isa = PBXBuildFile; fileRef = C974F7AC12B64C840088659E /* health_power.png */; };
+		C974F7B112B64C840088659E /* health_power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C974F7AD12B64C840088659E /* health_power@2x.png */; };
 		C9905A4D1294BCB100AF5987 /* shield_lightning1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9905A451294BCB100AF5987 /* shield_lightning1.png */; };
 		C9905A4E1294BCB100AF5987 /* shield_lightning1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9905A461294BCB100AF5987 /* shield_lightning1@2x.png */; };
 		C9905A4F1294BCB100AF5987 /* shield_lightning2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9905A471294BCB100AF5987 /* shield_lightning2.png */; };
@@ -274,10 +278,6 @@
 		C99A91E9124A7F47005BAECF /* victory_song_002.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C99A91CE124A7F47005BAECF /* victory_song_002.m4a */; };
 		C99A91F9124A7F9C005BAECF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99A91F8124A7F9C005BAECF /* OpenAL.framework */; };
 		C9D8A011125353130034583F /* RQPassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D8A010125353130034583F /* RQPassthroughView.m */; };
-		C9D8D3F712A2F16D00B45154 /* glove_label.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D8D3F612A2F16D00B45154 /* glove_label.png */; };
-		C9D8D40912A2F67100B45154 /* glove_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D8D40812A2F67100B45154 /* glove_label@2x.png */; };
-		C9D8D41412A2F85D00B45154 /* hp_label.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D8D41212A2F85D00B45154 /* hp_label.png */; };
-		C9D8D41512A2F85D00B45154 /* hp_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D8D41312A2F85D00B45154 /* hp_label@2x.png */; };
 		C9DCF7751245505500BCABB1 /* RQBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7721245505500BCABB1 /* RQBattleViewController.m */; };
 		C9DCF7761245505500BCABB1 /* RQSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DCF7741245505500BCABB1 /* RQSprite.m */; };
 		C9DCF784124557F600BCABB1 /* boobs.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF783124557F600BCABB1 /* boobs.png */; };
@@ -604,6 +604,10 @@
 		C9142D69127DB88300412AFF /* RQEnemyWeaponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQEnemyWeaponView.h; sourceTree = "<group>"; };
 		C9142D6A127DB88300412AFF /* RQEnemyWeaponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQEnemyWeaponView.m; sourceTree = "<group>"; };
 		C93701551280F99200C2514F /* RQBattleVictoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RQBattleVictoryViewController.xib; sourceTree = "<group>"; };
+		C974F7AA12B64C840088659E /* glove_power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glove_power.png; path = ui/glove_power.png; sourceTree = "<group>"; };
+		C974F7AB12B64C840088659E /* glove_power@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glove_power@2x.png"; path = "ui/glove_power@2x.png"; sourceTree = "<group>"; };
+		C974F7AC12B64C840088659E /* health_power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = health_power.png; path = ui/health_power.png; sourceTree = "<group>"; };
+		C974F7AD12B64C840088659E /* health_power@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "health_power@2x.png"; path = "ui/health_power@2x.png"; sourceTree = "<group>"; };
 		C9905A451294BCB100AF5987 /* shield_lightning1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_lightning1.png; path = ui/shield_lightning1.png; sourceTree = "<group>"; };
 		C9905A461294BCB100AF5987 /* shield_lightning1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shield_lightning1@2x.png"; path = "ui/shield_lightning1@2x.png"; sourceTree = "<group>"; };
 		C9905A471294BCB100AF5987 /* shield_lightning2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_lightning2.png; path = ui/shield_lightning2.png; sourceTree = "<group>"; };
@@ -637,10 +641,6 @@
 		C99A91F8124A7F9C005BAECF /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		C9D8A00F125353130034583F /* RQPassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQPassthroughView.h; sourceTree = "<group>"; };
 		C9D8A010125353130034583F /* RQPassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQPassthroughView.m; sourceTree = "<group>"; };
-		C9D8D3F612A2F16D00B45154 /* glove_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glove_label.png; path = ui/glove_label.png; sourceTree = "<group>"; };
-		C9D8D40812A2F67100B45154 /* glove_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glove_label@2x.png"; path = "ui/glove_label@2x.png"; sourceTree = "<group>"; };
-		C9D8D41212A2F85D00B45154 /* hp_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hp_label.png; path = ui/hp_label.png; sourceTree = "<group>"; };
-		C9D8D41312A2F85D00B45154 /* hp_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hp_label@2x.png"; path = "ui/hp_label@2x.png"; sourceTree = "<group>"; };
 		C9DCF7711245505500BCABB1 /* RQBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQBattleViewController.h; sourceTree = "<group>"; };
 		C9DCF7721245505500BCABB1 /* RQBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQBattleViewController.m; sourceTree = "<group>"; };
 		C9DCF7731245505500BCABB1 /* RQSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQSprite.h; sourceTree = "<group>"; };
@@ -922,10 +922,10 @@
 				1A07092E12A82B6300C2636B /* kut_portal_background@2x.png */,
 				1A4E043412A58EDB00DDA627 /* location_icon.png */,
 				1A4E043512A58EDB00DDA627 /* location_icon@2x.png */,
-				C9D8D41212A2F85D00B45154 /* hp_label.png */,
-				C9D8D41312A2F85D00B45154 /* hp_label@2x.png */,
-				C9D8D40812A2F67100B45154 /* glove_label@2x.png */,
-				C9D8D3F612A2F16D00B45154 /* glove_label.png */,
+				C974F7AA12B64C840088659E /* glove_power.png */,
+				C974F7AB12B64C840088659E /* glove_power@2x.png */,
+				C974F7AC12B64C840088659E /* health_power.png */,
+				C974F7AD12B64C840088659E /* health_power@2x.png */,
 				1A63C36612A1C8DF0036A687 /* speaker_loud.png */,
 				1A63C36712A1C8DF0036A687 /* speaker_loud@2x.png */,
 				1A63C36812A1C8DF0036A687 /* speaker_mute.png */,
@@ -1604,10 +1604,6 @@
 				1A63C36B12A1C8DF0036A687 /* speaker_loud@2x.png in Resources */,
 				1A63C36C12A1C8DF0036A687 /* speaker_mute.png in Resources */,
 				1A63C36D12A1C8DF0036A687 /* speaker_mute@2x.png in Resources */,
-				C9D8D3F712A2F16D00B45154 /* glove_label.png in Resources */,
-				C9D8D40912A2F67100B45154 /* glove_label@2x.png in Resources */,
-				C9D8D41412A2F85D00B45154 /* hp_label.png in Resources */,
-				C9D8D41512A2F85D00B45154 /* hp_label@2x.png in Resources */,
 				1A4E043612A58EDB00DDA627 /* location_icon.png in Resources */,
 				1A4E043712A58EDB00DDA627 /* location_icon@2x.png in Resources */,
 				1A07090A12A8114B00C2636B /* battle_failure_background.png in Resources */,
@@ -1694,6 +1690,10 @@
 				1AADD09112B5D0050043DCA2 /* run_text.png in Resources */,
 				1AADD09212B5D0050043DCA2 /* run_text@2x.png in Resources */,
 				1AADD09B12B5D3330043DCA2 /* geo_app_icon.png in Resources */,
+				C974F7AE12B64C840088659E /* glove_power.png in Resources */,
+				C974F7AF12B64C840088659E /* glove_power@2x.png in Resources */,
+				C974F7B012B64C840088659E /* health_power.png in Resources */,
+				C974F7B112B64C840088659E /* health_power@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

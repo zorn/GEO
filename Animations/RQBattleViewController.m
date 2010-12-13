@@ -116,9 +116,10 @@
 	[self.view addSubview:heroGlovePowerBar];
 	[heroGlovePowerBar release];
 	
-	UIImageView *gloveImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glove_label"]];
+	UIImageView *gloveImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glove_power"]];
 	CGRect gloveImageLabelFrame = gloveImageLabel.frame;
 	gloveImageLabelFrame.origin.y = 275.0;
+	gloveImageLabelFrame.origin.x = 4.0;
 	gloveImageLabel.frame = gloveImageLabelFrame;
 	[self.view addSubview:gloveImageLabel];
 	[gloveImageLabel release];
@@ -128,10 +129,10 @@
 	heroHealthBar.barColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
 	[self.view addSubview:heroHealthBar];
 	
-	UIImageView *hpImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hp_label"]];
+	UIImageView *hpImageLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"health_power"]];
 	CGRect hpImageLabelFrame = hpImageLabel.frame;
-	hpImageLabelFrame.origin.y = 275.0;
-	hpImageLabelFrame.origin.x = (self.view.frame.size.width - hpImageLabelFrame.size.width) + 2.0;
+	hpImageLabelFrame.origin.y = 273.0;
+	hpImageLabelFrame.origin.x = (self.view.frame.size.width - hpImageLabelFrame.size.width) - 6.0;
 	hpImageLabel.frame = hpImageLabelFrame;
 	[self.view addSubview:hpImageLabel];
 	[hpImageLabel release];
