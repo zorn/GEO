@@ -203,6 +203,7 @@
 		1AADD08112B5CDEE0043DCA2 /* running_man.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AADD08012B5CDEE0043DCA2 /* running_man.png */; };
 		1AADD09112B5D0050043DCA2 /* run_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AADD08F12B5D0050043DCA2 /* run_text.png */; };
 		1AADD09212B5D0050043DCA2 /* run_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AADD09012B5D0050043DCA2 /* run_text@2x.png */; };
+		1AADD09B12B5D3330043DCA2 /* geo_app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AADD09A12B5D3330043DCA2 /* geo_app_icon.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
@@ -542,6 +543,7 @@
 		1AADD08012B5CDEE0043DCA2 /* running_man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = running_man.png; path = ui/running_man.png; sourceTree = "<group>"; };
 		1AADD08F12B5D0050043DCA2 /* run_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = run_text.png; path = ui/run_text.png; sourceTree = "<group>"; };
 		1AADD09012B5D0050043DCA2 /* run_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "run_text@2x.png"; path = "ui/run_text@2x.png"; sourceTree = "<group>"; };
+		1AADD09A12B5D3330043DCA2 /* geo_app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geo_app_icon.png; path = HTML/Info/geo_app_icon.png; sourceTree = SOURCE_ROOT; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
@@ -1211,6 +1213,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1AADD09A12B5D3330043DCA2 /* geo_app_icon.png */,
 				D8EFDB3A12B59FFA00082A3D /* HTML */,
 				1ADB7CAA12A05F6A001D90E7 /* app_icon */,
 				1AA3E2C6128C7336001F99A1 /* new_design */,
@@ -1690,6 +1693,7 @@
 				1AADD08112B5CDEE0043DCA2 /* running_man.png in Resources */,
 				1AADD09112B5D0050043DCA2 /* run_text.png in Resources */,
 				1AADD09212B5D0050043DCA2 /* run_text@2x.png in Resources */,
+				1AADD09B12B5D3330043DCA2 /* geo_app_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
