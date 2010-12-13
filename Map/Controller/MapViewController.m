@@ -29,6 +29,7 @@
 #import "RandomWalkLocationManager.h"
 #import "RQBarView.h"
 #import "RQConstants.h"
+#import "HelpViewController.h"
 
 #define METERS_PER_DEGREE 111000
 
@@ -690,9 +691,23 @@
 	[[[RQModelController defaultModelController] coreDataManager] save];
 }
 
+- (void)viewControllerDidEnd:(UIViewController *)vc {
+	if ( [vc isKindOfClass:[HelpViewController class]] ) {
+		[self dismissModalViewControllerAnimated:YES];
+		[self startGameMechanics];
+	}
+}
 
 #pragma mark -
 #pragma mark Action
+- (IBAction)infoButtonPressed:(id)sender {
+	NSString *mapViewHelp = [[NSBundle mainBundle] pathForResource:@"MapViewHelp" ofType:nil inDirectory:@"HTML"];
+	HelpViewController *hvc = [[HelpViewController alloc] initWithHTMLFolder:mapViewHelp];
+	hvc.delegate = self;
+	[self pauseGameMechanicsAndRemoveTreasures:NO];
+	[self presentModalViewController:hvc animated:YES];
+	[hvc release];
+}
 
 - (IBAction)launchBattlePressed:(id)sender {
 	

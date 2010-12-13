@@ -308,6 +308,8 @@
 		D8E5FDEF128B565400B6373E /* RandomWalkLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FDEE128B565400B6373E /* RandomWalkLocationManager.m */; };
 		D8E5FEBE128C8DF500B6373E /* CLLocation+RQAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */; };
 		D8E60E62123D4B1D00FB2EA2 /* HeroPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */; };
+		D8EFDB3B12B59FFA00082A3D /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = D8EFDB3A12B59FFA00082A3D /* HTML */; };
+		D8EFDB4612B5A0D400082A3D /* RQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EFDB4512B5A0D400082A3D /* RQViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -689,6 +691,9 @@
 		D8E5FEBD128C8DF500B6373E /* CLLocation+RQAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+RQAdditions.m"; sourceTree = "<group>"; };
 		D8E60E60123D4B1D00FB2EA2 /* HeroPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroPathView.h; sourceTree = "<group>"; };
 		D8E60E61123D4B1D00FB2EA2 /* HeroPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroPathView.m; sourceTree = "<group>"; };
+		D8EFDB3A12B59FFA00082A3D /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = SOURCE_ROOT; };
+		D8EFDB4412B5A0D400082A3D /* RQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQViewController.h; sourceTree = "<group>"; };
+		D8EFDB4512B5A0D400082A3D /* RQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1199,6 +1204,7 @@
 		D8901EA1124125DE004C5D27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8EFDB3A12B59FFA00082A3D /* HTML */,
 				1ADB7CAA12A05F6A001D90E7 /* app_icon */,
 				1AA3E2C6128C7336001F99A1 /* new_design */,
 				1AA3E26D128C5A02001F99A1 /* mentor_message_avatar_calm@2x.png */,
@@ -1290,6 +1296,8 @@
 		D8C86C5512450E67007E44AF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D8EFDB4412B5A0D400082A3D /* RQViewController.h */,
+				D8EFDB4512B5A0D400082A3D /* RQViewController.m */,
 				2860E386111B897F00E27156 /* iPhone */,
 				29B97317FDCFA39411CA2CEA /* iPad */,
 				28EEBF621118D79A00187D67 /* Shared */,
@@ -1670,6 +1678,7 @@
 				1A538D9D12B3EA9500A04215 /* End_Story_transform.png in Resources */,
 				1A538D9E12B3EA9500A04215 /* End_Story_transform@2x.png in Resources */,
 				D83FCC4E12B57964000FD972 /* HelpViewController.xib in Resources */,
+				D8EFDB3B12B59FFA00082A3D /* HTML in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1778,6 +1787,7 @@
 				1A38D4C91295D8EF009EBBE6 /* TrekListCell.m in Sources */,
 				1A964095129AD76C0000E954 /* TrekListHeaderCell.m in Sources */,
 				D83FCC4D12B57964000FD972 /* HelpViewController.m in Sources */,
+				D8EFDB4612B5A0D400082A3D /* RQViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
