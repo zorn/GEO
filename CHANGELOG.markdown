@@ -9,6 +9,8 @@ December 12, 2010
 * ADDED: New prefs default to meters/grams. Check on first run to see if unit is running as "US". If so, switches to miles/pounds.
 * FIXED: Removed some garbage pointer initialization and a few memory leaks via Build and Analyze.
 * FIXED: StatusBar now shows back up after final battle sequence.
+* ADDED: Icon-72.png to avoid release warning about iPad icon size missing.
+* CHANGED: Updated app icon to latest version from KUT.
 
 December 11, 2010
 

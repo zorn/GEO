@@ -199,6 +199,7 @@
 		1AA3E37B128C8177001F99A1 /* fire_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E373128C8177001F99A1 /* fire_weapon_desaturated@2x.png */; };
 		1AA3E37C128C8177001F99A1 /* water_weapon_desaturated.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */; };
 		1AA3E37D128C8177001F99A1 /* water_weapon_desaturated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */; };
+		1AADD07112B5CC530043DCA2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AADD07012B5CC530043DCA2 /* Icon-72.png */; };
 		1AB1DE1B1246AEC9006E2A41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */; };
 		1AC3B2CE1250449600416564 /* You lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3B2CD1250449600416564 /* You lose.m4a */; };
 		1AC92471124D75A000E09F6A /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC92470124D75A000E09F6A /* MainMenuView.xib */; };
@@ -534,6 +535,7 @@
 		1AA3E373128C8177001F99A1 /* fire_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_weapon_desaturated@2x.png"; path = "ui/fire_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
 		1AA3E374128C8177001F99A1 /* water_weapon_desaturated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water_weapon_desaturated.png; path = ui/water_weapon_desaturated.png; sourceTree = "<group>"; };
 		1AA3E375128C8177001F99A1 /* water_weapon_desaturated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_weapon_desaturated@2x.png"; path = "ui/water_weapon_desaturated@2x.png"; sourceTree = "<group>"; };
+		1AADD07012B5CC530043DCA2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		1AB1DE1A1246AEC9006E2A41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1AC3B2CD1250449600416564 /* You lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "You lose.m4a"; sourceTree = "<group>"; };
 		1AC92465124D755800E09F6A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 		1ADB7CAA12A05F6A001D90E7 /* app_icon */ = {
 			isa = PBXGroup;
 			children = (
+				1AADD07012B5CC530043DCA2 /* Icon-72.png */,
 				1ADB7CAB12A05F6A001D90E7 /* app_icon.png */,
 				1ADB7CAC12A05F6A001D90E7 /* Icon-iPhone.png */,
 				1ADB7CAD12A05F6A001D90E7 /* Icon-iPhone@2x.png */,
@@ -1674,6 +1677,7 @@
 				1A538D9E12B3EA9500A04215 /* End_Story_transform@2x.png in Resources */,
 				D83FCC4E12B57964000FD972 /* HelpViewController.xib in Resources */,
 				D8EFDB3B12B59FFA00082A3D /* HTML in Resources */,
+				1AADD07112B5CC530043DCA2 /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
