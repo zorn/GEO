@@ -279,17 +279,6 @@
 	[self setupGameLoop];
 	[self startAnimation];
 	
-	// If the user would like us to mute the iPod during battles to hear our own sweet music and the iPod is in fact playing
-#if !(TARGET_IPHONE_SIMULATOR)
-	didPauseIPod = NO;
-	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && [[MPMusicPlayerController iPodMusicPlayer] playbackState] == MPMusicPlaybackStatePlaying ) {
-		CCLOG(@"pauseing iPod");
-		[[MPMusicPlayerController iPodMusicPlayer] pause];
-		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
-		didPauseIPod = YES;
-	}
-#endif
-	
 	if (self.useBossFightMechanics) {
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"FinalBossBattle.m4a" loop:YES];
 	} else {
@@ -730,21 +719,6 @@
 {
     [self stopAnimation];
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	
-	// If the user would like us to pause the iPod during battles to hear our own sweet music
-	// Only play the iPod if we previously paused it
-	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue] && didPauseIPod == YES) {
-		CCLOG(@"playing iPod");
-		[[MPMusicPlayerController iPodMusicPlayer] play];
-		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
-		
-		// trying to fix a bug where in the sound effect don't play after the first battle if we are pausing iPod
-		[[CDAudioManager sharedManager] setMute:NO];
-		[[CDAudioManager sharedManager] setEnabled:YES];
-		[[SimpleAudioEngine sharedEngine] setMute:NO];
-		[[SimpleAudioEngine sharedEngine] setEnabled:YES];
-	}
-	
 	[delegate battleViewControllerDidEnd:self];
 }
 

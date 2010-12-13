@@ -14,7 +14,7 @@
 
 - (void)dealloc {
 	[tableView release]; tableView = nil;
-	[pauseIPodSwitch release]; pauseIPodSwitch = nil;
+	[prioritizeIPodSwitch release]; prioritizeIPodSwitch = nil;
 	[backgroundMusicVolumeSlider release]; backgroundMusicVolumeSlider = nil;
 	[effectSoundVolumeSlider release]; effectSoundVolumeSlider = nil;
 	
@@ -34,7 +34,7 @@
 @synthesize delegate;
 
 @synthesize tableView;
-@synthesize pauseIPodSwitch;
+@synthesize prioritizeIPodSwitch;
 @synthesize backgroundMusicVolumeSlider;
 @synthesize effectSoundVolumeSlider;
 
@@ -59,7 +59,7 @@
 	self.tableView.backgroundColor = [UIColor clearColor];
 	
 	// update the view to honor the current defaults
-	self.pauseIPodSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundMuteIPod"] boolValue];
+	self.prioritizeIPodSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundShouldPrioritizeIPod"] boolValue];
 	[self.backgroundMusicVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeMusic"] floatValue] animated:NO];
 	[self.effectSoundVolumeSlider setValue:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundVolumeEffects"] floatValue] animated:NO];
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQDisplayDistanceAsMeters"] boolValue]) {
@@ -94,7 +94,14 @@
 - (IBAction)updateDefautsBasedOnUI
 {
 	// take the values of the UI and store them in the defaults
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.pauseIPodSwitch.on] forKey:@"RQSoundMuteIPod"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.prioritizeIPodSwitch.on] forKey:@"RQSoundShouldPrioritizeIPod"];
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"RQSoundShouldPrioritizeIPod"] boolValue]) {
+		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusicIfNoOtherAudio];
+	}
+	else {
+		[[CDAudioManager sharedManager] setMode:kAMM_FxPlusMusic];
+	}
+
 	float backgroundMusic = [self.backgroundMusicVolumeSlider value];
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:backgroundMusic] forKey:@"RQSoundVolumeMusic"];
 	float soundEffects = [self.effectSoundVolumeSlider value];
