@@ -19,6 +19,7 @@
 #import "SettingsViewController.h"
 #import "DeveloperToolboxViewController.h"
 #import "RQBattleViewController.h"
+#import "HelpViewController.h"
 
 // models
 #import "RQConstants.h"
@@ -27,7 +28,7 @@
 @implementation MainMenuViewController
 
 @synthesize delegate;
-@synthesize visitDrGordonButton;
+@synthesize visitDrGordonButton, infoButton, devButton;
 
 #pragma mark -
 #pragma mark Initialization
@@ -43,6 +44,8 @@
 - (void)dealloc 
 {
 	// ..
+	[infoButton release];
+	[devButton release];
 	[visitDrGordonButton release];
 	[super dealloc];
 }
@@ -66,10 +69,37 @@
 	}
 }
 
+- (void)viewDidUnload {
+	[super viewDidUnload];
+	self.infoButton = nil;
+	self.devButton = nil;
+	self.visitDrGordonButton = nil;
+}
 - (void)viewWillAppear:(BOOL)animated
 {
 	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 	[super viewWillAppear:animated];
+	
+#ifdef DEBUG
+	[infoButton setHidden:YES];
+	[devButton setHidden:NO];
+#else
+	[devButton setHidden:YES];
+	[infoButton setHidden:NO];
+#endif
+}
+
+- (void)viewControllerDidEnd:(UIViewController *)vc {
+	if ( [vc isKindOfClass:[HelpViewController class]] ) {
+		[self dismissModalViewControllerAnimated:YES];
+	}
+}
+
+- (IBAction)infoButtonPressed:(id)sender {
+	HelpViewController *hvc = [[HelpViewController alloc] initWithHTMLFolder:[[NSBundle mainBundle] pathForResource:@"Info" ofType:nil inDirectory:@"HTML"]];
+	hvc.delegate = self;
+	[self presentModalViewController:hvc animated:YES];
+	[hvc release];
 }
 
 - (IBAction)playButtonPressed:(id)sender
