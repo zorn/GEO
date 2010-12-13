@@ -34,8 +34,7 @@
 
 - (void)loadBase {
 	NSString *htmlPath = [_path stringByAppendingPathComponent:@"index.html"];
-	NSString *htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-	[webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:_path]];
+	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -46,7 +45,6 @@
 
 - (BOOL)webView:(UIWebView *)webView_ shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
-		userDidClickLink = YES;
 		NSArray *items = [toolbar items];
 		if ( ![items containsObject:backButton] ) {
 			NSMutableArray *mutableItems = [items mutableCopy];
@@ -66,7 +64,6 @@
 		[webView goBack];
 	}
 	else {
-		userDidClickLink = NO;
 		[self loadBase];
 	}
 }
@@ -77,13 +74,18 @@
 	}
 }
 
+- (void)updateNav {	
+	forwardButton.enabled = [webView canGoForward];
+	backButton.enabled = [webView canGoBack];
+}
+
 - (void)webViewDidStartLoad:(UIWebView *)webView_ {
+	[self updateNav];
 	[activityIndicator startAnimating];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView_ {
-	forwardButton.enabled = [webView canGoForward];
-	backButton.enabled = ( [webView canGoBack] || userDidClickLink );
+	[self updateNav];
 	[activityIndicator stopAnimating];
 }
 
