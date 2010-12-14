@@ -3,6 +3,7 @@ December 13, 2010
 * CHANGED: New images for health and glove power on the battle screen
 * CHANGED: Using text instead of images for health and glove power on the map view
 * CHANGED: We now only show the dev toolbox button on the main menu when the CFBundleVersion contains a "b" as-in beta release.
+* CHANGED: A few small adjustments to the HTML contents of the help and about windows.
 
 December 12, 2010
 
