@@ -72,7 +72,6 @@
 	
 	// Only show the dev toolbox to people using a beta version
 	NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-	NSLog(@"appVersion %@", appVersion);
 	if ([appVersion rangeOfString:@"b"].location != NSNotFound) {
 		self.devButton.hidden = NO;
 	} else {
