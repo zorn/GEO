@@ -53,6 +53,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -67,6 +69,15 @@
 	} else {
 		self.visitDrGordonButton.hidden = YES;
 	}
+	
+	// Only show the dev toolbox to people using a beta version
+	NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+	NSLog(@"appVersion %@", appVersion);
+	if ([appVersion rangeOfString:@"b"].location != NSNotFound) {
+		self.devButton.hidden = NO;
+	} else {
+		self.devButton.hidden = YES;
+	}
 }
 
 - (void)viewDidUnload {
@@ -79,14 +90,6 @@
 {
 	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 	[super viewWillAppear:animated];
-	
-#ifdef DEBUG
-	[infoButton setHidden:YES];
-	[devButton setHidden:NO];
-#else
-	[devButton setHidden:YES];
-	[infoButton setHidden:NO];
-#endif
 }
 
 - (void)viewControllerDidEnd:(UIViewController *)vc {
