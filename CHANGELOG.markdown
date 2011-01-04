@@ -1,3 +1,8 @@
+January 4, 2011
+
+* CHANGED: main Info.plist to use 1.0 instead of 1.0b3 (in prep for submission).
+* ADDED: new array for UIRequiredDeviceCapabilities to Info.plist to force gps requirement.
+
 December 13, 2010
 
 * CHANGED: New images for health and glove power on the battle screen
