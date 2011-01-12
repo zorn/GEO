@@ -919,10 +919,47 @@
 	}
 }
 
+- (void)switchBottomToolbarToPauseShouldAnimate:(BOOL)animate {
+	CGRect startToolbarEndFrame = self.startToolbar.frame;
+	startToolbarEndFrame.origin.x = startToolbarEndFrame.origin.x - startToolbarEndFrame.size.width;
+	CGRect pauseToolbarEndFrame = self.startToolbar.frame;
+	
+	if ( animate ) {
+		[UIView beginAnimations:@"SwapToolbarsToPause" context:NULL];
+	}
+	
+	self.pauseToolbar.frame = pauseToolbarEndFrame;
+	self.startToolbar.frame = startToolbarEndFrame;
+	
+	if ( animate ) {
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView commitAnimations];
+	}
+}
+
+- (void)switchBottomToolbarToStartShouldAnimate:(BOOL)animate {
+	CGRect startToolbarEndFrame = self.pauseToolbar.frame;
+	
+	CGRect pauseToolbarEndFrame = self.pauseToolbar.frame;
+	pauseToolbarEndFrame.origin.x = pauseToolbarEndFrame.origin.x + pauseToolbarEndFrame.size.width;
+	
+	if ( animate ) {
+		[UIView beginAnimations:@"SwapToolbarsToStart" context:NULL];
+	}
+	
+	self.pauseToolbar.frame = pauseToolbarEndFrame;
+	self.startToolbar.frame = startToolbarEndFrame;
+	
+	if ( animate ) {
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView commitAnimations];
+	}
+}
+
 - (void)moveStartWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
 {
 	CGRect newFrame = self.startToolbar.frame;
-	newFrame.origin.y = self.view.frame.size.height + self.startToolbar.frame.size.height;
+	newFrame.origin.x = 0 - self.startToolbar.frame.size.width;
 	
 	if (animate) {
 		[UIView beginAnimations:@"StartWorkoutToolbarOuttro" context:NULL];
@@ -937,7 +974,7 @@
 - (void)moveStartWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
 {
 	CGRect newFrame = self.startToolbar.frame;
-	newFrame.origin.y = self.view.frame.size.height - self.startToolbar.frame.size.height;
+	newFrame.origin.x = 0;
 	
 	if (animate) {
 		[UIView beginAnimations:@"StartWorkoutToolbarIntro" context:NULL];
@@ -951,7 +988,7 @@
 - (void)movePauseWorkoutToolbarOffScreenShouldAnimate:(BOOL)animate
 {
 	CGRect newFrame = self.pauseToolbar.frame;
-	newFrame.origin.y = self.view.frame.size.height + self.pauseToolbar.frame.size.height;
+	newFrame.origin.x = self.view.frame.size.width + self.pauseToolbar.frame.size.width;
 	
 	if (animate) {
 		[UIView beginAnimations:@"PauseWorkoutToolbarOuttro" context:NULL];
@@ -966,7 +1003,7 @@
 - (void)movePauseWorkoutToolbarOnScreenShouldAnimate:(BOOL)animate
 {
 	CGRect newFrame = self.pauseToolbar.frame;
-	newFrame.origin.y = self.view.frame.size.height - self.pauseToolbar.frame.size.height;
+	newFrame.origin.x = self.view.frame.size.width - self.pauseToolbar.frame.size.width;
 	
 	if (animate) {
 		[UIView beginAnimations:@"PauseWorkoutToolbarIntro" context:NULL];
