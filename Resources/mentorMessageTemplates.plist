@@ -32,7 +32,7 @@
 		<key>relatedToMechanic</key>
 		<string>none</string>
 		<key>message</key>
-		<string>One day I will have to take that glove back for repairs. Don't get killed!</string>
+		<string>One day I will have to take that glove back for repairs. Don&apos;t get killed!</string>
 	</dict>
 	<dict>
 		<key>event</key>
@@ -56,7 +56,7 @@
 		<key>relatedToMechanic</key>
 		<string>none</string>
 		<key>message</key>
-		<string>I don't have time for advice. I'm busy watching my Lost DVDs.</string>
+		<string>I don&apos;t have time for advice. I&apos;m busy watching my Lost DVDs.</string>
 	</dict>
 	<dict>
 		<key>event</key>
@@ -72,7 +72,7 @@
 		<key>relatedToMechanic</key>
 		<string>none</string>
 		<key>message</key>
-		<string>I'd offer to do some fighting for you, but I'm too good looking to die!</string>
+		<string>I&apos;d offer to do some fighting for you, but I&apos;m too good looking to die!</string>
 	</dict>
 	<dict>
 		<key>event</key>
@@ -80,7 +80,175 @@
 		<key>relatedToMechanic</key>
 		<string>none</string>
 		<key>message</key>
-		<string>I'm impressed. You're better than 1% of the Ranger clan.</string>
+		<string>I&apos;m impressed. You&apos;re better than 1% of the Ranger clan.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>The more you walk the more you&apos;ll be recharged to battle these monsters.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Sometimes it&apos;s okay to run away.  Especially if you&apos;re low on power.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Enemies react differently to different attacks.  Knowing this is essential for later fighters.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Chris&apos; taco is delicious.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>I never quite understood why you subject 50% of your daily tv intake with ads.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Rangers were the reason why most monsters never try to come over to this world.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>If you hit your enemy with the right element, you might do more damage than usual.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>If you hit your enemy with the right element, you might do more damage than usual.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>If you try to cheat the system, you only cheat yourself.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Uhh...yeah...I got nothing....do something.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>This burrito is surprisingly good.  I must research this more.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>It&apos;s still a mystery why Rangers disappeared.  I heard they were taken out by one of their own.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Whew!  Sorry.  I would have something to say but I&apos;m feeling bloated with natural gas.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>More gems will be unlocked as you level up.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Each gems contain different elemental properties.  Experiment using them on different enemies.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Each monster tends to have different movement patterns.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>What?  You want to know more about Rangers?  Uhh...They fight for good!  That&apos;s all you need to know!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Why do we fight these monster?  Population control!</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Is there an end this madness?  Maybe.  Keep leveling up to find out.</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>The blue dots on the map are little treasures for you to get.  Usually it&apos;ll help speed up your recovery. </string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>random</string>
+		<key>relatedToMechanic</key>
+		<string>none</string>
+		<key>message</key>
+		<string>Guns are so barbaric.  Gems make so much more sense.</string>
 	</dict>
 </array>
 </plist>
